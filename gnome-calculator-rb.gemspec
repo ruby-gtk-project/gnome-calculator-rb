@@ -93,7 +93,7 @@ Gem::Specification.new do |spec|
   ]
   spec.bindir = "exe"
   # Listed files are the relative paths from bindir above.
-  spec.executables = ["gnome-calculator"]
+  spec.executables = ["gnome-calculator", "gcalccmd"]
   spec.require_paths = ["lib"]
 
   # NOTE: It is preferable to list development dependencies in the gemspec due to increased
@@ -108,6 +108,14 @@ Gem::Specification.new do |spec|
   #
   #       Development dependencies that require strictly newer Ruby versions should be in a "gemfile",
   #       and preferably a modular one (see gemfiles/modular/*.gemfile).
+
+  # Runtime dependencies
+  # bigdecimal stopped being a default gem in Ruby 3.4, and Number — the
+  # port of upstream's lib/number.vala — is built on it.
+  spec.add_dependency("bigdecimal", "~> 4.1")
+  # rexml stopped being a default gem in Ruby 3.0; the ECB and Bank of Canada
+  # exchange-rate files are XML.
+  spec.add_dependency("rexml", "~> 3.4")
 
   # Dev, Test, & Release Tasks
   spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.22")             # ruby >= 3.4

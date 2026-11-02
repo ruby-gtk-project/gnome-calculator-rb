@@ -108,7 +108,14 @@
 
         # The launcher is whatever the gemspec installs into exe/. Reading the
         # directory keeps this flake generic: no name to keep in step by hand.
-        launcher = builtins.head (builtins.attrNames (builtins.readDir ./exe));
+        # exe/ may hold more than one program — gnome-calculator ships gcalccmd
+        # beside the GUI — so the one named after the package wins, and the
+        # first alphabetically is the fallback for a port with a single entry.
+        exeNames = builtins.attrNames (builtins.readDir ./exe);
+        launcher =
+          if builtins.elem "gnome-calculator" exeNames
+          then "gnome-calculator"
+          else builtins.head exeNames;
 
         # Optional directories: a port that has not grown translations or data
         # assets yet simply has none.

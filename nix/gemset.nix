@@ -21,6 +21,16 @@
     };
     version = "4.3.9";
   };
+  bigdecimal = {
+    groups = ["default"];
+    platforms = [];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "0rng45p4vc3f6nac44cnylwch7rj4zsff3icdz6c7garwpjy3sv1";
+      type = "gem";
+    };
+    version = "4.1.3";
+  };
   cairo = {
     dependencies = ["pkg-config" "red-colors"];
     groups = ["default"];
@@ -212,5 +222,15 @@
       type = "gem";
     };
     version = "0.5.0";
+  };
+  rexml = {
+    groups = ["default"];
+    platforms = [];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "0hninnbvqd2pn40h863lbrn9p11gvdxp928izkag5ysx8b1s5q0r";
+      type = "gem";
+    };
+    version = "3.4.4";
   };
 }

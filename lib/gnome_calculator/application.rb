@@ -4,9 +4,10 @@ require "gtk4"
 require "adwaita"
 
 module GnomeCalculator
-  # The port's application: one window, and a status page saying the port has
-  # not been written yet. Everything else grows from here — replace the status
-  # page with the real content, keep the shape.
+  # The port's application: one window, and a status page standing in for the
+  # calculator window. The engine behind the window — Number, the lexer and
+  # parser, the function and unit managers — is ported and reachable from
+  # exe/gcalccmd; math_window.rb replaces the status page here.
   #
   # House style (see .claude/skills/ruby-gtk): every widget is a memoized
   # method, all configuration lives in its `tap`, assembly happens only in
@@ -46,7 +47,7 @@ module GnomeCalculator
     def status_page
       @status_page ||= Adwaita::StatusPage.new.tap do |page|
         page.title = "gnome-calculator"
-        page.description = "The Ruby port has not been written yet."
+        page.description = "Run exe/gcalccmd to evaluate expressions with the ported engine."
         page.icon_name = "applications-engineering-symbolic"
       end
     end

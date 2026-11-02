@@ -62,6 +62,12 @@ gem "irb", "~> 1.17" # ruby >= 2.7
 gem "gem_kit"
 gem "gtk4"
 
+# bigdecimal stopped being a default gem in Ruby 3.4; Number needs it.
+gem "bigdecimal"
+
+# rexml stopped being a default gem in Ruby 3.0; the currency rate files are XML.
+gem "rexml"
+
 group :development do
   gem "rubocop"
 end
