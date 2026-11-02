@@ -11,18 +11,36 @@ unioned into one port file below.
 
 ## State of the port
 
-`lib/` on `ruby` contains three files:
+`lib/` on `ruby` now holds the whole engine and nothing of the UI:
 
-| File | What it is |
-|---|---|
-| `lib/gnome_calculator.rb` | one `require_relative` |
-| `lib/gnome_calculator/application.rb` | `Gtk::Application` + an `Adwaita::StatusPage` that says the port is not written |
-| `lib/gnome/calculator/rb/version.rb` | gem version |
+| File | Upstream | What it is |
+|---|---|---|
+| `lib/gnome_calculator.rb` | — | requires the engine in dependency order; deliberately does **not** require the GUI |
+| `lib/number.rb` | `lib/number.vala` | arbitrary-precision complex number on BigDecimal + a Rational shadow |
+| `lib/serializer.rb` | `lib/serializer.vala` | number formatting |
+| `lib/evaluation_budget.rb` | `lib/evaluation-budget.vala` | |
+| `lib/equation_lexer.rb` | `lib/equation-lexer.vala` | |
+| `lib/equation_parser.rb` | `lib/equation-parser.vala` | |
+| `lib/equation.rb` | `lib/equation.vala` | `ErrorCode` and the equation facade |
+| `lib/math_function.rb` | `lib/math-function.vala` | |
+| `lib/function_manager.rb` | `lib/function-manager.vala` | |
+| `lib/math_variables.rb` | `lib/math-variables.vala` | |
+| `lib/currency_provider.rb` | `lib/currency-provider.vala` | |
+| `lib/currency.rb` | `lib/currency.vala` | |
+| `lib/providers/{boc,ecb,imf,unt}_provider.rb` | `lib/providers/*.vala` | |
+| `lib/unit.rb` | `lib/unit.vala` | |
+| `lib/financial.rb` | `lib/financial.vala` | the ten financial functions |
+| `lib/settings.rb` | `data/org.gnome.calculator.gschema.xml` | the same 19 keys and defaults, JSON-backed under `XDG_CONFIG_HOME` instead of GSettings |
+| `lib/gnome_calculator/application.rb` | `src/gnome-calculator.vala` | **placeholder**: `Gtk::Application`, a window, `Adwaita::ToolbarView`/`HeaderBar` and an `Adwaita::StatusPage` saying the port is not written |
+| `lib/gnome/calculator/rb/version.rb` | — | gem version |
+| `exe/gcalccmd` | `src/gcalccmd.vala` | the CLI, working |
+| `exe/gnome-calculator` | — | `GnomeCalculator::Application.new.build.run` |
 
-**No user-facing component of gnome-calculator exists in the port yet.** The
-application file is a placeholder shell: window, `Adwaita::ToolbarView`,
-`Adwaita::HeaderBar`, status page. It installs no actions, no accelerators, no
-menus, and holds no equation.
+So: **the engine is ported and no user-facing component of the app is.** The
+one exception is `gcalccmd`, which is user-facing and complete. The
+application file installs no actions, no accelerators and no menus, and holds
+no equation; `lib/math_equation.rb` — the buffer every display widget binds to
+— does not exist yet, and it is the first thing the UI work needs.
 
 ## Totals
 
@@ -33,11 +51,11 @@ menus, and holds no equation.
 | Component units (template / named root) | 28 | 1 |
 | Button widgets across the five panels | ~148 | 0 |
 | Distinct CSS classes in `style.css` | 44 | 0 |
-| GSettings keys | 19 | 0 |
+| GSettings keys | 19 | 19 (JSON-backed, `lib/settings.rb`) |
 | Menu models | 4 (`window_menu`, `primary_menu`, `context_menu_model`, `base_menu`, `word_size_menu`) | 0 |
 | Shortcut items in the shortcuts dialog | 44 across 5 sections | 0 |
 | `po/` languages | 101 | 0 |
-| Engine files (`lib/*.vala`, the maths) | 22 | 0 |
+| Engine files (`lib/*.vala`, the maths) | 22 | 19 of 20 in scope (`math-equation.vala` outstanding) |
 
 ---
 
@@ -483,10 +501,12 @@ styling and the converter's typography all live here and nowhere else.
 
 ### 20. `data/org.gnome.calculator.gschema.xml` — settings
 
-→ **`lib/settings.rb`** · settings · **no**
+→ **`lib/settings.rb`** · settings · **yes**
 
 4 enums (`NumberFormat`, `ButtonMode`, `AngleUnit`, `CurrencyDisplay`) and
-19 keys: `history-tape` `a(ss)`, `accuracy`, `word-size`, `base`,
+19 keys, all of which `lib/settings.rb` carries with upstream's defaults and
+ranges (JSON under `XDG_CONFIG_HOME`, not GSettings, so the app runs from a
+checkout with no schema install): `history-tape` `a(ss)`, `accuracy`, `word-size`, `base`,
 `show-thousands`, `show-zeroes`, `number-format`, `angle-units`,
 `refresh-interval`, `currency-display`, `enabled-completions`,
 `favorite-currencies`, `button-mode`, `unit-category`, `source-units`,
@@ -505,10 +525,13 @@ answer as a result.
 
 ### 22. `src/gcalccmd.vala` — the CLI
 
-→ **`exe/gcalccmd`** · CLI · **no**
+→ **`exe/gcalccmd`** · CLI · **yes**
 
 Reads equations on stdin, prints answers; `data/gcalccmd.1` is its man page.
 Distinct from `gnome-calculator --solve`, which is in the application file.
+Ported: `exe/gcalccmd` solves one argument or loops on stdin, exits on `exit`,
+`quit` or a blank line, and refreshes currency rates synchronously because
+there is no main loop. The man page itself is not carried over.
 
 ### 23. `po/` — translations
 
@@ -526,58 +549,82 @@ One upstream file to one port file, same convention:
 
 | Upstream | → | Present |
 |---|---|---|
-| `lib/number.vala` (2170 lines, MPFR/MPC arbitrary precision) | `lib/number.rb` | no |
-| `lib/equation-lexer.vala` (821) | `lib/equation_lexer.rb` | no |
-| `lib/equation-parser.vala` (2463) | `lib/equation_parser.rb` | no |
-| `lib/equation.vala` | `lib/equation.rb` | no |
-| `lib/math-equation.vala` (1809, the `Gtk.TextBuffer` subclass the display binds to) | `lib/math_equation.rb` | no |
-| `lib/serializer.vala` | `lib/serializer.rb` | no |
-| `lib/unit.vala` (`Unit`, `UnitCategory`, `UnitManager`) | `lib/unit.rb` | no |
-| `lib/currency.vala` (`Currency`, `CurrencyManager`) | `lib/currency.rb` | no |
-| `lib/currency-provider.vala` | `lib/currency_provider.rb` | no |
-| `lib/providers/{boc,ecb,imf,unt}-provider.vala` | `lib/providers/*.rb` | no |
-| `lib/financial.vala` (the 10 financial functions) | `lib/financial.rb` | no |
-| `lib/function-manager.vala` (built-in function categories) | `lib/function_manager.rb` | no |
-| `lib/math-function.vala` | `lib/math_function.rb` | no |
-| `lib/math-variables.vala` | `lib/math_variables.rb` | no |
-| `lib/evaluation-budget.vala` | `lib/evaluation_budget.rb` | no |
+| `lib/number.vala` (2170 lines, MPFR/MPC arbitrary precision) | `lib/number.rb` (1963) | **yes** |
+| `lib/equation-lexer.vala` (821) | `lib/equation_lexer.rb` (723) | **yes** |
+| `lib/equation-parser.vala` (2463) | `lib/equation_parser.rb` (2199) | **yes** |
+| `lib/equation.vala` | `lib/equation.rb` | **yes** |
+| `lib/math-equation.vala` (1809, the `Gtk.TextBuffer` subclass the display binds to) | `lib/math_equation.rb` | **no** — the one engine gap, and a hard prerequisite for the display |
+| `lib/serializer.vala` | `lib/serializer.rb` | **yes** |
+| `lib/unit.vala` (`Unit`, `UnitCategory`, `UnitManager`) | `lib/unit.rb` | **yes** |
+| `lib/currency.vala` (`Currency`, `CurrencyManager`) | `lib/currency.rb` | **yes** |
+| `lib/currency-provider.vala` | `lib/currency_provider.rb` | **yes** |
+| `lib/providers/{boc,ecb,imf,unt}-provider.vala` | `lib/providers/*.rb` | **yes** (4 of 4) |
+| `lib/financial.vala` (the 10 financial functions) | `lib/financial.rb` | **yes** |
+| `lib/function-manager.vala` (built-in function categories) | `lib/function_manager.rb` | **yes** |
+| `lib/math-function.vala` | `lib/math_function.rb` | **yes** |
+| `lib/math-variables.vala` | `lib/math_variables.rb` | **yes** |
+| `lib/evaluation-budget.vala` | `lib/evaluation_budget.rb` | **yes** |
+| `lib/mpfr-glue.vala`, `libmpfr/mpfr-glue.vala` | — | out of scope: the MPFR C shim; the port uses BigDecimal + Rational instead |
 | `gcalc/*.vala` (49 files — the standalone GCalc expression library) | — | out of scope: a separate shipped library, not part of the app's UI |
 | `gci/gci-entry-controller.vala` | — | out of scope with GCalc |
 
 ## Blockers and risks for the port
 
-1. **`MathEquation` is a `GtkSource.Buffer` subclass.** The display binds the
-   equation object directly as the source view's buffer, and undo/redo,
-   selection, the cursor-offset arithmetic and the superscript/subscript tags
-   all run through it. Subclassing `GtkSource::Buffer` in Ruby needs checking
-   before any of the display work starts.
+Ordered as the UI work will meet them. Items 1–3 are prerequisites for the
+first widget file; the engine blockers from the previous survey are resolved.
+
+1. **`lib/math_equation.rb` does not exist, and everything else waits on it.**
+   Upstream's `MathEquation` is a `GtkSource.Buffer` subclass (1809 lines): the
+   display binds it as the source view's buffer, and undo/redo, the selection,
+   the cursor-offset arithmetic, the superscript/subscript tags, the status and
+   base labels, and the `number-format`/`accuracy`/`show-zeroes`/
+   `show-thousands`/`angle-units`/`word-size` bindings all run through it.
+   Subclassing `GtkSource::Buffer` from Ruby has to be proved in a spike before
+   `lib/math_display.rb` or `lib/math_window.rb` is written.
 2. **GtkSourceView is a hard dependency.** `GtkSource.init`, `GtkSource.View`,
    `GtkSource.Completion` and five `GtkSource.CompletionProvider`
    implementations. Confirm the `gtk_source` typelib is in the fork's dev shell
-   and that implementing the `CompletionProvider` interface from Ruby works.
-3. **Arbitrary-precision maths.** Upstream uses MPFR and MPC at a 2000-bit
-   default precision and leans on them for complex numbers, so Ruby's `BigDecimal`
-   is not a drop-in. Decide early between an FFI binding and accepting reduced
-   precision, and record the choice.
-4. **Adwaita widgets the port has not exercised yet.** `Adw.BreakpointBin`,
+   and that implementing the `CompletionProvider` interface from Ruby works; if
+   it does not, the display needs a `Gtk::TextView` fallback and the
+   completion popup a hand-built `Gtk::Popover`, which changes two units.
+3. **Adwaita widgets the port has not exercised yet.** `Adw.BreakpointBin`,
    `Adw.Breakpoint`, `Adw.MultiLayoutView` / `Adw.Layout` / `Adw.LayoutSlot`,
    `Adw.Carousel`, `Adw.CarouselIndicatorDots`, `Adw.ButtonRow`,
    `Adw.ShortcutsDialog`, `Adw.EnumListModel`, `Adw.Spinner`. Each needs a
-   constructor check against the `ruby-gtk` skill's quirks reference; three of
-   the five button panels are unbuildable without the first four.
-5. **`Adwaita::ApplicationWindow` is flagged broken in the bindings**, yet
-   upstream's `MathWindow` is an `Adw.ApplicationWindow` and the current
-   placeholder already uses `Adwaita::ApplicationWindow`. Resolve which it is
-   before `lib/math_window.rb` is written.
-6. **Stateful and parameterised `GLib` actions everywhere.** `win.mode "s"`,
-   `win.number-format` from GSettings, `cal.insert-brackets "(ss)"`,
-   `cal.set-number-mode` with state. Variant-typed action targets from Ruby need
-   a spike.
-7. **The bit panel re-parents grid children at a breakpoint** via
+   constructor check against the `ruby-gtk` skill's quirks reference; the
+   Advanced, Financial and Programming panels are unbuildable without the
+   first four, so one spike covering them unblocks three of the five panels.
+4. **`Adwaita::ApplicationWindow` is flagged broken in the bindings** by the
+   `ruby-gtk` skill's quirks reference, yet upstream's `MathWindow` is an
+   `Adw.ApplicationWindow` and the placeholder in
+   `lib/gnome_calculator/application.rb` already constructs one successfully
+   with `Adwaita::ApplicationWindow.new(app)`. Decide — and record in the
+   quirks reference — whether `lib/math_window.rb` keeps it or drops to
+   `Gtk::ApplicationWindow` with an `Adwaita::ToolbarView` child.
+5. **Stateful and parameterised `GLib` actions everywhere.** `win.mode "s"`,
+   `win.number-format` from settings, `cal.insert-brackets "(ss)"`,
+   `cal.insert-digit "i"`, `cal.set-number-mode` with state. The whole
+   button surface — ~148 buttons across five panels — targets the `cal` group
+   by name and parameter, so variant-typed action targets from Ruby need a
+   spike before any panel is written.
+6. **The bit panel re-parents grid children at a breakpoint** via
    `Gtk.GridLayoutChild`, and loads a `Gtk.CssProvider` from a string inside
-   `size_allocate`. Both are unusual enough to verify in isolation.
-8. **GSettings schema.** Nineteen keys with enums and `(ii)` / `a(ss)` tuple
-   types. The schema has to be compiled and findable at runtime, or every
-   settings read fails.
-9. **101 `po/` catalogues.** A parity decision is needed: carry the catalogues
-   over, or declare the port English-only for now and say so.
+   `size_allocate` to scale the bit separators to `width / 40`. Both are
+   unusual enough to verify in isolation.
+7. **`src/ui/style.css` has no owner yet.** 399 lines, 44 classes, three custom
+   CSS names, plus dark-mode and high-contrast blocks. It has to be carried
+   over verbatim and loaded by a `Gtk::CssProvider`, or the port is a grey copy
+   of the app whatever its widget tree says.
+8. **Settings diverge from upstream by design.** `lib/settings.rb` is
+   JSON-backed rather than GSettings, so there is no `Gio::Settings.bind` to
+   lean on: every binding upstream declares (equation properties, the
+   preferences rows, `favorite-currencies`, the window geometry, the history
+   tape) has to be wired by hand with explicit change notification. This is the
+   single largest source of silent parity gaps in the UI work.
+9. **101 `po/` catalogues, 34 help languages.** A parity decision is still
+   needed: carry the catalogues over behind a gettext helper, or declare the
+   port English-only for now and say so. Nothing in `lib/` is marked
+   translatable yet.
+10. **`gcalc/` (49 files) and `gci/` are out of scope** — a separate shipped
+    expression library with its own `.pc` file, not part of the app's UI. Worth
+    restating because it is a third of upstream's Vala by file count.
