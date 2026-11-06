@@ -25,6 +25,11 @@
           libadwaita
           harfbuzz
           librsvg
+          # libsoup 3's typelib, for the soup3 gem (currency-rate downloads).
+          # Taken from this same nixpkgs, not wrapped with `.out or drv` below:
+          # a typelib built against a different glib registers GIO twice and
+          # dies with "cannot register existing type 'GTlsCertificate'".
+          libsoup_3
         ]
         # The Ruby `pkg-config` gem resolves `Requires.private` transitively and
         # hard-fails if any .pc in the chain is missing, so gtk4's whole private
@@ -167,6 +172,7 @@
               --add-flags "-I$out/share/gnome-calculator/lib" \
               --add-flags "$out/share/gnome-calculator/exe/${launcher}" \
               --set GI_TYPELIB_PATH "${typelibPath}" \
+              --set GIO_EXTRA_MODULES "${pkgs.glib-networking}/lib/gio/modules" \
               --prefix XDG_DATA_DIRS : "$out/share" \
               --prefix XDG_DATA_DIRS : "$out/share/gsettings-schemas/gnome-calculator-0.1.0" \
               --prefix XDG_DATA_DIRS : "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}" \
@@ -208,6 +214,9 @@
             pkgs.xvfb-run
             pkgs.gsettings-desktop-schemas
             pkgs.adwaita-icon-theme
+            # libsoup 3's TLS backend: without it, an https:// request (every
+            # currency-rate source) fails with "TLS support is not available".
+            pkgs.glib-networking
           ] ++ gtkStack;
 
           # Icons, GSettings schemas and the GTK portal all resolve through
@@ -215,6 +224,7 @@
           shellHook = ''
             export XDG_DATA_DIRS="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:${pkgs.adwaita-icon-theme}/share:$XDG_DATA_DIRS"
             export GI_TYPELIB_PATH="${typelibPath}''${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+            export GIO_EXTRA_MODULES="${pkgs.glib-networking}/lib/gio/modules''${GIO_EXTRA_MODULES:+:$GIO_EXTRA_MODULES}"
             export RUBYLIB="$PWD/lib''${RUBYLIB:+:$RUBYLIB}"
             [ -d data/schemas ] && export GSETTINGS_SCHEMA_DIR="$PWD/data/schemas"
             unset BUNDLE_GEMFILE BUNDLE_FROZEN

@@ -116,6 +116,12 @@ Gem::Specification.new do |spec|
   # rexml stopped being a default gem in Ruby 3.0; the ECB and Bank of Canada
   # exchange-rate files are XML.
   spec.add_dependency("rexml", "~> 3.4")
+  # The GTK4/Libadwaita toolkit itself.
+  spec.add_dependency("gtk4")
+  spec.add_dependency("adwaita")
+  spec.add_dependency("glib2")
+  # Downloads the ECB and Bank of Canada exchange-rate files over HTTP.
+  spec.add_dependency("soup3")
 
   # Dev, Test, & Release Tasks
   spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.26")             # ruby >= 3.4

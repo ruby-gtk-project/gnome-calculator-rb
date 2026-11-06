@@ -16,6 +16,10 @@ module GnomeCalculator
     def build
       app.tap do
         app.signal_connect("activate") do
+          # 600 is GTK_STYLE_PROVIDER_PRIORITY_APPLICATION; the Ruby bindings
+          # do not expose the constant.
+          Gtk::StyleContext.add_provider_for_display(Gdk::Display.default, css_provider, 600)
+
           window.tap do |win|
             win.content = toolbar_view
           end
@@ -38,6 +42,13 @@ module GnomeCalculator
       @window ||= Adwaita::ApplicationWindow.new(app).tap do |win|
         win.title = "gnome-calculator"
         win.set_default_size(800, 600)
+      end
+    end
+
+    # Ported from upstream's src/ui/style.css.
+    def css_provider
+      @css_provider ||= Gtk::CssProvider.new.tap do |provider|
+        provider.load_from_path(File.join(__dir__, "..", "style.css"))
       end
     end
 

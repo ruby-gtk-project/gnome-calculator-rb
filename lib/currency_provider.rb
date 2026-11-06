@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require 'fileutils'
-require 'net/http'
-require 'uri'
+require 'soup3'
 
 require_relative 'number'
 
@@ -15,18 +14,17 @@ require_relative 'number'
 # the shared half. Ruby needs no separate interface, so the two become one
 # class; the methods a subclass must supply raise NotImplementedError.
 #
-# Upstream downloads with libsoup and its `updated` signal; here the download
-# is Net::HTTP and the signal is the on_updated callbacks. An async refresh
-# runs on a thread and hands the parsing step back through the manager's
-# dispatcher, so a GUI can marshal it onto the main loop.
+# Upstream downloads with libsoup and its `updated` signal; this port downloads
+# with the `soup3` gem (a GObject-Introspection binding over the same libsoup)
+# and the signal becomes the on_updated callbacks. An async refresh runs on a
+# thread and hands the parsing step back through the manager's dispatcher, so
+# a GUI can marshal it onto the main loop.
 class AbstractCurrencyProvider
   MONTHS_ABBREVIATED = %w[Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec].freeze
   MONTHS_FULL = %w[
     January February March April May June
     July August September October November December
   ].freeze
-
-  MAX_REDIRECTS = 5
 
   attr_accessor :refresh_interval
   attr_reader :currency_manager, :base_currency_symbol, :loaded
@@ -187,15 +185,19 @@ class AbstractCurrencyProvider
       warn "Couldn't download #{source_name} currency rate file: #{e.message}"
     end
 
-    def fetch(url, redirects_left = MAX_REDIRECTS)
-      response = Net::HTTP.get_response(URI.parse(url))
-      if response.is_a?(Net::HTTPSuccess)
-        response.body
-      elsif response.is_a?(Net::HTTPRedirection) && redirects_left.positive?
-        fetch(response['location'], redirects_left - 1)
+    # Soup::Session follows redirects on its own, so this needs no retry loop.
+    def fetch(url)
+      message = Soup::Message.new('GET', url)
+      bytes = session.send_and_read(message)
+      if message.status_code == 200
+        bytes.to_s
       else
-        warn "Couldn't download #{source_name} currency rate file: #{response.code}"
+        warn "Couldn't download #{source_name} currency rate file: #{message.status_code}"
         nil
       end
+    end
+
+    def session
+      @session ||= Soup::Session.new.tap { |s| s.user_agent = 'gnome-calculator-rb' }
     end
 end
