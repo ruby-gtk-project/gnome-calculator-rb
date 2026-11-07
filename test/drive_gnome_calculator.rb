@@ -214,8 +214,15 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
     equation.solve # back to repeating "=" is irrelevant; just leave a clean solved state
     equation.clear
     history.clear
-    d.shot("02-history-cleared")
   end
+
+  # A separate step from the one above: the history box's children just
+  # changed (clear emptied it), and GTK has not run a layout pass yet in the
+  # same tick that made the change. Painting it right away hands
+  # Gtk::WidgetPaintable a widget with no render node, which failed silently
+  # under the old single-step version. Giving it the next tick is what makes
+  # the screenshot a real one instead of a caught-and-ignored error.
+  d.step("the cleared history renders") { d.shot("02-history-cleared") }
 
   d.step("toggling superscript/subscript mode on the real buttons flips MathEquation#number_mode") do
     equation = app.math_window.equation
@@ -273,11 +280,19 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
 
     d.check("clicking it presents a real Adwaita::Dialog") { dialog.is_a?(Adwaita::Dialog) }
     d.check("the dialog is titled Keyboard Shortcuts") { dialog&.title == "Keyboard Shortcuts" }
+  end
 
-    d.shot("03-shortcuts-dialog", math_window.window)
+  # Same reasoning as "the cleared history renders" above: the dialog was
+  # only just presented in the previous tick, and Adw.Dialog's present runs
+  # on the frame clock rather than synchronously, so painting it in the same
+  # step it was opened in found no render node yet.
+  d.step("the shortcuts dialog renders") do
+    d.shot("03-shortcuts-dialog", app.math_window.window)
+  end
 
-    dialog&.close
-    d.check("closing it leaves no dialog on the window") { math_window.window.visible_dialog.nil? }
+  d.step("closing the shortcuts dialog leaves the window clean") do
+    app.math_window.window.visible_dialog&.close
+    d.check("closing it leaves no dialog on the window") { app.math_window.window.visible_dialog.nil? }
   end
 
   d.step("the ported evaluation engine solves a plain expression") do
