@@ -290,6 +290,42 @@ class MathEquation
 
   def insert_number(x) = insert(@serializer.to_string(x))
 
+  # Inserts `text` as an alphabetic token — a variable or constant name —
+  # padding it with a space on either side it touches another alphabetic
+  # character or underscore, so two names never run together.
+  #
+  # Ported from upstream's MathEquation.insert_alpha in lib/math-equation.vala.
+  def insert_alpha(text)
+    before, after = char_before, char_after
+    start_space = ''
+    if alpha_boundary?(before)
+      start_space = ' '
+    end
+    end_space = ''
+    if alpha_boundary?(after)
+      end_space = ' '
+    end
+    insert("#{start_space}#{text}#{end_space}")
+  end
+
+  # Inserts a function call. With a selection, or when `force_brackets` is
+  # set, the selection (or the cursor) ends up inside `name(...)`; otherwise
+  # just `name ` is inserted, ready for the user to type an argument.
+  #
+  # Ported from upstream's MathEquation.insert_function in
+  # lib/math-equation.vala.
+  def insert_function(name, force_brackets: false)
+    space = ''
+    if alpha_boundary?(char_before)
+      space = ' '
+    end
+    if @buffer.has_selection? || force_brackets
+      insert_between("#{space}#{name}(", ')')
+    else
+      insert("#{space}#{name} ")
+    end
+  end
+
   def delete_next
     cursor = cursor_offset
     if cursor >= @buffer.char_count
@@ -494,6 +530,31 @@ class MathEquation
     def char_before
       iter = @buffer.get_iter_at(mark: @buffer.get_mark('insert'))
       iter.backward_char ? iter.char : nil
+    end
+
+    def char_after
+      iter = @buffer.get_iter_at(mark: @buffer.get_mark('insert'))
+      iter.char.to_s.empty? ? nil : iter.char
+    end
+
+    def alpha_boundary?(char) = !char.nil? && (char.match?(/[[:alpha:]]/) || char == '_')
+
+    # Replaces the selection (or inserts at the cursor, with nothing
+    # selected) with `start_text` + the old content + `end_text`, leaving the
+    # cursor just before `end_text`.
+    def insert_between(start_text, end_text)
+      push_undo_stack
+      if @buffer.has_selection?
+        sel_start, sel_end = @buffer.selection_bounds
+        selected = @buffer.text(sel_start, sel_end, true)
+        @buffer.delete(sel_start, sel_end)
+        @buffer.insert(sel_start, start_text + selected + end_text)
+        cursor = @buffer.get_iter_at(mark: @buffer.get_mark('insert')).offset - end_text.length
+      else
+        insert_at_cursor(start_text + end_text)
+        cursor = cursor_offset - end_text.length
+      end
+      @buffer.place_cursor(@buffer.get_iter_at(offset: cursor))
     end
 
     def backspace_one_char

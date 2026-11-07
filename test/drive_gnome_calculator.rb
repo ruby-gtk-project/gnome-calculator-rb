@@ -94,6 +94,65 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
     d.check("the clear button empties the display") { equation.display == "" }
   end
 
+  d.step("the memory button's real MathVariablePopover stores and deletes a variable") do
+    equation = app.math_window.equation
+    buttons = app.math_window.instance_variable_get(:@buttons)
+    popover = buttons.memory_button.popover
+
+    d.check("the memory button's popover is the real MathVariablePopover") do
+      popover.is_a?(MathVariablePopover)
+    end
+
+    equation.clear
+    equation.insert("42")
+    popover.send(:name_entry).text = "answer"
+    d.check("a legal name turns the add button sensitive") { popover.send(:add_button).sensitive? }
+    popover.send(:store_variable)
+
+    d.check("storing through the popover reaches the real MathVariables") do
+      equation.variables.names.include?("answer") && equation.variables["answer"].to_double == 42.0
+    end
+
+    reserved = popover.send(:validate_name, "pi")
+    d.check("a reserved constant name is rejected with a real error") { !reserved.nil? && !reserved.empty? }
+
+    equation.variables.delete("answer")
+    d.check("deleting through MathVariables is reflected back in the popover") do
+      popover.instance_variable_get(:@items).none? { |item| item.name == "answer" }
+    end
+  end
+
+  d.step("the function button's real MathFunctionPopover defines a function the engine then evaluates") do
+    equation = app.math_window.equation
+    buttons = app.math_window.instance_variable_get(:@buttons)
+    popover = buttons.function_button.popover
+
+    d.check("the function button's popover is the real MathFunctionPopover") do
+      popover.is_a?(MathFunctionPopover)
+    end
+
+    popover.send(:name_entry).text = "double"
+    popover.send(:add_arguments_button).value = 1
+    d.check("a legal function name turns the add button sensitive") { popover.send(:add_button).sensitive? }
+    popover.send(:add_function)
+
+    d.check("add_function leaves a definition template in the equation") do
+      equation.display.start_with?("double(x)=")
+    end
+
+    equation.set("double(x)=x*2")
+    equation.solve
+    d.check("the typed definition is accepted by the real FunctionManager") do
+      FunctionManager.default.names.include?("double")
+    end
+
+    equation.set("double(21)")
+    equation.solve
+    d.check("the engine evaluates the function the popover just defined") { equation.display == "42" }
+
+    FunctionManager.default.delete("double")
+  end
+
   d.step("the real MathDisplay shows an error status, then clears it") do
     equation = app.math_window.equation
     display = app.math_window.instance_variable_get(:@display)

@@ -3,6 +3,8 @@
 require 'gtk4'
 
 require_relative 'math_equation'
+require_relative 'math_variable_popover'
+require_relative 'math_function_popover'
 require_relative 'translations'
 
 # BasicButtonPanel is the calculator's basic-mode button grid: digits,
@@ -14,9 +16,7 @@ require_relative 'translations'
 # connects each button's `clicked` signal straight to the MathEquation
 # method that action would have dispatched to, which is the plainer shape
 # house style (see .claude/skills/ruby-gtk) uses throughout. The memory and
-# function MenuButtons are left unpopulated — they belong to
-# math_variable_popover.rb and math_function_popover.rb, not ported this
-# round.
+# function MenuButtons open MathVariablePopover and MathFunctionPopover.
 class BasicButtonPanel
   include Gettext
 
@@ -283,6 +283,7 @@ class BasicButtonPanel
       button.tooltip_text = _('Variables and Constants')
       button.direction = :up
       button.add_css_class('function-button')
+      button.popover = variable_popover
     end
   end
 
@@ -293,8 +294,13 @@ class BasicButtonPanel
       button.tooltip_text = _('Additional Functions')
       button.direction = :up
       button.add_css_class('function-button')
+      button.popover = function_popover
     end
   end
+
+  def variable_popover = @variable_popover ||= MathVariablePopover.new(equation)
+
+  def function_popover = @function_popover ||= MathFunctionPopover.new(equation)
 
   def divide_button
     @divide_button ||= operator_button('÷', _('Divide [/]')) { equation.insert('÷') }
