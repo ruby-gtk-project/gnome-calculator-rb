@@ -6,6 +6,8 @@ require 'adwaita'
 require_relative 'math_equation'
 require_relative 'math_display'
 require_relative 'basic_button_panel'
+require_relative 'history_view'
+require_relative 'math_shortcuts'
 require_relative 'translations'
 
 # MathWindow is the calculator's main window: a header bar over the equation
@@ -19,6 +21,8 @@ require_relative 'translations'
 # for the rest), so the window shows that panel directly rather than a
 # switchable stack.
 class MathWindow
+  include Gettext
+
   attr_reader :equation
 
   def initialize(app)
@@ -26,6 +30,12 @@ class MathWindow
     @equation = MathEquation.new
     @display = MathDisplay.new(@equation)
     @buttons = BasicButtonPanel.new(@equation, after_action: -> { @display.update_status })
+    @history = HistoryView.new(
+      @equation.serializer,
+      on_equation_clicked: ->(text) { @equation.set(text) },
+      on_answer_clicked: ->(text) { @equation.insert(text) },
+    )
+    @equation.on_history { |text, number, _number_base, _representation_base| @history.insert_entry(text, number, @equation.serializer) }
   end
 
   def build
@@ -50,11 +60,22 @@ class MathWindow
   end
 
   def header_bar
-    @header_bar ||= Adwaita::HeaderBar.new
+    @header_bar ||= Adwaita::HeaderBar.new.tap do |bar|
+      bar.pack_end(shortcuts_button)
+    end
+  end
+
+  def shortcuts_button
+    @shortcuts_button ||= Gtk::Button.new.tap do |button|
+      button.icon_name = 'preferences-desktop-keyboard-shortcuts-symbolic'
+      button.tooltip_text = _('Keyboard Shortcuts')
+      button.signal_connect('clicked') { MathShortcutsDialog.new.build.present(window) }
+    end
   end
 
   def body
     @body ||= Gtk::Box.new(:vertical, 0).tap do |box|
+      box.append(@history.build)
       box.append(@display.build)
       box.append(button_panel)
     end
