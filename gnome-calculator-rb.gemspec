@@ -122,6 +122,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency("glib2")
   # Downloads the ECB and Bank of Canada exchange-rate files over HTTP.
   spec.add_dependency("soup3")
+  # Loads the po/ translations upstream ships, under the byte-identical
+  # msgids every ported UI string uses.
+  spec.add_dependency("gettext", "~> 3.4")
 
   # Dev, Test, & Release Tasks
   spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.26")             # ruby >= 3.4

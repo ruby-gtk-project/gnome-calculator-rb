@@ -1,0 +1,3670 @@
+# Indonesian translation of gnome-calculator.
+# Copyright (C) 2003 THE gnome-calculator's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-calculator package.
+#
+# Mohammad DAMT <mdamt@bisnisweb.com> 20031216, 2005.
+# Ahmad Riza H Nst <ari@160c.afraid.org>, 20031210, 20050301.
+# Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011, 2012.
+# Andika Triwidada <andika@gmail.com>, 2011-2014, 2023-2026.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2021, 2023, 2024.
+# Sucipto <sucipto@pm.me>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-calculator gnome-49\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2026-04-17 15:16+0000\n"
+"PO-Revision-Date: 2026-05-28 19:17+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Language-Team: Indonesian <gnome@i15n.org>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/org.gnome.Calculator.desktop.in:2
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
+#: src/gnome-calculator.vala:306 src/ui/math-window.blp:118
+msgid "Calculator"
+msgstr "Kalkulator"
+
+#: data/org.gnome.Calculator.desktop.in:3
+#: data/org.gnome.Calculator.metainfo.xml.in:8
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Lakukan perhitungan aritmetik, ilmiah, atau keuangan"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Calculator.desktop.in:5
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "kalkulasi;aritmetik;ilmiah;keuangan;"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:10
+msgid ""
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
+msgstr ""
+"Kalkulator adalah suatu aplikasi yang memecahkan persamaan matematis. "
+"Walaupun awalnya nampak seperti kalkulator sederhana dengan hanya operasi "
+"aritmetik dasar, Anda dapat berpindah ke mode Tingkat Lanjut, Keuangan, atau "
+"Pemrograman untuk menemukan set kapabilitas yang mengejutkan."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:16
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, "
+"complex numbers, random number generation and prime factorization."
+msgstr ""
+"Kalkulator tingkat lanjut mendukung banyak operasi, termasuk: logaritma, "
+"faktorial, fungsi trigonometrik dan hiperbolik, pembagian modulus, bilangan "
+"kompleks, penjangkitan bilangan acak, dan faktorisasi bilangan prima."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:22
+msgid ""
+"Financial mode supports several computations, including periodic interest "
+"rate, present and future value, double declining and straight line "
+"depreciation, and many others."
+msgstr ""
+"Mode keuangan mendukung beberapa komputasi, termasuk tingkat bunga periodik, "
+"present dan future value, depresiasi double declining dan straight line, dan "
+"banyak lagi."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:27
+msgid ""
+"Programming mode supports calculations using common bases (binary, octal, "
+"decimal, and hexadecimal), bitwise operations, two’s complement, character "
+"to character code conversion, and more."
+msgstr ""
+"Mode pemrograman mendukung kalkulasi memakai basis yang umum (biner, oktal, "
+"desimal, dan heksadesimal), operasi bit, komplemen dua, konversi kode "
+"karakter ke karakter, dan lebih banyak lagi."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:32
+msgid ""
+"Conversion mode supports conversions between common units, currencies and "
+"number bases."
+msgstr ""
+"Mode konversi mendukung konversi antara satuan umum, mata uang, dan basis "
+"bilangan."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:43
+msgid "Basic Mode"
+msgstr "Mode Dasar"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:47
+msgid "Advanced Mode"
+msgstr "Mode Lanjutan"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:51
+msgid "Financial Mode"
+msgstr "Mode Keuangan"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:55
+msgid "Programming Mode"
+msgstr "Mode Pemrograman"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:59
+msgid "Keyboard Mode"
+msgstr "Mode Papan Tik"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+msgid "Conversion Mode"
+msgstr "Mode Konversi"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:308
+msgid "The GNOME Project"
+msgstr "Proyek GNOME"
+
+#: data/org.gnome.calculator.gschema.xml:31
+msgid "Accuracy value"
+msgstr "Nilai akurasi"
+
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "The number of digits displayed after the numeric point"
+msgstr "Jumlah digit yang ditampilkan setelah titik numerik"
+
+#: data/org.gnome.calculator.gschema.xml:37
+msgid "Word size"
+msgstr "Ukuran huruf"
+
+#: data/org.gnome.calculator.gschema.xml:38
+msgid "The size of the words used in bitwise operations"
+msgstr "Ukuran huruf yang dipakai dalam operasi \"bitwise\""
+
+#: data/org.gnome.calculator.gschema.xml:43
+msgid "Numeric base"
+msgstr "Basis numerik"
+
+#: data/org.gnome.calculator.gschema.xml:44
+msgid "The numeric base"
+msgstr "Basis numerik"
+
+#: data/org.gnome.calculator.gschema.xml:48
+msgid "Group digits"
+msgstr "Kelompokkan angka"
+
+#: data/org.gnome.calculator.gschema.xml:49
+msgid "Indicates whether digits are grouped in large numbers."
+msgstr "Mengindikasikan apakah angka dikelompokkan dalam bilangan besar."
+
+#: data/org.gnome.calculator.gschema.xml:53
+msgid "Show trailing zeroes"
+msgstr "Tampilkan nol di akhir"
+
+#: data/org.gnome.calculator.gschema.xml:54
+msgid ""
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
+msgstr ""
+"Menentukan nol setelah koma untuk ditampilkan atau tidak pada nilai hasil "
+"perhitungan."
+
+#: data/org.gnome.calculator.gschema.xml:58
+msgid "Number format"
+msgstr "Format angka"
+
+#: data/org.gnome.calculator.gschema.xml:59
+msgid "The format to display numbers in"
+msgstr "Format bilangan untuk ditampilkan"
+
+#: data/org.gnome.calculator.gschema.xml:63
+msgid "Angle units"
+msgstr "Satuan sudut"
+
+#: data/org.gnome.calculator.gschema.xml:64
+msgid "The angle units to use"
+msgstr "Satuan sudut yang hendak dipakai"
+
+#: data/org.gnome.calculator.gschema.xml:68
+msgid "Currency update interval"
+msgstr "Interval pembaruan mata uang"
+
+#: data/org.gnome.calculator.gschema.xml:69
+msgid ""
+"How often the currency exchange rates should be updated. A value of 0 means "
+"the currency exchange rates won't be fetched from the network at all."
+msgstr ""
+"Seberapa sering nilai tukar mata uang harus diperbarui. Nilai 0 berarti "
+"nilai tukar mata uang tidak akan diambil dari jaringan sama sekali."
+
+#: data/org.gnome.calculator.gschema.xml:73
+msgid "Currency display"
+msgstr "Tampilan mata uang"
+
+#: data/org.gnome.calculator.gschema.xml:74
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in "
+"the converter."
+msgstr ""
+"Menunjukkan apakah akan menampilkan kode mata uang, nama mata uang, atau "
+"keduanya dalam konverter."
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Enabled completions"
+msgstr "Pelengkapan yang diaktifkan"
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid ""
+"The types of completion proposals to be shown in the auto-completion list."
+msgstr ""
+"Jenis usulan penyelesaian yang akan ditampilkan dalam daftar pelengkapan "
+"otomatis."
+
+#: data/org.gnome.calculator.gschema.xml:83
+msgid "Favorite currencies"
+msgstr "Mata uang favorit"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr ""
+"Mata uang favorit yang akan ditampilkan di bagian atas daftar mata uang."
+
+#: data/org.gnome.calculator.gschema.xml:88
+msgid "Button mode"
+msgstr "Mode tombol"
+
+#: data/org.gnome.calculator.gschema.xml:89
+msgid "The button mode"
+msgstr "Mode tombol"
+
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Unit category"
+msgstr "Kategori unit"
+
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "Currently selected unit category in the converter"
+msgstr "Kategori unit yang saat ini dipilih di konverter"
+
+#: data/org.gnome.calculator.gschema.xml:98
+msgid "Source units"
+msgstr "Satuan sumber"
+
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "Currently selected source units in the converter"
+msgstr "Unit sumber yang saat ini dipilih dalam konverter"
+
+#: data/org.gnome.calculator.gschema.xml:103
+msgid "Target units"
+msgstr "Satuan target"
+
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected target units in the converter"
+msgstr "Unit target yang saat ini dipilih dalam konverter"
+
+#: data/org.gnome.calculator.gschema.xml:108
+msgid "Internal precision"
+msgstr "Presisi internal"
+
+#: data/org.gnome.calculator.gschema.xml:109
+msgid "The internal precision used with the MPFR library"
+msgstr "Presisi internal yang dipakai dengan pustaka MPFR"
+
+#: data/org.gnome.calculator.gschema.xml:113
+msgid "Window position"
+msgstr "Posisi jendela"
+
+#: data/org.gnome.calculator.gschema.xml:114
+msgid "Window position (x and y) of the last closed window."
+msgstr "Posisi jendela (x dan y) dari jendela yang terakhir ditutup."
+
+#: data/org.gnome.calculator.gschema.xml:118
+msgid "Window maximized"
+msgstr "Jendela dimaksimalkan"
+
+#: data/org.gnome.calculator.gschema.xml:119
+msgid "Whether the last closed window was maximized."
+msgstr "Apakah jendela tertutup terakhir dimaksimalkan."
+
+#: data/org.gnome.calculator.gschema.xml:123
+msgid "Window size"
+msgstr "Ukuran jendela"
+
+#: data/org.gnome.calculator.gschema.xml:124
+msgid "Window size (width and height) of the last closed window."
+msgstr "Ukuran jendela (lebar dan tinggi) dari jendela terakhir yang ditutup."
+
+#: lib/currency.vala:82
+msgid "UAE Dirham"
+msgstr "Dirham UAE"
+
+#: lib/currency.vala:83
+msgid "Argentine Peso"
+msgstr "Peso Argentina"
+
+#: lib/currency.vala:84
+msgid "Armenian Dram"
+msgstr "Dram Armenia"
+
+#: lib/currency.vala:85
+msgid "Australian Dollar"
+msgstr "Dolar Australia"
+
+#: lib/currency.vala:86
+msgid "Bangladeshi Taka"
+msgstr "Taka Bangladesh"
+
+#: lib/currency.vala:87
+msgid "Bulgarian Lev"
+msgstr "Lev Bulgaria"
+
+#: lib/currency.vala:88
+msgid "Bahraini Dinar"
+msgstr "Dinar Bahrain"
+
+#: lib/currency.vala:89
+msgid "Brunei Dollar"
+msgstr "Dolar Brunei"
+
+#: lib/currency.vala:90
+msgid "Brazilian Real"
+msgstr "Real Brasil"
+
+#: lib/currency.vala:91
+msgid "Botswana Pula"
+msgstr "Pula Bostwana"
+
+#: lib/currency.vala:92
+msgid "Canadian Dollar"
+msgstr "Dolar Kanada"
+
+#: lib/currency.vala:93
+msgid "CFA Franc"
+msgstr "Franc CFA"
+
+#: lib/currency.vala:94
+msgid "Swiss Franc"
+msgstr "Franc Swis"
+
+#: lib/currency.vala:95
+msgid "Chilean Peso"
+msgstr "Peso Chili"
+
+#: lib/currency.vala:96
+msgid "Chinese Yuan"
+msgstr "Yuan Cina"
+
+#: lib/currency.vala:97
+msgid "Colombian Peso"
+msgstr "Peso Kolombia"
+
+#: lib/currency.vala:98
+msgid "Czech Koruna"
+msgstr "Koruna Ceko"
+
+#: lib/currency.vala:99
+msgid "Danish Krone"
+msgstr "Krone Denmark"
+
+#: lib/currency.vala:100
+msgid "Algerian Dinar"
+msgstr "Dinar Aljazair"
+
+#: lib/currency.vala:101
+msgid "Estonian Kroon"
+msgstr "Kroon Estonia"
+
+#: lib/currency.vala:102
+msgid "Egyptian Pound"
+msgstr "Pound Mesir"
+
+#: lib/currency.vala:103
+msgid "Euro"
+msgstr "Euro"
+
+#: lib/currency.vala:104
+msgid "British Pound Sterling"
+msgstr "Pound Sterling Inggris"
+
+#: lib/currency.vala:105
+msgid "Hong Kong Dollar"
+msgstr "Dolar Hong Kong"
+
+#: lib/currency.vala:106
+msgid "Croatian Kuna"
+msgstr "Kuna Kroasia"
+
+#: lib/currency.vala:107
+msgid "Hungarian Forint"
+msgstr "Forint Hongaria"
+
+#: lib/currency.vala:108
+msgid "Indonesian Rupiah"
+msgstr "Rupiah Indonesia"
+
+#: lib/currency.vala:109
+msgid "Israeli New Shekel"
+msgstr "Shekel Baru Israel"
+
+#: lib/currency.vala:110
+msgid "Indian Rupee"
+msgstr "Rupee India"
+
+#: lib/currency.vala:111
+msgid "Iranian Rial"
+msgstr "Rial Iran"
+
+#: lib/currency.vala:112
+msgid "Icelandic Krona"
+msgstr "Krona Islandia"
+
+#: lib/currency.vala:113
+msgid "Japanese Yen"
+msgstr "Yen Jepang"
+
+#: lib/currency.vala:114
+msgid "Jamaican Dollar"
+msgstr "Dolar Jamaika"
+
+#: lib/currency.vala:115
+msgid "South Korean Won"
+msgstr "Won Korea Selatan"
+
+#: lib/currency.vala:116
+msgid "Kuwaiti Dinar"
+msgstr "Dinar Kuwait"
+
+#: lib/currency.vala:117
+msgid "Kazakhstani Tenge"
+msgstr "Tenge Kazakhstan"
+
+#: lib/currency.vala:118
+msgid "Sri Lankan Rupee"
+msgstr "Rupee Sri Lanka"
+
+#: lib/currency.vala:119
+msgid "Libyan Dinar"
+msgstr "Dinar Libya"
+
+#: lib/currency.vala:120
+msgid "Mauritian Rupee"
+msgstr "Rupee Mauritania"
+
+#: lib/currency.vala:121
+msgid "Mexican Peso"
+msgstr "Peso Meksiko"
+
+#: lib/currency.vala:122
+msgid "Malaysian Ringgit"
+msgstr "Ringgit Malaysia"
+
+#: lib/currency.vala:123
+msgid "Nigerian Naira"
+msgstr "Naira Nigeria"
+
+#: lib/currency.vala:124
+msgid "Norwegian Krone"
+msgstr "Krone Norwegia"
+
+#: lib/currency.vala:125
+msgid "Nepalese Rupee"
+msgstr "Rupee Nepal"
+
+#: lib/currency.vala:126
+msgid "New Zealand Dollar"
+msgstr "Dolar Selandia Baru"
+
+#: lib/currency.vala:127
+msgid "Omani Rial"
+msgstr "Rial Oman"
+
+#: lib/currency.vala:128
+msgid "Peruvian Nuevo Sol"
+msgstr "Nuevo Sol Peru"
+
+#: lib/currency.vala:129
+msgid "Philippine Peso"
+msgstr "Peso Filipina"
+
+#: lib/currency.vala:130
+msgid "Pakistani Rupee"
+msgstr "Rupee Pakistan"
+
+#: lib/currency.vala:131
+msgid "Polish Złoty"
+msgstr "Zloty Polandia"
+
+#: lib/currency.vala:132
+msgid "Qatari Riyal"
+msgstr "Riyal Qatar"
+
+#: lib/currency.vala:133
+msgid "New Romanian Leu"
+msgstr "Leu Rumania Baru"
+
+#: lib/currency.vala:134
+msgid "Russian Ruble"
+msgstr "Rubel Rusia"
+
+#: lib/currency.vala:135
+msgid "Saudi Riyal"
+msgstr "Riyal Saudi"
+
+#: lib/currency.vala:136
+msgid "Serbian Dinar"
+msgstr "Dinar Serbia"
+
+#: lib/currency.vala:137
+msgid "Swedish Krona"
+msgstr "Krona Swedia"
+
+#: lib/currency.vala:138
+msgid "Singapore Dollar"
+msgstr "Dolar Singapura"
+
+#: lib/currency.vala:139
+msgid "Thai Baht"
+msgstr "Baht Thailand"
+
+#: lib/currency.vala:140
+msgid "Tunisian Dinar"
+msgstr "Dinar Tunisia"
+
+#: lib/currency.vala:141
+msgid "Turkish Lira"
+msgstr "Lira Turki"
+
+#: lib/currency.vala:142
+msgid "T&T Dollar"
+msgstr "Dolar T&T"
+
+#: lib/currency.vala:143
+msgid "New Taiwan Dollar"
+msgstr "Dolar Taiwan Baru"
+
+#: lib/currency.vala:144
+msgid "Ukrainian Hryvnia"
+msgstr "Hryvnia Ukraina"
+
+#: lib/currency.vala:145
+msgid "US Dollar"
+msgstr "Dolar AS"
+
+#: lib/currency.vala:146
+msgid "Uruguayan Peso"
+msgstr "Peso Uruguay"
+
+#: lib/currency.vala:147
+msgid "Vietnamese Dong"
+msgstr "Dong Vietnam"
+
+#: lib/currency.vala:148
+msgid "South African Rand"
+msgstr "Rand Afrika Selatan"
+
+#: lib/equation-lexer.vala:464
+msgid "Missing digits after minus sign"
+msgstr "Kurang digit setelah tanda minus"
+
+#: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
+msgid "Missing second symbol (″)"
+msgstr "Kurang simbol detik (″)"
+
+#: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
+msgid "Missing minute symbol (′)"
+msgstr "Kurang simbol menit (')"
+
+#: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
+#: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
+msgid "Missing digits after decimal point"
+msgstr "Kurang digit setelah koma desimal"
+
+#. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
+msgid "in"
+msgstr "dalam"
+
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
+msgid "to"
+msgstr "ke"
+
+#: lib/equation-parser.vala:443
+#, c-format
+msgid "Function “%s” is missing arguments"
+msgstr "Fungsi \"%s\" kurang argumen"
+
+#: lib/equation-parser.vala:765 lib/number.vala:588
+msgid "The zeroth root of a number is undefined"
+msgstr "Akar ke-nol dari sebuah angka tidak didefinisikan"
+
+#: lib/equation-parser.vala:1060
+msgid "Mathematics"
+msgstr "Matematika"
+
+#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+msgid "Euler’s Number"
+msgstr "Bilangan Euler"
+
+#: lib/equation-parser.vala:1062
+msgid "Pi"
+msgstr "Pi"
+
+#: lib/equation-parser.vala:1063
+msgid "Tau"
+msgstr "Tau"
+
+#: lib/equation-parser.vala:1064
+msgid "Golden Ratio"
+msgstr "Rasio Emas"
+
+#: lib/equation-parser.vala:1066
+msgid "Electromagnetism"
+msgstr "Elektromagnetisme"
+
+#: lib/equation-parser.vala:1067
+msgid "Light Speed"
+msgstr "Kecepatan Cahaya"
+
+#: lib/equation-parser.vala:1068
+msgid "Elementary Charge"
+msgstr "Muatan Elementer"
+
+#: lib/equation-parser.vala:1069
+msgid "Impedance of Vacuum"
+msgstr "Impedansi Ruang Hampa"
+
+#: lib/equation-parser.vala:1070
+msgid "Permeability of Vacuum"
+msgstr "Permeabilitas Ruang Hampa"
+
+#: lib/equation-parser.vala:1071
+msgid "Permittivity of Vacuum"
+msgstr "Permitivitas Ruang Hampa"
+
+#: lib/equation-parser.vala:1073
+msgid "Atomic & Nuclear"
+msgstr "Atomik & Nuklir"
+
+#: lib/equation-parser.vala:1074
+msgid "Planck’s Constant"
+msgstr "Konstanta Planck"
+
+#: lib/equation-parser.vala:1075
+msgid "Fine-Structure Constant"
+msgstr "Konstanta Struktur Halus"
+
+#: lib/equation-parser.vala:1076
+msgid "Electron Mass"
+msgstr "Massa Elektron"
+
+#: lib/equation-parser.vala:1077
+msgid "Proton Mass"
+msgstr "Massa Proton"
+
+#: lib/equation-parser.vala:1079
+msgid "Thermodynamics"
+msgstr "Termodinamika"
+
+#: lib/equation-parser.vala:1080
+msgid "Boltzmann Constant"
+msgstr "Konstanta Boltzmann"
+
+#: lib/equation-parser.vala:1081
+msgid "Atomic Mass Unit"
+msgstr "Satuan Massa Atom"
+
+#: lib/equation-parser.vala:1082
+msgid "Molar Gas Constant"
+msgstr "Konstanta Gas Molar"
+
+#: lib/equation-parser.vala:1083
+msgid "Stefan-Boltzmann Constant"
+msgstr "Konstanta Stefan-Boltzmann"
+
+#: lib/equation-parser.vala:1084
+msgid "Avogadro’s Number"
+msgstr "Bilangan Avogadro"
+
+#: lib/equation-parser.vala:1086
+msgid "Gravitation"
+msgstr "Gravitasi"
+
+#: lib/equation-parser.vala:1087
+msgid "Gravitational Constant"
+msgstr "Konstanta Gravitasi"
+
+#: lib/equation-parser.vala:1088
+msgid "Earth Acceleration"
+msgstr "Percepatan Bumi"
+
+#: lib/financial.vala:114
+msgid "Error: the number of periods must be positive"
+msgstr "Galat: cacah perioda mesti positif"
+
+#: lib/function-manager.vala:26
+msgid "Trigonometry"
+msgstr "Trigonometri"
+
+#: lib/function-manager.vala:27 src/ui/buttons-advanced.blp:499
+msgid "Sine"
+msgstr "Sinus"
+
+#: lib/function-manager.vala:28 src/ui/buttons-advanced.blp:573
+msgid "Cosine"
+msgstr "Cosinus"
+
+#: lib/function-manager.vala:29 src/ui/buttons-advanced.blp:647
+msgid "Tangent"
+msgstr "Tangen"
+
+#: lib/function-manager.vala:30 lib/function-manager.vala:114
+#: src/ui/buttons-advanced.blp:517
+msgid "Inverse Sine"
+msgstr "Sinus Inverse"
+
+#: lib/function-manager.vala:31 lib/function-manager.vala:115
+#: src/ui/buttons-advanced.blp:591
+msgid "Inverse Cosine"
+msgstr "Kosinus Inverse"
+
+#: lib/function-manager.vala:32 lib/function-manager.vala:116
+#: src/ui/buttons-advanced.blp:665
+msgid "Inverse Tangent"
+msgstr "Tangen iInverse"
+
+#: lib/function-manager.vala:33 src/ui/buttons-advanced.blp:536
+msgid "Hyperbolic Sine"
+msgstr "Sinus Hiperbola"
+
+#: lib/function-manager.vala:34 src/ui/buttons-advanced.blp:610
+msgid "Hyperbolic Cosine"
+msgstr "Cosinus Hiperbola"
+
+#: lib/function-manager.vala:35 src/ui/buttons-advanced.blp:684
+msgid "Hyperbolic Tangent"
+msgstr "Tangen Hiperbola"
+
+#: lib/function-manager.vala:36 lib/function-manager.vala:117
+#: src/ui/buttons-advanced.blp:554
+msgid "Inverse Hyperbolic Sine"
+msgstr "Sinus Hiperbola Inverse"
+
+#: lib/function-manager.vala:37 lib/function-manager.vala:118
+#: src/ui/buttons-advanced.blp:628
+msgid "Inverse Hyperbolic Cosine"
+msgstr "Kosinus Hiperbola Inverse"
+
+#: lib/function-manager.vala:38 lib/function-manager.vala:119
+#: src/ui/buttons-advanced.blp:702
+msgid "Inverse Hyperbolic Tangent"
+msgstr "Tangen Hiperbola Inverse"
+
+#: lib/function-manager.vala:40
+msgid "Complex"
+msgstr "Kompleks"
+
+#: lib/function-manager.vala:41 src/ui/buttons-advanced.blp:932
+msgid "Complex Conjugate"
+msgstr "Konjugasi Kompleks"
+
+#: lib/function-manager.vala:42 src/ui/buttons-advanced.blp:949
+msgid "Complex Argument"
+msgstr "Argumen Kompleks"
+
+#: lib/function-manager.vala:43 src/ui/buttons-advanced.blp:966
+msgid "Real Component"
+msgstr "Komponen Real"
+
+#: lib/function-manager.vala:44 src/ui/buttons-advanced.blp:983
+msgid "Imaginary Component"
+msgstr "Komponen Imajiner"
+
+#: lib/function-manager.vala:46 src/math-window.vala:155
+msgid "Programming"
+msgstr "Pemrograman"
+
+#: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
+msgid "Two’s Complement"
+msgstr "Komplemen Dua"
+
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
+msgid "Swap Endianness"
+msgstr "Tukar Endianness"
+
+#: lib/function-manager.vala:49 src/ui/buttons-advanced.blp:403
+#: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: src/ui/buttons-programming.blp:1808
+msgid "Modulus Divide"
+msgstr "Pembagian Modulus"
+
+#: lib/function-manager.vala:50
+msgid "Modular Exponentiation"
+msgstr "Eksponensiasi Modular"
+
+#: lib/function-manager.vala:52
+msgid "Rounding"
+msgstr "Pembulatan"
+
+#: lib/function-manager.vala:53
+msgid "Round"
+msgstr "Round"
+
+#: lib/function-manager.vala:54
+msgid "Floor"
+msgstr "Floor"
+
+#: lib/function-manager.vala:55
+msgid "Ceiling"
+msgstr "Ceiling"
+
+#: lib/function-manager.vala:56 src/ui/buttons-programming.blp:2331
+msgid "Integer Component"
+msgstr "Komponen Integer"
+
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2348
+msgid "Fractional Component"
+msgstr "Komponen Fraksional"
+
+#: lib/function-manager.vala:59
+msgid "Statistics"
+msgstr "Statistik"
+
+#: lib/function-manager.vala:60
+msgid "Sum"
+msgstr "Jumlah"
+
+#: lib/function-manager.vala:61
+msgid "Sum of Squares"
+msgstr "Jumlah Kuadrat"
+
+#: lib/function-manager.vala:62
+msgid "Average"
+msgstr "Rata-rata"
+
+#: lib/function-manager.vala:63
+msgid "Median"
+msgstr "Median"
+
+#: lib/function-manager.vala:64
+msgid "Minimum Value"
+msgstr "Nilai Minimum"
+
+#: lib/function-manager.vala:65
+msgid "Maximum Value"
+msgstr "Nilai Maksimum"
+
+#: lib/function-manager.vala:66
+msgid "Sample Standard Deviation"
+msgstr "Simpangan Baku Sampel"
+
+#: lib/function-manager.vala:67
+msgid "Population Standard Deviation"
+msgstr "Simpangan Baku Populasi"
+
+#: lib/function-manager.vala:68
+msgid "Sample Variance"
+msgstr "Variansi Sampel"
+
+#: lib/function-manager.vala:69
+msgid "Population Variance"
+msgstr "Variansi Populasi"
+
+#: lib/function-manager.vala:71
+msgid "Sundry"
+msgstr "Rupa-rupa"
+
+#: lib/function-manager.vala:72 src/ui/buttons-advanced.blp:806
+#: src/ui/buttons-programming.blp:2171
+msgid "Logarithm"
+msgstr "Logaritma"
+
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:892
+#: src/ui/buttons-financial.blp:626
+msgid "Natural Logarithm"
+msgstr "Logaritma Natural"
+
+#: lib/function-manager.vala:74
+msgid "Square Root"
+msgstr "Akar Kuadrat"
+
+#: lib/function-manager.vala:75
+msgid "Absolute Value"
+msgstr "Nilai Absolut"
+
+#: lib/function-manager.vala:76
+msgid "Signum"
+msgstr "Signum"
+
+#: lib/function-manager.vala:77
+msgid "Combination"
+msgstr "Kombinasi"
+
+#: lib/function-manager.vala:78
+msgid "Permutation"
+msgstr "Permutasi"
+
+#: lib/function-manager.vala:79
+msgid "Greatest Common Divisor"
+msgstr "Faktor Persekutuan Terbesar"
+
+#: lib/function-manager.vala:80
+msgid "Least Common Multiple"
+msgstr "Kelipatan Persekutuan Terkecil"
+
+#: lib/function-manager.vala:81
+msgid "Comparison (Kronecker Delta)"
+msgstr "Perbandingan (Delta Kronecker)"
+
+#: lib/function-manager.vala:336
+#, c-format
+msgid "Function “%s” takes 1 argument"
+msgstr "Fungsi \"%s\" menerima 1 argumen"
+
+#: lib/function-manager.vala:354
+#, c-format
+msgid "Function “%s” takes 1 or 2 arguments"
+msgstr "Fungsi \"%s\" menerima 1 atau 2 argumen"
+
+#: lib/function-manager.vala:362
+#, c-format
+msgid "Function “%s” takes at least 2 arguments"
+msgstr "Fungsi \"%s\" menerima setidaknya 2 argumen"
+
+#: lib/function-manager.vala:369
+#, c-format
+msgid "Function “%s” takes %d argument"
+msgid_plural "Function “%s” takes %d arguments"
+msgstr[0] "Fungsi \"%s\" menerima %d argumen"
+
+#. Digits localized for the given language
+#: lib/math-equation.vala:181
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
+#. Error shown when trying to undo with no undo history
+#: lib/math-equation.vala:558
+msgid "No undo history"
+msgstr "Tidak ada riwayat \"tak jadi\""
+
+#. Error shown when trying to redo with no redo history
+#: lib/math-equation.vala:579
+msgid "No redo history"
+msgstr "Tidak ada riwayat \"jadi lagi\""
+
+#: lib/math-equation.vala:826
+msgid "No sane value to store"
+msgstr "Belum ada nilai untuk disimpan"
+
+#. Error displayed to user when they an unknown variable is entered
+#: lib/math-equation.vala:1286
+#, c-format
+msgid "Unknown variable “%s”"
+msgstr "Variabel tak dikenal \"%s\""
+
+#. Error displayed to user when a currency conversion with unknown exchange rate is attempted
+#: lib/math-equation.vala:1293
+#, c-format
+msgid "Exchange rate for “%s” is not available"
+msgstr "Nilai tukar untuk \"%s\" tidak tersedia"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1300
+#, c-format
+msgid "Unknown unit “%s”"
+msgstr "Satuan tak dikenal \"%s\""
+
+#. Error displayed to user when an unknown function is entered
+#: lib/math-equation.vala:1307
+#, c-format
+msgid "Function “%s” is not defined"
+msgstr "Fungsi \"%s\" belum didefinisikan"
+
+#. Error displayed to user when an invalid conversion (e.g. units of different categories)
+#: lib/math-equation.vala:1314
+msgid "Unknown conversion"
+msgstr "Konversi tak dikenal"
+
+#. should always be run
+#: lib/math-equation.vala:1324
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#. Unknown error.
+#. Error displayed to user when they enter an invalid calculation
+#: lib/math-equation.vala:1329 lib/math-equation.vala:1334
+msgid "Malformed expression"
+msgstr "Ekspresi salah"
+
+#: lib/math-equation.vala:1345
+msgid "Calculating"
+msgstr "Sedang menghitung"
+
+#. Error displayed when trying to factorize a non-integer value
+#: lib/math-equation.vala:1567
+msgid "Need an integer to factorize"
+msgstr "Perlu nilai integer untuk difaktorkan"
+
+#. Translators: Error displayed when underflow error occured
+#: lib/number.vala:324
+msgid "Underflow error"
+msgstr "Kesalahan underflow"
+
+#. Translators: Error displayed when overflow error occured
+#: lib/number.vala:329
+msgid "Overflow error"
+msgstr "Kesalahan overflow"
+
+#. Translators: Error display when attempting to take argument of zero
+#: lib/number.vala:392
+msgid "Argument not defined for zero"
+msgstr "Argumen tidak didefinisikan untuk nol"
+
+#: lib/number.vala:462
+msgid "Floor is only defined for real numbers"
+msgstr "Floor hanya didefinisikan untuk bilangan riil"
+
+#: lib/number.vala:477
+msgid "Ceiling is only defined for real numbers"
+msgstr "Ceiling hanya didefinisikan untuk bilangan riil"
+
+#: lib/number.vala:492
+msgid "Round is only defined for real numbers"
+msgstr "Round hanya didefinisikan untuk bilangan riil"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
+#: lib/number.vala:526 lib/number.vala:556
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Perpangkatan nol tidak didefinisikan untuk eksponen negatif"
+
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: lib/number.vala:534 lib/number.vala:564
+msgid "Zero raised to zero is undefined"
+msgstr "Nol pangkat nol tak didefinisikan"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: lib/number.vala:618 lib/number.vala:649
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritma nol tidak didefinisikan"
+
+#: lib/number.vala:654
+msgid "Logarithm with base 0 or 1 is undefined"
+msgstr "Logaritma dengan basis 0 atau 1 tidak terdefinisi"
+
+#. TODO: Support factorial of complex numbers
+#: lib/number.vala:672
+msgid "Factorial of complex numbers is not supported"
+msgstr "Faktorial dari bilangan kompleks tidak didukung"
+
+#. Translators: Error displayed when attempted take the factorial of a negative integer
+#: lib/number.vala:679
+msgid "Factorial is undefined for negative integers"
+msgstr "Faktorial tidak terdefinisi untuk bilangan bulat negatif"
+
+#. Translators: Error displayed attempted to divide by zero
+#: lib/number.vala:730
+msgid "Division by zero is undefined"
+msgstr "Pembagian oleh nol tidak didefinisikan<"
+
+#. Translators: Error displayed when attempting to do a modulus division on complex numbers
+#: lib/number.vala:751
+msgid "Modulus division is only defined for real numbers"
+msgstr "Pembagian modulus hanya didefinisikan untuk bilangan riil"
+
+#. Translators: Error displayed when tangent value is undefined
+#: lib/number.vala:831
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+"Tangen tidak didefinisikan untuk sudut kelipatan π (180°) dari π∕2 (90°)"
+
+#. Translators: Error displayed when inverse sine value is undefined
+#: lib/number.vala:850
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "Inverse sinus tidak didefinisikan untuk nilai di luar [-1, 1]"
+
+#. Translators: Error displayed when inverse cosine value is undefined
+#: lib/number.vala:867
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "Inverse cosinus tidak didefinisikan untuk nilai di luar [-1, 1]"
+
+#. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
+#: lib/number.vala:885
+msgid "Inverse tangent is undefined for values i and -i"
+msgstr "Invers tangen tidak didefinisikan untuk nilai i dan -i"
+
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: lib/number.vala:936
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr ""
+"Inverse cosinus hiperbola tidak didefinisikan untuk nilai kurang dari satu"
+
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: lib/number.vala:952
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr ""
+"Inverse tangen hiperbola tidak didefinisikan untuk nilai di luar [-1, 1]"
+
+#. Translators: Error displayed when bitwise AND attempted on non-integer values
+#: lib/number.vala:967
+msgid "Bitwise AND is only defined for non-negative integers"
+msgstr "Bitwise AND hanya didefinisikan untuk bilangan bulat non-negatif"
+
+#. Translators: Error displayed when bitwise NAND attempted on non-integer values
+#: lib/number.vala:980
+msgid "Bitwise NAND is only defined for non-negative integers"
+msgstr "Bitwise NAND hanya didefinisikan untuk bilangan bulat non-negatif"
+
+#. Translators: Error displayed when bitwise OR attempted on non-integer values
+#: lib/number.vala:993
+msgid "Bitwise OR is only defined for non-negative integers"
+msgstr "Bitwise OR hanya didefinisikan untuk bilangan bulat non-negatif"
+
+#. Translators: Error displayed when bitwise NOR attempted on non-integer values
+#: lib/number.vala:1006
+msgid "Bitwise NOR is only defined for non-negative integers"
+msgstr "Bitwise NOR hanya didefinisikan untuk bilangan bulat non-negatif"
+
+#. Translators: Error displayed when bitwise XOR attempted on non-integer values
+#: lib/number.vala:1019
+msgid "Bitwise XOR is only defined for non-negative integers"
+msgstr "Bitwise XOR hanya didefinisikan untuk bilangan bulat non-negatif"
+
+#. Translators: Error displayed when bitwise XNOR attempted on non-integer values
+#: lib/number.vala:1032
+msgid "Bitwise XNOR is only defined for non-negative integers"
+msgstr "Bitwise XNOR hanya didefinisikan untuk bilangan bulat non-negatif"
+
+#. Translators: Error displayed when bitwise NOT attempted on non-integer values
+#: lib/number.vala:1045
+msgid "Bitwise NOT is only defined for non-negative integers"
+msgstr "Bitwise NOT hanya didefinisikan untuk bilangan bulat non-negatif"
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: lib/number.vala:1107
+msgid "Shift is only possible on integers"
+msgstr "Shift hanya dimungkinkan pada bilangan bulat"
+
+#: lib/number.vala:1112 lib/number.vala:1140 lib/number.vala:1586
+msgid "Overflow. Try a bigger word size"
+msgstr "Kelebihan data. Cobalah ukuran huruf yang lebih besar"
+
+#: lib/number.vala:1123
+msgid "Two’s complement is only defined for non-negative integers"
+msgstr "Komplemen dua hanya didefinisikan untuk bilangan bulat bukan negatif"
+
+#: lib/number.vala:1135
+msgid "Swap endianness is only possible on integers"
+msgstr "Pertukaran endian hanya mungkin pada bilangan bulat"
+
+#: lib/number.vala:1163
+msgid "Combination is only defined for non-negative integers"
+msgstr "Kombinasi hanya didefinisikan untuk bilangan bulat tak negatif"
+
+#: lib/number.vala:1168
+msgid "Combination is undefined if n is less than r"
+msgstr "Kombinasi tidak terdefinisi jika n kurang dari r"
+
+#: lib/number.vala:1181
+msgid "Permutation is only defined for non-negative integers"
+msgstr "Permutasi hanya didefinisikan untuk bilangan bulat tak negatif"
+
+#: lib/number.vala:1186
+msgid "Permutation is undefined if n is less than r"
+msgstr "Permutasi tidak terdefinisi bila n kurang dari r"
+
+#: lib/number.vala:1207
+msgid "Greatest common divisor is only defined for integers"
+msgstr "Faktor persekutuan terbesar hanya didefinisikan untuk bilangan bulat"
+
+#: lib/number.vala:1227
+msgid "Least common multiple is only defined for integers"
+msgstr ""
+"Kelipatan persekutuan terkecil hanya didefinisikan untuk bilangan bulat"
+
+#: lib/number.vala:1284
+msgid "Median is only defined for real numbers"
+msgstr "Faktorial hanya didefinisikan untuk bilangan riil"
+
+#: lib/number.vala:1304
+msgid "Minimum value is only defined for real numbers"
+msgstr "Nilai minimum hanya didefinisikan untuk bilangan riil"
+
+#: lib/number.vala:1321
+msgid "Maximum value is only defined for real numbers"
+msgstr "Nilai maksimum hanya didefinisikan untuk bilangan riil"
+
+#: lib/providers/boc-provider.vala:15
+msgid "Bank of Canada"
+msgstr "Bank Kanada"
+
+#: lib/providers/ecb-provider.vala:12
+msgid "European Central Bank"
+msgstr "Bank Sentral Eropa"
+
+#: lib/providers/imf-provider.vala:12
+msgid "International Monetary Fund"
+msgstr "Dana Moneter Internasional"
+
+#: lib/providers/unt-provider.vala:12
+msgid "United Nations Treasury"
+msgstr "Bendahara Perserikatan Bangsa-bangsa"
+
+#: lib/serializer.vala:359 lib/serializer.vala:397
+msgid ""
+"The result is too long to display in fixed format. Try other result formats"
+msgstr ""
+"Hasilnya terlalu panjang untuk ditampilkan dalam format tetap. Coba format "
+"hasil lainnya"
+
+#: lib/unit.vala:29
+msgid "Angle"
+msgstr "Sudut"
+
+#: lib/unit.vala:30
+msgid "Length"
+msgstr "Panjang"
+
+#: lib/unit.vala:31
+msgid "Area"
+msgstr "Luas"
+
+#: lib/unit.vala:32
+msgid "Volume"
+msgstr "Volume"
+
+#: lib/unit.vala:33
+msgid "Mass"
+msgstr "Massa"
+
+#: lib/unit.vala:34
+msgid "Speed"
+msgstr "Kecepatan"
+
+#: lib/unit.vala:35
+msgid "Duration"
+msgstr "Waktu"
+
+#: lib/unit.vala:36
+msgid "Frequency"
+msgstr "Frekuensi"
+
+#: lib/unit.vala:37
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: lib/unit.vala:38
+msgid "Energy"
+msgstr "Energi"
+
+#: lib/unit.vala:39
+msgid "Pressure"
+msgstr "Tekanan"
+
+#: lib/unit.vala:40
+msgid "Digital Storage"
+msgstr "Penyimpanan Dijital"
+
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: lib/unit.vala:43
+msgid "Degrees (Decimal)"
+msgstr "Derajat (Desimal)"
+
+#: lib/unit.vala:43
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "derajat"
+
+#: lib/unit.vala:44
+msgid "Degrees (D°M′S″)"
+msgstr "Derajat (D°M′S″)"
+
+#: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
+msgid "Radians"
+msgstr "Radian"
+
+#: lib/unit.vala:45
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radian,rad"
+
+#: lib/unit.vala:46 src/buttons-advanced.vala:87 src/math-preferences.vala:138
+msgid "Gradians"
+msgstr "Gradian"
+
+#: lib/unit.vala:46
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gradian,grad"
+
+#: lib/unit.vala:47
+msgid "Parsecs"
+msgstr "Parsecs"
+
+#: lib/unit.vala:47
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsec,pc"
+
+#: lib/unit.vala:48
+msgid "Light Years"
+msgstr "Tahun Cahaya"
+
+#: lib/unit.vala:48
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "tahun-cahaya,ly"
+
+#: lib/unit.vala:49
+msgid "Astronomical Units"
+msgstr "Satuan Astronomi"
+
+#: lib/unit.vala:49
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
+
+#: lib/unit.vala:50
+msgid "Rack Units"
+msgstr "Unit Rak"
+
+#: lib/unit.vala:50
+msgctxt "unit-symbols"
+msgid "U"
+msgstr "U"
+
+#: lib/unit.vala:51
+msgid "Nautical Miles"
+msgstr "Mil Laut"
+
+#: lib/unit.vala:51
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nmi"
+
+#: lib/unit.vala:52
+msgid "Miles"
+msgstr "Mil"
+
+#: lib/unit.vala:52
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "mil,mi"
+
+#: lib/unit.vala:53
+msgid "Kilometers"
+msgstr "Kilometer"
+
+#: lib/unit.vala:53
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "kilometer,km"
+
+#: lib/unit.vala:54
+msgid "Cables"
+msgstr "Cable"
+
+#: lib/unit.vala:54
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "cable,cb"
+
+#: lib/unit.vala:55
+msgid "Fathoms"
+msgstr "Depa"
+
+#: lib/unit.vala:55
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "fathom,ftm"
+
+#: lib/unit.vala:56
+msgid "Meters"
+msgstr "Meter"
+
+#: lib/unit.vala:56
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "meter,m"
+
+#: lib/unit.vala:57
+msgid "Yards"
+msgstr "Yard"
+
+#: lib/unit.vala:57
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "yard,yd"
+
+#: lib/unit.vala:58
+msgid "Feet"
+msgstr "Kaki"
+
+#: lib/unit.vala:58
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "kaki,ft"
+
+#: lib/unit.vala:59
+msgid "Inches"
+msgstr "Inci"
+
+#: lib/unit.vala:59
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "inci,in"
+
+#: lib/unit.vala:60
+msgid "Centimeters"
+msgstr "Sentimeter"
+
+#: lib/unit.vala:60
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "sentimeter,cm"
+
+#: lib/unit.vala:61
+msgid "Millimeters"
+msgstr "Milimeter"
+
+#: lib/unit.vala:61
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "milimeter,mm"
+
+#: lib/unit.vala:62
+msgid "Micrometers"
+msgstr "Mikrometer"
+
+#: lib/unit.vala:62
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "mikrometer,um"
+
+#: lib/unit.vala:63
+msgid "Nanometers"
+msgstr "Nanometer"
+
+#: lib/unit.vala:63
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "nanometer,nm"
+
+#: lib/unit.vala:64
+msgid "Desktop Publishing Points"
+msgstr "Poin Penerbitan Destop"
+
+#: lib/unit.vala:64
+msgctxt "unit-symbols"
+msgid "point,pt,points,pts"
+msgstr "poin,pt,pts"
+
+#: lib/unit.vala:65
+msgid "Kilometers per Hour"
+msgstr "Kilometer per Jam"
+
+#: lib/unit.vala:65
+msgctxt "unit-symbols"
+msgid "kilometers per hour,kmph,kmh,kph"
+msgstr "kilometer per jam,kmpj,kmj,kpj"
+
+#: lib/unit.vala:66
+msgid "Miles per Hour"
+msgstr "Mil per Jam"
+
+#: lib/unit.vala:66
+msgctxt "unit-symbols"
+msgid "milesph,miles per hour,mi/h,miph,mph"
+msgstr "milph,mil per jam,mi/jam,miph,mph"
+
+#: lib/unit.vala:67
+msgid "Meters per Second"
+msgstr "Meter per Detik"
+
+#: lib/unit.vala:67
+msgctxt "unit-symbols"
+msgid "meters per second,mps"
+msgstr "meter per detik,mpd"
+
+#: lib/unit.vala:68
+msgid "Feet per Second"
+msgstr "Kaki per Detik"
+
+#: lib/unit.vala:68
+msgctxt "unit-symbols"
+msgid "fps,feet per second,feetps"
+msgstr "fps,kaki per detik,feetps"
+
+#: lib/unit.vala:69
+msgid "Knots"
+msgstr "Knot"
+
+#: lib/unit.vala:69
+msgctxt "unit-symbols"
+msgid "kt,kn,nd,knot,knots"
+msgstr "kt,kn,nd,knot"
+
+#: lib/unit.vala:70
+msgid "Hectares"
+msgstr "Hektar"
+
+#: lib/unit.vala:70
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hektar,hektare,ha"
+
+#: lib/unit.vala:71
+msgid "Acres"
+msgstr "Acre"
+
+#: lib/unit.vala:71
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "acre"
+
+#: lib/unit.vala:72
+msgid "Square Miles"
+msgstr "Mil Persegi"
+
+#: lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "mi²"
+msgstr "mi²"
+
+#: lib/unit.vala:73
+msgid "Square Feet"
+msgstr "Kaki Persegi"
+
+#: lib/unit.vala:73
+msgctxt "unit-symbols"
+msgid "ft²"
+msgstr "ft²"
+
+#: lib/unit.vala:74
+msgid "Square Kilometers"
+msgstr "Kilometer Persegi"
+
+#: lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "km²"
+msgstr "km²"
+
+#: lib/unit.vala:75
+msgid "Square Meters"
+msgstr "Meter Persegi"
+
+#: lib/unit.vala:75
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
+
+#: lib/unit.vala:76
+msgid "Square Centimeters"
+msgstr "Sentimeter Persegi"
+
+#: lib/unit.vala:76
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: lib/unit.vala:77
+msgid "Square Millimeters"
+msgstr "Milimeter Persegi"
+
+#: lib/unit.vala:77
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
+
+#: lib/unit.vala:78
+msgid "Cubic Meters"
+msgstr "Meter Kubik"
+
+#: lib/unit.vala:78
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: lib/unit.vala:79
+msgid "British Gallons"
+msgstr "Galon Inggris"
+
+#: lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "imp_gallon,imp_gallons,imp_gal"
+msgstr "imp_gallon,imp_gallons,imp_gal"
+
+#: lib/unit.vala:80
+msgid "US Gallons"
+msgstr "Galon Amerika"
+
+#: lib/unit.vala:80
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "galon,gal"
+
+#: lib/unit.vala:81
+msgid "Liters"
+msgstr "Liter"
+
+#: lib/unit.vala:81
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "liter,L"
+
+#: lib/unit.vala:82
+msgid "US Quarts"
+msgstr "Quart Amerika"
+
+#: lib/unit.vala:82
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "quart,qt"
+
+#: lib/unit.vala:83
+msgid "British Pints"
+msgstr "Pint Inggris"
+
+#: lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "imp_pint,imp_pints,imp_pt"
+msgstr "imp_pint,imp_pints,imp_pt"
+
+#: lib/unit.vala:84
+msgid "US Pints"
+msgstr "Pint Amerika"
+
+#: lib/unit.vala:84
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pint,pt"
+
+#: lib/unit.vala:85
+msgid "Metric Cups"
+msgstr "Cup Metrik"
+
+#: lib/unit.vala:85
+msgctxt "unit-symbols"
+msgid "cup,cups,cp"
+msgstr "cup,cups,cp"
+
+#: lib/unit.vala:86
+msgid "Milliliters"
+msgstr "Mililiter"
+
+#: lib/unit.vala:86
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "mililiter,mL,cm³"
+
+#: lib/unit.vala:87
+msgid "Microliters"
+msgstr "Mikroliter"
+
+#: lib/unit.vala:87
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
+
+#: lib/unit.vala:88
+msgid "Tonnes"
+msgstr "Ton"
+
+#: lib/unit.vala:88
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "ton"
+
+#: lib/unit.vala:89
+msgid "Kilograms"
+msgstr "Kilogram"
+
+#: lib/unit.vala:89
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilogram,kg"
+
+#: lib/unit.vala:90
+msgid "Pounds"
+msgstr "Pon"
+
+#: lib/unit.vala:90
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb,lbs"
+msgstr "pon,lb,lbs"
+
+#: lib/unit.vala:91
+msgid "Ounces"
+msgstr "Ons"
+
+#: lib/unit.vala:91
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "ons,oz"
+
+#: lib/unit.vala:92
+msgid "Troy Ounces"
+msgstr "Troy Ons"
+
+#: lib/unit.vala:92
+msgctxt "unit-symbols"
+msgid "Troy ounce,Troy ounces,ozt"
+msgstr "Troy ons,ozt"
+
+#: lib/unit.vala:93
+msgid "Grams"
+msgstr "Gram"
+
+#: lib/unit.vala:93
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "gram,gr,g"
+
+#: lib/unit.vala:94
+msgid "Milligrams"
+msgstr "Miligram"
+
+#: lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "milligram,milligrams,milligramme,milligrammes,mg"
+msgstr "miligram,mg"
+
+#: lib/unit.vala:95
+msgid "Micrograms"
+msgstr "Mikrogram"
+
+#: lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
+msgstr "mikrogram,μg,ug"
+
+#: lib/unit.vala:96
+msgid "Stone"
+msgstr "Stone"
+
+#: lib/unit.vala:96
+msgctxt "unit-symbols"
+msgid "stone,st,stones"
+msgstr "stone,st"
+
+#: lib/unit.vala:97
+msgid "Centuries"
+msgstr "Abad"
+
+#: lib/unit.vala:97
+msgctxt "unit-symbols"
+msgid "century,centuries"
+msgstr "abad"
+
+#: lib/unit.vala:98
+msgid "Decades"
+msgstr "Dekade"
+
+#: lib/unit.vala:98
+msgctxt "unit-symbols"
+msgid "decade,decades"
+msgstr "dekade"
+
+#: lib/unit.vala:99
+msgid "Years"
+msgstr "Tahun"
+
+#: lib/unit.vala:99
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "tahun"
+
+#: lib/unit.vala:100
+msgid "Months"
+msgstr "Bulan"
+
+#: lib/unit.vala:100
+msgctxt "unit-symbols"
+msgid "month,months"
+msgstr "bulan"
+
+#: lib/unit.vala:101
+msgid "Weeks"
+msgstr "Minggu"
+
+#: lib/unit.vala:101
+msgctxt "unit-symbols"
+msgid "week,weeks"
+msgstr "minggu"
+
+#: lib/unit.vala:102
+msgid "Days"
+msgstr "Hari"
+
+#: lib/unit.vala:102
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "hari"
+
+#: lib/unit.vala:103
+msgid "Hours"
+msgstr "Jam"
+
+#: lib/unit.vala:103
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "jam"
+
+#: lib/unit.vala:104
+msgid "Minutes"
+msgstr "Menit"
+
+#: lib/unit.vala:104
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "menit"
+
+#: lib/unit.vala:105
+msgid "Seconds"
+msgstr "Detik"
+
+#: lib/unit.vala:105
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "detik,s,d"
+
+#: lib/unit.vala:106
+msgid "Milliseconds"
+msgstr "Milidetik"
+
+#: lib/unit.vala:106
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "milidetik,ms,md"
+
+#: lib/unit.vala:107
+msgid "Microseconds"
+msgstr "Mikrodetik"
+
+#: lib/unit.vala:107
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "mikrodetik,us,μs"
+
+#: lib/unit.vala:108
+msgid "Nanoseconds"
+msgstr "Nanodetik"
+
+#: lib/unit.vala:108
+msgctxt "unit-symbols"
+msgid "nanosecond,nanoseconds,ns"
+msgstr "nanodetik,ns"
+
+#: lib/unit.vala:109
+msgid "Celsius"
+msgstr "Celsius"
+
+#: lib/unit.vala:109
+msgctxt "unit-symbols"
+msgid "degC,°C,˚C,C,c,Celsius,celsius"
+msgstr "derajatC,˚C,C,c,Celsius,celsius"
+
+#: lib/unit.vala:110
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: lib/unit.vala:110
+msgctxt "unit-symbols"
+msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "derajatF,˚F,F,f,Fahrenheit,fahrenheit"
+
+#: lib/unit.vala:111
+msgid "Kelvin"
+msgstr "Kelvin"
+
+#: lib/unit.vala:111
+msgctxt "unit-symbols"
+msgid "k,K,Kelvin,kelvin"
+msgstr "k,K,Kelvin,kelvin"
+
+#: lib/unit.vala:112
+msgid "Rankine"
+msgstr "Rankine"
+
+#: lib/unit.vala:112
+msgctxt "unit-symbols"
+msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
+msgstr "derajatR,˚R,˚Ra,r,R,Rankine,rankine"
+
+#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
+#: lib/unit.vala:114
+msgid "Bits"
+msgstr "Bit"
+
+#: lib/unit.vala:114
+msgctxt "unit-symbols"
+msgid "bit,bits,b"
+msgstr "bit,b"
+
+#: lib/unit.vala:115
+msgid "Bytes"
+msgstr "Bita"
+
+#: lib/unit.vala:115
+msgctxt "unit-symbols"
+msgid "byte,bytes,B"
+msgstr "byte,bita,B"
+
+#: lib/unit.vala:116
+msgid "Nibbles"
+msgstr "Nibble"
+
+#: lib/unit.vala:116
+msgctxt "unit-symbols"
+msgid "nibble,nibbles"
+msgstr "nibble"
+
+#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
+#: lib/unit.vala:118
+msgid "Kilobits"
+msgstr "Kilobit"
+
+#: lib/unit.vala:118
+msgctxt "unit-symbols"
+msgid "kilobit,kilobits,kb,Kb"
+msgstr "kilobit,kb,Kb"
+
+#: lib/unit.vala:119
+msgid "Kilobytes"
+msgstr "Kilobita"
+
+#: lib/unit.vala:119
+msgctxt "unit-symbols"
+msgid "kilobyte,kilobytes,kB,KB"
+msgstr "kilobita,kilobyte,kB,KB"
+
+#: lib/unit.vala:120
+msgid "Kibibits"
+msgstr "Kibibit"
+
+#: lib/unit.vala:120
+msgctxt "unit-symbols"
+msgid "kibibit,kibibits,Kib"
+msgstr "kibibit,Kib"
+
+#: lib/unit.vala:121
+msgid "Kibibytes"
+msgstr "Kibibita"
+
+#: lib/unit.vala:121
+msgctxt "unit-symbols"
+msgid "kibibyte,kibibytes,KiB"
+msgstr "kibibita,KiB"
+
+#: lib/unit.vala:122
+msgid "Megabits"
+msgstr "Megabit"
+
+#: lib/unit.vala:122
+msgctxt "unit-symbols"
+msgid "megabit,megabits,Mb"
+msgstr "megabit,Mb"
+
+#: lib/unit.vala:123
+msgid "Megabytes"
+msgstr "Megabita"
+
+#: lib/unit.vala:123
+msgctxt "unit-symbols"
+msgid "megabyte,megabytes,MB"
+msgstr "megabita,megabyte,MB"
+
+#: lib/unit.vala:124
+msgid "Mebibits"
+msgstr "Mebibit"
+
+#: lib/unit.vala:124
+msgctxt "unit-symbols"
+msgid "mebibit,mebibits,Mib"
+msgstr "mebibit,Mib"
+
+#: lib/unit.vala:125
+msgid "Mebibytes"
+msgstr "Mebibita"
+
+#: lib/unit.vala:125
+msgctxt "unit-symbols"
+msgid "mebibyte,mebibytes,MiB"
+msgstr "mebibita,MiB"
+
+#: lib/unit.vala:126
+msgid "Gigabits"
+msgstr "Gigabit"
+
+#: lib/unit.vala:126
+msgctxt "unit-symbols"
+msgid "gigabit,gigabits,Gb"
+msgstr "gigabit,Gb"
+
+#: lib/unit.vala:127
+msgid "Gigabytes"
+msgstr "Gigabita"
+
+#: lib/unit.vala:127
+msgctxt "unit-symbols"
+msgid "gigabyte,gigabytes,GB"
+msgstr "gigabita,gigabyte,GB"
+
+#: lib/unit.vala:128
+msgid "Gibibits"
+msgstr "Gibibit"
+
+#: lib/unit.vala:128
+msgctxt "unit-symbols"
+msgid "gibibit,gibibits,Gib"
+msgstr "gibibit,Gib"
+
+#: lib/unit.vala:129
+msgid "Gibibytes"
+msgstr "Gibibita"
+
+#: lib/unit.vala:129
+msgctxt "unit-symbols"
+msgid "gibibyte,gibibytes,GiB"
+msgstr "gibibita,GiB"
+
+#: lib/unit.vala:130
+msgid "Terabits"
+msgstr "Terabit"
+
+#: lib/unit.vala:130
+msgctxt "unit-symbols"
+msgid "terabit,terabits,Tb"
+msgstr "terabit,Tb"
+
+#: lib/unit.vala:131
+msgid "Terabytes"
+msgstr "Terabita"
+
+#: lib/unit.vala:131
+msgctxt "unit-symbols"
+msgid "terabyte,terabytes,TB"
+msgstr "terabita,terabyte,TB"
+
+#: lib/unit.vala:132
+msgid "Tebibits"
+msgstr "Tebibit"
+
+#: lib/unit.vala:132
+msgctxt "unit-symbols"
+msgid "tebibit,tebibits,Tib"
+msgstr "tebibit,Tib"
+
+#: lib/unit.vala:133
+msgid "Tebibytes"
+msgstr "Tebibita"
+
+#: lib/unit.vala:133
+msgctxt "unit-symbols"
+msgid "tebibyte,tebibytes,TiB"
+msgstr "tebibita,TiB"
+
+#: lib/unit.vala:134
+msgid "Petabits"
+msgstr "Petabit"
+
+#: lib/unit.vala:134
+msgctxt "unit-symbols"
+msgid "petabit,petabits,Pb"
+msgstr "petabit,Pb"
+
+#: lib/unit.vala:135
+msgid "Petabytes"
+msgstr "Petabita"
+
+#: lib/unit.vala:135
+msgctxt "unit-symbols"
+msgid "petabyte,petabytes,PB"
+msgstr "petabita,petabyte,PB"
+
+#: lib/unit.vala:136
+msgid "Pebibits"
+msgstr "Pebibit"
+
+#: lib/unit.vala:136
+msgctxt "unit-symbols"
+msgid "pebibit,pebibits,Pib"
+msgstr "pebibit,Pib"
+
+#: lib/unit.vala:137
+msgid "Pebibytes"
+msgstr "Pebibita"
+
+#: lib/unit.vala:137
+msgctxt "unit-symbols"
+msgid "pebibyte,pebibytes,PiB"
+msgstr "pebibita,PiB"
+
+#: lib/unit.vala:138
+msgid "Exabits"
+msgstr "Exabit"
+
+#: lib/unit.vala:138
+msgctxt "unit-symbols"
+msgid "exabit,exabits,Eb"
+msgstr "exabit,Eb"
+
+#: lib/unit.vala:139
+msgid "Exabytes"
+msgstr "Exabita"
+
+#: lib/unit.vala:139
+msgctxt "unit-symbols"
+msgid "exabyte,exabytes,EB"
+msgstr "exabita,exabyte,EB"
+
+#: lib/unit.vala:140
+msgid "Exbibits"
+msgstr "Exbibit"
+
+#: lib/unit.vala:140
+msgctxt "unit-symbols"
+msgid "exbibit,exbibits,Eib"
+msgstr "exbibit,Eib"
+
+#: lib/unit.vala:141
+msgid "Exbibytes"
+msgstr "Exbibita"
+
+#: lib/unit.vala:141
+msgctxt "unit-symbols"
+msgid "exbibyte,exbibytes,EiB"
+msgstr "exbibita,EiB"
+
+#: lib/unit.vala:142
+msgid "Zettabits"
+msgstr "Zettabit"
+
+#: lib/unit.vala:142
+msgctxt "unit-symbols"
+msgid "zettabit,zettabits,Zb"
+msgstr "zettabit,Zb"
+
+#: lib/unit.vala:143
+msgid "Zettabytes"
+msgstr "Zettabita"
+
+#: lib/unit.vala:143
+msgctxt "unit-symbols"
+msgid "zettabyte,zettabytes,ZB"
+msgstr "zettabita,zettabyte,ZB"
+
+#: lib/unit.vala:144
+msgid "Zebibits"
+msgstr "Zebibit"
+
+#: lib/unit.vala:144
+msgctxt "unit-symbols"
+msgid "zebibit,zebibits,Zib"
+msgstr "zebibit,Zib"
+
+#: lib/unit.vala:145
+msgid "Zebibytes"
+msgstr "Zebibita"
+
+#: lib/unit.vala:145
+msgctxt "unit-symbols"
+msgid "zebibyte,zebibytes,ZiB"
+msgstr "zebibita,ZiB"
+
+#: lib/unit.vala:146
+msgid "Yottabits"
+msgstr "Yottabit"
+
+#: lib/unit.vala:146
+msgctxt "unit-symbols"
+msgid "yottabit,yottabits,Yb"
+msgstr "yottabit,Yb"
+
+#: lib/unit.vala:147
+msgid "Yottabytes"
+msgstr "Yottabita"
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "yottabyte,yottabytes,YB"
+msgstr "yottabita,yottabyte,YB"
+
+#: lib/unit.vala:148
+msgid "Yobibits"
+msgstr "Yobibit"
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "yobibit,yobibits,Yib"
+msgstr "yobibit,Yib"
+
+#: lib/unit.vala:149
+msgid "Yobibytes"
+msgstr "Yobibita"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "yobibyte,yobibytes,YiB"
+msgstr "yobibita,YiB"
+
+#: lib/unit.vala:150
+msgid "Hertz"
+msgstr "Hertz"
+
+#: lib/unit.vala:150
+msgctxt "unit-symbols"
+msgid "hertz,Hz"
+msgstr "hertz,Hz"
+
+#: lib/unit.vala:151
+msgid "Kilohertz"
+msgstr "Kilohertz"
+
+#: lib/unit.vala:151
+msgctxt "unit-symbols"
+msgid "kilohertz,kHz"
+msgstr "kilohertz,kHz"
+
+#: lib/unit.vala:152
+msgid "Megahertz"
+msgstr "Megahertz"
+
+#: lib/unit.vala:152
+msgctxt "unit-symbols"
+msgid "megahertz,MHz"
+msgstr "megahertz,MHz"
+
+#: lib/unit.vala:153
+msgid "Gigahertz"
+msgstr "Gigahertz"
+
+#: lib/unit.vala:153
+msgctxt "unit-symbols"
+msgid "gigahertz,GHz"
+msgstr "gigahertz,GHz"
+
+#: lib/unit.vala:154
+msgid "Terahertz"
+msgstr "Terahertz"
+
+#: lib/unit.vala:154
+msgctxt "unit-symbols"
+msgid "terahertz,THz"
+msgstr "terahertz,THz"
+
+#: lib/unit.vala:155
+msgid "Joules"
+msgstr "Joule"
+
+#: lib/unit.vala:155
+msgctxt "unit-symbols"
+msgid "Joule,J,joule,joules"
+msgstr "Joule,J,joule"
+
+#: lib/unit.vala:156
+msgid "Kilojoules"
+msgstr "Kilojoule"
+
+#: lib/unit.vala:156
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "KJ,kilojoule"
+
+#: lib/unit.vala:157
+msgid "Megajoules"
+msgstr "Megajoule"
+
+#: lib/unit.vala:157
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "MJ,megajoule"
+
+#: lib/unit.vala:158
+msgid "Kilowatt-Hours"
+msgstr "Kilowatt-Jam"
+
+#: lib/unit.vala:158
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "kwh,kWh,kilowatt-jam,kilowattjam"
+
+#: lib/unit.vala:159
+msgid "British Thermal Units"
+msgstr "British Thermal Unit"
+
+#: lib/unit.vala:159
+msgctxt "unit-symbols"
+msgid "btu,BTU"
+msgstr "btu,BTU"
+
+#: lib/unit.vala:160
+msgid "Calories"
+msgstr "Kalori"
+
+#: lib/unit.vala:160
+msgctxt "unit-symbols"
+msgid "calories,calorie,cal"
+msgstr "kalori,cal"
+
+#: lib/unit.vala:161
+msgid "Kilocalories"
+msgstr "Kilokalori"
+
+#: lib/unit.vala:161
+msgctxt "unit-symbols"
+msgid "kilocalories,kilocalorie,kcal"
+msgstr "kilokalori,kkal"
+
+#: lib/unit.vala:162
+msgid "Ergs"
+msgstr "Erg"
+
+#: lib/unit.vala:162
+msgctxt "unit-symbols"
+msgid "ergs,erg"
+msgstr "ergs,erg"
+
+#: lib/unit.vala:163
+msgid "Electron Volts"
+msgstr "Elektron Volt"
+
+#: lib/unit.vala:163
+msgctxt "unit-symbols"
+msgid "electronvolt,electronvolts,ev"
+msgstr "elektronvolt,ev"
+
+#: lib/unit.vala:164
+msgid "Foot-Pounds"
+msgstr "Kaki-Pon"
+
+#: lib/unit.vala:164
+msgctxt "unit-symbols"
+msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
+msgstr "kaki-pound,kaki-pound,ft-lb,ft-lbs"
+
+#: lib/unit.vala:165
+msgid "Pascals"
+msgstr "Pascal"
+
+#: lib/unit.vala:165
+msgctxt "unit-symbols"
+msgid "Pascal,pascal,Pa"
+msgstr "Pascal,pascal,Pa"
+
+#: lib/unit.vala:166
+msgid "Kilopascals"
+msgstr "Kilopascal"
+
+#: lib/unit.vala:166
+msgctxt "unit-symbols"
+msgid "Kilopascal,kilopascal,kPa"
+msgstr "Kilopascal,kilopascal,kPa"
+
+#: lib/unit.vala:167
+msgid "Hectopascals"
+msgstr "Hektopascal"
+
+#: lib/unit.vala:167
+msgctxt "unit-symbols"
+msgid "Hectopascal,hectopascal,hPa"
+msgstr "Hektopascal,hektopascal,hPa"
+
+#: lib/unit.vala:168
+msgid "Bars"
+msgstr "Bar"
+
+#: lib/unit.vala:168
+msgctxt "unit-symbols"
+msgid "Bar,bar"
+msgstr "Bar,bar"
+
+#: lib/unit.vala:169
+msgid "Standard Atmospheres"
+msgstr "Atmosfer Standar"
+
+#: lib/unit.vala:169
+msgctxt "unit-symbols"
+msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
+msgstr "Atmosfer Standar,Atmosfer standar,atmosfer standar,Atm,atm"
+
+#: lib/unit.vala:170
+msgid "Millimeters of Mercury"
+msgstr "Milimeter Air Raksa"
+
+#: lib/unit.vala:170
+msgctxt "unit-symbols"
+msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
+msgstr "Milimeter Air Raksa,milimeter air raksa,mmHg"
+
+#: lib/unit.vala:171
+msgid "Inches of Mercury"
+msgstr "Inci Air Raksa"
+
+#: lib/unit.vala:171
+msgctxt "unit-symbols"
+msgid "Inch of Mercury,inch of mercury,inHg"
+msgstr "Inci Air Raksa,inci air raksa,inHg"
+
+#: lib/unit.vala:172
+msgid "Pounds per Square Inch"
+msgstr "Pon per Inci Persegi"
+
+#: lib/unit.vala:172
+msgctxt "unit-symbols"
+msgid "Pound per Square Inch,pound per square inch,psi"
+msgstr "Pon per Inci Persegi,pon per inci persegi,psi"
+
+#: lib/unit.vala:174
+msgid "Currency"
+msgstr "Mata Uang"
+
+#: lib/unit.vala:183
+msgid "Number Base"
+msgstr "Basis Bilangan"
+
+#: lib/unit.vala:184 src/buttons-programming.vala:168
+#: src/ui/buttons-programming.blp:2590
+msgid "Binary"
+msgstr "Biner"
+
+#: lib/unit.vala:185 src/buttons-programming.vala:173
+#: src/ui/buttons-programming.blp:2596
+msgid "Octal"
+msgstr "Oktal"
+
+#: lib/unit.vala:186 src/buttons-programming.vala:178
+#: src/ui/buttons-programming.blp:2602
+msgid "Decimal"
+msgstr "Desimal"
+
+#: lib/unit.vala:187 src/buttons-programming.vala:183
+#: src/ui/buttons-programming.blp:2608
+msgid "Hexadecimal"
+msgstr "Heksadesimal"
+
+#: search-provider/search-provider.vala:206
+msgid "Open in Calculator"
+msgstr "Buka di Kalkulator"
+
+#: search-provider/search-provider.vala:239
+msgid "Result copied"
+msgstr "Hasil disalin"
+
+#: search-provider/search-provider.vala:240
+msgid "Result was copied successfully"
+msgstr "Hasil berhasil disalin"
+
+#: src/buttons-advanced.vala:87 src/math-preferences.vala:134
+msgid "Degrees"
+msgstr "Derajat"
+
+#: src/buttons-advanced.vala:89
+#, c-format
+msgid "Angle Unit: %s"
+msgstr "Satuan Sudut: %s"
+
+#: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
+#: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
+msgid "Not Available"
+msgstr "Tidak Tersedia"
+
+#: src/buttons-programming.vala:205
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%d-bit"
+
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
+#: src/gnome-calculator.vala:22
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard, "
+"conversion)"
+msgstr ""
+"Memulai dalam mode yang diberikan (dasar, lanjut, finansial, pemrogragan, "
+"papan ketik, konversi)"
+
+#: src/gnome-calculator.vala:23
+msgid "Solve given equation"
+msgstr "Pecahkan persamaan yang diberikan"
+
+#: src/gnome-calculator.vala:24
+msgid "Start with given equation"
+msgstr "Mulai dengan persamaan yang diberikan"
+
+#: src/gnome-calculator.vala:25
+msgid "Show release version"
+msgstr "Tampilkan versi rilis"
+
+#. Application Copyrights for the calculator authors
+#: src/gnome-calculator.vala:313
+#, c-format
+msgid "© 1986–%d The Calculator authors"
+msgstr "© 1986–%d Para penulis Kalkulator"
+
+#. The translator credits. Please translate this with your name (s).
+#: src/gnome-calculator.vala:319
+msgid "translator-credits"
+msgstr ""
+"Arief Mulya Utama <arief_mulya@yahoo.com>, 2003.\n"
+"Andika Triwidada <andika@gmail.com>, 2012, 2013, 2021, 2023-2026.\n"
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022-2024."
+
+#: src/gnome-calculator.vala:323
+msgid "Exchange Rate Data Providers"
+msgstr "Penyedia Data Nilai Tukar"
+
+#: src/gnome-calculator.vala:323
+#, c-format
+msgid "Exchange rates data by %s"
+msgstr "Data nilai tukar dari %s"
+
+#: src/gnome-calculator.vala:331
+msgid "Close All?"
+msgstr "Tutup Semua?"
+
+#: src/gnome-calculator.vala:331
+msgid "Are you sure you want to close all open windows?"
+msgstr "Apakah Anda yakin ingin menutup semua jendela yang terbuka?"
+
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
+#: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
+#: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
+#: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
+#: src/ui/buttons-financial.blp:1283 src/ui/buttons-financial.blp:1339
+#: src/ui/buttons-financial.blp:1401 src/ui/buttons-programming.blp:2563
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: src/gnome-calculator.vala:333
+msgid "Close _All"
+msgstr "Tutup Semu_a"
+
+#: src/math-converter.vala:612 src/math-converter.vala:630
+msgid "Error"
+msgstr "Galat"
+
+#: src/math-display.vala:694
+msgid "Defined Functions"
+msgstr "Fungsi yang Ditetapkan"
+
+#: src/math-display.vala:742
+msgid "Built-in Keywords"
+msgstr "Kata Kunci Bawaan"
+
+#: src/math-display.vala:794
+msgid "Defined Currencies"
+msgstr "Mata Uang yang Didefinisikan"
+
+#: src/math-display.vala:843
+msgid "Defined Variables"
+msgstr "Variabel yang Ditetapkan"
+
+#: src/math-function-popover.vala:185
+msgid "Can not use defined variable or constant names"
+msgstr ""
+"Tidak dapat menggunakan nama variabel atau konstanta yang telah ditentukan"
+
+#: src/math-function-popover.vala:189
+msgid "Can not use built-in function or operator names"
+msgstr "Tidak dapat menggunakan nama fungsi atau operator bawaan"
+
+#: src/math-function-popover.vala:192
+msgid "Function name can not start with a digit"
+msgstr "Nama fungsi tidak boleh diawali dengan angka"
+
+#: src/math-function-popover.vala:195
+msgid "Function name can only contain digits, letters and underscores"
+msgstr "Nama fungsi hanya boleh berisi angka, huruf, dan garis bawah"
+
+#: src/math-popover.vala:110
+msgid "Edit"
+msgstr "Sunting"
+
+#: src/math-popover.vala:120
+msgid "Delete"
+msgstr "Hapus"
+
+#: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
+msgid "8-bit"
+msgstr "8-bit"
+
+#: src/math-preferences.vala:149 src/ui/buttons-programming.blp:2624
+msgid "16-bit"
+msgstr "16-bit"
+
+#: src/math-preferences.vala:151 src/ui/buttons-programming.blp:2630
+msgid "32-bit"
+msgstr "32-bit"
+
+#: src/math-preferences.vala:153 src/ui/buttons-programming.blp:2636
+msgid "64-bit"
+msgstr "64-bit"
+
+#: src/math-preferences.vala:162
+msgid "Never"
+msgstr "Tak pernah"
+
+#: src/math-preferences.vala:164
+msgid "Daily"
+msgstr "Harian"
+
+#: src/math-preferences.vala:166
+msgid "Weekly"
+msgstr "Mingguan"
+
+#: src/math-preferences.vala:175
+msgid "Currency Code"
+msgstr "Kode Mata Uang"
+
+#: src/math-preferences.vala:177
+msgid "Currency Name"
+msgstr "Nama Mata Uang"
+
+#: src/math-preferences.vala:179
+msgid "Both"
+msgstr "Keduanya"
+
+#: src/math-variable-popover.vala:216
+msgid "Can not use defined function or operator names"
+msgstr ""
+"Tidak dapat menggunakan nama fungsi atau operator yang telah ditentukan"
+
+#: src/math-variable-popover.vala:219
+msgid "Can not use built-in variable or constant names"
+msgstr "Tidak dapat menggunakan nama variabel atau konstanta bawaan"
+
+#: src/math-variable-popover.vala:222
+msgid "Variable name can not start with a digit"
+msgstr "Nama variabel tidak boleh diawali dengan angka"
+
+#: src/math-variable-popover.vala:225
+msgid "Variable name can only contain digits, letters and underscores"
+msgstr "Nama variabel hanya boleh berisi angka, huruf, dan garis bawah"
+
+#: src/math-window.vala:137
+msgid "Basic"
+msgstr "Dasar"
+
+#: src/math-window.vala:143
+msgid "Advanced"
+msgstr "Tingkat Lanjut"
+
+#: src/math-window.vala:149 src/ui/math-window.blp:152
+msgid "Financial"
+msgstr "Keuangan"
+
+#: src/math-window.vala:161
+msgid "Keyboard"
+msgstr "Papan Tik"
+
+#: src/math-window.vala:167
+msgid "Conversion"
+msgstr "Konversi"
+
+#: src/ui/buttons-advanced.blp:76 src/ui/buttons-basic.blp:21
+#: src/ui/buttons-conversion.blp:21 src/ui/buttons-financial.blp:76
+#: src/ui/buttons-programming.blp:1373
+msgid "Clear Display [Escape]"
+msgstr "Hapus [Escape]"
+
+#: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
+#: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
+msgid "Superscript Mode [Ctrl]"
+msgstr "Mode Superskrip [Ctrl]"
+
+#: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
+#: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
+msgid "Subscript Mode [Alt]"
+msgstr "Mode Subskrip [Alt]"
+
+#. Translators: The label on the memory button
+#: src/ui/buttons-advanced.blp:300 src/ui/buttons-basic.blp:245
+#: src/ui/buttons-financial.blp:300 src/ui/buttons-programming.blp:1705
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
+#: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
+msgid "Variables and Constants"
+msgstr "Variabel dan Konstanta"
+
+#: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
+#: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
+msgid "Additional Functions"
+msgstr "Fungsi Tambahan"
+
+#: src/ui/buttons-advanced.blp:336 src/ui/buttons-basic.blp:281
+#: src/ui/buttons-financial.blp:336 src/ui/buttons-programming.blp:1741
+msgid "Divide [/]"
+msgstr "Bagi [/]"
+
+#: src/ui/buttons-advanced.blp:353 src/ui/buttons-basic.blp:298
+#: src/ui/buttons-financial.blp:353 src/ui/buttons-programming.blp:1758
+msgid "Multiply [*]"
+msgstr "Kali [*]"
+
+#: src/ui/buttons-advanced.blp:370 src/ui/buttons-basic.blp:315
+#: src/ui/buttons-financial.blp:370 src/ui/buttons-programming.blp:1775
+msgid "Subtract [-]"
+msgstr "Kurang [-]"
+
+#: src/ui/buttons-advanced.blp:386 src/ui/buttons-basic.blp:331
+#: src/ui/buttons-financial.blp:386 src/ui/buttons-programming.blp:1791
+msgid "Add [+]"
+msgstr "Tambah [+]"
+
+#: src/ui/buttons-advanced.blp:420 src/ui/buttons-basic.blp:365
+#: src/ui/buttons-financial.blp:420 src/ui/buttons-programming.blp:1825
+msgid "Percentage [%]"
+msgstr "Persentase [%]"
+
+#: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
+#: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
+msgid "Group [()]"
+msgstr "Grup [)]"
+
+#. Translators: Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
+#: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.blp:455 src/ui/buttons-basic.blp:400
+#: src/ui/buttons-financial.blp:455 src/ui/buttons-programming.blp:1860
+msgid "Calculate Result"
+msgstr "Hitung Hasil"
+
+#: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
+#: src/ui/buttons-programming.blp:1888
+msgid "Inverse Modifier [Shift]"
+msgstr "Pengubah Invers [Shift]"
+
+#: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
+#: src/ui/buttons-programming.blp:2085
+msgid "Square [Ctrl+2]"
+msgstr "Kuadrat [Ctrl+2]"
+
+#: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
+#: src/ui/buttons-programming.blp:2107
+msgid "Square Root [Ctrl+R]"
+msgstr "Akar Kuadrat [Ctrl+R]"
+
+#: src/ui/buttons-advanced.blp:760 src/ui/buttons-advanced.blp:827
+#: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
+#: src/ui/buttons-programming.blp:2192
+msgid "Exponent [^ or **]"
+msgstr "Eksponen [^ atau **]"
+
+#: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
+#: src/ui/buttons-programming.blp:2147
+msgid "Nth Root"
+msgstr "Akar ke-N"
+
+#: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
+#: src/ui/buttons-programming.blp:2216
+msgid "Common Logarithm"
+msgstr "Logaritma Umum"
+
+#: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
+#: src/ui/buttons-programming.blp:2233
+msgid "Base-10 Exponential"
+msgstr "Eksponensial Basis-10"
+
+#: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
+msgid "Natural Exponential"
+msgstr "Eksponensial Natural"
+
+#: src/ui/buttons-advanced.blp:999
+msgid "Inverse [Ctrl+I]"
+msgstr "Inverse [Ctrl+I]"
+
+#: src/ui/buttons-advanced.blp:1020
+msgid "Round [[]]"
+msgstr "Round [[]]"
+
+#: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
+msgid "Absolute Value [||]"
+msgstr "Nilai Mutlak [||]"
+
+#: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
+msgid "Factorial [!]"
+msgstr "Faktorial [!]"
+
+#: src/ui/buttons-advanced.blp:1099 src/ui/buttons-conversion.blp:521
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
+
+#: src/ui/buttons-advanced.blp:1133
+msgid "Imaginary Unit"
+msgstr "Unit Imajiner"
+
+#: src/ui/buttons-advanced.blp:1150
+msgid "Factorize [Ctrl+F]"
+msgstr "Pemfaktoran [Ctrl+F]"
+
+#: src/ui/buttons-conversion.blp:37
+msgid "Switch Conversion Units"
+msgstr "Beralih Unit Konversi"
+
+#: src/ui/buttons-conversion.blp:53 src/ui/math-display.blp:45
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/ui/buttons-conversion.blp:510
+msgid "Degrees, Minutes, Seconds"
+msgstr "Derajat, Menit, Detik"
+
+#: src/ui/buttons-conversion.blp:533
+msgid "Change Sign"
+msgstr "Ubah Tanda"
+
+#: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
+msgid "Exchange Rate Details"
+msgstr "Rincian Nilai Tukar"
+
+#: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
+msgid "Updated"
+msgstr "Diperbarui"
+
+#: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
+msgid "Source"
+msgstr "Sumber"
+
+#: src/ui/buttons-conversion.blp:625
+msgid "_Refresh Rates"
+msgstr "Laju Penyega_ran"
+
+#. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.blp:669
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Translators: Title of Compounding Term dialog
+#: src/ui/buttons-financial.blp:672 src/ui/buttons-financial.blp:887
+msgid "Compounding Term"
+msgstr "Bunga Berjangka"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:688
+msgid "Ddb"
+msgstr "Ddb"
+
+#: src/ui/buttons-financial.blp:691
+msgid "Double Declining Depreciation"
+msgstr "Depresiasi Penurunan Ganda"
+
+#. Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.blp:707
+msgid "Fv"
+msgstr "Fv"
+
+#. Translators: Compounding Term Dialog: Label before future value input
+#. Translators: Title of Future Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before future value input
+#. Translators: Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.blp:710 src/ui/buttons-financial.blp:927
+#: src/ui/buttons-financial.blp:999 src/ui/buttons-financial.blp:1251
+#: src/ui/buttons-financial.blp:1431
+msgid "Future Value"
+msgstr "Nilai Mendatang"
+
+#. Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.blp:726
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Translators: Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.blp:729 src/ui/buttons-financial.blp:1055
+msgid "Gross Profit Margin"
+msgstr "Margin Keuntungan Bruto"
+
+#. Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.blp:745
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Translators: Future Value Dialog: Label before periodic payment input
+#. Translators: Title of Periodic Payment dialog
+#. Translators: Present Value Dialog: Label before periodic payment input
+#. Translators: Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.blp:748 src/ui/buttons-financial.blp:1033
+#: src/ui/buttons-financial.blp:1105 src/ui/buttons-financial.blp:1195
+#: src/ui/buttons-financial.blp:1425
+msgid "Periodic Payment"
+msgstr "Pembayaran Berkala"
+
+#. Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.blp:764
+msgid "Pv"
+msgstr "Pv"
+
+#. Translators: Compounding Term Dialog: Label before present value input
+#. Translators: Title of Present Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
+#: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
+msgid "Present Value"
+msgstr "Nilai Sekarang"
+
+#. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.blp:783
+msgid "Rate"
+msgstr "Suku Bunga"
+
+#. Translators: Compounding Term Dialog: Label before periodic interest rate input
+#. Translators: Future Value Dialog: Label before periodic interest rate input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate input
+#. Translators: Present Value Dialog: Label before periodic interest rate input
+#. Translators: Title of Periodic Interest Rate dialog
+#. Translators: Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
+#: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
+#: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
+#: src/ui/buttons-financial.blp:1437
+msgid "Periodic Interest Rate"
+msgstr "Suku Bunga Berkala"
+
+#. Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:802
+msgid "Sln"
+msgstr "Sln"
+
+#: src/ui/buttons-financial.blp:805
+msgid "Straight Line Depreciation"
+msgstr "Depresiasi Garis Lurus"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:821
+msgid "Syd"
+msgstr "Syd"
+
+#: src/ui/buttons-financial.blp:824
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Penyusutan Jumlah Angka Tahun (Sum-of-the-Years’-Digits Depreciation)"
+
+#. Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Periodic Payment Dialog: Label before term input
+#. Translators: Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
+#: src/ui/buttons-financial.blp:1263
+msgid "Term"
+msgstr "Masa"
+
+#: src/ui/buttons-financial.blp:843
+msgid "Financial Term"
+msgstr "Istilah Keuangan"
+
+#: src/ui/buttons-financial.blp:858 src/ui/math-preferences.blp:78
+msgid "Currency Conversion"
+msgstr "Konversi Mata Uang"
+
+#. Translators: Compounding Term Dialog: Calculate button
+#. Translators: Double-Declining Depreciation Dialog: Calculate button
+#. Translators: Future Value Dialog: Calculate button
+#. Translators: Gross Profit Margin Dialog: Calculate button
+#. Translators: Periodic Payment Dialog: Calculate button
+#. Translators: Present Value Dialog: Calculate button
+#. Translators: Periodic Interest Rate Dialog: Calculate button
+#. Translators: Straight-Line Depreciation Dialog: Calculate button
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Translators: Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.blp:905 src/ui/buttons-financial.blp:961
+#: src/ui/buttons-financial.blp:1017 src/ui/buttons-financial.blp:1073
+#: src/ui/buttons-financial.blp:1123 src/ui/buttons-financial.blp:1179
+#: src/ui/buttons-financial.blp:1235 src/ui/buttons-financial.blp:1291
+#: src/ui/buttons-financial.blp:1347 src/ui/buttons-financial.blp:1409
+msgid "C_alculate"
+msgstr "_Hitung"
+
+#. Translators: Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:916
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Menghitung cacah perioda kompon yang diperlukan untuk meningkatkan investasi "
+"dari nilai kini ke nilai masa depan, dengan bunga tetap per perioda kompon."
+
+#. Translators: Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.blp:943
+msgid "Double-Declining Depreciation"
+msgstr "Depresiasi Penurunan Ganda"
+
+#. Translators: Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:972
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Menghitung jatah depresiasi atas suatu aset bagi perioda waktu yang "
+"dinyatakan, memakai metoda keseimbangan menurun ganda."
+
+#. Translators: Double-Declining Depreciation Dialog: Label before cost input
+#. Translators: Gross Profit Margin Dialog: Label before cost input
+#. Translators: Straight-Line Depreciation Dialog: Label before cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
+#: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
+msgid "Cost"
+msgstr "Biaya"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before life input
+#. Translators: Straight-Line Depreciation Dialog: Label before life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
+#: src/ui/buttons-financial.blp:1375
+msgid "Life"
+msgstr "Masa Hidup"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before period input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
+msgid "Period"
+msgstr "Periode"
+
+#. Translators: Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1028
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Menghitung nilai masa depan dari suatu investasi yang didasarkan atas "
+"sejumlah pembayaran yang sama besar dengan bunga periodik selama cacah "
+"perioda pembayaran dalam masanya."
+
+#. Translators: Future Value Dialog: Label before number of periods input
+#. Translators: Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.blp:1045 src/ui/buttons-financial.blp:1207
+msgid "Number of Periods"
+msgstr "Cacah Periode"
+
+#. Translators: Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1084
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Menghitung harga jual ulang suatu produk, berdasarkan pada biaya produk dan "
+"marjin keuntungan kotor yang diinginkan."
+
+#. Translators: Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.blp:1095
+msgid "Margin"
+msgstr "Marjin"
+
+#. Translators: Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1134
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
+msgstr ""
+"Menghitung banyaknya pembayaran periodik dari suatu pinjaman, di mana "
+"pembayaran dilakukan di akhir setiap periode pembayaran."
+
+#. Translators: Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.blp:1139
+msgid "Principal"
+msgstr "Pokok"
+
+#. Translators: Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1190
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
+msgstr ""
+"Menghitung nilai kini dari suatu investasi berdasar pada sejumlah pembayaran "
+"yang sama yang diberi potongan pada suatu suku bunga periodik atas sejumlah "
+"periode pembayaran dalam jangka waktu."
+
+#. Translators: Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1246
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
+msgstr ""
+"Menghitung suku bunga periodik yang diperlukan untuk meningkatkan suatu "
+"investasi ke suatu nilai di masa depan, sepanjang sejumlah periode kompon."
+
+#. Translators: Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.blp:1273
+msgid "Straight-Line Depreciation"
+msgstr "Depresiasi Garis Lurus"
+
+#. Translators: Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1302
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
+msgstr ""
+"Menghitung depresiasi garis lurus dari suatu aset untuk satu periode. Metode "
+"penyusutan garis lurus membagi biaya penyusutan sama besar sepanjang masa "
+"hidup dari suatu aset. Masa hidup adalah banyaknya periode, biasanya dalam "
+"tahun, di mana aset disusutkan."
+
+#. Translators: Straight-Line Depreciation Dialog: Label before salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
+msgid "Salvage"
+msgstr "Salvage"
+
+#. Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.blp:1329
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Penyusutan Jumlah Angka Tahun (Sum-of-the-Years’-Digits Depreciation)"
+
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1358
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated."
+msgstr ""
+"Menghitung jatah depresiasi dari suatu aset untuk periode waktu yang "
+"dinyatakan, memakai metode Sum-of-the-Years-Digit. Metode penyusutan ini "
+"mempercepat laju penyusutan, sehingga lebih banyak pengeluaran penyusutan "
+"yang terjadi di periode-periode awal daripada di akhir. Masa hidup adalah "
+"banyaknya periode, biasanya dalam tahun, sepanjang masa itu aset disusutkan."
+
+#. Translators: Title of Payment Period dialog
+#: src/ui/buttons-financial.blp:1391
+msgid "Payment Period"
+msgstr "Masa Pembayaran"
+
+#. Translators: Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1420
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Menghitung cacah perioda pembayaran yang diperlukan selama term dari suatu "
+"anuitas biasa, untuk mengakumulasi suatu nilai di masa mendatang, pada suatu "
+"tingkat bunga periodik."
+
+#: src/ui/buttons-programming.blp:1904
+msgid "Bitwise AND"
+msgstr "Bitwise AND"
+
+#: src/ui/buttons-programming.blp:1922
+msgid "Bitwise NAND"
+msgstr "Bitwise NAND"
+
+#: src/ui/buttons-programming.blp:1941
+msgid "Bitwise OR"
+msgstr "Bitwise OR"
+
+#: src/ui/buttons-programming.blp:1959
+msgid "Bitwise NOR"
+msgstr "Bitwise NOR"
+
+#: src/ui/buttons-programming.blp:1977
+msgid "Bitwise NOT"
+msgstr "Bitwise NOT"
+
+#: src/ui/buttons-programming.blp:1995
+msgid "Bitwise Exclusive OR"
+msgstr "Bitwise Eksklusif OR"
+
+#: src/ui/buttons-programming.blp:2013
+msgid "Bitwise Exclusive NOR"
+msgstr "Bitwise Eksklusif OR"
+
+#: src/ui/buttons-programming.blp:2031
+msgid "Left Shift [<<]"
+msgstr "Shift Ke Kiri [<<]"
+
+#: src/ui/buttons-programming.blp:2049
+msgid "Right Shift [>>]"
+msgstr "Shift Ke Kanan [>>]"
+
+#: src/ui/buttons-programming.blp:2067
+msgid "Unsigned Right Shift [>>>]"
+msgstr "Shift Ke Kanan Tanpa Tanda [>>>]"
+
+#: src/ui/buttons-programming.blp:2257
+msgid "Binary Logarithm"
+msgstr "Logaritma Biner"
+
+#: src/ui/buttons-programming.blp:2274
+msgid "Base-2 Exponential"
+msgstr "Eksponensial Basis-2"
+
+#: src/ui/buttons-programming.blp:2364
+msgid "Ceiling [Ctrl+[]]"
+msgstr "Ceiling [Ctrl+[]]"
+
+#: src/ui/buttons-programming.blp:2385
+msgid "Floor [Alt+[]]"
+msgstr "Floor [Alt+[]]"
+
+#: src/ui/buttons-programming.blp:2449
+msgid "Change Base"
+msgstr "Ubah Basis"
+
+#: src/ui/buttons-programming.blp:2468
+msgid "Change Word Size"
+msgstr "Ubah Ukuran Word"
+
+#. Translators: Title of insert character code dialog
+#: src/ui/buttons-programming.blp:2486 src/ui/buttons-programming.blp:2504
+msgid "Insert Character Code"
+msgstr "Sisipkan Kode Karakter"
+
+#. Translators: Insert character code dialog: Label before character entry
+#: src/ui/buttons-programming.blp:2535
+msgid "Character"
+msgstr "Karakter"
+
+#: src/ui/buttons-programming.blp:2542
+msgid "Convert to"
+msgstr "Konversi ke"
+
+#: src/ui/buttons-programming.blp:2546
+msgid "Unicode Code Point"
+msgstr "Kode Titik Unicode"
+
+#: src/ui/buttons-programming.blp:2547
+msgid "UTF-8 Encoding"
+msgstr "Pengkodean UTF-8"
+
+#: src/ui/buttons-programming.blp:2548
+msgid "UTF-16 Encoding"
+msgstr "Pengkodean UTF-16"
+
+#. Translators: Insert character code dialog: Button to insert selected character
+#: src/ui/buttons-programming.blp:2574
+msgid "_Insert"
+msgstr "_Masukkan"
+
+#: src/ui/math-converter.blp:119
+msgid "Exchange Rates Not Loaded"
+msgstr "Nilai Tukar Belum Dimuat"
+
+#: src/ui/math-converter.blp:122
+msgid ""
+"<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
+msgstr ""
+"<a href=\"r:///\">Laju penyegaran</a> atau ubah interval penyegaran dalam "
+"preferensi"
+
+#: src/ui/math-converter.blp:141
+msgid "_Copy"
+msgstr "_Salin"
+
+#: src/ui/math-converter.blp:146
+msgid "_Paste"
+msgstr "Tem_pel"
+
+#: src/ui/math-function-popover.blp:48
+msgid "Function name"
+msgstr "Nama fungsi"
+
+#: src/ui/math-function-popover.blp:57
+msgid "Select no. of arguments"
+msgstr "Pilih nomor argumen"
+
+#: src/ui/math-function-popover.blp:62
+msgid "Add function"
+msgstr "Tambahkan fungsi"
+
+#: src/ui/math-preferences.blp:11
+msgid "Favorite Currencies"
+msgstr "Mata Uang Favorit"
+
+#: src/ui/math-preferences.blp:20
+msgid "Search currencies"
+msgstr "Cari mata uang"
+
+#: src/ui/math-preferences.blp:36
+msgid "No Results Found"
+msgstr "Tidak Ditemukan Hasil"
+
+#: src/ui/math-preferences.blp:37
+msgid "Try a different search"
+msgstr "Cobalah pencarian lain"
+
+#: src/ui/math-preferences.blp:46
+msgid "General"
+msgstr "Umum"
+
+#: src/ui/math-preferences.blp:49
+msgid "Number of _Decimals"
+msgstr "Cacah _Desimal"
+
+#: src/ui/math-preferences.blp:57
+msgid "Trailing _Zeroes"
+msgstr "Nol _Di Ekor"
+
+#: src/ui/math-preferences.blp:62
+msgid "_Group Digits"
+msgstr "Kelompokkan Di_git"
+
+#: src/ui/math-preferences.blp:67
+msgid "_Angle Units"
+msgstr "S_atuan Sudut"
+
+#: src/ui/math-preferences.blp:72
+msgid "_Word Size"
+msgstr "Ukuran _Word"
+
+#: src/ui/math-preferences.blp:81
+msgid "E_xchange Rate Refresh Interval"
+msgstr "Interval Pen_yegaran Nilai Tukar"
+
+#: src/ui/math-preferences.blp:86
+msgid "_Currency Display"
+msgstr "Tampilan Mata _Uang"
+
+#: src/ui/math-preferences.blp:91
+msgid "_Show Currencies in Auto-Completion List"
+msgstr "Tampilkan Mata Uang dalam _Senarai Pelengkapan Otomatis"
+
+#: src/ui/math-preferences.blp:96
+msgid "All"
+msgstr "Semua"
+
+#: src/ui/math-preferences.blp:97
+msgid "Favorite Only"
+msgstr "Hanya Favorit"
+
+#: src/ui/math-preferences.blp:98
+msgid "None"
+msgstr "Nihil"
+
+#: src/ui/math-preferences.blp:104
+msgid "_Favorite Currencies"
+msgstr "Mata Uang _Favorit"
+
+#: src/ui/math-shortcuts.blp:5
+msgctxt "shortcuts dialog"
+msgid "General"
+msgstr "Umum"
+
+#: src/ui/math-shortcuts.blp:9
+msgctxt "shortcuts dialog"
+msgid "Open a New Window"
+msgstr "Buka Jendela Baru"
+
+#: src/ui/math-shortcuts.blp:14
+msgctxt "shortcuts dialog"
+msgid "Close Current Window"
+msgstr "Tutup Jendela Kini"
+
+#: src/ui/math-shortcuts.blp:19
+msgctxt "shortcuts dialog"
+msgid "Quit the Application"
+msgstr "Keluar Aplikasi"
+
+#: src/ui/math-shortcuts.blp:24
+msgctxt "shortcuts dialog"
+msgid "Show Help"
+msgstr "Tampilkan Bantuan"
+
+#: src/ui/math-shortcuts.blp:29
+msgctxt "shortcuts dialog"
+msgid "Open Menu"
+msgstr "Buka Menu"
+
+#: src/ui/math-shortcuts.blp:34
+msgctxt "shortcuts dialog"
+msgid "Show Preferences"
+msgstr "Tampilkan Preferensi"
+
+#: src/ui/math-shortcuts.blp:39
+msgctxt "shortcuts dialog"
+msgid "Keyboard Shortcuts"
+msgstr "Pintasan Papan Tik"
+
+#: src/ui/math-shortcuts.blp:44
+msgctxt "shortcuts dialog"
+msgid "Clear History"
+msgstr "Bersihkan Riwayat"
+
+#: src/ui/math-shortcuts.blp:49
+msgctxt "shortcuts dialog"
+msgid "Switching Modes"
+msgstr "Beralih Mode"
+
+#: src/ui/math-shortcuts.blp:53
+msgctxt "shortcuts dialog"
+msgid "Switch to Basic Mode"
+msgstr "Beralih ke Mode Dasar"
+
+#: src/ui/math-shortcuts.blp:58
+msgctxt "shortcuts dialog"
+msgid "Switch to Advanced Mode"
+msgstr "Beralih ke Mode Lanjutan"
+
+#: src/ui/math-shortcuts.blp:63
+msgctxt "shortcuts dialog"
+msgid "Switch to Financial Mode"
+msgstr "Beralih ke Mode Keuangan"
+
+#: src/ui/math-shortcuts.blp:68
+msgctxt "shortcuts dialog"
+msgid "Switch to Programming Mode"
+msgstr "Beralih ke Mode Pemrograman"
+
+#: src/ui/math-shortcuts.blp:73
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode"
+msgstr "Beralih ke Mode Papan Tik"
+
+#: src/ui/math-shortcuts.blp:78
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode (alt.)"
+msgstr "Beralih ke Mode Papan Tik (alt.)"
+
+#: src/ui/math-shortcuts.blp:83
+msgctxt "shortcuts dialog"
+msgid "Switch to Conversion Mode"
+msgstr "Beralih ke Mode Konversi"
+
+#: src/ui/math-shortcuts.blp:88
+msgctxt "shortcuts dialog"
+msgid "Programming Mode"
+msgstr "Mode Pemrograman"
+
+#: src/ui/math-shortcuts.blp:92
+msgctxt "shortcuts dialog"
+msgid "Switch to Binary"
+msgstr "Beralih ke Biner"
+
+#: src/ui/math-shortcuts.blp:97
+msgctxt "shortcuts dialog"
+msgid "Switch to Octal"
+msgstr "Beralih ke Oktal"
+
+#: src/ui/math-shortcuts.blp:102
+msgctxt "shortcuts dialog"
+msgid "Switch to Decimal"
+msgstr "Beralih ke Desimal"
+
+#: src/ui/math-shortcuts.blp:107
+msgctxt "shortcuts dialog"
+msgid "Switch to Hexadecimal"
+msgstr "Beralih ke Heksadesimal"
+
+#: src/ui/math-shortcuts.blp:112
+msgctxt "shortcuts dialog"
+msgid "Keyboard Entry"
+msgstr "Entri Papan Tik"
+
+#: src/ui/math-shortcuts.blp:116
+msgctxt "shortcuts dialog"
+msgid "Multiply (×)"
+msgstr "Kali (*)"
+
+#: src/ui/math-shortcuts.blp:121
+msgctxt "shortcuts dialog"
+msgid "Divide (÷)"
+msgstr "Bagi (÷)"
+
+#: src/ui/math-shortcuts.blp:126
+msgctxt "shortcuts dialog"
+msgid "Square (²)"
+msgstr "Kuadrat (²)"
+
+#: src/ui/math-shortcuts.blp:131
+msgctxt "shortcuts dialog"
+msgid "Square Root (√)"
+msgstr "Akar Kuadrat (√)"
+
+#: src/ui/math-shortcuts.blp:136
+msgctxt "shortcuts dialog"
+msgid "Inverse (⁻¹)"
+msgstr "Inverse (⁻¹)"
+
+#: src/ui/math-shortcuts.blp:141
+msgctxt "shortcuts dialog"
+msgid "Pi (π)"
+msgstr "Pi (π)"
+
+#: src/ui/math-shortcuts.blp:146
+msgctxt "shortcuts dialog"
+msgid "Tau (τ)"
+msgstr "Tau (τ)"
+
+#: src/ui/math-shortcuts.blp:151
+msgctxt "shortcuts dialog"
+msgid "Degree (°)"
+msgstr "Derajat (°)"
+
+#: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
+msgctxt "shortcuts dialog"
+msgid "Floor (⌊⌋)"
+msgstr "Floor (⌊⌋)"
+
+#: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
+msgctxt "shortcuts dialog"
+msgid "Ceiling (⌈⌉)"
+msgstr "Ceiling (⌈⌉)"
+
+#: src/ui/math-shortcuts.blp:180
+msgctxt "shortcuts dialog"
+msgid "Enter Numbers in Scientific Format"
+msgstr "Masukkan Angka dalam Format Ilmiah"
+
+#: src/ui/math-shortcuts.blp:185
+msgctxt "shortcuts dialog"
+msgid "Enter Subscript Numbers"
+msgstr "Masukkan Angka Subskrip"
+
+#: src/ui/math-shortcuts.blp:190
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Numbers"
+msgstr "Masukkan Angka Superskrip"
+
+#: src/ui/math-shortcuts.blp:195
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Minus Sign"
+msgstr "Masukkan Tanda Minus Superskrip"
+
+#: src/ui/math-shortcuts.blp:200
+msgctxt "shortcuts dialog"
+msgid "Equation"
+msgstr "Persamaan"
+
+#: src/ui/math-shortcuts.blp:204
+msgctxt "shortcuts dialog"
+msgid "Copy"
+msgstr "Salin"
+
+#: src/ui/math-shortcuts.blp:209
+msgctxt "shortcuts dialog"
+msgid "Paste"
+msgstr "Tempel"
+
+#: src/ui/math-shortcuts.blp:214
+msgctxt "shortcuts dialog"
+msgid "Undo"
+msgstr "Tidak Jadi"
+
+#: src/ui/math-shortcuts.blp:219
+msgctxt "shortcuts dialog"
+msgid "Redo"
+msgstr "Jadi Lagi"
+
+#: src/ui/math-shortcuts.blp:224
+msgctxt "shortcuts dialog"
+msgid "Previous Equation"
+msgstr "Persamaan Sebelumnya"
+
+#: src/ui/math-shortcuts.blp:229
+msgctxt "shortcuts dialog"
+msgid "Next Equation"
+msgstr "Persamaan Berikutnya"
+
+#: src/ui/math-shortcuts.blp:234
+msgctxt "shortcuts dialog"
+msgid "Clear Display"
+msgstr "Bersihkan Tampilan"
+
+#: src/ui/math-shortcuts.blp:239
+msgctxt "shortcuts dialog"
+msgid "Factorize"
+msgstr "Faktorisasi"
+
+#: src/ui/math-variable-popover.blp:37
+msgid "Constants"
+msgstr "Konstanta"
+
+#: src/ui/math-variable-popover.blp:58
+msgid "Variable name"
+msgstr "Nama variabel"
+
+#: src/ui/math-variable-popover.blp:67
+msgid "Store value into existing or new variable"
+msgstr "Simpan nilai ke variabel yang ada atau baru"
+
+#: src/ui/math-window.blp:7
+msgid "_Basic"
+msgstr "_Dasar"
+
+#: src/ui/math-window.blp:13
+msgid "_Advanced"
+msgstr "Tingk_at Lanjut"
+
+#: src/ui/math-window.blp:19
+msgid "_Financial"
+msgstr "_Finansial"
+
+#: src/ui/math-window.blp:25
+msgid "_Programming"
+msgstr "_Pemrograman"
+
+#: src/ui/math-window.blp:31
+msgid "_Keyboard"
+msgstr "Papan _Ketik"
+
+#: src/ui/math-window.blp:37
+msgid "_Conversion"
+msgstr "K_onversi"
+
+#: src/ui/math-window.blp:47
+msgid "_New Window"
+msgstr "Je_ndela Baru"
+
+#: src/ui/math-window.blp:54
+msgid "_Clear History"
+msgstr "_Bersihkan Riwayat"
+
+#: src/ui/math-window.blp:61
+msgid "Result Format"
+msgstr "Format Hasil"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.blp:65
+msgid "_Automatic"
+msgstr "Otom_atis"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#: src/ui/math-window.blp:72
+msgid "_Fixed"
+msgstr "_Tetap"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#: src/ui/math-window.blp:79
+msgid "_Scientific"
+msgstr "_Ilmiah"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#: src/ui/math-window.blp:86
+msgid "_Engineering"
+msgstr "T_eknik"
+
+#: src/ui/math-window.blp:96
+msgid "_Preferences"
+msgstr "_Preferensi"
+
+#: src/ui/math-window.blp:101
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan Ti_k"
+
+#: src/ui/math-window.blp:106
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: src/ui/math-window.blp:111
+msgid "A_bout Calculator"
+msgstr "_Tentang Kalkulator"
+
+#: src/ui/math-window.blp:132
+msgid "Mode Selection"
+msgstr "Seleksi Mode"
+
+#: src/ui/math-window.blp:139
+msgid "Undo"
+msgstr "Tidak Jadi"
+
+#: src/ui/math-window.blp:146
+msgid "Redo"
+msgstr "Jadi Lagi"
+
+#: src/ui/math-window.blp:161
+msgid "Main Menu"
+msgstr "Menu Utama"

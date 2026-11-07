@@ -1,0 +1,4662 @@
+# Kazakh translation for gnome-calculator.
+# Copyright (C) 2016 gnome-calculator's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-calculator package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2010-2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gcalctool master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
+"POT-Creation-Date: 2026-07-20 07:49+0000\n"
+"PO-Revision-Date: 2026-07-30 11:43+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/org.gnome.Calculator.desktop.in:2 data/org.gnome.Calculator.metainfo.xml.in:7
+#: src/gnome-calculator.vala:76 src/gnome-calculator.vala:306
+#: src/ui/math-window.blp:118
+msgid "Calculator"
+msgstr "Калькулятор"
+
+#: data/org.gnome.Calculator.desktop.in:3 data/org.gnome.Calculator.metainfo.xml.in:8
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Қарапайым, ғылыми не қаржылық есептеулерді жүргізу"
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Calculator.desktop.in:5
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "calculation;arithmetic;scientific;financial;есептеу;калькулятор;арифметика;ғылыми;қаржылық;"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:10
+msgid ""
+"Calculator is an application that solves mathematical equations. Though it at "
+"first appears to be a simple calculator with only basic arithmetic operations, you "
+"can switch into Advanced, Financial, or Programming mode to find a surprising set "
+"of capabilities."
+msgstr ""
+"Калькулятор — математикалық теңдеулерді шешетін қолданба. Басында ол тек негізгі "
+"арифметикалық операциялары бар қарапайым калькулятор болып көрінсе де, таңқаларлық "
+"мүмкіндіктер жиынтығын табу үшін кеңейтілген, қаржылық немесе бағдарламалау "
+"режиміне ауысуға болады."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:16
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, complex "
+"numbers, random number generation and prime factorization."
+msgstr ""
+"Кеңейтілген калькулятор көптеген операцияларды қолдайды, соның ішінде: "
+"логарифмдер, факториалдар, тригонометриялық және гиперболалық функциялар, "
+"қалдықпен бөлу, кешенді сандар, кездейсоқ сандарды жасау және жай көбейткіштерге "
+"жіктеу."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:22
+msgid ""
+"Financial mode supports several computations, including periodic interest rate, "
+"present and future value, double declining and straight line depreciation, and "
+"many others."
+msgstr ""
+"Қаржы режимі бірнеше есептеулерді қолдайды, оның ішінде кезеңдік пайыздық "
+"мөлшерлеме, қазіргі және болашақтағы құн, екі есе төмендеу және түзу сызықты "
+"амортизация және т.б. бар."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:27
+msgid ""
+"Programming mode supports calculations using common bases (binary, octal, decimal, "
+"and hexadecimal), bitwise operations, two’s complement, character to character "
+"code conversion, and more."
+msgstr ""
+"Бағдарламалау режимі жалпы негіздерді (екілік, сегіздік, ондық және он алтылық), "
+"биттік операцияларды, қосымша кодтарды, таңбаны таңба кодына түрлендіруді және "
+"т.б. қолданатын есептеулерді қолдайды."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:32
+msgid ""
+"Conversion mode supports conversions between common units, currencies and number "
+"bases."
+msgstr ""
+"Түрлендіру режимі жалпы бірліктер, валюталар және сан негіздері арасындағы "
+"түрлендірулерді қолдайды."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:43
+msgid "Basic Mode"
+msgstr "Қарапайым режимі"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:47
+msgid "Advanced Mode"
+msgstr "Кеңейтілген режимі"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:51
+msgid "Financial Mode"
+msgstr "Қаржылық режимі"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:55
+msgid "Programming Mode"
+msgstr "Бағдарламалау режимі"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:59
+msgid "Keyboard Mode"
+msgstr "Пернетақта режимі"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+msgid "Conversion Mode"
+msgstr "Түрлендіру режимі"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Calculator.metainfo.xml.in:84
+#: data/org.gnome.Calculator.metainfo.xml.in:86 src/gnome-calculator.vala:308
+msgid "The GNOME Project"
+msgstr "GNOME жобасы"
+
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "Persistent history tape"
+msgstr "Тұрақты тарих таспасы"
+
+#: data/org.gnome.calculator.gschema.xml:33
+msgid ""
+"History entries saved across sessions as (equation, answer) pairs. Written on "
+"window close. Cleared when the user clears history."
+msgstr ""
+"Тарих жазбалары сеанстар арасында (өрнек, жауап) жұптары ретінде сақталады. Терезе "
+"жабылғанда жазылады. Пайдаланушы тарихты тазартқанда тазартылады."
+
+#: data/org.gnome.calculator.gschema.xml:41
+msgid "Accuracy value"
+msgstr "Дәлдігі"
+
+#: data/org.gnome.calculator.gschema.xml:42
+msgid "The number of digits displayed after the numeric point"
+msgstr "Сандық нүктеден кейін көрсетілетін сандар саны"
+
+#: data/org.gnome.calculator.gschema.xml:47
+msgid "Word size"
+msgstr "Сөз өлшемі"
+
+#: data/org.gnome.calculator.gschema.xml:48
+msgid "The size of the words used in bitwise operations"
+msgstr "Бит бойынша операцияларда қолданылатын сөздердің өлшемі"
+
+#: data/org.gnome.calculator.gschema.xml:53
+msgid "Numeric base"
+msgstr "Санақ жүйесі"
+
+#: data/org.gnome.calculator.gschema.xml:54
+msgid "The numeric base"
+msgstr "Санақ жүйесі"
+
+#: data/org.gnome.calculator.gschema.xml:58
+msgid "Group digits"
+msgstr "Цифрларды топтау"
+
+#: data/org.gnome.calculator.gschema.xml:59
+msgid "Indicates whether digits are grouped in large numbers."
+msgstr "Үлкен сандарда цифрлардың топталатынын сипаттайды."
+
+#: data/org.gnome.calculator.gschema.xml:63
+msgid "Show trailing zeroes"
+msgstr "Үтірден кейінгі соңғы нөлдерді көрсету"
+
+#: data/org.gnome.calculator.gschema.xml:64
+msgid ""
+"Indicates whether any trailing zeroes after the numeric point should be shown in "
+"the display value."
+msgstr ""
+"Сандық нүктеден кейінгі артық нөлдердің дисплей мәнінде көрсетілу керектігін "
+"көрсетеді."
+
+#: data/org.gnome.calculator.gschema.xml:68
+msgid "Number format"
+msgstr "Сандар пішімі"
+
+#: data/org.gnome.calculator.gschema.xml:69
+msgid "The format to display numbers in"
+msgstr "Сандар көрсетілетін пішімі"
+
+#: data/org.gnome.calculator.gschema.xml:73
+msgid "Angle units"
+msgstr "Бұрыштардың өлшем бірлігі"
+
+#: data/org.gnome.calculator.gschema.xml:74
+msgid "The angle units to use"
+msgstr "Қолданылатын бұрыш бірліктері"
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Currency update interval"
+msgstr "Валютаны жаңарту аралығы"
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid ""
+"How often the currency exchange rates should be updated. A value of 0 means the "
+"currency exchange rates won't be fetched from the network at all."
+msgstr ""
+"Валюта бағамы қаншалықты жиі жаңартылуы тиіс. 0 мәні валюта айырбастау бағамдары "
+"желіден мүлдем алынбайтыны білдіреді."
+
+#: data/org.gnome.calculator.gschema.xml:83
+msgid "Currency display"
+msgstr "Валютаны көрсету"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in the "
+"converter."
+msgstr ""
+"Түрлендіргіште валюта коды, валюта атауы немесе екеуі де көрсетілетінін анықтайды."
+
+#: data/org.gnome.calculator.gschema.xml:88
+msgid "Enabled completions"
+msgstr "Іске қосылған аяқтаулар"
+
+#: data/org.gnome.calculator.gschema.xml:89
+msgid "The types of completion proposals to be shown in the auto-completion list."
+msgstr "Автоматты аяқтау тізімінде көрсетілетін аяқтау ұсыныстарының түрлері."
+
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Favorite currencies"
+msgstr "Таңдаулы валюталар"
+
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr "Валюталар тізімінің басында көрсетілетін таңдаулы валюталар."
+
+#: data/org.gnome.calculator.gschema.xml:98
+msgid "Button mode"
+msgstr "Батырмалар режимі"
+
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "The button mode"
+msgstr "Батырмалар режимі"
+
+#: data/org.gnome.calculator.gschema.xml:103
+msgid "Unit category"
+msgstr "Бірліктер санаты"
+
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected unit category in the converter"
+msgstr "Түрлендіргіште қазір таңдалған бірліктер санаты"
+
+#: data/org.gnome.calculator.gschema.xml:108
+msgid "Source units"
+msgstr "Бастапқы бірліктер"
+
+#: data/org.gnome.calculator.gschema.xml:109
+msgid "Currently selected source units in the converter"
+msgstr "Түрлендіргіште қазір таңдалған бастапқы бірліктер"
+
+#: data/org.gnome.calculator.gschema.xml:113
+msgid "Target units"
+msgstr "Мақсатты бірліктер"
+
+#: data/org.gnome.calculator.gschema.xml:114
+msgid "Currently selected target units in the converter"
+msgstr "Түрлендіргіште қазір таңдалған мақсатты бірліктер"
+
+#: data/org.gnome.calculator.gschema.xml:118
+msgid "Internal precision"
+msgstr "Ішкі дәлдік"
+
+#: data/org.gnome.calculator.gschema.xml:119
+msgid "The internal precision used with the MPFR library"
+msgstr "MPFR библиотекасымен қолданылатын ішкі дәлдік"
+
+#: data/org.gnome.calculator.gschema.xml:123
+msgid "Window position"
+msgstr "Терезе орны"
+
+#: data/org.gnome.calculator.gschema.xml:124
+msgid "Window position (x and y) of the last closed window."
+msgstr "Соңғы жабылған терезенің терезе орны (x және y)."
+
+#: data/org.gnome.calculator.gschema.xml:128
+msgid "Window maximized"
+msgstr "Терезе максималды етілген"
+
+#: data/org.gnome.calculator.gschema.xml:129
+msgid "Whether the last closed window was maximized."
+msgstr "Терезе максималды етілген бе, жоқ па."
+
+#: data/org.gnome.calculator.gschema.xml:133
+msgid "Window size"
+msgstr "Терезе өлшемі"
+
+#: data/org.gnome.calculator.gschema.xml:134
+msgid "Window size (width and height) of the last closed window."
+msgstr "Соңғы жабылған терезенің терезе орны (ені және биіктігі)."
+
+#: lib/currency.vala:82
+msgid "UAE Dirham"
+msgstr "БАӘ дирхамы"
+
+#: lib/currency.vala:83
+msgid "Armenian Dram"
+msgstr "Армян драмы"
+
+#: lib/currency.vala:84
+msgid "Argentine Peso"
+msgstr "Аргентина песосы"
+
+#: lib/currency.vala:85
+msgid "Australian Dollar"
+msgstr "Аустралиялық доллар"
+
+#: lib/currency.vala:86
+msgid "Bangladeshi Taka"
+msgstr "Бангладеш такасы"
+
+#: lib/currency.vala:87
+msgid "Bahraini Dinar"
+msgstr "Бахрейн динары"
+
+#: lib/currency.vala:88
+msgid "Brunei Dollar"
+msgstr "Бруней доллары"
+
+#: lib/currency.vala:89
+msgid "Brazilian Real"
+msgstr "Бразилия реалы"
+
+#: lib/currency.vala:90
+msgid "Botswana Pula"
+msgstr "Ботсвана пулы"
+
+#: lib/currency.vala:91
+msgid "Canadian Dollar"
+msgstr "Канадалық доллар"
+
+#: lib/currency.vala:92
+msgid "Swiss Franc"
+msgstr "Швейцар франкі"
+
+#: lib/currency.vala:93
+msgid "Chilean Peso"
+msgstr "Чилилық песо"
+
+#: lib/currency.vala:94
+msgid "Chinese Yuan"
+msgstr "Қытай юані"
+
+#: lib/currency.vala:95
+msgid "Colombian Peso"
+msgstr "Колумбия песосы"
+
+#: lib/currency.vala:96
+msgid "Czech Koruna"
+msgstr "Чех корунасы"
+
+#: lib/currency.vala:97
+msgid "Danish Krone"
+msgstr "Дания кронасы"
+
+#: lib/currency.vala:98
+msgid "Algerian Dinar"
+msgstr "Алжир динары"
+
+#: lib/currency.vala:99
+msgid "Egyptian Pound"
+msgstr "Мысыр фунты"
+
+#: lib/currency.vala:100
+msgid "Euro"
+msgstr "Еуро"
+
+#: lib/currency.vala:101
+msgid "British Pound Sterling"
+msgstr "Британдық фунт стерлингі"
+
+#: lib/currency.vala:102
+msgid "Hong Kong Dollar"
+msgstr "Гонконг доллары"
+
+#: lib/currency.vala:103
+msgid "Hungarian Forint"
+msgstr "Венгрия форинті"
+
+#: lib/currency.vala:104
+msgid "Indonesian Rupiah"
+msgstr "Индонезия рупиясы"
+
+#: lib/currency.vala:105
+msgid "Israeli New Shekel"
+msgstr "Израильдің жаңа шекелі"
+
+#: lib/currency.vala:106
+msgid "Indian Rupee"
+msgstr "Үнді рупиясы"
+
+#: lib/currency.vala:107
+msgid "Iranian Rial"
+msgstr "Иран риалы"
+
+#: lib/currency.vala:108
+msgid "Icelandic Krona"
+msgstr "Исландия кронасы"
+
+#: lib/currency.vala:109
+msgid "Japanese Yen"
+msgstr "Жапон иені"
+
+#: lib/currency.vala:110
+msgid "Jamaican Dollar"
+msgstr "Ямайка доллары"
+
+#: lib/currency.vala:111
+msgid "South Korean Won"
+msgstr "Оңтүстік Корея воны"
+
+#: lib/currency.vala:112
+msgid "Kuwaiti Dinar"
+msgstr "Кувейт динары"
+
+#: lib/currency.vala:113
+msgid "Kazakhstani Tenge"
+msgstr "Қазақстандық теңге"
+
+#: lib/currency.vala:114
+msgid "Sri Lankan Rupee"
+msgstr "Шри-Ланка рупиясы"
+
+#: lib/currency.vala:115
+msgid "Libyan Dinar"
+msgstr "Ливиялық динар"
+
+#: lib/currency.vala:116
+msgid "Mauritian Rupee"
+msgstr "Мавритандық рупия"
+
+#: lib/currency.vala:117
+msgid "Mexican Peso"
+msgstr "Мексикалық песо"
+
+#: lib/currency.vala:118
+msgid "Malaysian Ringgit"
+msgstr "Малайзиялық ринггит"
+
+#: lib/currency.vala:119
+msgid "Nigerian Naira"
+msgstr "Нигериялық найра"
+
+#: lib/currency.vala:120
+msgid "Norwegian Krone"
+msgstr "Норвегиялық крона"
+
+#: lib/currency.vala:121
+msgid "Nepalese Rupee"
+msgstr "Непал рупиясы"
+
+#: lib/currency.vala:122
+msgid "New Zealand Dollar"
+msgstr "Жаңа Зеландия доллары"
+
+#: lib/currency.vala:123
+msgid "Omani Rial"
+msgstr "Оман риалы"
+
+#: lib/currency.vala:124
+msgid "Peruvian Nuevo Sol"
+msgstr "Перуандық жаңа соль"
+
+#: lib/currency.vala:125
+msgid "Philippine Peso"
+msgstr "Филлипиндық песо"
+
+#: lib/currency.vala:126
+msgid "Pakistani Rupee"
+msgstr "Пәкістандық рупия"
+
+#: lib/currency.vala:127
+msgid "Polish Złoty"
+msgstr "Поляк злотыйы"
+
+#: lib/currency.vala:128
+msgid "Qatari Riyal"
+msgstr "Катарлық риал"
+
+#: lib/currency.vala:129
+msgid "New Romanian Leu"
+msgstr "Румыниялық жаңа лей"
+
+#: lib/currency.vala:130
+msgid "Russian Ruble"
+msgstr "Ресей рублі"
+
+#: lib/currency.vala:131
+msgid "Serbian Dinar"
+msgstr "Сербия динары"
+
+#: lib/currency.vala:132
+msgid "Saudi Riyal"
+msgstr "Сауд риалы"
+
+#: lib/currency.vala:133
+msgid "Swedish Krona"
+msgstr "Швед кронасы"
+
+#: lib/currency.vala:134
+msgid "Singapore Dollar"
+msgstr "Сингапурлық доллар"
+
+#: lib/currency.vala:135
+msgid "Thai Baht"
+msgstr "Тайлық бат"
+
+#: lib/currency.vala:136
+msgid "Tunisian Dinar"
+msgstr "Тунис динары"
+
+#: lib/currency.vala:137
+msgid "Turkish Lira"
+msgstr "Түрік лирасы"
+
+#: lib/currency.vala:138
+msgid "T&T Dollar"
+msgstr "T&T доллары"
+
+#: lib/currency.vala:139
+msgid "New Taiwan Dollar"
+msgstr "Жаңа Тайвань доллары"
+
+#: lib/currency.vala:140
+msgid "Ukrainian Hryvnia"
+msgstr "Украин гривнасы"
+
+#: lib/currency.vala:141
+msgid "US Dollar"
+msgstr "АҚШ доллары"
+
+#: lib/currency.vala:142
+msgid "Uruguayan Peso"
+msgstr "Уругвайлық песо"
+
+#: lib/currency.vala:143
+msgid "Vietnamese Dong"
+msgstr "Вьетнамдық донг"
+
+#: lib/currency.vala:144
+msgid "Central African CFA Franc"
+msgstr "Орталық Африка CFA франкі"
+
+#: lib/currency.vala:145
+msgid "West African CFA Franc"
+msgstr "Батыс Африка CFA франкі"
+
+#: lib/currency.vala:146
+msgid "South African Rand"
+msgstr "Оңтүстік Африкалық ранд"
+
+#: lib/equation-lexer.vala:464
+msgid "Missing digits after minus sign"
+msgstr "Минус таңбасынан кейін цифрлар жетіспейді"
+
+#: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
+msgid "Missing second symbol (″)"
+msgstr "Екінші символ (″) жетіспейді"
+
+#: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
+msgid "Missing minute symbol (′)"
+msgstr "Минут символы (′) жоқ"
+
+#: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
+#: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
+msgid "Missing digits after decimal point"
+msgstr "Ондық нүктеден кейін цифрлар жоқ"
+
+#. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
+#: lib/equation-lexer.vala:810 src/math-display.vala:754 src/math-popover.vala:14
+msgid "in"
+msgstr "келесіде"
+
+#: lib/equation-lexer.vala:810 src/math-display.vala:754 src/math-popover.vala:14
+msgid "to"
+msgstr "етіп"
+
+#: lib/equation-parser.vala:486
+#, c-format
+msgid "Function “%s” is missing arguments"
+msgstr "«%s» функциясының аргументтері жоқ"
+
+#: lib/equation-parser.vala:816 lib/number.vala:759
+msgid "The zeroth root of a number is undefined"
+msgstr "Санның нөлдік түбірі анықталмаған"
+
+#: lib/equation-parser.vala:1125
+msgid "Mathematics"
+msgstr "Математика"
+
+#: lib/equation-parser.vala:1126 src/ui/buttons-advanced.blp:1116
+msgid "Euler’s Number"
+msgstr "Эйлер саны"
+
+#: lib/equation-parser.vala:1127
+msgid "Pi"
+msgstr "Пи"
+
+#: lib/equation-parser.vala:1128
+msgid "Tau"
+msgstr "Тау"
+
+#: lib/equation-parser.vala:1129
+msgid "Golden Ratio"
+msgstr "Алтын қима"
+
+#: lib/equation-parser.vala:1131
+msgid "Electromagnetism"
+msgstr "Электромагнитизм"
+
+#: lib/equation-parser.vala:1132
+msgid "Light Speed"
+msgstr "Жарық жылдамдығы"
+
+#: lib/equation-parser.vala:1133
+msgid "Elementary Charge"
+msgstr "Элементар заряд"
+
+#: lib/equation-parser.vala:1134
+msgid "Impedance of Vacuum"
+msgstr "Вакуум импедансы"
+
+#: lib/equation-parser.vala:1135
+msgid "Permeability of Vacuum"
+msgstr "Вакуумның магниттік өтімділігі"
+
+#: lib/equation-parser.vala:1136
+msgid "Permittivity of Vacuum"
+msgstr "Вакуумның диэлектрлік өтімділігі"
+
+#: lib/equation-parser.vala:1138
+msgid "Atomic & Nuclear"
+msgstr "Атомдық және ядролық"
+
+#: lib/equation-parser.vala:1139
+msgid "Planck’s Constant"
+msgstr "Планк тұрақтысы"
+
+#: lib/equation-parser.vala:1140
+msgid "Fine-Structure Constant"
+msgstr "Нәзік құрылымдық тұрақты"
+
+#: lib/equation-parser.vala:1141
+msgid "Electron Mass"
+msgstr "Электрон массасы"
+
+#: lib/equation-parser.vala:1142
+msgid "Proton Mass"
+msgstr "Протон массасы"
+
+#: lib/equation-parser.vala:1144
+msgid "Thermodynamics"
+msgstr "Термодинамика"
+
+#: lib/equation-parser.vala:1145
+msgid "Boltzmann Constant"
+msgstr "Больцман тұрақтысы"
+
+#: lib/equation-parser.vala:1146
+msgid "Atomic Mass Unit"
+msgstr "Атомдық масса бірлігі"
+
+#: lib/equation-parser.vala:1147
+msgid "Molar Gas Constant"
+msgstr "Молярлық газ тұрақтысы"
+
+#: lib/equation-parser.vala:1148
+msgid "Stefan-Boltzmann Constant"
+msgstr "Стефан-Больцман тұрақтысы"
+
+#: lib/equation-parser.vala:1149
+msgid "Avogadro’s Number"
+msgstr "Авогадро саны"
+
+#: lib/equation-parser.vala:1151
+msgid "Gravitation"
+msgstr "Гравитация"
+
+#: lib/equation-parser.vala:1152
+msgid "Gravitational Constant"
+msgstr "Гравитациялық тұрақты"
+
+#: lib/equation-parser.vala:1153
+msgid "Earth Acceleration"
+msgstr "Жердің үдеуі"
+
+#: lib/financial.vala:114
+msgid "Error: the number of periods must be positive"
+msgstr "Қате: кезеңдер саны оң болуы керек"
+
+#: lib/function-manager.vala:26
+msgid "Trigonometry"
+msgstr "Тригонометрия"
+
+#: lib/function-manager.vala:27 src/ui/buttons-advanced.blp:499
+msgid "Sine"
+msgstr "Синус"
+
+#: lib/function-manager.vala:28 src/ui/buttons-advanced.blp:573
+msgid "Cosine"
+msgstr "Косинус"
+
+#: lib/function-manager.vala:29 src/ui/buttons-advanced.blp:647
+msgid "Tangent"
+msgstr "Тангенс"
+
+#: lib/function-manager.vala:30 lib/function-manager.vala:114
+#: src/ui/buttons-advanced.blp:517
+msgid "Inverse Sine"
+msgstr "Кері синус"
+
+#: lib/function-manager.vala:31 lib/function-manager.vala:115
+#: src/ui/buttons-advanced.blp:591
+msgid "Inverse Cosine"
+msgstr "Кері косинус"
+
+#: lib/function-manager.vala:32 lib/function-manager.vala:116
+#: src/ui/buttons-advanced.blp:665
+msgid "Inverse Tangent"
+msgstr "Кері тангенс"
+
+#: lib/function-manager.vala:33 src/ui/buttons-advanced.blp:536
+msgid "Hyperbolic Sine"
+msgstr "Гиперболалық синус"
+
+#: lib/function-manager.vala:34 src/ui/buttons-advanced.blp:610
+msgid "Hyperbolic Cosine"
+msgstr "Гиперболалық косинус"
+
+#: lib/function-manager.vala:35 src/ui/buttons-advanced.blp:684
+msgid "Hyperbolic Tangent"
+msgstr "Гиперболалық тангенс"
+
+#: lib/function-manager.vala:36 lib/function-manager.vala:117
+#: src/ui/buttons-advanced.blp:554
+msgid "Inverse Hyperbolic Sine"
+msgstr "Кері гиперболалық синус"
+
+#: lib/function-manager.vala:37 lib/function-manager.vala:118
+#: src/ui/buttons-advanced.blp:628
+msgid "Inverse Hyperbolic Cosine"
+msgstr "Кері гиперболалық косинус"
+
+#: lib/function-manager.vala:38 lib/function-manager.vala:119
+#: src/ui/buttons-advanced.blp:702
+msgid "Inverse Hyperbolic Tangent"
+msgstr "Кері гиперболалық тангенс"
+
+#: lib/function-manager.vala:40
+msgid "Complex"
+msgstr "Комплексті"
+
+#: lib/function-manager.vala:41 src/ui/buttons-advanced.blp:932
+msgid "Complex Conjugate"
+msgstr "Комплексті түйіндестіру"
+
+#: lib/function-manager.vala:42 src/ui/buttons-advanced.blp:949
+msgid "Complex Argument"
+msgstr "Комплексті аргумент"
+
+#: lib/function-manager.vala:43 src/ui/buttons-advanced.blp:966
+msgid "Real Component"
+msgstr "Нақты компонент"
+
+#: lib/function-manager.vala:44 src/ui/buttons-advanced.blp:983
+msgid "Imaginary Component"
+msgstr "Жорамал компоненті"
+
+#: lib/function-manager.vala:46 src/math-window.vala:158
+msgid "Programming"
+msgstr "Бағдарламалау"
+
+#: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
+msgid "Two’s Complement"
+msgstr "Қосымша код"
+
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
+msgid "Swap Endianness"
+msgstr "Байттар ретін ауыстыру"
+
+#: lib/function-manager.vala:49 src/ui/buttons-advanced.blp:403
+#: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: src/ui/buttons-programming.blp:1808
+msgid "Modulus Divide"
+msgstr "Модульдік бөлу"
+
+#: lib/function-manager.vala:50
+msgid "Modular Exponentiation"
+msgstr "Модульдік дәрежелеу"
+
+#: lib/function-manager.vala:52
+msgid "Rounding"
+msgstr "Дөңгелектеу"
+
+#: lib/function-manager.vala:53
+msgid "Round"
+msgstr "Дөңгелектеу"
+
+#: lib/function-manager.vala:54
+msgid "Floor"
+msgstr "Төменгі дөңгелектеу"
+
+#: lib/function-manager.vala:55
+msgid "Ceiling"
+msgstr "Жоғарғы дөңгелектеу"
+
+#: lib/function-manager.vala:56 src/ui/buttons-programming.blp:2331
+msgid "Integer Component"
+msgstr "Бүтін компонент"
+
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2348
+msgid "Fractional Component"
+msgstr "Бөлшек компонент"
+
+#: lib/function-manager.vala:59
+msgid "Statistics"
+msgstr "Статистика"
+
+#: lib/function-manager.vala:60
+msgid "Sum"
+msgstr "Қосынды"
+
+#: lib/function-manager.vala:61
+msgid "Sum of Squares"
+msgstr "Квадраттар қосындысы"
+
+#: lib/function-manager.vala:62
+msgid "Average"
+msgstr "Орташа мән"
+
+#: lib/function-manager.vala:63
+msgid "Median"
+msgstr "Медиана"
+
+#: lib/function-manager.vala:64
+msgid "Minimum Value"
+msgstr "Минималды мән"
+
+#: lib/function-manager.vala:65
+msgid "Maximum Value"
+msgstr "Максималды мән"
+
+#: lib/function-manager.vala:66
+msgid "Sample Standard Deviation"
+msgstr "Таңдамалы стандартты ауытқу"
+
+#: lib/function-manager.vala:67
+msgid "Population Standard Deviation"
+msgstr "Бас жиынтықтың стандартты ауытқуы"
+
+#: lib/function-manager.vala:68
+msgid "Sample Variance"
+msgstr "Таңдамалы дисперсия"
+
+#: lib/function-manager.vala:69
+msgid "Population Variance"
+msgstr "Бас жиынтықтың дисперсиясы"
+
+#: lib/function-manager.vala:71
+msgid "Sundry"
+msgstr "Әртүрлі"
+
+#: lib/function-manager.vala:72 src/ui/buttons-advanced.blp:806
+#: src/ui/buttons-programming.blp:2171
+msgid "Logarithm"
+msgstr "Логарифм"
+
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:892
+#: src/ui/buttons-financial.blp:626
+msgid "Natural Logarithm"
+msgstr "Натуралды логарифм"
+
+#: lib/function-manager.vala:74
+msgid "Square Root"
+msgstr "Квадрат түбір"
+
+#: lib/function-manager.vala:75
+msgid "Absolute Value"
+msgstr "Абсолютті мән"
+
+#: lib/function-manager.vala:76
+msgid "Signum"
+msgstr "Сан белгісі"
+
+#: lib/function-manager.vala:77
+msgid "Combination"
+msgstr "Комбинация"
+
+#: lib/function-manager.vala:78
+msgid "Permutation"
+msgstr "Пермутация"
+
+#: lib/function-manager.vala:79
+msgid "Greatest Common Divisor"
+msgstr "Ең үлкен ортақ бөлгіш"
+
+#: lib/function-manager.vala:80
+msgid "Least Common Multiple"
+msgstr "Ең кіші ортақ еселік"
+
+#: lib/function-manager.vala:81
+msgid "Comparison (Kronecker Delta)"
+msgstr "Салыстыру (Кронекер дельтасы)"
+
+#: lib/function-manager.vala:336
+#, c-format
+msgid "Function “%s” takes 1 argument"
+msgstr "“%s” функциясы 1 аргумент қабылдайды"
+
+#: lib/function-manager.vala:354
+#, c-format
+msgid "Function “%s” takes 1 or 2 arguments"
+msgstr "“%s” функциясы 1 немесе 2 аргумент қабылдайды"
+
+#: lib/function-manager.vala:362
+#, c-format
+msgid "Function “%s” takes at least 2 arguments"
+msgstr "“%s” функциясы кемінде 2 аргумент қабылдайды"
+
+#: lib/function-manager.vala:369
+#, c-format
+msgid "Function “%s” takes %d argument"
+msgid_plural "Function “%s” takes %d arguments"
+msgstr[0] "\"%s\" функциясы %d аргументті қабылдайды"
+
+#. Digits localized for the given language
+#: lib/math-equation.vala:181
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
+#. Error shown when trying to undo with no undo history
+#: lib/math-equation.vala:558
+msgid "No undo history"
+msgstr "Болдырмау тарихы жоқ"
+
+#. Error shown when trying to redo with no redo history
+#: lib/math-equation.vala:579
+msgid "No redo history"
+msgstr "Қайталау тарихы жоқ"
+
+#: lib/math-equation.vala:826
+msgid "No sane value to store"
+msgstr "Сақтау үшін жарамды мәндер жоқ"
+
+#. Error displayed to user when they an unknown variable is entered
+#: lib/math-equation.vala:1286
+#, c-format
+msgid "Unknown variable “%s”"
+msgstr "Белгісіз айнымалы \"%s\""
+
+#. Error displayed to user when a currency conversion with unknown exchange
+#. rate is attempted
+#: lib/math-equation.vala:1293
+#, c-format
+msgid "Exchange rate for “%s” is not available"
+msgstr "“%s” үшін айырбастау бағамы қолжетімсіз"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1300
+#, c-format
+msgid "Unknown unit “%s”"
+msgstr "Белгісіз “%s” өлшем бірлігі"
+
+#. Error displayed to user when an unknown function is entered
+#: lib/math-equation.vala:1307
+#, c-format
+msgid "Function “%s” is not defined"
+msgstr "\"%s\" функциясы анықталмаған"
+
+#. Error displayed to user when an invalid conversion (e.g. units of different
+#. categories)
+#: lib/math-equation.vala:1314
+msgid "Unknown conversion"
+msgstr "Белгісіз айналдыру"
+
+#. should always be run
+#: lib/math-equation.vala:1324
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#. Unknown error.
+#. Error displayed to user when they enter an invalid calculation
+#: lib/math-equation.vala:1329 lib/math-equation.vala:1334
+msgid "Malformed expression"
+msgstr "Қате өрнек"
+
+#: lib/math-equation.vala:1345
+msgid "Calculating"
+msgstr "Есептеу"
+
+#. Error displayed when trying to factorize a non-integer value
+#: lib/math-equation.vala:1567
+msgid "Need an integer to factorize"
+msgstr "Жай бөлгіштерге тарату үшін бүтін сан керек"
+
+#. Translators: Error displayed when underflow error occured
+#: lib/number.vala:360
+msgid "Underflow error"
+msgstr "Реттің жоғалу қатесі"
+
+#. Translators: Error displayed when overflow error occured
+#: lib/number.vala:365
+msgid "Overflow error"
+msgstr "Толып кету қатесі"
+
+#. Translators: Error display when attempting to take argument of zero
+#: lib/number.vala:534
+msgid "Argument not defined for zero"
+msgstr "Аргумент нөл үшін анықталмаған"
+
+#: lib/number.vala:605
+msgid "Floor is only defined for real numbers"
+msgstr "Төмен қарай дөңгелектеу (Floor) тек нақты сандар үшін анықталған"
+
+#: lib/number.vala:620
+msgid "Ceiling is only defined for real numbers"
+msgstr "Жоғары қарай дөңгелектеу (Ceiling) тек нақты сандар үшін анықталған"
+
+#: lib/number.vala:635
+msgid "Round is only defined for real numbers"
+msgstr "Дөңгелектеу (Round) тек нақты сандар үшін анықталған"
+
+#: lib/number.vala:671 lib/number.vala:710
+msgid "Exponent is too large"
+msgstr "Экспонента тым үлкен"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative
+#. re_exponent
+#: lib/number.vala:679 lib/number.vala:718
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Нөлдің дәрежесі теріс көрсеткіш үшін анықталмаған"
+
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: lib/number.vala:687 lib/number.vala:726
+msgid "Zero raised to zero is undefined"
+msgstr "Нөл нөлінші дәрежеде анықталмаған"
+
+#: lib/number.vala:742
+msgid "Root is too large"
+msgstr "Түбір тым үлкен"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: lib/number.vala:789 lib/number.vala:820
+msgid "Logarithm of zero is undefined"
+msgstr "Нөлдің логарифмі анықталмаған"
+
+#: lib/number.vala:825
+msgid "Logarithm with base 0 or 1 is undefined"
+msgstr "Негізі 0 немесе 1 болатын логарифм анықталмаған"
+
+#. TODO: Support factorial of complex numbers
+#: lib/number.vala:846
+msgid "Factorial of complex numbers is not supported"
+msgstr "Комплексті сандардың факториалына қолдау көрсетілмейді"
+
+#. Translators: Error displayed when attempted take the factorial of a
+#. negative integer
+#: lib/number.vala:853
+msgid "Factorial is undefined for negative integers"
+msgstr "Теріс бүтін сандар үшін факториал анықталмаған"
+
+#: lib/number.vala:857
+msgid "Factorial is too large"
+msgstr "Факториал тым үлкен"
+
+#. Translators: Error displayed attempted to divide by zero
+#: lib/number.vala:928
+msgid "Division by zero is undefined"
+msgstr "Нөлге бөлу анықталмаған"
+
+#. Translators: Error displayed when attempting to do a modulus division on
+#. complex numbers
+#: lib/number.vala:953
+msgid "Modulus division is only defined for real numbers"
+msgstr "Модульдік бөлу тек нақты сандар үшін анықталған"
+
+#: lib/number.vala:977
+msgid "Modular exponent is too large"
+msgstr "Модульдік экспонента тым үлкен"
+
+#. Translators: Error displayed when tangent value is undefined
+#: lib/number.vala:1046
+msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+"Тангенс π∕2 (90°) -дан бастап, π (180°) көбейткіштері болып табылатын бұрыштар "
+"үшін анықталмаған"
+
+#. Translators: Error displayed when inverse sine value is undefined
+#: lib/number.vala:1065
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "Кері синус [-1, 1] сыртындағы мәндер үшін анықталмаған"
+
+#. Translators: Error displayed when inverse cosine value is undefined
+#: lib/number.vala:1082
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "Кері косинус [-1, 1] сыртындағы мәндер үшін анықталмаған"
+
+#. Translators: Error displayed when trying to calculate undefined atan(i) or
+#. atan (-i)
+#: lib/number.vala:1100
+msgid "Inverse tangent is undefined for values i and -i"
+msgstr "Арктангенс i және -i мәндері үшін анықталмаған"
+
+#. Translators: Error displayed when inverse hyperbolic cosine value is
+#. undefined
+#: lib/number.vala:1151
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr "Кері гиперболалық косинусы бірден кем мәндер үшін анықталмаған"
+
+#. Translators: Error displayed when inverse hyperbolic tangent value is
+#. undefined
+#: lib/number.vala:1167
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr "Кері гиперболалық тангенсі [-1, 1] сыртындағы мәндер үшін анықталмаған"
+
+#. Translators: Error displayed when bitwise AND attempted on non-integer
+#. values
+#: lib/number.vala:1185
+msgid "Bitwise AND is only defined for non-negative integers"
+msgstr "Биттік ЖӘНЕ тек теріс емес бүтін сандар үшін анықталған"
+
+#. Translators: Error displayed when bitwise NAND attempted on non-integer
+#. values
+#: lib/number.vala:1201
+msgid "Bitwise NAND is only defined for non-negative integers"
+msgstr "Биттік ЖӘНЕ-ЕМЕС тек теріс емес бүтін сандар үшін анықталған"
+
+#. Translators: Error displayed when bitwise OR attempted on non-integer
+#. values
+#: lib/number.vala:1217
+msgid "Bitwise OR is only defined for non-negative integers"
+msgstr "Биттік НЕМЕСЕ тек теріс емес бүтін сандар үшін анықталған"
+
+#. Translators: Error displayed when bitwise NOR attempted on non-integer
+#. values
+#: lib/number.vala:1233
+msgid "Bitwise NOR is only defined for non-negative integers"
+msgstr "Биттік НЕМЕСЕ-ЕМЕС тек теріс емес бүтін сандар үшін анықталған"
+
+#. Translators: Error displayed when bitwise XOR attempted on non-integer
+#. values
+#: lib/number.vala:1249
+msgid "Bitwise XOR is only defined for non-negative integers"
+msgstr "Биттік болғызбайтын НЕМЕСЕ тек теріс емес бүтін сандар үшін анықталған"
+
+#. Translators: Error displayed when bitwise XNOR attempted on non-integer
+#. values
+#: lib/number.vala:1265
+msgid "Bitwise XNOR is only defined for non-negative integers"
+msgstr "Биттік болғызбайтын НЕМЕСЕ-ЕМЕС тек теріс емес бүтін сандар үшін анықталған"
+
+#. Translators: Error displayed when bitwise NOT attempted on non-integer
+#. values
+#: lib/number.vala:1281
+msgid "Bitwise NOT is only defined for non-negative integers"
+msgstr "Биттік ЕМЕС тек теріс емес бүтін сандар үшін анықталған"
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: lib/number.vala:1343
+msgid "Shift is only possible on integers"
+msgstr "Жылжыту тек бүтін сандарда мүмкін"
+
+#: lib/number.vala:1348 lib/number.vala:1376 lib/number.vala:1880
+msgid "Overflow. Try a bigger word size"
+msgstr "Толып кету. Үлкенірек сөз өлшемін қолданып көріңіз"
+
+#: lib/number.vala:1359
+msgid "Two’s complement is only defined for non-negative integers"
+msgstr "Қосымша код тек теріс емес бүтін сандар үшін анықталған"
+
+#: lib/number.vala:1371
+msgid "Swap endianness is only possible on integers"
+msgstr "Байттар ретін ауыстыру тек бүтін сандарда мүмкін"
+
+#: lib/number.vala:1402
+msgid "Combination is only defined for non-negative integers"
+msgstr "Комбинация тек теріс емес бүтін сандар үшін анықталған"
+
+#: lib/number.vala:1407
+msgid "Combination is undefined if n is less than r"
+msgstr "Комбинация анықталмаған егер n мәні r мәнінен кіші болса"
+
+#: lib/number.vala:1431
+msgid "Permutation is only defined for non-negative integers"
+msgstr "Пермутация тек теріс емес бүтін сандар үшін анықталған"
+
+#: lib/number.vala:1436
+msgid "Permutation is undefined if n is less than r"
+msgstr "Пермутация анықталмаған, егер n мәні r мәнінен кіші болса"
+
+#: lib/number.vala:1443 lib/number.vala:1444
+msgid "Permutation is too large"
+msgstr "Алмастыру тым үлкен"
+
+#: lib/number.vala:1469
+msgid "Greatest common divisor is only defined for integers"
+msgstr "Ең үлкен ортақ бөлгіш тек бүтін сандар үшін анықталған"
+
+#: lib/number.vala:1492
+msgid "Least common multiple is only defined for integers"
+msgstr "Ең кіші ортақ еселік тек бүтін сандар үшін анықталған"
+
+#: lib/number.vala:1557
+msgid "Median is only defined for real numbers"
+msgstr "Медиана тек нақты сандар үшін анықталған"
+
+#: lib/number.vala:1577
+msgid "Minimum value is only defined for real numbers"
+msgstr "Ең кіші мән тек нақты сандар үшін анықталған"
+
+#: lib/number.vala:1594
+msgid "Maximum value is only defined for real numbers"
+msgstr "Ең үлкен мән тек нақты сандар үшін анықталған"
+
+#: lib/providers/boc-provider.vala:15
+msgid "Bank of Canada"
+msgstr "Канада банкі"
+
+#: lib/providers/ecb-provider.vala:12
+msgid "European Central Bank"
+msgstr "Еуропалық орталық банк"
+
+#: lib/providers/imf-provider.vala:12
+msgid "International Monetary Fund"
+msgstr "Халықаралық валюта қоры"
+
+#: lib/providers/unt-provider.vala:12
+msgid "United Nations Treasury"
+msgstr "Біріккен Ұлттар Ұйымының Қазынашылығы"
+
+#: lib/serializer.vala:359 lib/serializer.vala:409
+msgid "The result is too long to display in fixed format. Try other result formats"
+msgstr ""
+"Нәтиже бекітілген пішімде көрсету үшін тым ұзын. Басқа нәтиже пішімдерін байқап "
+"көріңіз"
+
+#: lib/unit.vala:29
+msgid "Angle"
+msgstr "Бұрыш"
+
+#: lib/unit.vala:30
+msgid "Length"
+msgstr "Ұзындық"
+
+#: lib/unit.vala:31
+msgid "Area"
+msgstr "Аймақ"
+
+#: lib/unit.vala:32
+msgid "Volume"
+msgstr "Көлем"
+
+#: lib/unit.vala:33
+msgid "Mass"
+msgstr "Масса"
+
+#: lib/unit.vala:34
+msgid "Speed"
+msgstr "Жылдамдық"
+
+#: lib/unit.vala:35
+msgid "Duration"
+msgstr "Ұзақтық"
+
+#: lib/unit.vala:36
+msgid "Frequency"
+msgstr "Жиілігі"
+
+#: lib/unit.vala:37
+msgid "Temperature"
+msgstr "Температура"
+
+#: lib/unit.vala:38
+msgid "Energy"
+msgstr "Энергия"
+
+#: lib/unit.vala:39
+msgid "Pressure"
+msgstr "Қысым"
+
+#: lib/unit.vala:40
+msgid "Digital Storage"
+msgstr "Цифрлық жады"
+
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400
+#. grads
+#: lib/unit.vala:43
+msgid "Degrees (Decimal)"
+msgstr "Градустар (Ондық)"
+
+#: lib/unit.vala:43
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "градус,градустар"
+
+#: lib/unit.vala:44
+msgid "Degrees (D°M′S″)"
+msgstr "Градустар (D°M′S″)"
+
+#: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
+msgid "Radians"
+msgstr "Радиандар"
+
+#: lib/unit.vala:45
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "радиан,рад"
+
+#: lib/unit.vala:46 src/buttons-advanced.vala:87 src/math-preferences.vala:138
+msgid "Gradians"
+msgstr "Градтар"
+
+#: lib/unit.vala:46
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "градиан,градиандар,град"
+
+#: lib/unit.vala:47
+msgid "Parsecs"
+msgstr "Парсек"
+
+#: lib/unit.vala:47
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "парсек,парсектер,пк"
+
+#: lib/unit.vala:48
+msgid "Light Years"
+msgstr "Жарықтық жыл"
+
+#: lib/unit.vala:48
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "жарық жылы,жарық жылдары,жж"
+
+#: lib/unit.vala:49
+msgid "Astronomical Units"
+msgstr "Астрономиялық бірліктер"
+
+#: lib/unit.vala:49
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "аб"
+
+#: lib/unit.vala:50
+msgid "Rack Units"
+msgstr "Монтажды бірлік"
+
+#: lib/unit.vala:50
+msgctxt "unit-symbols"
+msgid "U"
+msgstr "Монт. бірлік"
+
+#: lib/unit.vala:51
+msgid "Nautical Miles"
+msgstr "Теңіл милялары"
+
+#: lib/unit.vala:51
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "теңіз милясы"
+
+#: lib/unit.vala:52
+msgid "Miles"
+msgstr "Милялар"
+
+#: lib/unit.vala:52
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "миля,милялар"
+
+#: lib/unit.vala:53
+msgid "Kilometers"
+msgstr "Километр"
+
+#: lib/unit.vala:53
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "километр,километрлер,км"
+
+#: lib/unit.vala:54
+msgid "Cables"
+msgstr "Кабельтовтар"
+
+#: lib/unit.vala:54
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "кабельтов"
+
+#: lib/unit.vala:55
+msgid "Fathoms"
+msgstr "Теңіз сажындары"
+
+#: lib/unit.vala:55
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "теңіз сажыны"
+
+#: lib/unit.vala:56
+msgid "Meters"
+msgstr "Метр"
+
+#: lib/unit.vala:56
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "метр,м"
+
+#: lib/unit.vala:57
+msgid "Yards"
+msgstr "Ярд"
+
+#: lib/unit.vala:57
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "ярд,ярдтар"
+
+#: lib/unit.vala:58
+msgid "Feet"
+msgstr "Фут"
+
+#: lib/unit.vala:58
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "фут,футтар"
+
+#: lib/unit.vala:59
+msgid "Inches"
+msgstr "Дюйм"
+
+#: lib/unit.vala:59
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "дюйм"
+
+#: lib/unit.vala:60
+msgid "Centimeters"
+msgstr "Сантиметр"
+
+#: lib/unit.vala:60
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "сантиметр,сантиметрлер,см"
+
+#: lib/unit.vala:61
+msgid "Millimeters"
+msgstr "Миллиметр"
+
+#: lib/unit.vala:61
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "миллиметр,миллиметрлер,мм"
+
+#: lib/unit.vala:62
+msgid "Micrometers"
+msgstr "Микрометр"
+
+#: lib/unit.vala:62
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "микрометр,микрометрлер,мкм"
+
+#: lib/unit.vala:63
+msgid "Nanometers"
+msgstr "Нанометр"
+
+#: lib/unit.vala:63
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "нанометр,нанометрлер,нм"
+
+#: lib/unit.vala:64
+msgid "Desktop Publishing Points"
+msgstr "Үстел үсті баспа жүйесінің нүктелері"
+
+#: lib/unit.vala:64
+msgctxt "unit-symbols"
+msgid "point,pt,points,pts"
+msgstr "пункт,пункттер"
+
+#: lib/unit.vala:65
+msgid "Kilometers per Hour"
+msgstr "Сағатына километр"
+
+#: lib/unit.vala:65
+msgctxt "unit-symbols"
+msgid "kilometers per hour,kmph,kmh,kph"
+msgstr "километр/сағ, км/сағ"
+
+#: lib/unit.vala:66
+msgid "Miles per Hour"
+msgstr "Сағатына миля"
+
+#: lib/unit.vala:66
+msgctxt "unit-symbols"
+msgid "milesph,miles per hour,mi/h,miph,mph"
+msgstr "миля/сағ"
+
+#: lib/unit.vala:67
+msgid "Meters per Second"
+msgstr "Секундына метр"
+
+#: lib/unit.vala:67
+msgctxt "unit-symbols"
+msgid "meters per second,mps"
+msgstr "метр/сек,м/с"
+
+#: lib/unit.vala:68
+msgid "Feet per Second"
+msgstr "Секундына фут"
+
+#: lib/unit.vala:68
+msgctxt "unit-symbols"
+msgid "fps,feet per second,feetps"
+msgstr "фут/сек,фут/с"
+
+#: lib/unit.vala:69
+msgid "Knots"
+msgstr "Кноттар"
+
+#: lib/unit.vala:69
+msgctxt "unit-symbols"
+msgid "kt,kn,nd,knot,knots"
+msgstr "кт,кнот"
+
+#: lib/unit.vala:70
+msgid "Hectares"
+msgstr "Гектар"
+
+#: lib/unit.vala:70
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "гектар,гектарлар,га"
+
+#: lib/unit.vala:71
+msgid "Acres"
+msgstr "Акр"
+
+#: lib/unit.vala:71
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "акр,акрлар"
+
+#: lib/unit.vala:72
+msgid "Square Miles"
+msgstr "Квадрат миля"
+
+#: lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "mi²"
+msgstr "ми²"
+
+#: lib/unit.vala:73
+msgid "Square Feet"
+msgstr "Квадрат фут"
+
+#: lib/unit.vala:73
+msgctxt "unit-symbols"
+msgid "ft²"
+msgstr "шаршы фут"
+
+#: lib/unit.vala:74
+msgid "Square Kilometers"
+msgstr "Шаршы километрлер"
+
+#: lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "km²"
+msgstr "км²"
+
+#: lib/unit.vala:75
+msgid "Square Meters"
+msgstr "Шаршы метр"
+
+#: lib/unit.vala:75
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "м²"
+
+#: lib/unit.vala:76
+msgid "Square Centimeters"
+msgstr "Шаршы сантиметр"
+
+#: lib/unit.vala:76
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "см²"
+
+#: lib/unit.vala:77
+msgid "Square Millimeters"
+msgstr "Шаршы миллиметр"
+
+#: lib/unit.vala:77
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "мм²"
+
+#: lib/unit.vala:78
+msgid "Cubic Meters"
+msgstr "Шаршы метр"
+
+#: lib/unit.vala:78
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "м³"
+
+#: lib/unit.vala:79
+msgid "British Gallons"
+msgstr "Британдық галлондар"
+
+#: lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "imp_gallon,imp_gallons,imp_gal"
+msgstr "имп.галлон,имп.галлондар"
+
+#: lib/unit.vala:80
+msgid "US Gallons"
+msgstr "АҚШ галлондары"
+
+#: lib/unit.vala:80
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "галлон,галлондар"
+
+#: lib/unit.vala:81
+msgid "Liters"
+msgstr "Литр"
+
+#: lib/unit.vala:81
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "литр,литрлар,л"
+
+#: lib/unit.vala:82
+msgid "US Quarts"
+msgstr "АҚШ кварталары"
+
+#: lib/unit.vala:82
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "кварта,кварталар"
+
+#: lib/unit.vala:83
+msgid "British Pints"
+msgstr "Британдық пинталар"
+
+#: lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "imp_pint,imp_pints,imp_pt"
+msgstr "имп.пинта,имп.пинталар"
+
+#: lib/unit.vala:84
+msgid "US Pints"
+msgstr "АҚШ пинталары"
+
+#: lib/unit.vala:84
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "пинта,пинталар"
+
+#: lib/unit.vala:85
+msgid "Metric Cups"
+msgstr "Метрикалық шыны-аяқ"
+
+#: lib/unit.vala:85
+msgctxt "unit-symbols"
+msgid "cup,cups,cp"
+msgstr "шыны-аяқ, шыны-аяқтар"
+
+#: lib/unit.vala:86
+msgid "Milliliters"
+msgstr "Миллилитрлер"
+
+#: lib/unit.vala:86
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "миллилитр,миллилитрлер,мл,см³"
+
+#: lib/unit.vala:87
+msgid "Microliters"
+msgstr "Микролитрлер"
+
+#: lib/unit.vala:87
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "мм³,мкл"
+
+#: lib/unit.vala:88
+msgid "Tonnes"
+msgstr "Тонналар"
+
+#: lib/unit.vala:88
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "тонна,тонналар"
+
+#: lib/unit.vala:89
+msgid "Kilograms"
+msgstr "Килограммдар"
+
+#: lib/unit.vala:89
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "килограмм,килограммдар,кг"
+
+#: lib/unit.vala:90
+msgid "Pounds"
+msgstr "Фунттар"
+
+#: lib/unit.vala:90
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb,lbs"
+msgstr "фунт,фунттар"
+
+#: lib/unit.vala:91
+msgid "Ounces"
+msgstr "Унциялар"
+
+#: lib/unit.vala:91
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "унция,унциялар"
+
+#: lib/unit.vala:92
+msgid "Troy Ounces"
+msgstr "Трой унциясы"
+
+#: lib/unit.vala:92
+msgctxt "unit-symbols"
+msgid "Troy ounce,Troy ounces,ozt"
+msgstr "Трой унциясы,Трой унциялары"
+
+#: lib/unit.vala:93
+msgid "Grams"
+msgstr "Грамм"
+
+#: lib/unit.vala:93
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "грамм,граммдар,г"
+
+#: lib/unit.vala:94
+msgid "Milligrams"
+msgstr "Миллиграммдар"
+
+#: lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "milligram,milligrams,milligramme,milligrammes,mg"
+msgstr "миллиграмм,миллиграммдар,мг"
+
+#: lib/unit.vala:95
+msgid "Micrograms"
+msgstr "Микрограммдар"
+
+#: lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
+msgstr "микрограмм,микрограммдар,μg,мкг"
+
+#: lib/unit.vala:96
+msgid "Stone"
+msgstr "Стоун"
+
+#: lib/unit.vala:96
+msgctxt "unit-symbols"
+msgid "stone,st,stones"
+msgstr "стоун,ст,стоундар"
+
+#: lib/unit.vala:97
+msgid "Centuries"
+msgstr "Ғасыр"
+
+#: lib/unit.vala:97
+msgctxt "unit-symbols"
+msgid "century,centuries"
+msgstr "ғасыр, ғасырлар"
+
+#: lib/unit.vala:98
+msgid "Decades"
+msgstr "Декада"
+
+#: lib/unit.vala:98
+msgctxt "unit-symbols"
+msgid "decade,decades"
+msgstr "декада, декадалар"
+
+#: lib/unit.vala:99
+msgid "Years"
+msgstr "Жыл"
+
+#: lib/unit.vala:99
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "жыл,жылдар,жж"
+
+#: lib/unit.vala:100
+msgid "Months"
+msgstr "Ай"
+
+#: lib/unit.vala:100
+msgctxt "unit-symbols"
+msgid "month,months"
+msgstr "ай,айлар"
+
+#: lib/unit.vala:101
+msgid "Weeks"
+msgstr "Апталар"
+
+#: lib/unit.vala:101
+msgctxt "unit-symbols"
+msgid "week,weeks"
+msgstr "апта, апталар"
+
+#: lib/unit.vala:102
+msgid "Days"
+msgstr "Күн"
+
+#: lib/unit.vala:102
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "күн,күндер"
+
+#: lib/unit.vala:103
+msgid "Hours"
+msgstr "Сағат"
+
+#: lib/unit.vala:103
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "сағат,сағаттар,сағ"
+
+#: lib/unit.vala:104
+msgid "Minutes"
+msgstr "Минут"
+
+#: lib/unit.vala:104
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "минут,минуттар,мин"
+
+#: lib/unit.vala:105
+msgid "Seconds"
+msgstr "Секунд"
+
+#: lib/unit.vala:105
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "секунд,секундтар,с"
+
+#: lib/unit.vala:106
+msgid "Milliseconds"
+msgstr "Миллисекунд"
+
+#: lib/unit.vala:106
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "миллисекунд,мс"
+
+#: lib/unit.vala:107
+msgid "Microseconds"
+msgstr "Микросекунд"
+
+#: lib/unit.vala:107
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "микросекунд,микросекундтар,мс"
+
+#: lib/unit.vala:108
+msgid "Nanoseconds"
+msgstr "Наносекундтар"
+
+#: lib/unit.vala:108
+msgctxt "unit-symbols"
+msgid "nanosecond,nanoseconds,ns"
+msgstr "наносекунд,наносекундтар,нс"
+
+#: lib/unit.vala:109
+msgid "Celsius"
+msgstr "Цельсий"
+
+#: lib/unit.vala:109
+msgctxt "unit-symbols"
+msgid "degC,°C,˚C,C,c,Celsius,celsius"
+msgstr "°C,˚C,C,c,Цельсий,цельсий"
+
+#: lib/unit.vala:110
+msgid "Fahrenheit"
+msgstr "Фаренгейт"
+
+#: lib/unit.vala:110
+msgctxt "unit-symbols"
+msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "°F,˚F,F,f,Фаренгейт,фаренгейт"
+
+#: lib/unit.vala:111
+msgid "Kelvin"
+msgstr "Кельвин"
+
+#: lib/unit.vala:111
+msgctxt "unit-symbols"
+msgid "k,K,Kelvin,kelvin"
+msgstr "к,К,Кельвин,кельвин"
+
+#: lib/unit.vala:112
+msgid "Rankine"
+msgstr "Ранкин"
+
+#: lib/unit.vala:112
+msgctxt "unit-symbols"
+msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
+msgstr "°R,˚R,°Ra,˚Ra,r,R,Ранкин,ранкин"
+
+#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000
+#. bytes, and 1 KiB = 1 kibiByte = 1024 bytes
+#: lib/unit.vala:114
+msgid "Bits"
+msgstr "Биттер"
+
+#: lib/unit.vala:114
+msgctxt "unit-symbols"
+msgid "bit,bits,b"
+msgstr "бит,биттер,бит"
+
+#: lib/unit.vala:115
+msgid "Bytes"
+msgstr "Байттар"
+
+#: lib/unit.vala:115
+msgctxt "unit-symbols"
+msgid "byte,bytes,B"
+msgstr "байт,байттар,Б"
+
+#: lib/unit.vala:116
+msgid "Nibbles"
+msgstr "Нибблдар"
+
+#: lib/unit.vala:116
+msgctxt "unit-symbols"
+msgid "nibble,nibbles"
+msgstr "ниббл,нибблдар"
+
+#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they
+#. are widely used and accepted.
+#: lib/unit.vala:118
+msgid "Kilobits"
+msgstr "Килобиттер"
+
+#: lib/unit.vala:118
+msgctxt "unit-symbols"
+msgid "kilobit,kilobits,kb,Kb"
+msgstr "килобит,килобиттер,Кб"
+
+#: lib/unit.vala:119
+msgid "Kilobytes"
+msgstr "Килобайттар"
+
+#: lib/unit.vala:119
+msgctxt "unit-symbols"
+msgid "kilobyte,kilobytes,kB,KB"
+msgstr "килобайт,килобайттар,кБ,КБ"
+
+#: lib/unit.vala:120
+msgid "Kibibits"
+msgstr "Кибибиттер"
+
+#: lib/unit.vala:120
+msgctxt "unit-symbols"
+msgid "kibibit,kibibits,Kib"
+msgstr "кибибит,кибибиттер,Кибит"
+
+#: lib/unit.vala:121
+msgid "Kibibytes"
+msgstr "Кибибайттар"
+
+#: lib/unit.vala:121
+msgctxt "unit-symbols"
+msgid "kibibyte,kibibytes,KiB"
+msgstr "кибибайт,кибибайттар,КиБ"
+
+#: lib/unit.vala:122
+msgid "Megabits"
+msgstr "Мегабиттер"
+
+#: lib/unit.vala:122
+msgctxt "unit-symbols"
+msgid "megabit,megabits,Mb"
+msgstr "мегабит,мегабиттер,Мбит"
+
+#: lib/unit.vala:123
+msgid "Megabytes"
+msgstr "Мегабайт"
+
+#: lib/unit.vala:123
+msgctxt "unit-symbols"
+msgid "megabyte,megabytes,MB"
+msgstr "мегабайт,мегабайттар,МБ"
+
+#: lib/unit.vala:124
+msgid "Mebibits"
+msgstr "Мебибиттер"
+
+#: lib/unit.vala:124
+msgctxt "unit-symbols"
+msgid "mebibit,mebibits,Mib"
+msgstr "мебибит,мебибиттер,Мибит"
+
+#: lib/unit.vala:125
+msgid "Mebibytes"
+msgstr "Мебибайттар"
+
+#: lib/unit.vala:125
+msgctxt "unit-symbols"
+msgid "mebibyte,mebibytes,MiB"
+msgstr "мебибайт,мебибайттар,МиБ"
+
+#: lib/unit.vala:126
+msgid "Gigabits"
+msgstr "Гигабит"
+
+#: lib/unit.vala:126
+msgctxt "unit-symbols"
+msgid "gigabit,gigabits,Gb"
+msgstr "гигабит,гигабиттер,Гбит"
+
+#: lib/unit.vala:127
+msgid "Gigabytes"
+msgstr "Гигабайт"
+
+#: lib/unit.vala:127
+msgctxt "unit-symbols"
+msgid "gigabyte,gigabytes,GB"
+msgstr "гигабайт,ГБ"
+
+#: lib/unit.vala:128
+msgid "Gibibits"
+msgstr "Гибибиттер"
+
+#: lib/unit.vala:128
+msgctxt "unit-symbols"
+msgid "gibibit,gibibits,Gib"
+msgstr "гибибит,гибибиттер,Гибит"
+
+#: lib/unit.vala:129
+msgid "Gibibytes"
+msgstr "Гибибайт"
+
+#: lib/unit.vala:129
+msgctxt "unit-symbols"
+msgid "gibibyte,gibibytes,GiB"
+msgstr "гибибайт,гибибайттар,ГиБ"
+
+#: lib/unit.vala:130
+msgid "Terabits"
+msgstr "Терабиттер"
+
+#: lib/unit.vala:130
+msgctxt "unit-symbols"
+msgid "terabit,terabits,Tb"
+msgstr "терабит,терабиттер,Тбит"
+
+#: lib/unit.vala:131
+msgid "Terabytes"
+msgstr "Терабайттар"
+
+#: lib/unit.vala:131
+msgctxt "unit-symbols"
+msgid "terabyte,terabytes,TB"
+msgstr "терабайт,ТБ"
+
+#: lib/unit.vala:132
+msgid "Tebibits"
+msgstr "Тебибиттер"
+
+#: lib/unit.vala:132
+msgctxt "unit-symbols"
+msgid "tebibit,tebibits,Tib"
+msgstr "тебибит,тебибиттер,Тибит"
+
+#: lib/unit.vala:133
+msgid "Tebibytes"
+msgstr "Тебибайттар"
+
+#: lib/unit.vala:133
+msgctxt "unit-symbols"
+msgid "tebibyte,tebibytes,TiB"
+msgstr "тебибайт,тебибайттар,ТиБ"
+
+#: lib/unit.vala:134
+msgid "Petabits"
+msgstr "Петабиттер"
+
+#: lib/unit.vala:134
+msgctxt "unit-symbols"
+msgid "petabit,petabits,Pb"
+msgstr "петабит,петабиттер,Пбит"
+
+#: lib/unit.vala:135
+msgid "Petabytes"
+msgstr "Петабайттар"
+
+#: lib/unit.vala:135
+msgctxt "unit-symbols"
+msgid "petabyte,petabytes,PB"
+msgstr "петабайт,петабайттар,ПБ"
+
+#: lib/unit.vala:136
+msgid "Pebibits"
+msgstr "Пебибиттер"
+
+#: lib/unit.vala:136
+msgctxt "unit-symbols"
+msgid "pebibit,pebibits,Pib"
+msgstr "пебибит,пебибиттер,Пибит"
+
+#: lib/unit.vala:137
+msgid "Pebibytes"
+msgstr "Пебибайттар"
+
+#: lib/unit.vala:137
+msgctxt "unit-symbols"
+msgid "pebibyte,pebibytes,PiB"
+msgstr "пебибайт,пебибайттар,ПБ"
+
+#: lib/unit.vala:138
+msgid "Exabits"
+msgstr "Эксабиттер"
+
+#: lib/unit.vala:138
+msgctxt "unit-symbols"
+msgid "exabit,exabits,Eb"
+msgstr "эксабит,эксабиттер,Эбит"
+
+#: lib/unit.vala:139
+msgid "Exabytes"
+msgstr "Эксабайттар"
+
+#: lib/unit.vala:139
+msgctxt "unit-symbols"
+msgid "exabyte,exabytes,EB"
+msgstr "эксабайт,эксабайттар,ЭБ"
+
+#: lib/unit.vala:140
+msgid "Exbibits"
+msgstr "Эксбибиттер"
+
+#: lib/unit.vala:140
+msgctxt "unit-symbols"
+msgid "exbibit,exbibits,Eib"
+msgstr "эксбибит,эксбибиттер,Эибит"
+
+#: lib/unit.vala:141
+msgid "Exbibytes"
+msgstr "Эксбибайттар"
+
+#: lib/unit.vala:141
+msgctxt "unit-symbols"
+msgid "exbibyte,exbibytes,EiB"
+msgstr "эксбибайт,эксбибайттар,ЭиБ"
+
+#: lib/unit.vala:142
+msgid "Zettabits"
+msgstr "Зеттабиттер"
+
+#: lib/unit.vala:142
+msgctxt "unit-symbols"
+msgid "zettabit,zettabits,Zb"
+msgstr "зеттабит,зеттабиттер,Збит"
+
+#: lib/unit.vala:143
+msgid "Zettabytes"
+msgstr "Зеттабайттар"
+
+#: lib/unit.vala:143
+msgctxt "unit-symbols"
+msgid "zettabyte,zettabytes,ZB"
+msgstr "зеттабайт,зеттабайттар,ЗБ"
+
+#: lib/unit.vala:144
+msgid "Zebibits"
+msgstr "Зебибиттер"
+
+#: lib/unit.vala:144
+msgctxt "unit-symbols"
+msgid "zebibit,zebibits,Zib"
+msgstr "зебибит,зебибиттер,Зибит"
+
+#: lib/unit.vala:145
+msgid "Zebibytes"
+msgstr "Зебибайттар"
+
+#: lib/unit.vala:145
+msgctxt "unit-symbols"
+msgid "zebibyte,zebibytes,ZiB"
+msgstr "зебибайт,зебибайттар,ЗиБ"
+
+#: lib/unit.vala:146
+msgid "Yottabits"
+msgstr "Йоттабиттер"
+
+#: lib/unit.vala:146
+msgctxt "unit-symbols"
+msgid "yottabit,yottabits,Yb"
+msgstr "йоттабит,йоттабиттер,Йбит"
+
+#: lib/unit.vala:147
+msgid "Yottabytes"
+msgstr "Йоттабайттар"
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "yottabyte,yottabytes,YB"
+msgstr "йоттабайт,йоттабайттар,ЙБ"
+
+#: lib/unit.vala:148
+msgid "Yobibits"
+msgstr "Йобибиттер"
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "yobibit,yobibits,Yib"
+msgstr "йобибит,йобибиттер,Йибит"
+
+#: lib/unit.vala:149
+msgid "Yobibytes"
+msgstr "Йобибайттар"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "yobibyte,yobibytes,YiB"
+msgstr "йобибайт,йобибайттар,ЙиБ"
+
+#: lib/unit.vala:150
+msgid "Hertz"
+msgstr "Герц"
+
+#: lib/unit.vala:150
+msgctxt "unit-symbols"
+msgid "hertz,Hz"
+msgstr "герц,Гц"
+
+#: lib/unit.vala:151
+msgid "Kilohertz"
+msgstr "Килохерц"
+
+#: lib/unit.vala:151
+msgctxt "unit-symbols"
+msgid "kilohertz,kHz"
+msgstr "килогерц,кГц"
+
+#: lib/unit.vala:152
+msgid "Megahertz"
+msgstr "Мегагерц"
+
+#: lib/unit.vala:152
+msgctxt "unit-symbols"
+msgid "megahertz,MHz"
+msgstr "мегагерц,МГц"
+
+#: lib/unit.vala:153
+msgid "Gigahertz"
+msgstr "Гигахерц"
+
+#: lib/unit.vala:153
+msgctxt "unit-symbols"
+msgid "gigahertz,GHz"
+msgstr "гигагерц,ГГц"
+
+#: lib/unit.vala:154
+msgid "Terahertz"
+msgstr "Терахерц"
+
+#: lib/unit.vala:154
+msgctxt "unit-symbols"
+msgid "terahertz,THz"
+msgstr "терагерц, ТГц"
+
+#: lib/unit.vala:155
+msgid "Joules"
+msgstr "Джоульдар"
+
+#: lib/unit.vala:155
+msgctxt "unit-symbols"
+msgid "Joule,J,joule,joules"
+msgstr "Джоуль,Дж,джоуль"
+
+#: lib/unit.vala:156
+msgid "Kilojoules"
+msgstr "Килоджоуль"
+
+#: lib/unit.vala:156
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "кДж,килоджоуль"
+
+#: lib/unit.vala:157
+msgid "Megajoules"
+msgstr "Мегаджоуль"
+
+#: lib/unit.vala:157
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "МДж,мегаджоуль"
+
+#: lib/unit.vala:158
+msgid "Kilowatt-Hours"
+msgstr "Киловатт-сағаттар"
+
+#: lib/unit.vala:158
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "квт-сағ,кВт-сағ,киловатт-сағат"
+
+#: lib/unit.vala:159
+msgid "British Thermal Units"
+msgstr "Британдық жылу бірліктері"
+
+#: lib/unit.vala:159
+msgctxt "unit-symbols"
+msgid "btu,BTU"
+msgstr "бжб,БЖБ"
+
+#: lib/unit.vala:160
+msgid "Calories"
+msgstr "Калориялар"
+
+#: lib/unit.vala:160
+msgctxt "unit-symbols"
+msgid "calories,calorie,cal"
+msgstr "калория,кал"
+
+#: lib/unit.vala:161
+msgid "Kilocalories"
+msgstr "Килокалориялар"
+
+#: lib/unit.vala:161
+msgctxt "unit-symbols"
+msgid "kilocalories,kilocalorie,kcal"
+msgstr "килокалориялар,килокалория,ккал"
+
+#: lib/unit.vala:162
+msgid "Ergs"
+msgstr "Эргтер"
+
+#: lib/unit.vala:162
+msgctxt "unit-symbols"
+msgid "ergs,erg"
+msgstr "эрг"
+
+#: lib/unit.vala:163
+msgid "Electron Volts"
+msgstr "Электронвольттар"
+
+#: lib/unit.vala:163
+msgctxt "unit-symbols"
+msgid "electronvolt,electronvolts,ev"
+msgstr "электронвольт,эВ"
+
+#: lib/unit.vala:164
+msgid "Foot-Pounds"
+msgstr "Фут-фунттар"
+
+#: lib/unit.vala:164
+msgctxt "unit-symbols"
+msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
+msgstr "фут-фунт"
+
+#: lib/unit.vala:165
+msgid "Pascals"
+msgstr "Паскальдар"
+
+#: lib/unit.vala:165
+msgctxt "unit-symbols"
+msgid "Pascal,pascal,Pa"
+msgstr "Паскаль,паскаль,Па"
+
+#: lib/unit.vala:166
+msgid "Kilopascals"
+msgstr "Килопаскальдар"
+
+#: lib/unit.vala:166
+msgctxt "unit-symbols"
+msgid "Kilopascal,kilopascal,kPa"
+msgstr "Килопаскаль,килопаскаль,кПа"
+
+#: lib/unit.vala:167
+msgid "Hectopascals"
+msgstr "Гектопаскальдар"
+
+#: lib/unit.vala:167
+msgctxt "unit-symbols"
+msgid "Hectopascal,hectopascal,hPa"
+msgstr "Гектопаскаль,гектопаскаль,гПа"
+
+#: lib/unit.vala:168
+msgid "Bars"
+msgstr "Барлар"
+
+#: lib/unit.vala:168
+msgctxt "unit-symbols"
+msgid "Bar,bar"
+msgstr "Бар,бар"
+
+#: lib/unit.vala:169
+msgid "Standard Atmospheres"
+msgstr "Стандартты атмосфералар"
+
+#: lib/unit.vala:169
+msgctxt "unit-symbols"
+msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
+msgstr "Стандартты атмосфера,стандартты атмосфера,Атм,атм"
+
+#: lib/unit.vala:170
+msgid "Millimeters of Mercury"
+msgstr "Сынап бағанасының миллиметрлері"
+
+#: lib/unit.vala:170
+msgctxt "unit-symbols"
+msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
+msgstr "Сынап бағанасының миллиметрі,сынап бағанасының миллиметрі,мм сын. бағ."
+
+#: lib/unit.vala:171
+msgid "Inches of Mercury"
+msgstr "Сынап бағанасының дюймдері"
+
+#: lib/unit.vala:171
+msgctxt "unit-symbols"
+msgid "Inch of Mercury,inch of mercury,inHg"
+msgstr "Сынап бағанасының дюймі,сынап бағанасының дюймі,дюйм сын. бағ."
+
+#: lib/unit.vala:172
+msgid "Pounds per Square Inch"
+msgstr "Шаршы дюймге фунттар"
+
+#: lib/unit.vala:172
+msgctxt "unit-symbols"
+msgid "Pound per Square Inch,pound per square inch,psi"
+msgstr "Шаршы дюймге фунт,шаршы дюймге фунт,psi"
+
+#: lib/unit.vala:174
+msgid "Currency"
+msgstr "Қаржы"
+
+#: lib/unit.vala:183
+msgid "Number Base"
+msgstr "Сан негізі"
+
+#: lib/unit.vala:184 src/buttons-programming.vala:168
+#: src/ui/buttons-programming.blp:2590
+msgid "Binary"
+msgstr "Екілік"
+
+#: lib/unit.vala:185 src/buttons-programming.vala:173
+#: src/ui/buttons-programming.blp:2596
+msgid "Octal"
+msgstr "Сегіздік"
+
+#: lib/unit.vala:186 src/buttons-programming.vala:178
+#: src/ui/buttons-programming.blp:2602
+msgid "Decimal"
+msgstr "Ондық"
+
+#: lib/unit.vala:187 src/buttons-programming.vala:183
+#: src/ui/buttons-programming.blp:2608
+msgid "Hexadecimal"
+msgstr "Он алтылық"
+
+#: search-provider/search-provider.vala:200
+msgid "Open in Calculator"
+msgstr "Калькуляторда ашу"
+
+#: search-provider/search-provider.vala:233
+msgid "Result copied"
+msgstr "Нәтиже көшірілді"
+
+#: search-provider/search-provider.vala:234
+msgid "Result was copied successfully"
+msgstr "Нәтиже сәтті көшірілді"
+
+#: src/buttons-advanced.vala:87 src/math-preferences.vala:134
+msgid "Degrees"
+msgstr "Градустар"
+
+#: src/buttons-advanced.vala:89
+#, c-format
+msgid "Angle Unit: %s"
+msgstr "Бұрыш бірлігі: %s"
+
+#: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
+#: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
+msgid "Not Available"
+msgstr "Қолжетімсіз"
+
+#: src/buttons-programming.vala:205
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%d-бит"
+
+#. Translators: Do not translate possible mode names basic, advanced,
+#. financial, programming, keyboard and conversion
+#: src/gnome-calculator.vala:22
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard, conversion)"
+msgstr ""
+"Берілген режимде бастау (қарапайым, кеңейтілген, қаржылық, бағдарламалау, перне, "
+"түрлендіру)"
+
+#: src/gnome-calculator.vala:23
+msgid "Solve given equation"
+msgstr "Берілген теңдеуді шешу"
+
+#: src/gnome-calculator.vala:24
+msgid "Start with given equation"
+msgstr "Берілген теңдеуден бастау"
+
+#: src/gnome-calculator.vala:25
+msgid "Show release version"
+msgstr "Шығарылым нұсқасын көрсету"
+
+#. Application Copyrights for the calculator authors
+#: src/gnome-calculator.vala:313
+#, c-format
+msgid "© 1986–%d The Calculator authors"
+msgstr "© 1986–%d Калькулятор авторлары"
+
+#. The translator credits. Please translate this with your name (s).
+#: src/gnome-calculator.vala:319
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: src/gnome-calculator.vala:323
+msgid "Exchange Rate Data Providers"
+msgstr "Валюта бағамы деректерін ұсынушылар"
+
+#: src/gnome-calculator.vala:323
+#, c-format
+msgid "Exchange rates data by %s"
+msgstr "Валюта бағамы деректерін ұсынған %s"
+
+#: src/gnome-calculator.vala:331
+msgid "Close All?"
+msgstr "Барлығын жабу керек пе?"
+
+#: src/gnome-calculator.vala:331
+msgid "Are you sure you want to close all open windows?"
+msgstr "Барлық ашық терезелерді жапқыңыз келе ме?"
+
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
+#: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
+#: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
+#: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
+#: src/ui/buttons-financial.blp:1283 src/ui/buttons-financial.blp:1339
+#: src/ui/buttons-financial.blp:1401 src/ui/buttons-programming.blp:2563
+msgid "_Cancel"
+msgstr "Ба_с тарту"
+
+#: src/gnome-calculator.vala:333
+msgid "Close _All"
+msgstr "Б_арлығын жабу"
+
+#: src/math-converter.vala:612 src/math-converter.vala:630
+msgid "Error"
+msgstr "Қате"
+
+#: src/math-display.vala:694
+msgid "Defined Functions"
+msgstr "Анықталған функциялар"
+
+#: src/math-display.vala:742
+msgid "Built-in Keywords"
+msgstr "Кірістірілген кілтсөздер"
+
+#: src/math-display.vala:794
+msgid "Defined Currencies"
+msgstr "Анықталған валюталар"
+
+#: src/math-display.vala:843
+msgid "Defined Variables"
+msgstr "Анықталған айнымалылар"
+
+#: src/math-function-popover.vala:185
+msgid "Can not use defined variable or constant names"
+msgstr "Анықталған айнымалы немесе константа атауларын пайдалану мүмкін емес"
+
+#: src/math-function-popover.vala:189
+msgid "Can not use built-in function or operator names"
+msgstr "Кірістірілген функция немесе оператор атауларын пайдалану мүмкін емес"
+
+#: src/math-function-popover.vala:192
+msgid "Function name can not start with a digit"
+msgstr "Функция атауы саннан басталмауы керек"
+
+#: src/math-function-popover.vala:195
+msgid "Function name can only contain digits, letters and underscores"
+msgstr "Функция атауында тек сандар, әріптер және астын сызу таңбалары болуы мүмкін"
+
+#: src/math-popover.vala:116
+msgid "Edit"
+msgstr "Түзету"
+
+#: src/math-popover.vala:126
+msgid "Delete"
+msgstr "Өшіру"
+
+#: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
+msgid "8-bit"
+msgstr "8 бит"
+
+#: src/math-preferences.vala:149 src/ui/buttons-programming.blp:2624
+msgid "16-bit"
+msgstr "16 бит"
+
+#: src/math-preferences.vala:151 src/ui/buttons-programming.blp:2630
+msgid "32-bit"
+msgstr "32 бит"
+
+#: src/math-preferences.vala:153 src/ui/buttons-programming.blp:2636
+msgid "64-bit"
+msgstr "64 бит"
+
+#: src/math-preferences.vala:162
+msgid "Never"
+msgstr "Ешқашан"
+
+#: src/math-preferences.vala:164
+msgid "Daily"
+msgstr "Күн сайын"
+
+#: src/math-preferences.vala:166
+msgid "Weekly"
+msgstr "Апта сайын"
+
+#: src/math-preferences.vala:175
+msgid "Currency Code"
+msgstr "Валюта коды"
+
+#: src/math-preferences.vala:177
+msgid "Currency Name"
+msgstr "Валюта атауы"
+
+#: src/math-preferences.vala:179
+msgid "Both"
+msgstr "Екеуі де"
+
+#: src/math-variable-popover.vala:216
+msgid "Can not use defined function or operator names"
+msgstr "Анықталған функция немесе оператор атауларын қолдануға болмайды"
+
+#: src/math-variable-popover.vala:219
+msgid "Can not use built-in variable or constant names"
+msgstr "Кірістірілген айнымалы немесе тұрақты атауларын қолдануға болмайды"
+
+#: src/math-variable-popover.vala:222
+msgid "Variable name can not start with a digit"
+msgstr "Айнымалы атауы цифрдан басталмауы керек"
+
+#: src/math-variable-popover.vala:225
+msgid "Variable name can only contain digits, letters and underscores"
+msgstr "Айнымалы атауында тек цифрлар, әріптер және астын сызу таңбасы болуы мүмкін"
+
+#: src/math-window.vala:140
+msgid "Basic"
+msgstr "Қарапайым"
+
+#: src/math-window.vala:146
+msgid "Advanced"
+msgstr "Кеңейтілген"
+
+#: src/math-window.vala:152 src/ui/math-window.blp:152
+msgid "Financial"
+msgstr "Қаржылық"
+
+#: src/math-window.vala:164
+msgid "Keyboard"
+msgstr "Пернетақта"
+
+#: src/math-window.vala:170
+msgid "Conversion"
+msgstr "Түрлендіру"
+
+#: src/ui/buttons-advanced.blp:76 src/ui/buttons-basic.blp:21
+#: src/ui/buttons-conversion.blp:21 src/ui/buttons-financial.blp:76
+#: src/ui/buttons-programming.blp:1373
+msgid "Clear Display [Escape]"
+msgstr "Тазарту [Escape]"
+
+#: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
+#: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
+msgid "Superscript Mode [Ctrl]"
+msgstr "Үстіңгі индекс режимі [Ctrl]"
+
+#: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
+#: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
+msgid "Subscript Mode [Alt]"
+msgstr "Төменгі индекс режимі [Alt]"
+
+#. Translators: The label on the memory button
+#: src/ui/buttons-advanced.blp:300 src/ui/buttons-basic.blp:245
+#: src/ui/buttons-financial.blp:300 src/ui/buttons-programming.blp:1705
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
+#: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
+msgid "Variables and Constants"
+msgstr "Айнымалылар мен тұрақтылар"
+
+#: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
+#: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
+msgid "Additional Functions"
+msgstr "Қосымша функциялар"
+
+#: src/ui/buttons-advanced.blp:336 src/ui/buttons-basic.blp:281
+#: src/ui/buttons-financial.blp:336 src/ui/buttons-programming.blp:1741
+msgid "Divide [/]"
+msgstr "Бөлу [/]"
+
+#: src/ui/buttons-advanced.blp:353 src/ui/buttons-basic.blp:298
+#: src/ui/buttons-financial.blp:353 src/ui/buttons-programming.blp:1758
+msgid "Multiply [*]"
+msgstr "Көбейту [*]"
+
+#: src/ui/buttons-advanced.blp:370 src/ui/buttons-basic.blp:315
+#: src/ui/buttons-financial.blp:370 src/ui/buttons-programming.blp:1775
+msgid "Subtract [-]"
+msgstr "Азайту [-]"
+
+#: src/ui/buttons-advanced.blp:386 src/ui/buttons-basic.blp:331
+#: src/ui/buttons-financial.blp:386 src/ui/buttons-programming.blp:1791
+msgid "Add [+]"
+msgstr "Қосу [+]"
+
+#: src/ui/buttons-advanced.blp:420 src/ui/buttons-basic.blp:365
+#: src/ui/buttons-financial.blp:420 src/ui/buttons-programming.blp:1825
+msgid "Percentage [%]"
+msgstr "Пайыз [%]"
+
+#: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
+#: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
+msgid "Group [()]"
+msgstr "Топтастыру [()]"
+
+#. Translators: Label on the solve button (clicking this solves the displayed
+#. calculation)
+#: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
+#: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.blp:455 src/ui/buttons-basic.blp:400
+#: src/ui/buttons-financial.blp:455 src/ui/buttons-programming.blp:1860
+msgid "Calculate Result"
+msgstr "Нәтижесін есептеу"
+
+#: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
+#: src/ui/buttons-programming.blp:1888
+msgid "Inverse Modifier [Shift]"
+msgstr "Кері модификатор [Shift]"
+
+#: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
+#: src/ui/buttons-programming.blp:2085
+msgid "Square [Ctrl+2]"
+msgstr "Шаршы [Ctrl+2]"
+
+#: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
+#: src/ui/buttons-programming.blp:2107
+msgid "Square Root [Ctrl+R]"
+msgstr "Шаршы түбір [Ctrl+R]"
+
+#: src/ui/buttons-advanced.blp:760 src/ui/buttons-advanced.blp:827
+#: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
+#: src/ui/buttons-programming.blp:2192
+msgid "Exponent [^ or **]"
+msgstr "Экспонента [^ немесе **]"
+
+#: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
+#: src/ui/buttons-programming.blp:2147
+msgid "Nth Root"
+msgstr "N-ші дәрежелі түбір"
+
+#: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
+#: src/ui/buttons-programming.blp:2216
+msgid "Common Logarithm"
+msgstr "Жалпы логарифм"
+
+#: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
+#: src/ui/buttons-programming.blp:2233
+msgid "Base-10 Exponential"
+msgstr "10 негізді экспонента"
+
+#: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
+msgid "Natural Exponential"
+msgstr "Натурал экспонента"
+
+#: src/ui/buttons-advanced.blp:999
+msgid "Inverse [Ctrl+I]"
+msgstr "Терістеу [Ctrl+I]"
+
+#: src/ui/buttons-advanced.blp:1020
+msgid "Round [[]]"
+msgstr "Дөңгелектеу [[]]"
+
+#: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
+msgid "Absolute Value [||]"
+msgstr "Абсолют мән [||]"
+
+#: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
+msgid "Factorial [!]"
+msgstr "Факториал [!]"
+
+#: src/ui/buttons-advanced.blp:1099 src/ui/buttons-conversion.blp:521
+msgid "Pi [Ctrl+P]"
+msgstr "Пи саны [Ctrl+P]"
+
+#: src/ui/buttons-advanced.blp:1133
+msgid "Imaginary Unit"
+msgstr "Жорамал бірлік"
+
+#: src/ui/buttons-advanced.blp:1150
+msgid "Factorize [Ctrl+F]"
+msgstr "Факториал [Ctrl+F]"
+
+#: src/ui/buttons-conversion.blp:37
+msgid "Switch Conversion Units"
+msgstr "Түрлендіру бірліктерін ауыстыру"
+
+#: src/ui/buttons-conversion.blp:53 src/ui/math-display.blp:45
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/ui/buttons-conversion.blp:510
+msgid "Degrees, Minutes, Seconds"
+msgstr "Градустар, минуттар, секундтар"
+
+#: src/ui/buttons-conversion.blp:533
+msgid "Change Sign"
+msgstr "Таңбаны өзгерту"
+
+#: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
+msgid "Exchange Rate Details"
+msgstr "Айырбас бағамының егжей-тегжейі"
+
+#: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
+msgid "Updated"
+msgstr "Жаңартылды"
+
+#: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
+msgid "Source"
+msgstr "Дереккөз"
+
+#: src/ui/buttons-conversion.blp:625
+msgid "_Refresh Rates"
+msgstr "Бағамдарды жаңа_рту"
+
+#. Translators: Calculates the number of compounding periods necessary to
+#. increase an investment of present value pv to a future value of fv, at a
+#. fixed interest rate of int per compounding period. See also:
+#. http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.blp:669
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Translators: Title of Compounding Term dialog
+#: src/ui/buttons-financial.blp:672 src/ui/buttons-financial.blp:887
+msgid "Compounding Term"
+msgstr "Құрамды кезең"
+
+#. Translators: Calculates the depreciation allowance on an asset for a
+#. specified period of time, using the double-declining balance method. See
+#. also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:688
+msgid "Ddb"
+msgstr "Ddb"
+
+#: src/ui/buttons-financial.blp:691
+msgid "Double Declining Depreciation"
+msgstr "Екі есе төмендеу амортизациясы"
+
+#. Translators: Calculates the future value of an investment based on a series
+#. of equal payments, each of amount pmt, at a periodic interest rate of int,
+#. over the number of payment periods in the term. See also:
+#. http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.blp:707
+msgid "Fv"
+msgstr "Fv"
+
+#. Translators: Compounding Term Dialog: Label before future value input
+#. Translators: Title of Future Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before future value input
+#. Translators: Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.blp:710 src/ui/buttons-financial.blp:927
+#: src/ui/buttons-financial.blp:999 src/ui/buttons-financial.blp:1251
+#: src/ui/buttons-financial.blp:1431
+msgid "Future Value"
+msgstr "Болашақ мәні"
+
+#. Translators: Calculates the resale price of a product, based on the product
+#. cost and the wanted gross profit margin. See also:
+#. http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.blp:726
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Translators: Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.blp:729 src/ui/buttons-financial.blp:1055
+msgid "Gross Profit Margin"
+msgstr "Жалпы пайда маржасы"
+
+#. Translators: Calculates the amount of the periodic payment of a loan, where
+#. payments are made at the end of each payment period. See also:
+#. http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.blp:745
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Translators: Future Value Dialog: Label before periodic payment input
+#. Translators: Title of Periodic Payment dialog
+#. Translators: Present Value Dialog: Label before periodic payment input
+#. Translators: Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.blp:748 src/ui/buttons-financial.blp:1033
+#: src/ui/buttons-financial.blp:1105 src/ui/buttons-financial.blp:1195
+#: src/ui/buttons-financial.blp:1425
+msgid "Periodic Payment"
+msgstr "Мерзімді төлем"
+
+#. Translators: Calculates the present value of an investment based on a
+#. series of equal payments, each of amount pmt, discounted at a periodic
+#. interest rate of int, over the number of payment periods in the term. See
+#. also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.blp:764
+msgid "Pv"
+msgstr "Pv"
+
+#. Translators: Compounding Term Dialog: Label before present value input
+#. Translators: Title of Present Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before present value
+#. input
+#: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
+#: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
+msgid "Present Value"
+msgstr "Ағымдағы мәні"
+
+#. Translators: Calculates the periodic interest necessary to increase an
+#. investment of present value pv to a future value of fv, over the number of
+#. compounding periods in term. See also:
+#. http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.blp:783
+msgid "Rate"
+msgstr "Мөлшерлеме"
+
+#. Translators: Compounding Term Dialog: Label before periodic interest rate
+#. input
+#. Translators: Future Value Dialog: Label before periodic interest rate input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate
+#. input
+#. Translators: Present Value Dialog: Label before periodic interest rate
+#. input
+#. Translators: Title of Periodic Interest Rate dialog
+#. Translators: Payment Period Dialog: Label before periodic interest rate
+#. input
+#: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
+#: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
+#: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
+#: src/ui/buttons-financial.blp:1437
+msgid "Periodic Interest Rate"
+msgstr "Кезеңдік пайыздық мөлшерлеме"
+
+#. Translators: Calculates the straight-line depreciation of an asset for one
+#. period. The depreciable cost is cost - salvage. The straight-line method of
+#. depreciation divides the depreciable cost evenly over the useful life of an
+#. asset. The useful life is the number of periods, typically years, over
+#. which an asset is depreciated. See also:
+#. http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:802
+msgid "Sln"
+msgstr "Sln"
+
+#: src/ui/buttons-financial.blp:805
+msgid "Straight Line Depreciation"
+msgstr "Түзу сызықты амортизация"
+
+#. Translators: Calculates the depreciation allowance on an asset for a
+#. specified period of time, using the Sum-Of-The-Years’-Digits method. This
+#. method of depreciation accelerates the rate of depreciation, so that more
+#. depreciation expense occurs in earlier periods than in later ones. The
+#. depreciable cost is cost - salvage. The useful life is the number of
+#. periods, typically years, over which an asset is depreciated. See also:
+#. http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:821
+msgid "Syd"
+msgstr "Syd"
+
+#: src/ui/buttons-financial.blp:824
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Жылдар-сандар-сомасы амортизациясы"
+
+#. Translators: Calculates the number of payment periods that are necessary
+#. during the term of an ordinary annuity, to accumulate a future value of fv,
+#. at a periodic interest rate of int. Each payment is equal to amount pmt.
+#. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Periodic Payment Dialog: Label before term input
+#. Translators: Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
+#: src/ui/buttons-financial.blp:1263
+msgid "Term"
+msgstr "Мерзім"
+
+#: src/ui/buttons-financial.blp:843
+msgid "Financial Term"
+msgstr "Қаржылық кезең"
+
+#: src/ui/buttons-financial.blp:858 src/ui/math-preferences.blp:78
+msgid "Currency Conversion"
+msgstr "Валютаны айырбастау"
+
+#. Translators: Compounding Term Dialog: Calculate button
+#. Translators: Double-Declining Depreciation Dialog: Calculate button
+#. Translators: Future Value Dialog: Calculate button
+#. Translators: Gross Profit Margin Dialog: Calculate button
+#. Translators: Periodic Payment Dialog: Calculate button
+#. Translators: Present Value Dialog: Calculate button
+#. Translators: Periodic Interest Rate Dialog: Calculate button
+#. Translators: Straight-Line Depreciation Dialog: Calculate button
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Translators: Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.blp:905 src/ui/buttons-financial.blp:961
+#: src/ui/buttons-financial.blp:1017 src/ui/buttons-financial.blp:1073
+#: src/ui/buttons-financial.blp:1123 src/ui/buttons-financial.blp:1179
+#: src/ui/buttons-financial.blp:1235 src/ui/buttons-financial.blp:1291
+#: src/ui/buttons-financial.blp:1347 src/ui/buttons-financial.blp:1409
+msgid "C_alculate"
+msgstr "Е_септеу"
+
+#. Translators: Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:916
+msgid ""
+"Calculates the number of compounding periods necessary to increase an investment "
+"of present value to a future value, at a fixed interest rate per compounding "
+"period."
+msgstr ""
+"Ағымдағы құнның болашақ құнына инвестицияларды ұлғайту үшін қажетті біріктіру "
+"кезеңдерінің санын бір қосу кезеңіне тіркелген пайыздық мөлшерлеме бойынша "
+"есептейді."
+
+#. Translators: Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.blp:943
+msgid "Double-Declining Depreciation"
+msgstr "Екі есе төмендеу амортизациясы"
+
+#. Translators: Double-Declining Depreciation Dialog: Description of
+#. calculation
+#: src/ui/buttons-financial.blp:972
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of time, "
+"using the double-declining balance method."
+msgstr ""
+"Актив бойынша амортизациялық үстемеақыны екі есе азаю әдісін пайдалана отырып, "
+"көрсетілген уақыт кезеңі ішінде есептейді."
+
+#. Translators: Double-Declining Depreciation Dialog: Label before cost input
+#. Translators: Gross Profit Margin Dialog: Label before cost input
+#. Translators: Straight-Line Depreciation Dialog: Label before cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
+#. cost input
+#: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
+#: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
+msgid "Cost"
+msgstr "Құны"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before life input
+#. Translators: Straight-Line Depreciation Dialog: Label before life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
+#. life input
+#: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
+#: src/ui/buttons-financial.blp:1375
+msgid "Life"
+msgstr "Қызмет мерзімі"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before period
+#. input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
+#. period input
+#: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
+msgid "Period"
+msgstr "Кезең"
+
+#. Translators: Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1028
+msgid ""
+"Calculates the future value of an investment based on a series of equal payments "
+"at a periodic interest rate over the number of payment periods in the term."
+msgstr ""
+"Мерзiмi өткен төлем кезеңдерiнiң санынан кезеңдiк пайыздық мөлшерлеме бойынша тең "
+"төлемдер қатары негiзiнде инвестициялардың болашақ құнын есептейдi."
+
+#. Translators: Future Value Dialog: Label before number of periods input
+#. Translators: Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.blp:1045 src/ui/buttons-financial.blp:1207
+msgid "Number of Periods"
+msgstr "Кезеңдер саны"
+
+#. Translators: Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1084
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the wanted "
+"gross profit margin."
+msgstr ""
+"Өнімнің құны мен пайданың қажетінінің маржасын негізге ала отырып, тауарды қайта "
+"сату бағасын есептейді."
+
+#. Translators: Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.blp:1095
+msgid "Margin"
+msgstr "Маржа"
+
+#. Translators: Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1134
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are made "
+"at the end of each payment period."
+msgstr ""
+"Төлемдер әр төлем кезеңінің соңында жүзеге асырылатын несиенің мерзімді төлем "
+"сомасын есептейді."
+
+#. Translators: Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.blp:1139
+msgid "Principal"
+msgstr "Негізгі сома"
+
+#. Translators: Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1190
+msgid ""
+"Calculates the present value of an investment based on a series of equal payments "
+"discounted at a periodic interest rate over the number of payment periods in the "
+"term."
+msgstr ""
+"Мерзімдегі төлем кезеңдерінің саны ішінде мерзімді пайыздық мөлшерлеме бойынша "
+"дисконтталған тең төлемдер сериясына негізделген инвестицияның ағымдағы құнын "
+"есептейді."
+
+#. Translators: Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1246
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a future "
+"value, over the number of compounding periods."
+msgstr ""
+"Күрделі пайыздарды есептеу кезеңдерінің саны ішінде инвестицияны болашақ құнға "
+"дейін арттыру үшін қажетті мерзімді пайызды есептейді."
+
+#. Translators: Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.blp:1273
+msgid "Straight-Line Depreciation"
+msgstr "Түзу сызықты амортизация"
+
+#. Translators: Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1302
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The straight-"
+"line method of depreciation divides the depreciable cost evenly over the useful "
+"life of an asset. The useful life is the number of periods, typically years, over "
+"which an asset is depreciated."
+msgstr ""
+"Активтің бір кезеңге арналған түзу сызықты амортизациясын есептейді. "
+"Амортизацияның түзу сызықты әдісі амортизацияланатын құнды активтің пайдалы қызмет "
+"мерзіміне теңдей бөледі. Пайдалы қызмет мерзімі — бұл активтің амортизациясы "
+"есептелетін кезеңдер саны (әдетте жылдар)."
+
+#. Translators: Straight-Line Depreciation Dialog: Label before salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
+#. salvage input
+#: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
+msgid "Salvage"
+msgstr "Қалдық құн"
+
+#. Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.blp:1329
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Жылдар-сандар-сомасы амортизациясы"
+
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of
+#. calculation
+#: src/ui/buttons-financial.blp:1358
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of time, "
+"using the Sum-of-the-Years’-Digits method. This method of depreciation accelerates "
+"the rate of depreciation, so that more depreciation expense occurs in earlier "
+"periods than in later ones. The useful life is the number of periods, typically "
+"years, over which an asset is depreciated."
+msgstr ""
+"Жылдық-цифрлардың-қосындысы (SYD) әдісін қолданып, белгілі бір уақыт кезеңі үшін "
+"актив бойынша амортизациялық аударымдарды есептейді. Бұл амортизация әдісі "
+"амортизация қарқынын тездетеді, соның нәтижесінде кейінгі кезеңдерге қарағанда "
+"алғашқы кезеңдерде амортизациялық шығыстар көбірек болады. Пайдалы қызмет мерзімі "
+"— бұл активтің амортизациясы есептелетін кезеңдер саны (әдетте жылдар)."
+
+#. Translators: Title of Payment Period dialog
+#: src/ui/buttons-financial.blp:1391
+msgid "Payment Period"
+msgstr "Төлем мерзімі"
+
+#. Translators: Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1420
+msgid ""
+"Calculates the number of payment periods that are necessary during the term of an "
+"ordinary annuity, to accumulate a future value, at a periodic interest rate."
+msgstr ""
+"Қарапайым аннуитет мерзімі ішінде, болашақ құнды жинақтау үшін, мерзімді пайыздық "
+"мөлшерлеме бойынша қажетті төлем кезеңдерінің санын есептейді."
+
+#: src/ui/buttons-programming.blp:1904
+msgid "Bitwise AND"
+msgstr "Биттік ЖӘНЕ"
+
+#: src/ui/buttons-programming.blp:1922
+msgid "Bitwise NAND"
+msgstr "Биттік ЖӘНЕ-ЕМЕС"
+
+#: src/ui/buttons-programming.blp:1941
+msgid "Bitwise OR"
+msgstr "Биттік НЕМЕСЕ"
+
+#: src/ui/buttons-programming.blp:1959
+msgid "Bitwise NOR"
+msgstr "Биттік НЕМЕСЕ-ЕМЕС"
+
+#: src/ui/buttons-programming.blp:1977
+msgid "Bitwise NOT"
+msgstr "Биттік ЕМЕС"
+
+#: src/ui/buttons-programming.blp:1995
+msgid "Bitwise Exclusive OR"
+msgstr "Биттік болғызбайтын НЕМЕСЕ"
+
+#: src/ui/buttons-programming.blp:2013
+msgid "Bitwise Exclusive NOR"
+msgstr "Биттік болғызбайтын НЕМЕСЕ-ЕМЕС"
+
+#: src/ui/buttons-programming.blp:2031
+msgid "Left Shift [<<]"
+msgstr "Солға ығыстыру [<<]"
+
+#: src/ui/buttons-programming.blp:2049
+msgid "Right Shift [>>]"
+msgstr "Оңға ығыстыру [>>]"
+
+#: src/ui/buttons-programming.blp:2067
+msgid "Unsigned Right Shift [>>>]"
+msgstr "Таңбасыз оңға ығыстыру [>>>]"
+
+#: src/ui/buttons-programming.blp:2257
+msgid "Binary Logarithm"
+msgstr "Екілік логарифм"
+
+#: src/ui/buttons-programming.blp:2274
+msgid "Base-2 Exponential"
+msgstr "2 негізіндегі экспонента"
+
+#: src/ui/buttons-programming.blp:2364
+msgid "Ceiling [Ctrl+[]]"
+msgstr "Жоғарыға қарай дөңгелектеу [Ctrl+[]]"
+
+#: src/ui/buttons-programming.blp:2385
+msgid "Floor [Alt+[]]"
+msgstr "Төменге қарай дөңгелектеу [Alt+[]]"
+
+#: src/ui/buttons-programming.blp:2449
+msgid "Change Base"
+msgstr "Негізді өзгерту"
+
+#: src/ui/buttons-programming.blp:2468
+msgid "Change Word Size"
+msgstr "Сөз өлшемін өзгерту"
+
+#. Translators: Title of insert character code dialog
+#: src/ui/buttons-programming.blp:2486 src/ui/buttons-programming.blp:2504
+msgid "Insert Character Code"
+msgstr "Таңба кодын кірістіру"
+
+#. Translators: Insert character code dialog: Label before character entry
+#: src/ui/buttons-programming.blp:2535
+msgid "Character"
+msgstr "Таңба"
+
+#: src/ui/buttons-programming.blp:2542
+msgid "Convert to"
+msgstr "Келесіге түрлендіру"
+
+#: src/ui/buttons-programming.blp:2546
+msgid "Unicode Code Point"
+msgstr "Unicode код нүктесі"
+
+#: src/ui/buttons-programming.blp:2547
+msgid "UTF-8 Encoding"
+msgstr "UTF-8 кодтауы"
+
+#: src/ui/buttons-programming.blp:2548
+msgid "UTF-16 Encoding"
+msgstr "UTF-16 кодтауы"
+
+#. Translators: Insert character code dialog: Button to insert selected
+#. character
+#: src/ui/buttons-programming.blp:2574
+msgid "_Insert"
+msgstr "Кірі_стіру"
+
+#: src/ui/math-converter.blp:119
+msgid "Exchange Rates Not Loaded"
+msgstr "Валюта бағамдары жүктелмеді"
+
+#: src/ui/math-converter.blp:122
+msgid "<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
+msgstr ""
+"<a href=\"r:///\">Бағамдарды жаңарту</a> немесе баптауларда жаңарту аралығын "
+"өзгерту"
+
+#: src/ui/math-converter.blp:141
+msgid "_Copy"
+msgstr "_Көшіру"
+
+#: src/ui/math-converter.blp:146
+msgid "_Paste"
+msgstr "Кірі_стіру"
+
+#: src/ui/math-function-popover.blp:48
+msgid "Function name"
+msgstr "Функция аты"
+
+#: src/ui/math-function-popover.blp:60
+msgid "Select no. of arguments"
+msgstr "Аргументтер санын таңдау"
+
+#: src/ui/math-function-popover.blp:65
+msgid "Add function"
+msgstr "Функцияны қосу"
+
+#: src/ui/math-preferences.blp:11
+msgid "Favorite Currencies"
+msgstr "Таңдаулы валюталар"
+
+#: src/ui/math-preferences.blp:20
+msgid "Search currencies"
+msgstr "Валюталарды іздеу"
+
+#: src/ui/math-preferences.blp:36
+msgid "No Results Found"
+msgstr "Нәтижелер табылмады"
+
+#: src/ui/math-preferences.blp:37
+msgid "Try a different search"
+msgstr "Басқа іздеуді қолданып көріңіз"
+
+#: src/ui/math-preferences.blp:46
+msgid "General"
+msgstr "Жалпы"
+
+#: src/ui/math-preferences.blp:49
+msgid "Number of _Decimals"
+msgstr "_Ондық таңбалар саны"
+
+#: src/ui/math-preferences.blp:57
+msgid "Trailing _Zeroes"
+msgstr "Соңындағы _нөлдер"
+
+#: src/ui/math-preferences.blp:62
+msgid "_Group Digits"
+msgstr "Цифрларды то_птау"
+
+#: src/ui/math-preferences.blp:67
+msgid "_Angle Units"
+msgstr "_Бұрыш өлшем бірліктері"
+
+#: src/ui/math-preferences.blp:72
+msgid "_Word Size"
+msgstr "_Сөз өлшемі"
+
+#: src/ui/math-preferences.blp:81
+msgid "E_xchange Rate Refresh Interval"
+msgstr "Валюта бағамын жаңарту а_ралығы"
+
+#: src/ui/math-preferences.blp:86
+msgid "_Currency Display"
+msgstr "_Валютаны көрсету"
+
+#: src/ui/math-preferences.blp:91
+msgid "_Show Currencies in Auto-Completion List"
+msgstr "Валюталарды _автотолтыру тізімінде көрсету"
+
+#: src/ui/math-preferences.blp:96
+msgid "All"
+msgstr "Барлығы"
+
+#: src/ui/math-preferences.blp:97
+msgid "Favorite Only"
+msgstr "Тек таңдаулы"
+
+#: src/ui/math-preferences.blp:98
+msgid "None"
+msgstr "Ешнәрсе"
+
+#: src/ui/math-preferences.blp:104
+msgid "_Favorite Currencies"
+msgstr "_Таңдаулы валюталар"
+
+#: src/ui/math-shortcuts.blp:5
+msgctxt "shortcuts dialog"
+msgid "General"
+msgstr "Жалпы"
+
+#: src/ui/math-shortcuts.blp:9
+msgctxt "shortcuts dialog"
+msgid "Open a New Window"
+msgstr "Жаңа терезені ашу"
+
+#: src/ui/math-shortcuts.blp:14
+msgctxt "shortcuts dialog"
+msgid "Close Current Window"
+msgstr "Ағымдағы терезені жабу"
+
+#: src/ui/math-shortcuts.blp:19
+msgctxt "shortcuts dialog"
+msgid "Quit the Application"
+msgstr "Бағдарламадан шығу"
+
+#: src/ui/math-shortcuts.blp:24
+msgctxt "shortcuts dialog"
+msgid "Show Help"
+msgstr "Көмекті көрсету"
+
+#: src/ui/math-shortcuts.blp:29
+msgctxt "shortcuts dialog"
+msgid "Open Menu"
+msgstr "Мәзірді ашу"
+
+#: src/ui/math-shortcuts.blp:34
+msgctxt "shortcuts dialog"
+msgid "Show Preferences"
+msgstr "Баптауларды көрсету"
+
+#: src/ui/math-shortcuts.blp:39
+msgctxt "shortcuts dialog"
+msgid "Keyboard Shortcuts"
+msgstr "Пернетақта жарлықтары"
+
+#: src/ui/math-shortcuts.blp:44
+msgctxt "shortcuts dialog"
+msgid "Clear History"
+msgstr "Тарихты тазарту"
+
+#: src/ui/math-shortcuts.blp:49
+msgctxt "shortcuts dialog"
+msgid "Switching Modes"
+msgstr "Режимдерді ауыстыру"
+
+#: src/ui/math-shortcuts.blp:53
+msgctxt "shortcuts dialog"
+msgid "Switch to Basic Mode"
+msgstr "Негізгі режимге ауысу"
+
+#: src/ui/math-shortcuts.blp:58
+msgctxt "shortcuts dialog"
+msgid "Switch to Advanced Mode"
+msgstr "Кеңейтілген режимге ауысу"
+
+#: src/ui/math-shortcuts.blp:63
+msgctxt "shortcuts dialog"
+msgid "Switch to Financial Mode"
+msgstr "Қаржылық режимге ауысу"
+
+#: src/ui/math-shortcuts.blp:68
+msgctxt "shortcuts dialog"
+msgid "Switch to Programming Mode"
+msgstr "Бағдарламалау режиміне ауысу"
+
+#: src/ui/math-shortcuts.blp:73
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode"
+msgstr "Пернетақта режиміне ауысу"
+
+#: src/ui/math-shortcuts.blp:78
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode (alt.)"
+msgstr "Пернетақта режиміне ауысу (балама)"
+
+#: src/ui/math-shortcuts.blp:83
+msgctxt "shortcuts dialog"
+msgid "Switch to Conversion Mode"
+msgstr "Түрлендіру режиміне ауысу"
+
+#: src/ui/math-shortcuts.blp:88
+msgctxt "shortcuts dialog"
+msgid "Programming Mode"
+msgstr "Бағдарламалау режимі"
+
+#: src/ui/math-shortcuts.blp:92
+msgctxt "shortcuts dialog"
+msgid "Switch to Binary"
+msgstr "Екілік жүйеге ауысу"
+
+#: src/ui/math-shortcuts.blp:97
+msgctxt "shortcuts dialog"
+msgid "Switch to Octal"
+msgstr "Сегіздік жүйеге ауысу"
+
+#: src/ui/math-shortcuts.blp:102
+msgctxt "shortcuts dialog"
+msgid "Switch to Decimal"
+msgstr "Ондыққа ауысу"
+
+#: src/ui/math-shortcuts.blp:107
+msgctxt "shortcuts dialog"
+msgid "Switch to Hexadecimal"
+msgstr "Он алтылыққа ауысу"
+
+#: src/ui/math-shortcuts.blp:112
+msgctxt "shortcuts dialog"
+msgid "Keyboard Entry"
+msgstr "Пернетақтадан енгізу"
+
+#: src/ui/math-shortcuts.blp:116
+msgctxt "shortcuts dialog"
+msgid "Multiply (×)"
+msgstr "Көбейту (×)"
+
+#: src/ui/math-shortcuts.blp:121
+msgctxt "shortcuts dialog"
+msgid "Divide (÷)"
+msgstr "Бөлу (÷)"
+
+#: src/ui/math-shortcuts.blp:126
+msgctxt "shortcuts dialog"
+msgid "Square (²)"
+msgstr "Квадрат (²)"
+
+#: src/ui/math-shortcuts.blp:131
+msgctxt "shortcuts dialog"
+msgid "Square Root (√)"
+msgstr "Квадрат түбір (√)"
+
+#: src/ui/math-shortcuts.blp:136
+msgctxt "shortcuts dialog"
+msgid "Inverse (⁻¹)"
+msgstr "Кері мән (⁻¹)"
+
+#: src/ui/math-shortcuts.blp:141
+msgctxt "shortcuts dialog"
+msgid "Pi (π)"
+msgstr "Пи (π)"
+
+#: src/ui/math-shortcuts.blp:146
+msgctxt "shortcuts dialog"
+msgid "Tau (τ)"
+msgstr "Тау (τ)"
+
+#: src/ui/math-shortcuts.blp:151
+msgctxt "shortcuts dialog"
+msgid "Degree (°)"
+msgstr "Градус (°)"
+
+#: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
+msgctxt "shortcuts dialog"
+msgid "Floor (⌊⌋)"
+msgstr "Төменге қарай дөңгелектеу (⌊⌋)"
+
+#: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
+msgctxt "shortcuts dialog"
+msgid "Ceiling (⌈⌉)"
+msgstr "Жоғарыға қарай дөңгелектеу (⌈⌉)"
+
+#: src/ui/math-shortcuts.blp:180
+msgctxt "shortcuts dialog"
+msgid "Enter Numbers in Scientific Format"
+msgstr "Сандарды ғылыми пішімде енгізу"
+
+#: src/ui/math-shortcuts.blp:185
+msgctxt "shortcuts dialog"
+msgid "Enter Subscript Numbers"
+msgstr "Төменгі индекс сандарын енгізу"
+
+#: src/ui/math-shortcuts.blp:190
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Numbers"
+msgstr "Жоғарғы индекс сандарын енгізу"
+
+#: src/ui/math-shortcuts.blp:195
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Minus Sign"
+msgstr "Жоғарғы индекс минус белгісін енгізу"
+
+#: src/ui/math-shortcuts.blp:200
+msgctxt "shortcuts dialog"
+msgid "Equation"
+msgstr "Теңдеу"
+
+#: src/ui/math-shortcuts.blp:204
+msgctxt "shortcuts dialog"
+msgid "Copy"
+msgstr "Көшіру"
+
+#: src/ui/math-shortcuts.blp:209
+msgctxt "shortcuts dialog"
+msgid "Paste"
+msgstr "Кірістіру"
+
+#: src/ui/math-shortcuts.blp:214
+msgctxt "shortcuts dialog"
+msgid "Undo"
+msgstr "Болдырмау"
+
+#: src/ui/math-shortcuts.blp:219
+msgctxt "shortcuts dialog"
+msgid "Redo"
+msgstr "Қайталау"
+
+#: src/ui/math-shortcuts.blp:224
+msgctxt "shortcuts dialog"
+msgid "Previous Equation"
+msgstr "Алдыңғы теңдеу"
+
+#: src/ui/math-shortcuts.blp:229
+msgctxt "shortcuts dialog"
+msgid "Next Equation"
+msgstr "Келесі теңдеу"
+
+#: src/ui/math-shortcuts.blp:234
+msgctxt "shortcuts dialog"
+msgid "Clear Display"
+msgstr "Экранды тазарту"
+
+#: src/ui/math-shortcuts.blp:239
+msgctxt "shortcuts dialog"
+msgid "Factorize"
+msgstr "Жіктеу"
+
+#: src/ui/math-variable-popover.blp:37
+msgid "Constants"
+msgstr "Тұрақтылар"
+
+#: src/ui/math-variable-popover.blp:58
+msgid "Variable name"
+msgstr "Айнымалы аты"
+
+#: src/ui/math-variable-popover.blp:70
+msgid "Store value into existing or new variable"
+msgstr "Мәнін бұрыннан бар немесе жаңа айнымалыға сақтау"
+
+#: src/ui/math-window.blp:7
+msgid "_Basic"
+msgstr "Қ_арапайым"
+
+#: src/ui/math-window.blp:13
+msgid "_Advanced"
+msgstr "_Кеңейтілген"
+
+#: src/ui/math-window.blp:19
+msgid "_Financial"
+msgstr "Қар_жылық"
+
+#: src/ui/math-window.blp:25
+msgid "_Programming"
+msgstr "_Бағдарламалау"
+
+#: src/ui/math-window.blp:31
+msgid "_Keyboard"
+msgstr "_Пернетақта"
+
+#: src/ui/math-window.blp:37
+msgid "_Conversion"
+msgstr "Түр_лендіру"
+
+#: src/ui/math-window.blp:47
+msgid "_New Window"
+msgstr "Жаңа тере_зе"
+
+#: src/ui/math-window.blp:54
+msgid "_Clear History"
+msgstr "Тарихты та_зарту"
+
+#: src/ui/math-window.blp:61
+msgid "Result Format"
+msgstr "Нәтиже пішімі"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set result format to "automatic";
+#. other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.blp:65
+msgid "_Automatic"
+msgstr "_Автоматты түрде"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set result format to "fixed";
+#. other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#: src/ui/math-window.blp:72
+msgid "_Fixed"
+msgstr "_Бекітілген"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set result format to
+#. "scientific"; other possible options are "_Fixed", "_Automatic" and
+#. "_Engineering"
+#: src/ui/math-window.blp:79
+msgid "_Scientific"
+msgstr "Ғ_ылыми"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set result format to
+#. "engineering"; other possible options are "_Fixed", "_Scientific" and
+#. "_Automatic"
+#: src/ui/math-window.blp:86
+msgid "_Engineering"
+msgstr "_Инженерлік"
+
+#: src/ui/math-window.blp:96
+msgid "_Preferences"
+msgstr "Ба_птаулар"
+
+#: src/ui/math-window.blp:101
+msgid "_Keyboard Shortcuts"
+msgstr "_Пернетақта жарлықтары"
+
+#: src/ui/math-window.blp:106
+msgid "_Help"
+msgstr "_Көмек"
+
+#: src/ui/math-window.blp:111
+msgid "A_bout Calculator"
+msgstr "Калькулятор т_уралы"
+
+#: src/ui/math-window.blp:132
+msgid "Mode Selection"
+msgstr "Режимді таңдау"
+
+#: src/ui/math-window.blp:139
+msgid "Undo"
+msgstr "Болдырмау"
+
+#: src/ui/math-window.blp:146
+msgid "Redo"
+msgstr "Қайталау"
+
+#: src/ui/math-window.blp:161
+msgid "Main Menu"
+msgstr "Басты мәзір"
+
+#~ msgid "Bulgarian Lev"
+#~ msgstr "Болгар леві"
+
+#~ msgid "CFA Franc"
+#~ msgstr "КФА франкы"
+
+#~ msgid "Estonian Kroon"
+#~ msgstr "Эстониялық круны"
+
+#~ msgid "Croatian Kuna"
+#~ msgstr "Хорват кунасы"
+
+#~ msgid "Show Thousands Separators"
+#~ msgstr "Мыңдықтар ажыратқышын көрсету"
+
+#~ msgid "Ones’ Complement"
+#~ msgstr "Кері код"
+
+#~ msgid "Ones’ complement is only defined for non-negative integers"
+#~ msgstr "Кері код тек теріс емес бүтін сандар үшін анықталған"
+
+#~ msgid "_Thousands Separators"
+#~ msgstr "_Мыңдықтар ажыратқышы"
+
+#~ msgid "Currency of the current calculation"
+#~ msgstr "Ағымдағы есептеу валютасы"
+
+#~ msgid "Target currency"
+#~ msgstr "Мақсат қаржысы"
+
+#~ msgid "Currency to convert the current calculation into"
+#~ msgstr "Ағымдағы есептеуді түрлендіруге арналған валюта"
+
+#~ msgid "Units of the current calculation"
+#~ msgstr "Ағымдағы есептеу бірліктері"
+
+#~ msgid "Units to convert the current calculation into"
+#~ msgstr "Ағымдағы есептеуді түрлендіруге арналған бірліктер"
+
+#~ msgid "Natural logarithm"
+#~ msgstr "Натуралды логарифм"
+
+#~ msgid "Argument"
+#~ msgstr "Аргумент"
+
+#~ msgid "Conjugate"
+#~ msgstr "Түйіндестіру"
+
+#~ msgid "Integer"
+#~ msgstr "Бүтін"
+
+#~ msgid "Fraction"
+#~ msgstr "Бөлшек"
+
+#~ msgid "Real"
+#~ msgstr "Real"
+
+#~ msgid "Imaginary"
+#~ msgstr "Жорамал бірлік"
+
+#~ msgid "Arc sine"
+#~ msgstr "Арксинус"
+
+#~ msgid "Arc cosine"
+#~ msgstr "Арккосинус"
+
+#~ msgid "Arc tangent"
+#~ msgstr "Арктангенс"
+
+#~ msgid "Hyperbolic sine"
+#~ msgstr "Гиперболалық синус"
+
+#~ msgid "Hyperbolic cosine"
+#~ msgstr "Гиперболалық косинус"
+
+#~ msgid "Hyperbolic tangent"
+#~ msgstr "Гиперболалық тангенс"
+
+#~ msgid "Hyperbolic arcsine"
+#~ msgstr "Гиперболалық арксинус"
+
+#~ msgid "Hyperbolic arccosine"
+#~ msgstr "Гиперболалық арккосинус"
+
+#~ msgid "Hyperbolic arctangent"
+#~ msgstr "Гиперболалық арктангенс"
+
+#~ msgid "One's complement"
+#~ msgstr "Кері код"
+
+#~ msgid "Two's complement"
+#~ msgstr "Қосымша код"
+
+#~ msgid "Displayed value not an integer"
+#~ msgstr "Көрсетілген шама бүтін емес"
+
+#~ msgid "No sane value to bitwise shift"
+#~ msgstr "Бит бойынша ығыстыру үшін жарамды мән жоқ"
+
+#~ msgid "Overflow: the result couldn’t be calculated"
+#~ msgstr "Толып кету: нәтижені есептеу мүмкін емес"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s degrees"
+#~ msgstr "%s градус"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s radians"
+#~ msgstr "%s радиан"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s gradians"
+#~ msgstr "%s градиан"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s pc"
+#~ msgstr "%s пк"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ly"
+#~ msgstr "%s жж"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s au"
+#~ msgstr "%s аб"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%sU"
+#~ msgstr "%s монт. бірлік"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s nmi"
+#~ msgstr "%s теңіз милясы"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s mi"
+#~ msgstr "%s миля"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s km"
+#~ msgstr "%s км"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s cb"
+#~ msgstr "%s кабельтов"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ftm"
+#~ msgstr "%s теңіз сажыны"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s m"
+#~ msgstr "%s м"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s yd"
+#~ msgstr "%s ярд"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ft"
+#~ msgstr "%s фут"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s in"
+#~ msgstr "%s дюйм"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s cm"
+#~ msgstr "%s см"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s mm"
+#~ msgstr "%s мм"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s μm"
+#~ msgstr "%s мкм"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s nm"
+#~ msgstr "%s нм"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s pt"
+#~ msgstr "%s пинта"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s km/h"
+#~ msgstr "%s км/сағ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s miles/h"
+#~ msgstr "%s миля/сағ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s m/s"
+#~ msgstr "%s м/с"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s feet/s"
+#~ msgstr "%s фут/с"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s kt"
+#~ msgstr "%s кт"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ha"
+#~ msgstr "%s га"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s acres"
+#~ msgstr "%s акр"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ft²"
+#~ msgstr "%s шаршы фут"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s m²"
+#~ msgstr "%s m²"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s cm²"
+#~ msgstr "%s cm²"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s mm²"
+#~ msgstr "%s mm²"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s m³"
+#~ msgstr "%s m³"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s gal"
+#~ msgstr "%s галлон"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s L"
+#~ msgstr "%s л"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s qt"
+#~ msgstr "%s кварта"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s cup"
+#~ msgstr "%s шыны-аяқ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s mL"
+#~ msgstr "%s мл"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s μL"
+#~ msgstr "%s мкл"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s T"
+#~ msgstr "%s т"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s kg"
+#~ msgstr "%s кг"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s lb"
+#~ msgstr "%s фунт"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s oz"
+#~ msgstr "%s унция"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ozt"
+#~ msgstr "%s Трой унциясы"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s g"
+#~ msgstr "%s г"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s st"
+#~ msgstr "%s стоун"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s centuries"
+#~ msgstr "%s ғасыр"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s decades"
+#~ msgstr "%s декада"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s years"
+#~ msgstr "%s жыл"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s months"
+#~ msgstr "%s ай"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s weeks"
+#~ msgstr "%s апта"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s days"
+#~ msgstr "%s күн"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s hours"
+#~ msgstr "%s сағат"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s minutes"
+#~ msgstr "%s минут"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s s"
+#~ msgstr "%s с"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ms"
+#~ msgstr "%s мс"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s μs"
+#~ msgstr "%s мкс"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚C"
+#~ msgstr "%s ˚C"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚F"
+#~ msgstr "%s ˚F"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s K"
+#~ msgstr "%s К"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚R"
+#~ msgstr "%s ˚R"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s b"
+#~ msgstr "%s бит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s B"
+#~ msgstr "%s Б"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s nibble"
+#~ msgstr "%s ниббл"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s kb"
+#~ msgstr "%s кбит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s kB"
+#~ msgstr "%s кБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Kib"
+#~ msgstr "%s Кибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s KiB"
+#~ msgstr "%s КиБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Mb"
+#~ msgstr "%s Мбит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s MB"
+#~ msgstr "%s МБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Mib"
+#~ msgstr "%s Мибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s MiB"
+#~ msgstr "%s МиБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Gb"
+#~ msgstr "%s ГБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s GB"
+#~ msgstr "%s ГБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Gib"
+#~ msgstr "%s Гибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s GiB"
+#~ msgstr "%s ГиБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Tb"
+#~ msgstr "%s Тбит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s TB"
+#~ msgstr "%s ТБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Tib"
+#~ msgstr "%s Тибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s TiB"
+#~ msgstr "%s ТиБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Pb"
+#~ msgstr "%s Пбит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s PB"
+#~ msgstr "%s ПБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Pib"
+#~ msgstr "%s Пибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s PiB"
+#~ msgstr "%s ПБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Eb"
+#~ msgstr "%s Эбит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s EB"
+#~ msgstr "%s ЭБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Eib"
+#~ msgstr "%s Эибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s EiB"
+#~ msgstr "%s ЭиБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Zib"
+#~ msgstr "%s Зибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ZiB"
+#~ msgstr "%s ЗиБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Yb"
+#~ msgstr "%s Йбит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s YB"
+#~ msgstr "%s ЙБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Yib"
+#~ msgstr "%s Йибит"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s YiB"
+#~ msgstr "%s ЙиБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s Hz"
+#~ msgstr "%s Гц"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s kHz"
+#~ msgstr "%s кГц"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s MHz"
+#~ msgstr "%s МГц"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s GHz"
+#~ msgstr "%s ГГц"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s THz"
+#~ msgstr "%s ТГц"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s J"
+#~ msgstr "%s Дж"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s KJ"
+#~ msgstr "%s кДж"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s MJ"
+#~ msgstr "%s МДж"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s kWh"
+#~ msgstr "%s квт-сағ"
+
+#~ msgid "BTU"
+#~ msgstr "БЖБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s BTU"
+#~ msgstr "%s БЖБ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s cal"
+#~ msgstr "%s кал"
+
+#~ msgid "Erg"
+#~ msgstr "Эрг"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s erg"
+#~ msgstr "%s эрг"
+
+#~ msgid "eV"
+#~ msgstr "эВ"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ev"
+#~ msgstr "%s эВ"
+
+#~ msgid "Ft-lb"
+#~ msgstr "Фут-фунт"
+
+#, c-format
+#~ msgctxt "unit-format"
+#~ msgid "%s ft-lb"
+#~ msgstr "%s фут-фунт"
+
+#, c-format
+#~ msgid "%s%%s"
+#~ msgstr "%s%%s"
+
+#~ msgid "Copy result to clipboard"
+#~ msgstr "Нәтижені алмасу буферіне көшіру"
+
+#~ msgid "Modulus divide"
+#~ msgstr "Модульдік бөлу"
+
+#~ msgid "Root [Ctrl+R]"
+#~ msgstr "Түбір [Ctrl+R]"
+
+#~ msgid "Start Group [(]"
+#~ msgstr "Топты бастау [(]"
+
+#~ msgid "Scientific Exponent [Ctrl+E]"
+#~ msgstr "Ғылыми экспонента [Ctrl+E]"
+
+#~ msgid "Memory"
+#~ msgstr "Жады"
+
+#~ msgid "Present _Value:"
+#~ msgstr "Ағымдағы мә_ні:"
+
+#~ msgid "Periodic Interest _Rate:"
+#~ msgstr "Кезеңдік пайыздық мөлшер_леме:"
+
+#~ msgid "_Future Value:"
+#~ msgstr "Бола_шақ мәні:"
+
+#~ msgid "C_ost:"
+#~ msgstr "Б_аға:"
+
+#~ msgid "_Periodic Payment:"
+#~ msgstr "_Мерзімді төлем:"
+
+#~ msgid "_Term:"
+#~ msgstr "_Мерзім:"
+
+#~ msgid "Future _Value:"
+#~ msgstr "Бола_шақ мәні:"
+
+#~ msgid "Subscript mode [Alt]"
+#~ msgstr "Төменгі индекс режимі [Alt]"
+
+#~ msgid "Shift Left"
+#~ msgstr "Сол жаққа ығыстыру"
+
+#~ msgid "Shift Right"
+#~ msgstr "Оң жаққа ығыстыру"
+
+#~ msgid "Boolean OR"
+#~ msgstr "Логикалық НЕМЕСЕ"
+
+#~ msgid "Boolean AND"
+#~ msgstr "Логикалық ЖӘНЕ"
+
+#~ msgid "Boolean NOT"
+#~ msgstr "Логикалық ЕМЕС"
+
+#~ msgid " to "
+#~ msgstr " етіп "
+
+#~ msgctxt "convertion equals label"
+#~ msgid "="
+#~ msgstr "="
+
+#~ msgid "Word _size"
+#~ msgstr "Сөз өл_шемі"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Пернетақта жарлықтары"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Programming mode"
+#~ msgstr "Бағдарламалау режимі"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Others"
+#~ msgstr "Басқалар"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy"
+#~ msgstr "Көшіру"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Next result"
+#~ msgstr "Келесі нәтиже"
+
+#~ msgid "_Undo"
+#~ msgstr "Болд_ырмау"
+
+#, c-format
+#~ msgid "%d place"
+#~ msgid_plural "%d places"
+#~ msgstr[0] "%d орын"
+
+#~ msgid "_Quit"
+#~ msgstr "_Шығу"
+
+#~ msgid "Venezuelan Bolívar"
+#~ msgstr "Венесуэла боливары"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Қаржылық және ғылыми режимдері бар калькулятор."
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Болдырмау [Ctrl+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "Басты мәзір"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "GNOME калькуляторы"
+
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "GNOME калькуляторы қарапайым режимінде"
+
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "GNOME калькуляторы кеңейтілген режимінде"
+
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "GNOME калькуляторы қаржылық режимінде"
+
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "GNOME калькуляторы бағдарламалау режимінде"
+
+#~ msgid "Subscript"
+#~ msgstr "Төменгі индекс"
+
+#~ msgid "Superscript"
+#~ msgstr "Үстіңгі индекс"
+
+#~ msgid "Scientific Exponent"
+#~ msgstr "Ғылыми экспонента"
+
+#~ msgid "Factorial"
+#~ msgstr "Факториал"
+
+#~ msgid "Store"
+#~ msgstr "Сақтау"
+
+#~ msgid "Insert Character"
+#~ msgstr "Таңбаны кірістіру"
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Көмек ақпараты файлын ашу мүмкін емес"
+
+#~ msgid "How often the currency exchange rates should be updated"
+#~ msgstr "Валюта бағамын қаншалықты жиі жаңарту керек"
+
+#~ msgid "8 bits"
+#~ msgstr "8 бит"
+
+#~ msgid "16 bits"
+#~ msgstr "16 бит"
+
+#~ msgid "32 bits"
+#~ msgstr "32 бит"
+
+#~ msgid "64 bits"
+#~ msgstr "64 бит"
+
+#~ msgid "Number _Format:"
+#~ msgstr "_Сандар пішімі:"
+
+#~ msgid "org.gnome.Calculator"
+#~ msgstr "org.gnome.Calculator"
+
+#~ msgid "Start in given mode"
+#~ msgstr "Көрсетілген режимде бастау"
+
+#~ msgid "About"
+#~ msgstr "Осы туралы"
+
+#~ msgid "Quit"
+#~ msgstr "Шығу"
+
+#~ msgid "Weight"
+#~ msgstr "Салмақ"
+
+#~ msgid "Precision error"
+#~ msgstr "Дәлдік қатесі"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degC,˚C"
+#~ msgstr "Цельсий градустары,˚C"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degF,˚F"
+#~ msgstr "Фаренгейт градустары,˚F"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "K"
+#~ msgstr "К"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degR,˚R,˚Ra"
+#~ msgstr "Ранкин градустары,˚R,˚Ra"
+
+#~ msgid "Show %d decimal _places"
+#~ msgstr "Үтірден кейін %d _санды көрсету"
+
+#, fuzzy
+#~ msgid "Malformed expression at token '%s'"
+#~ msgstr "Қате өрнек"
+
+#, fuzzy
+#~ msgid "Root must be non-zero"
+#~ msgstr "ZWNJ Нөлдік аж_ыратушы"
+
+#~ msgid "&#x2190; R"
+#~ msgstr "&#x2190; R"
+
+#~ msgid "&#x2192; R"
+#~ msgstr "&#x2192; R"
+
+#~ msgid "Clear"
+#~ msgstr "Тазарту"
+
+#~ msgid "Unknown argument '%s'"
+#~ msgstr "Белгісіз аргумент '%s'"
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+#~ msgstr ""
+#~ "Gcalctool еркін бағдарлама; сіз оны Free Software Foundation шығарған\n"
+#~ "GNU General Public License аясында еркін тарата не/және өзгерте аласыз;\n"
+#~ "лицензия нұсқасы 2 не (тандауыңызша) кез-келген кейін шыққан.\n"
+#~ "\n"
+#~ "Gcalctool пайдалы болады деген сеніммен таратылады, бірақ\n"
+#~ "ЕШҚАНДАЙ КЕПІЛДЕМЕ берілмейді; КОММЕРЦИЯЛЫҚ ҚҰНДЫЛЫҚ немесе\n"
+#~ "белгілі бір МАҚСАТТАРҒА СӘЙКЕС КЕЛЕТІНІ үшін де.  Көбірек білу үшін\n"
+#~ "GNU General Public License қараңыз.\n"
+#~ "\n"
+#~ "Сіз осы Gcalctool бағдарласымен бірге GNU General Public License\n"
+#~ "көшірмесін алуыңыз керек еді; олай болмаса, Free Software Foundation, Inc.\n"
+#~ "ұйымына хабарласыңыз, 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
+
+#~ msgid "Gcalctool"
+#~ msgstr "Gcalctool"
+
+#~ msgid "_Calculator"
+#~ msgstr "_Калькулятор"
+
+#~ msgid "_Mode"
+#~ msgstr "_Режимі"
+
+#~ msgid "_Contents"
+#~ msgstr "Құра_масы"

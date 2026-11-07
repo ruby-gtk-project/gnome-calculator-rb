@@ -3,11 +3,11 @@
 require "gtk4"
 require "adwaita"
 
+require_relative "../math_window"
+
 module GnomeCalculator
-  # The port's application: one window, and a status page standing in for the
-  # calculator window. The engine behind the window — Number, the lexer and
-  # parser, the function and unit managers — is ported and reachable from
-  # exe/gcalccmd; math_window.rb replaces the status page here.
+  # The port's application: one window, built by MathWindow, with the
+  # ported style sheet attached at application priority.
   #
   # House style (see .claude/skills/ruby-gtk): every widget is a memoized
   # method, all configuration lives in its `tap`, assembly happens only in
@@ -20,46 +20,22 @@ module GnomeCalculator
           # do not expose the constant.
           Gtk::StyleContext.add_provider_for_display(Gdk::Display.default, css_provider, 600)
 
-          window.tap do |win|
-            win.content = toolbar_view
-          end
-
-          toolbar_view.tap do |view|
-            view.add_top_bar(header_bar)
-            view.content = status_page
-          end
-
-          window.present
+          math_window.build.present
         end
       end
     end
 
-    # Adwaita::Application is broken in the Ruby bindings; the application
-    # object comes from Gtk and only the window is Adwaita.
+    # The application object comes from Gtk, not Adwaita; see FINDINGS.md
+    # ("Adwaita::Application is broken in the Ruby bindings" — not
+    # reproduced) for why and what was actually checked.
     def app = @app ||= Gtk::Application.new("org.rubygtkproject.GnomeCalculator", :default_flags)
 
-    def window
-      @window ||= Adwaita::ApplicationWindow.new(app).tap do |win|
-        win.title = "gnome-calculator"
-        win.set_default_size(800, 600)
-      end
-    end
+    def math_window = @math_window ||= MathWindow.new(app)
 
     # Ported from upstream's src/ui/style.css.
     def css_provider
       @css_provider ||= Gtk::CssProvider.new.tap do |provider|
         provider.load_from_path(File.join(__dir__, "..", "style.css"))
-      end
-    end
-
-    def toolbar_view = @toolbar_view ||= Adwaita::ToolbarView.new
-    def header_bar = @header_bar ||= Adwaita::HeaderBar.new
-
-    def status_page
-      @status_page ||= Adwaita::StatusPage.new.tap do |page|
-        page.title = "gnome-calculator"
-        page.description = "Run exe/gcalccmd to evaluate expressions with the ported engine."
-        page.icon_name = "applications-engineering-symbolic"
       end
     end
   end

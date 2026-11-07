@@ -44,35 +44,54 @@ ROOT = File.expand_path("..", __dir__)
 # never substitutes for it: it is a separate entry point with its own
 # `require`s and its own argv handling.
 def gcalccmd(*args)
-  Open3.capture3(RbConfig.ruby, "-I", File.join(ROOT, "lib"), File.join(ROOT, "exe", "gcalccmd"), *args)
+  Open3.capture3(
+    RbConfig.ruby,
+    "-I",
+    File.join(ROOT, "lib"),
+    File.join(ROOT, "exe", "gcalccmd"),
+    *args,
+  )
 end
 
 GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
-  d.window { app.window }
+  d.window { app.math_window.window }
 
-  d.step("the application activates and builds a real window") do
+  d.step("the application activates and builds the real math window") do
+    math_window = app.math_window
     d.check("the window is an Adwaita::ApplicationWindow") do
-      app.window.is_a?(Adwaita::ApplicationWindow)
+      math_window.window.is_a?(Adwaita::ApplicationWindow)
     end
     d.check("it is the only toplevel") { Gtk::Window.list_toplevels.length == 1 }
-    d.check("its title is gnome-calculator") { app.window.title == "gnome-calculator" }
+    d.check("its title is gnome-calculator") { math_window.window.title == "gnome-calculator" }
     d.check("the toolbar view is the window's content") do
-      app.window.content.equal?(app.toolbar_view)
+      math_window.window.content.equal?(math_window.toolbar_view)
     end
     d.check("the header bar is a top bar on the toolbar view") do
-      app.header_bar.is_a?(Adwaita::HeaderBar)
+      math_window.header_bar.is_a?(Adwaita::HeaderBar)
     end
-    d.check("the status page is the toolbar view's content") do
-      app.toolbar_view.content.equal?(app.status_page)
-    end
-    d.check("the status page names the port") { app.status_page.title == "gnome-calculator" }
-    d.check("the status page points at gcalccmd") do
-      app.status_page.description.include?("gcalccmd")
+    d.check("the display and button panel are the body") do
+      math_window.body.is_a?(Gtk::Box)
     end
     d.check("the CSS provider loaded style.css without raising") do
       app.css_provider.is_a?(Gtk::CssProvider)
     end
-    d.shot("01-placeholder-window")
+    d.shot("01-math-window")
+  end
+
+  d.step("the basic button panel drives the real MathEquation") do
+    equation = app.math_window.equation
+    buttons = app.math_window.instance_variable_get(:@buttons)
+
+    equation.clear
+    buttons.digit_button(6).signal_emit("clicked")
+    buttons.add_button.signal_emit("clicked")
+    buttons.digit_button(3).signal_emit("clicked")
+    buttons.result_button.signal_emit("clicked")
+
+    d.check("6 + 3 solves through the real buttons to 9") { equation.display == "9" }
+
+    buttons.clear_button.signal_emit("clicked")
+    d.check("the clear button empties the display") { equation.display == "" }
   end
 
   d.step("the ported evaluation engine solves a plain expression") do
@@ -137,8 +156,16 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
 
   d.step("exe/gcalccmd reads expressions from stdin until a blank line") do
     out, _err, status = Open3.capture3(
-      RbConfig.ruby, "-I", File.join(ROOT, "lib"), File.join(ROOT, "exe", "gcalccmd"),
-      stdin_data: "3 + 4\n\n"
+
+      RbConfig.ruby,
+
+      "-I",
+
+      File.join(ROOT, "lib"),
+
+      File.join(ROOT, "exe", "gcalccmd"),
+      stdin_data: "3 + 4\n\n",
+
     )
     d.check("the REPL exits cleanly at a blank line") { status.success? }
     d.check("the REPL solved the one line it was given") { out.include?("7") }
