@@ -3,109 +3,129 @@
 | | |
 |---|---|
 | Upstream | `main` @ `1d311e0a` |
-| Port | `ruby` @ `da4eed8c` |
-| Upstream messages (source, in scope) | **831** distinct `(msgctxt, msgid)` keys |
-| Upstream occurrences (call sites, in scope) | **1074** |
-| Upstream languages | **101** `.po` files (`po/LINGUAS` matches, 101 = 101) |
-| Port messages | **0** |
+| Port | `ruby` @ `9824569e` |
+| Upstream messages (source, in scope) | **797** distinct `(msgctxt, msgid)` keys (recounted this pass over `lib/`, `src/`, `data/`, `search-provider/`) |
+| Port messages | **33** distinct keys |
+| Ported (present in both) | **17** |
+| Gaps (upstream key with no port match) | **780** |
 | Port languages | **0** |
-| Ported | **0** |
-| Gaps | **831** |
 | Parity | **false** |
 
-Method: `translation-parity` skill, `scripts/msgid-census.sh` run against a
-disposable worktree of `origin/main` and against the `ruby` branch's working
-tree.
+Method: `translation-parity` skill,
+`.claude/skills/translation-parity/scripts/msgid-census.sh` run against a
+disposable archive of `origin/main` and against the `ruby` branch's `lib/`
+and `exe/`. This pass differs from the prior one: the prior report found
+**zero** markers on the port side at all ("the scan found no `_()`, `N_()`,
+gettext or any other marker anywhere under lib/ or exe/"). That is no
+longer true — `lib/translations.rb` and the UI files built since then
+(`math_window.rb`, `basic_button_panel.rb`, `math_shortcuts.rb`, etc.) do
+call `_()`. The gap is still almost total, but for a different reason now:
+coverage, not absence of mechanism.
 
-## Census (Step 1)
-
-```sh
-git worktree add --detach /tmp/upstream-gcalc origin/main
-bash .claude/skills/translation-parity/scripts/msgid-census.sh /tmp/upstream-gcalc > upstream-msgids.tsv
-bash .claude/skills/translation-parity/scripts/msgid-census.sh .                  > port-msgids.tsv
-```
-
-Raw rows: **75,869** on the upstream side (because the scanner also reads
-every `.po`/help catalogue it finds) and **0** on the port side — the scan
-found no `_()`, `N_()`, `gettext`, `ngettext` or any other marker anywhere
-under `lib/` or `exe/`, confirmed independently:
-
-```sh
-grep -rn "gettext\|_(\|n_(\|translations" lib/ exe/   # => no output
-```
-
-Filtering the upstream rows to source (excluding `po/*.po` and `help/*.page`
-translation catalogues, which are scanned for the `languages:` count, not
-the message count) gives the per-directory breakdown:
-
-| Directory | Call sites |
-|---|---:|
-| `lib/` (the engine files, e.g. error strings) | 517 |
-| `src/` (the UI — where almost all user-visible text lives) | 423 |
-| `data/` (`.desktop.in`, GSettings schema summaries) | 57 |
-| `search-provider/` | 3 |
-| `gcalc/`, `tests/` (out of scope, per `component-inventory.md` item 10) | 74 |
-
-In-scope total: **1074 call sites, 831 distinct keys**, 0 unresolved
-(no dynamic `_(expr)` call sites that the scanner had to flag — every marker
-upstream uses is a literal).
-
-Languages: `ls po/*.po | wc -l` = 101, `po/LINGUAS` = 101 lines, and they
-match (no `diff`). `help/` ships the user manual in a further 34 languages,
-not counted in the 101 above and also not carried by the port.
-
-## The diff
+## Census
 
 ```
-comm -23 <(upstream keys) <(port keys) | wc -l   # => 831  (every upstream key)
-comm -13 <(upstream keys) <(port keys) | wc -l   # => 0    (port has no extra keys)
-comm -12 <(upstream keys) <(port keys) | wc -l   # => 0    (nothing ported)
+bash .claude/skills/translation-parity/scripts/msgid-census.sh \
+  <upstream-archive>/lib <upstream-archive>/src <upstream-archive>/data <upstream-archive>/search-provider
+  -> 1000 rows (script's own output cap hit; see caveat below)
+
+bash .claude/skills/translation-parity/scripts/msgid-census.sh lib exe
+  -> 34 rows, 33 unique (msgctxt, msgid) keys
 ```
 
-Every one of upstream's 831 messages is a **gap**. There is nothing to
-report as "extra" (the port invents no new strings either, because it
-builds no UI to put them in) and nothing is reworded or retyped, because
-nothing is marked at all — the simplest and most total form of this gap.
+797 unique upstream keys (after dedup) vs 33 unique port keys. **Caveat**:
+the upstream-side row count hit the census script's practical row ceiling
+at exactly 1000 lines in this run, so 797 is a lower bound on upstream's
+true key count, not an exact figure — the true gap is at least as large as
+reported here, never smaller.
 
-## Representative messages owed (by call-site count, i.e. porting priority)
+```
+comm -23 <(upstream keys) <(port keys) | wc -l   # => 780  (upstream keys missing from the port)
+comm -12 <(upstream keys) <(port keys) | wc -l   # => 17   (keys present on both sides, by text)
+```
 
-These are drawn directly from `src/*.vala`/`*.blp` (the highest-value,
-highest-reuse strings a UI port would need first):
+## What the 17 overlapping keys actually are
 
-| Message | Uses | Where |
-|---|---:|---|
-| `"Basic"`, `"Advanced"`, `"Financial"`, `"Programming"`, `"Keyboard"`, `"Conversion"` | mode labels, each reused across the menu button label and the shortcuts dialog | `src/math-window.vala`, `src/ui/math-shortcuts.blp` |
-| `"Undo"`, `"Redo"`, `"Copy"`, `"Paste"`, `"Clear"` | menu/shortcut text | `src/ui/math-shortcuts.blp`, `src/ui/math-window.blp` |
-| the ~148 button labels/tooltips across the five mode panels | `src/ui/*-buttons.blp` |
-| `"No Results Found"`, `"Try a different search"` | the currency-favourites empty state | `src/ui/preferences.blp` |
-| the ten financial-function names and descriptions | `src/financial.vala` |
+Cross-checking the overlap against where each side's text lives: the 17
+matches are UI strings from the one vertical slice that is built (basic
+button labels/tooltips, "Keyboard Shortcuts", a handful of error strings
+like "Malformed expression", "Unknown variable"). None of them carry
+`msgctxt`; see the shortcuts-dialog finding below for why that still
+produces a miss at the catalogue level even for text that matches
+byte-for-byte.
 
-None of these have any Ruby counterpart to compare bytes against, because
-none of these labels are built by the port at all (see
-`component-parity.md`, units 2–19).
+## New finding this pass: the engine itself marks nothing
+
+```
+grep -n "_(" lib/currency.rb lib/unit.rb lib/financial.rb lib/number.rb
+  -> no output, any of the four files
+```
+
+`lib/currency.rb`, `lib/unit.rb`, `lib/financial.rb` and `lib/number.rb`
+have **zero** gettext calls. Upstream's `lib/currency.vala`,
+`lib/unit.vala` and `lib/financial.vala` are explicitly in `po/POTFILES.in`
+and carry the translated display names for every currency ("Algerian
+Dinar", "Argentine Peso", …, dozens more), every unit category ("Acres",
+"Astronomical Units", "Atomic Mass Unit", …), and the ten financial
+function names/descriptions. `component-inventory.md` calls the engine
+"20 of 20 in scope — complete," and functionally that is accurate (the
+numbers compute correctly), but **none of these user-visible names are
+translatable in the port**, independent of and in addition to the UI gap —
+this is a gap inside a component this port's own documents call done, not
+inside one already flagged as missing.
+
+## New finding this pass: `po/POTFILES.in` cannot be regenerated from this branch
+
+`po/POTFILES.in` on `ruby` is byte-identical to `origin/main`'s (confirmed
+by diff): it still lists `src/*.vala`, `src/ui/*.blp`,
+`lib/*-provider.vala`, etc. — files that **do not exist on the `ruby`
+branch at all** (this branch is an orphan branch holding only the Ruby
+port; CLAUDE.md states this plainly). Running `xgettext -f po/POTFILES.in`
+(or `ninja gnome-calculator-pot`, upstream's actual command) from this
+checkout would fail to find every listed file and would not scan a single
+`.rb` file, because none is listed. The `.pot`/`.po` pipeline is not merely
+behind — it points at a source tree this branch does not contain, so it
+cannot be used to extract or verify port strings at all until `POTFILES.in`
+is rewritten to list the `.rb` files that now carry the markers.
+
+## The shortcuts-dialog `msgctxt` gap (detail)
+
+`lib/math_shortcuts.rb`'s `SECTIONS` constant calls `_(title)`/`_(label)`
+with no context. Upstream's `src/ui/math-shortcuts.blp` wraps every row in
+`C_("shortcuts dialog", "…")`. gettext's lookup key is `(msgctxt, msgid)`,
+confirmed in `po/de.po` et al. (`msgctxt "shortcuts dialog"` entries exist
+for these exact strings). A plain `_("Copy")` looks up the bare-context
+entry, which may not exist or may carry a different translation than the
+context-scoped one — so even the 38 shortcut rows the port does build
+(see `component-parity.md`) will not reliably pick up the upstream
+translation for any of the 101 languages, even once `po/POTFILES.in` is
+fixed and the catalogues are wired in.
 
 ## Languages
 
 | | Upstream | Port |
 |---|---:|---:|
-| `.po` files | 101 | 0 |
-| `LINGUAS` entries | 101 | — |
-| `.mo` built/installed | yes (via meson `i18n.gettext`) | no |
-| Translated strings (aggregate across all `.po`, not computed exactly here — out of scope for this pass beyond the key-set diff, since the key set is already 0) | thousands | 0 |
+| `.po` files | 101 | 0 wired in — `po/*.po` exist as files on disk (carried over unchanged) but nothing in `lib/`/`exe/` requires `gettext` against them or sets a text domain |
+| `.mo` built/installed | yes | no |
 
-**0 of 101 languages are shipped.** The port is English-only, and because it
-marks no strings at all, it is not merely missing translations — it has no
-mechanism (no `require "gettext"`, no `.mo` loading, no domain) to ever
-consume them even once the UI exists.
+Checked: `grep -rn "bindtextdomain\|GetText.bindtextdomain\|textdomain" lib/
+exe/` → no output. `lib/translations.rb`'s `Gettext` module is confirmed to
+define `_`/`n_` but not confirmed to bind them to `po/`'s actual catalogues
+at runtime — read directly, it is a thin wrapper and the binding step was
+out of scope to re-verify fully this pass; flagged, not claimed clean.
 
 ## Conclusion
 
-Translation parity is **0/831, 0/101 languages**. This is not a case of
-reworded or retyped strings losing their translations one at a time — the
-port has not yet reached the point where that failure mode would even be
-visible, because it has built no UI for any string to live in. The 831-key,
-101-language gap is accurate today and will grow message-by-message as
-`component-parity.md`'s 20 missing units are built; closing it is
-transcription (copy upstream's msgids byte-for-byte, mark with `_()`/`n_()`
-via the `gettext` gem, carry `po/` and `po/LINGUAS` over unchanged) and
-should happen in the same commit as each widget, not as a follow-up.
+Translation parity is **17/797 at best, 0/101 languages**, up from 0/831 in
+the prior pass only because a UI slice now exists to carry the matching
+17 strings — not because any systematic translation work has happened.
+Three independent problems compound rather than one gap shrinking: (1) the
+UI that does exist covers at most 38 of 43 shortcut-dialog strings and a
+double-digit handful of button/error strings, with no `msgctxt`, so even a
+perfect `po/` wire-up would under-translate; (2) the engine files the
+port's own documents call "complete" mark zero of their currency/unit/
+financial display names for translation, which is a silent regression
+against a component this port is not tracking as a translation gap at all;
+(3) `po/POTFILES.in` cannot be run from this branch's own source tree, so
+there is currently no mechanical way to regenerate a `.pot` and discover
+*any* of the above without a manual audit like this one.

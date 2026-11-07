@@ -19,6 +19,19 @@ written and was never reflected in it.** The four rows below marked
 else in `lib/` changed. Re-verified by reading each file directly, not by
 trusting the old doc or a commit message.
 
+**Second update, same day, later pass: this file was itself stale.** Two
+more commits landed after the paragraph above was written and committed
+(`6645ebf4`) and were never reflected here either — `8cf1a973` ("Port
+history_entry, history_view and math_shortcuts; wire history into the
+window") and `9824569e` ("Expand the drive script: history, shortcuts
+dialog, key controller"). Sections 3, 6 and 7 below, and the "Shortcut
+items"/history rows in the Totals table, still said "no" for
+`lib/history_view.rb`, `lib/history_entry.rb` and `lib/math_shortcuts.rb`
+after those three files existed and were wired into `lib/math_window.rb`.
+Corrected in place below (search "*(second update)*"); this is exactly the
+kind of document drift `accountability-ensurance.md` flags this pass —
+see that report.
+
 `lib/` on `ruby` now holds the whole engine, plus a first (partial, basic-mode
 only) slice of UI:
 
@@ -67,7 +80,7 @@ actions, menus, or accelerators.
 | Distinct CSS classes in `style.css` | 44 | not yet audited rule-by-rule against `lib/style.css` — flag for `component-parity` |
 | GSettings keys | 19 | 19 (JSON-backed, `lib/settings.rb`) |
 | Menu models | 4 (`window_menu`, `primary_menu`, `context_menu_model`, `base_menu`, `word_size_menu`) | 0 |
-| Shortcut items in the shortcuts dialog | 44 across 5 sections | 0 |
+| Shortcut items in the shortcuts dialog | 43 (`$AdwShortcutsItem` count in `src/ui/math-shortcuts.blp`, not the 44 this table previously said — recounted this pass) across 5 sections | **38** *(second update — `lib/math_shortcuts.rb` now exists; missing the "Switch to Keyboard Mode (alt.)" row and all 4 floor/ceiling ltr/rtl rows; see `component-parity.md`)* |
 | `po/` languages | 101 | not yet audited — see `translation-parity` |
 | `win.`/`app.`/`cal.` actions installed anywhere in `lib/` | ~30+ across the app and window action groups | **0** — `grep -rn "add_action\|install_action" lib/` returns nothing |
 | Engine files (`lib/*.vala`, the maths) | 22 | 20 of 20 in scope — **complete**, `math-equation.vala` no longer outstanding |
@@ -149,10 +162,20 @@ Two menu models sit in the same blueprint:
 
 ### 3. `src/ui/math-shortcuts.blp` — keyboard shortcuts dialog
 
-→ **`lib/shortcuts_dialog.rb`** · dialog · **no**
+→ **`lib/math_shortcuts.rb`** · dialog · **partial** *(second update — now
+exists: a plain `Adwaita::Dialog` over a scrolled list of label/accelerator
+rows, built because the Ruby bindings reject `Adwaita::ShortcutsItem`'s
+constructor — see `FINDINGS.md`. Not reached by `app.shortcuts`, because no
+such action exists (see §1); reached instead by a button on the header bar.
+38 of 43 items present — missing the alt keyboard-mode binding and all 4
+floor/ceiling rows, see `component-parity.md`. No `msgctxt` is applied, so
+upstream's `C_("shortcuts dialog", …)` translations do not match the port's
+plain `_()` calls even where the English text is identical — see
+`translation-parity.md`.)*
 
 A standalone `$AdwShortcutsDialog` with no backing source file; reached by
-`app.shortcuts`. Five `$AdwShortcutsSection`s, 44 `$AdwShortcutsItem`s:
+`app.shortcuts`. Five `$AdwShortcutsSection`s, 43 `$AdwShortcutsItem`s
+(recounted this pass; this table previously said 44):
 
 | Section | Items |
 |---|---:|
@@ -196,7 +219,16 @@ providers wired into `GtkSource.Completion`: `builtin`, `function`, `currency`,
 
 ### 6. `src/math-history.vala` (`HistoryView`) + `src/ui/history-view.blp` — the history tape
 
-→ **`lib/history_view.rb`** · widget · **no**
+→ **`lib/history_view.rb`** · widget · **partial** *(second update — now
+exists: `Gtk::ScrolledWindow` → `Gtk::Viewport` → `Gtk::ListBox` of
+`HistoryEntry` rows, `insert_entry`/`load_entry`/`clear`/`set_serializer`/
+`scroll_bottom` all present and wired into `lib/math_window.rb`. The
+`row-added` signal from the table below is not a real GObject signal here —
+it is a plain Ruby callback (`@equation.on_history { … }` in
+`MathWindow#initialize`) — which is a faithful behavioural substitute but
+means nothing external can connect to it the way upstream's signal allows.
+History-tape persistence (`history-tape` GSettings key, save/restore across
+runs) is not built: `HistoryView#clear` empties the in-memory list only.)*
 
 `HistoryView : Adw.Bin`.
 
@@ -213,7 +245,14 @@ changes. `clear` empties it (and is what `win.clear` calls).
 
 ### 7. `src/math-history.vala` (`HistoryEntry`) + `src/ui/history-entry.blp` — one history row
 
-→ **`lib/history_entry.rb`** · row · **no**
+→ **`lib/history_entry.rb`** · row · **partial** *(second update — now
+exists: a `Gtk::ListBoxRow` with equation/`=`/answer labels and a
+`Gtk::GestureClick` per clickable label, verified live by
+`test/drive_gnome_calculator.rb` ("clicking the equation label re-inserts
+the equation text" / "clicking the answer label re-inserts the answer
+text"). The 7-column `Gtk.Grid` layout, the LRM-prefixed tooltip, the
+12-character answer ellipsis and the forced-LTR direction are not verified
+against upstream row-by-row in this pass — flagged for `component-parity`.)*
 
 `HistoryEntry : Gtk.ListBoxRow`, CSS `history-entry`, `focus-on-click: false`.
 Direction forced to LTR on the grid and both labels.

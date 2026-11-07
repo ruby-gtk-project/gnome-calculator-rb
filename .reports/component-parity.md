@@ -3,108 +3,171 @@
 | | |
 |---|---|
 | Upstream | `main` @ `1d311e0a` |
-| Port | `ruby` @ `da4eed8c` |
-| Units with parity | **1 / 23** |
+| Port | `ruby` @ `9824569e` |
+| Units with full parity | 0 / 23 |
+| Units with partial, behaviourally-verified parity | 6 / 23 |
+| Units with zero parity | 17 / 23 |
+| Runtime gate this round | `drive_ok=true`, 43 checks, 0 failed, 9 steps — **covers only units 1, 2, 4, 6, 7, 19, 20, 22, plus the engine directly; 14 of the 23 identified units are exercised by zero checks and are reported `gap`, not passing by omission** |
 
 Method: `component-parity` skill, four axes (count, style, behaviour, text)
-per unit, using the unit list from `.reports/component-identification.md`.
+per unit, using the corrected unit list in `component-identification.md`.
+Every "present" claim below was re-run live this pass:
+`nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb`
+→ `43 of 43 checks passed`, `DRIVE OK`.
 
-## Unit-by-unit
-
-### Unit 1 — Application: `src/gnome-calculator.vala` → `lib/gnome_calculator/application.rb`
+## Unit 1 — Application: `src/gnome-calculator.vala` → `lib/gnome_calculator/application.rb`
 
 | Facet | Upstream | Port | Verdict |
 |---|---|---|---|
-| Actions (`app.new-window`, `app.help`, `app.about`, `app.quit`) | 4 | 0 | **gap** |
+| Actions (`app.new-window`, `app.help`, `app.about`, `app.quit`, `app.shortcuts`) | 5 | 0 | **gap** |
 | Accelerators (18 bindings) | 18 | 0 | **gap** |
-| `Adw.AboutDialog` | present, 5 developers + translator credits + provider legal section | not built | **gap** |
+| `Adw.AboutDialog` | present | not built | **gap** |
 | `Adw.AlertDialog` "Close All?" | present | not built | **gap** |
-| CLI options (`--mode`, `--solve`, `--equation`, `--version`) | present | not built (the engine CLI, `exe/gcalccmd`, is separate and is the one thing ported) | **gap** |
-| `GtkSource.init`, settings delay, currency refresh on startup | present | not built | **gap** |
-| Window construction (an `Adwaita::ApplicationWindow`, one toplevel, titled) | `MathWindow` | a bare window present and buildable | **partial** — this is the one row with any parity: the port's window is a real `Adwaita::ApplicationWindow` and is the only toplevel, same as upstream, verified by `test/drive_gnome_calculator.rb` |
+| CLI options (`--mode`, `--solve`, `--equation`, `--version`) | present | not built | **gap** |
+| Multi-window (`new-window`) | present | not built — `Gtk::Application` instance is a singleton with one window, no `app.new-window` to open a second | **gap** |
+| Window construction, CSS loaded at application priority | `MathWindow` built, CSS attached | real `Adwaita::ApplicationWindow`\*, CSS provider verified live | **partial — the one row with parity** |
 
-Verdict: **gap**, with one surviving row (window construction mechanics).
+\*Upstream's app type is `Adw.Application`; the port uses a plain
+`Gtk::Application` — see `FINDINGS.md`, which records that a smoke test in
+this exact devshell did **not** reproduce "Adwaita::Application is broken in
+the Ruby bindings," so the substitution currently rests on caution, not a
+confirmed blocker. Worth re-litigating before this is called settled.
 
-### Units 2–19, 21, 23 — main window, shortcuts dialog, display, completion, history view/entry, six button panels + bit panel + financial/preferences dialogs, converter, stylesheet, shell search provider, translations
+Verdict: **gap.**
 
-Every one of these upstream units builds zero counterpart in the port. There
-is no `lib/math_window.rb`, `lib/math_display.rb`, `lib/history_view.rb`,
-`lib/math_buttons*.rb`, `lib/math_converter.rb`, `lib/shortcuts_dialog.rb`,
-`lib/completion_providers.rb`, `lib/shell_search_provider.rb`, or `locale/`.
-`lib/style.css` exists as a file (copied in full, confirmed byte range —
-399 lines, 44 classes) but is **not loaded by any built widget**: no
-`Gtk::CssProvider.load_from_path` call anywhere outside
-`application.rb`'s own provider for `style.css`, and that provider's rules
-have nothing to attach to because no widget the stylesheet targets is ever
-built.
-
-For each of these units, all four axes fail identically:
-
-| Axis | Status |
-|---|---|
-| Count | 0 vs upstream's (see `component-inventory.md` per-unit tables, ~148 buttons, 44 shortcut items, 4 menus, etc.) |
-| Style | n/a — no widget exists to carry a class |
-| Behaviour | n/a — no signal/action exists to fire |
-| Text | n/a — see `translation-parity.md`: 0 of 831 in-scope upstream messages are marked anywhere in the port |
-
-Verdict: **gap**, 21 of 23 units.
-
-### Unit 20 — Settings: `data/org.gnome.calculator.gschema.xml` → `lib/settings.rb`
+## Unit 2 — Main window: `src/math-window.vala` → `lib/math_window.rb`
 
 | Facet | Upstream | Port | Verdict |
 |---|---|---|---|
-| Key count | 19 | 19 | parity |
-| Defaults/ranges | per schema | matches (read `lib/settings.rb`) | parity |
-| Mechanism | `Gio::Settings` / GSettings, `Settings.delay()` batching | JSON file under `XDG_CONFIG_HOME` | **correspondence** — a real mechanism substitution, not a gap, because the 19 keys and their defaults are reproduced and round-trip (verified live: `test/drive_gnome_calculator.rb` step "Settings reads and writes the same 19 JSON-backed keys") |
-| `Gio::Settings.bind()` to any widget | 7+ bindings (equation properties, preferences rows, `favorite-currencies`, window geometry, history tape) | **none** — there is nothing on the port side to bind to | **gap**, scoped to "no widget consumes these settings yet", not to the key storage itself |
+| `win.*` actions (copy, paste, undo, redo, mode, clear, back, preferences, close, number-format) | 10 | 0 | **gap** |
+| Menu models (`window_menu`, `primary_menu`) | 2 | 0 | **gap** |
+| Mode-switch stack (basic/advanced/financial/programming/keyboard/conversion) | 6 modes | 1 (basic only, hard-coded, no stack) | **gap** |
+| Undo/redo/back buttons | 3 | 0 | **gap** |
+| History tape persistence across runs | yes (`history-tape` GSettings key) | no — `HistoryView` is in-memory only, confirmed by reading `lib/history_view.rb` | **gap** |
+| Key controller (digits, operators, Enter/Escape/Backspace/Delete/period) | superset (also Shift→inverse, Ctrl+B/O/D/H in programming mode) | present, verified live: `6+3`→`9`, Enter solves, Escape clears, Backspace deletes | **partial — this subset has parity** |
+| Window shell (`Adwaita::ApplicationWindow`, toolbar view, header bar) | yes | yes, verified live | **partial — parity** |
 
-Verdict: the storage layer has parity; the bindings it exists to serve do
-not, because their targets (units 2–19) are not built. Counted as the one
-unit with partial parity, same caveat as unit 1.
+Verdict: **gap**, with two behaviourally-verified rows (key subset, window
+shell).
 
-### Unit 22 — CLI: `src/gcalccmd.vala` → `exe/gcalccmd`
+## Unit 3 — Keyboard shortcuts dialog: `src/ui/math-shortcuts.blp` → `lib/math_shortcuts.rb`
+
+Re-derived directly from both sides this pass (not from the stale "no" the
+inventory previously carried).
 
 | Facet | Upstream | Port | Verdict |
 |---|---|---|---|
-| Single-expression argv mode | yes | yes (verified live: `2^10` → `1024`, clean exit, empty stderr) | parity |
-| REPL on stdin until blank line | yes | yes (verified live: `3 + 4\n\n` → `7`, clean exit) | parity |
-| Error on unknown variable → stderr, not an exception | yes | yes (verified live) | parity |
-| Man page (`data/gcalccmd.1`) | present | not carried over | **gap** (small, stated plainly rather than silently) |
+| Widget kind | `$AdwShortcutsDialog` (native Libadwaita widget) | plain `Adwaita::Dialog` over a `Gtk::ScrolledWindow`/`Gtk::Box`/`Gtk::ListBox` tree | **substitution, stated in the port's own header comment** (the bindings reject `Adwaita::ShortcutsItem`'s keyword constructors — recorded in the comment, not in `FINDINGS.md`; see `accountability-ensurance.md`) |
+| Reached by | `app.shortcuts` action, `<Ctrl>?` accelerator | a header-bar button only — `app.shortcuts` does not exist (unit 1) | **gap**: the `<Ctrl>?` accelerator from upstream's own shortcuts list does not open this dialog in the port |
+| Section count | 5 | 5 | parity |
+| Item count | 43 (recounted: `grep -c 'AdwShortcutsItem {' src/ui/math-shortcuts.blp` on `origin/main`) | 38 | **gap**, 5 items missing: |
+| | | | — "Switch to Keyboard Mode (alt.)", `<Ctrl><Alt>t` (General/Switching-Modes section) |
+| | | | — "Floor (⌊⌋)" ltr, `<Alt>[+]` |
+| | | | — "Ceiling (⌈⌉)" ltr, `<Ctrl>[+]` |
+| | | | — "Floor (⌊⌋)" rtl, `<Alt>]+[` |
+| | | | — "Ceiling (⌈⌉)" rtl, `<Ctrl>]+[` |
+| Text source | `C_("shortcuts dialog", "…")` — a *msgctxt*-scoped gettext call | plain `_(label)`/`_(title)` at render time, no msgctxt | **gap** — see `translation-parity.md`; even where the English text is byte-identical, a translator's `msgctxt "shortcuts dialog"` entry in `po/*.po` will not be found by a lookup with no context, so these rows render in English in every locale regardless of `po/` coverage |
+| Behaviour | opens over the window, closes on dismiss | verified live: opens a real `Adwaita::Dialog` titled "Keyboard Shortcuts", closes cleanly | **partial — parity for what exists** |
 
-Verdict: **parity** for the functional CLI, one small documentation gap.
+Verdict: **gap** — a real, mostly-complete substitute widget that is
+unreachable by its real trigger, missing 5 of 43 rows, and invisible to
+translation regardless of `po/` coverage.
+
+## Unit 4 — Equation display: `src/math-display.vala` → `lib/math_display.rb`
+
+Unchanged from the prior pass's finding: scrolled `Gtk::TextView` (not
+`GtkSource.View` — see `FINDINGS.md`), backspace button, status/error label,
+all verified live (error status shown and cleared). Missing: the scroll
+controller, the loading spinner, the OSK-aware backspace, and the whole
+key-substitution table (×, ÷, √, π, τ, °, superscripts, subscripts,
+floor/ceiling, locale radix) that upstream drives from this file — the
+port's narrower substitution table lives in `MathWindow` instead (unit 2).
+
+Verdict: **gap**, partial parity on the rows actually built.
+
+## Unit 6 — History view: `src/math-history.vala` (`HistoryView`) → `lib/history_view.rb`
+
+| Facet | Upstream | Port | Verdict |
+|---|---|---|---|
+| Insert on solve, dedupe identical consecutive equation | yes | yes, verified live (`history.rows == 1` after one solve) | parity |
+| Click-to-reinsert equation / answer | yes (`equation-clicked`/`answer-clicked` signals) | yes, verified live via the real `Gtk::GestureClick` on each row | parity |
+| Re-render on serializer/format change (`set_serializer`) | yes | present (`lib/history_view.rb:92-95`), not exercised by the drive script | **unverified** — present in code, no check proves it fires correctly |
+| Tape persistence across app runs (`history-tape` GSettings key) | yes | no — `clear` empties the in-memory `@entries`/listbox only; nothing serialises to `lib/settings.rb` | **gap** |
+| Signal shape | real GObject signals | a plain Ruby callback (`on_history` passed into the constructor) | **substitution, undocumented as such** — nothing external can `signal_connect` to it the way upstream's `row-added`/`answer-clicked` allow |
+
+Verdict: **gap**, with real behavioural parity on the two rows the drive
+script actually exercises.
+
+## Unit 7 — History entry row: `src/math-history.vala` (`HistoryEntry`) → `lib/history_entry.rb`
+
+Click wiring on both labels verified live. Not checked this pass: the
+7-column grid layout, the LRM-prefixed tooltip on the equation label, the
+12-character ellipsis on the answer label, and the forced-LTR direction —
+none of these have a drive-script assertion, so "exists and clicks work" is
+verified; "looks and truncates like upstream" is not.
+
+Verdict: **gap** on the unverified facets, **partial parity** on the
+verified ones.
+
+## Units 5, 8–18, 21, 23 — unbuilt
+
+Autocompletion providers, the button-panel host and its `cal` action group,
+4 of 5 button panels (advanced/financial/programming/conversion) plus the
+bit panel, the converter, both popovers and their base class, preferences +
+favourite-currencies, the shell search provider, and all translations: zero
+counterpart in `lib/`, unchanged from the prior pass. See
+`component-inventory.md` §§5, 8–18, 21, 23 for the full widget/CSS tables.
+
+Verdict: **gap**, 15 of 23 units (the 15 remaining after units 1–4, 6, 7
+above, plus 19/20/22 which hold full or structural parity).
+
+## Unit 19 — Stylesheet: `src/ui/style.css` → `lib/style.css`
+
+Loaded by a real `Gtk::CssProvider` at `GTK_STYLE_PROVIDER_PRIORITY_APPLICATION`,
+confirmed live (`app.css_provider.is_a?(Gtk::CssProvider)` in the drive
+script) and the file is byte-identical to upstream (399 lines, 44 classes).
+Classes the built widgets actually use (`math-buttons`, `history-view`,
+`equation-label`, etc. per unit) attach correctly on the units that exist;
+classes for unbuilt units (bit panel, converter, popovers) are dormant by
+definition until those widgets are built.
+
+Verdict: **parity** for the file and its loading mechanism; dormant, not
+broken, for the classes with no widget yet.
+
+## Unit 20 — Settings: `data/org.gnome.calculator.gschema.xml` → `lib/settings.rb`
+
+Unchanged from the prior pass: 19/19 keys, JSON-backed, round-trips live.
+`Gio::Settings.bind()` targets (7+ bindings upstream makes to widgets) still
+have nothing on the port side to bind to, since the widgets those bindings
+target (preferences, history tape, favourite currencies) are unit 20's own
+dependents, not unit 20 itself.
+
+Verdict: **parity** for storage; **gap**, scoped to "no consumer exists yet,"
+for the bindings.
+
+## Unit 22 — CLI: `src/gcalccmd.vala` → `exe/gcalccmd`
+
+Unchanged: single-expression argv mode, REPL-on-stdin, error-to-stderr all
+verified live this pass. Man page not carried over (small, stated gap).
+
+Verdict: **parity** for the functional CLI.
 
 ## Totals
 
 | | Count |
 |---|---:|
-| Units with full parity | 1 (`exe/gcalccmd`, modulo the man page) |
-| Units with partial/mechanism-only parity | 2 (Application's window shell; Settings storage) |
-| Units with zero parity (nothing built) | 20 |
-
-## Stylesheet check (Step 4)
-
-`lib/style.css` vs upstream `src/ui/style.css`: byte-for-byte diff shows the
-file was copied in full (same 399 lines, same 44 classes, same dark-mode and
-high-contrast blocks). This is **not** evidence of style parity per the
-skill's own rule — a copied stylesheet with nothing to attach the classes to
-is a dormant file. Confirmed dormant: `grep -rn 'add_css_class\|css_classes'
-lib/ exe/` returns nothing. 0 of 44 classes are attached to any widget.
-
-## Behaviour check (Step 5)
-
-Only one unit has any live signal/action to drive: the application's
-`activate` handler, exercised by `test/drive_gnome_calculator.rb` and
-confirmed to build the real window, toolbar view, header bar and status
-page, and to load the CSS provider without raising. No other signal,
-accelerator or action exists anywhere in the port to drive.
+| Units with full parity | 2 (`exe/gcalccmd` modulo the man page; `lib/style.css`'s loading mechanism) |
+| Units with partial, behaviourally-verified parity | 6 (application window shell; main window's key subset; shortcuts dialog's reachable rows; display; history view's insert/click rows; history entry's click rows) |
+| Units with zero parity | 15 |
 
 ## Rules check
 
-- No parity is reported from the scan/inventory alone; the two running
-  checks above (CLI subprocess calls, the drive script) are what Steps 4–5
-  require, and both were re-run live for this report (see
-  `accountability-ensurance.md` for the exact command and output).
-- No app-wide total is used as the pass condition; every row above is a
-  named unit.
-- Nothing is marked "extra" — the port builds strictly less than upstream,
-  not differently.
+- Every "present"/"parity" claim above was re-run live for this report
+  (`43 of 43 checks passed, DRIVE OK`), not read off a prior report or a
+  commit message.
+- No app-wide total is used as the pass condition; every row is a named
+  unit, and the 14 units the drive script does not touch are listed as
+  `gap`/unverified rather than omitted.
+- The stylesheet's dormant classes and the settings-storage/bindings split
+  are stated as partial, not rounded up to full parity, per the skill's
+  rule against crediting a mechanism substitution as the behaviour itself.

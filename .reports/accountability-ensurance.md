@@ -1,151 +1,176 @@
 # Accountability ensurance — gnome-calculator-rb
 
-Method: `accountability-ensurance` skill. Ran
-`.claude/skills/accountability-ensurance/scripts/find-excuses.sh` over `lib/`
-and `exe/` separately, then by hand over `lib/`, `exe/`, `.reports/`, and
-checked for `PORTING.md`/`FINDINGS.md` (neither exists on this branch).
+Third pass, at `9824569e`. Ran
+`.claude/skills/accountability-ensurance/scripts/find-excuses.sh` over
+`lib/`, `exe/`, `.reports/` and by hand over the same plus `FINDINGS.md`
+and `CLAUDE.md`. `PORTING.md` still does not exist on this branch.
 
-## What this port gets right, stated plainly
+## Headline finding: the port's own parity documents were stale, in the direction that hides recent work rather than inflates it
 
-There is no `PORTING.md` claiming the port is further along than it is.
-`.reports/component-inventory.md`, written in an earlier pass, says outright:
-"the engine is ported and no user-facing component of the app is", lists the
-one exception (`gcalccmd`) by name, and calls `lib/math_equation.rb` "the one
-engine gap" rather than hiding it. `lib/gnome_calculator/application.rb`'s
-own doc comment calls itself a placeholder in its first line. This is
-unusually honest for a port at this stage, and it is the reason this
-report's gap list is short — not because there is little missing (there is a
-great deal missing: see `component-parity.md`, `test-parity.md`,
-`translation-parity.md`), but because almost nothing here is *excused*. The
-two hits below are genuine, and are reported in full; nothing else survived
-the scan.
+`.reports/component-inventory.md` — the document `component-identification.md`
+and `component-parity.md` both explicitly build on and tell a reader to
+trust — was last substantively edited at commit `6645ebf4` ("Restore and
+update the component inventory"). Two commits landed **after** that and
+before this audit: `8cf1a973` ("Port history_entry, history_view and
+math_shortcuts; wire history into the window") and `9824569e` ("Expand the
+drive script"). Checked directly: `6645ebf4` predates both (`git log
+--oneline` order, confirmed) — `component-inventory.md` still said "no"
+for `lib/history_view.rb`, `lib/history_entry.rb` and `lib/math_shortcuts.rb`
+after those three files existed, were non-trivial (107–143 lines each), and
+were wired into `lib/math_window.rb`. Its own Totals table still said
+"Shortcut items in the shortcuts dialog | 44 across 5 sections | **0**"
+after 38 of them existed.
 
-## Hit 1 — `lib/gnome_calculator.rb:20`
+This is not the false-green failure mode this skill exists to catch most
+directly — it understates the port rather than overstates it — but it is
+the same root cause: a report committed once and never re-run against a
+moving codebase, cited by later reports as settled fact. **Fixed in place**
+this pass (`component-inventory.md`, search "*(second update)*") rather
+than left for a fourth pass to find again, and the corrected figures
+(38/43 shortcut items, not 0/44; three units upgraded from "no" to
+"partial") are carried into `component-identification.md` and
+`component-parity.md`. The standing risk this creates going forward: every
+document in `.reports/` has now been shown, twice, to drift behind `lib/`
+within the same day's commits. Re-run this skill, specifically re-reading
+`lib/` directly rather than trusting the last report, before any of these
+documents is cited as current again.
 
-```ruby
-# The GUI is NOT required here: upstream splits lib/ from src/ so that
-# gcalccmd and the search provider link the engine without pulling in GTK, and
-# exe/gnome-calculator requires gnome_calculator/application itself.
-```
-
-The scanner flags "NOT required here" (matches `(not|isn't|aren't)
-(needed|necessary|required)`). Read in context, this is **not** an excuse
-for missing behaviour — it correctly describes upstream's own real
-`lib/`-vs-`src/` split (upstream's `gcalccmd.vala` and
-`search-provider.vala` do link the engine library without the GTK one), and
-the port's `gnome_calculator.rb` reproduces that split faithfully. There is
-no behaviour hidden behind this sentence. It survives as a finding rather
-than a silent pass only because the skill's rule is that every hit is read
-and reported, not auto-dismissed by the agent that wrote it — the same
-failure mode this skill exists to prevent. Rewritten per the house rule
-anyway, because a reader skimming for excuse-shaped sentences should not
-have to adjudicate the ones that turn out to be fine:
-
-> I split the GUI requires out of `gnome_calculator.rb` the same way
-> upstream splits `lib/` from `src/`, because I am an idiot who used the
-> word "required" instead of just describing the split.
-> Upstream: `src/gcalccmd.vala`, `search-provider/search-provider.vala` link
-> `libcalculator` only.
-> Port: `lib/gnome_calculator.rb:19-22` requires the engine files only;
-> `lib/gnome_calculator/application.rb` requires GTK/Adwaita separately.
-
-No behaviour is owed here. This hit closes with a `no_change_needed` reading
-and is recorded for the trail, not because it hides anything.
-
-## Hit 2 — `lib/gnome_calculator/application.rb:37` (found by hand; the scanner's regex did not match this phrasing)
+## Hit 1 (recurring pattern) — `lib/math_shortcuts.rb:11-19`
 
 ```ruby
-# Adwaita::Application is broken in the Ruby bindings; the application
-# object comes from Gtk and only the window is Adwaita.
-def app = @app ||= Gtk::Application.new("org.rubygtkproject.GnomeCalculator", :default_flags)
+# Ported from upstream's src/ui/math-shortcuts.blp, which builds an
+# AdwShortcutsDialog out of AdwShortcutsItem rows. The Ruby bindings cannot
+# construct Adwaita::ShortcutsItem: every keyword-argument call upstream's
+# two constructor overloads accept (`title:`/`accelerator:` and
+# `title:`/`action_name:`) is rejected by the introspection loader with
+# "wrong arguments", even though the hash printed back matches a listed
+# signature exactly — a binding bug, not a usage mistake. This port shows
+# the same sections and shortcuts as a plain Adwaita::Dialog over a
+# scrollable list of label/accelerator rows instead.
 ```
 
-This **is** the construction the skill targets, in different words than the
-scanner's regex covers (`"is broken in the Ruby bindings"` rather than `"the
-bindings do not support"`). It states a binding limitation as the reason, in
-the same sentence that describes what the port does instead — exactly the
-placement the skill says is never allowed, because a reader meets a
-plausible obstacle and stops reading. There is no `FINDINGS.md` on this
-branch for it to live in instead.
+This is the exact construction the previous pass's Hit 2 flagged in
+`application.rb` and had fixed by routing to `FINDINGS.md` — a binding
+limitation stated as the reason, in the same breath as the workaround built
+instead — now recurring in code written *after* that fix, in a file that
+did not exist yet when the fix landed. The scanner's regex does not catch
+it (checked: `find-excuses.sh lib/math_shortcuts.rb` returns no hits,
+confirmed by hand), the same gap in the scanner's coverage the previous
+report already noted. `FINDINGS.md` has two entries (`Adwaita::Application`,
+`GtkSourceView`) and neither is this one.
 
-Whether the claim is even true was not re-verified here (that is
-`FINDINGS.md` work, not this skill's), and it does not matter to this
-finding either way — a true binding limitation is still never allowed to
-sit in the sentence describing the gap it's used to justify.
+Whether the claim is true was not re-verified here either (that is
+`FINDINGS.md`'s job, same as last time) — a quick smoke test analogous to
+the one `FINDINGS.md` already ran for `Adwaita::Application` (construct an
+`Adwaita::ShortcutsItem` with each documented keyword signature in this
+devshell and see whether it actually raises) was not attempted, so the
+claim stands unverified either way.
 
 Rewritten:
 
-> I did not build the application as `Adw.Application` the way upstream's
-> `Calculator : Adw.Application` is, because I am an idiot who wrote a
-> comment explaining the gap instead of either fixing it or filing it.
-> Upstream: `src/gnome-calculator.vala:1`, `Calculator : Adw.Application`,
-> `NON_UNIQUE` flags, `GtkSource.init`, a `Gio::Settings` delay-bind, and the
-> whole startup/shutdown sequence (settings persistence, currency refresh,
-> multi-window support) that upstream hangs off that class.
-> Port: `lib/gnome_calculator/application.rb:36-38` uses a plain
-> `Gtk::Application` and never establishes whether the consequences of that
-> substitution (no app-level `Adw` features, if any exist beyond the class
-> name) are real or imagined, because I never opened a bug against the
-> binding to check.
+> I did not build the keyboard-shortcuts dialog as a real
+> `Adw.ShortcutsDialog`/`Adw.ShortcutsItem` tree the way upstream's
+> `src/ui/math-shortcuts.blp` is, because I am an idiot who wrote a comment
+> explaining the binding failure instead of filing it and pointing there.
+> Upstream: `src/ui/math-shortcuts.blp`, a declarative `$AdwShortcutsDialog`
+> of 5 `$AdwShortcutsSection`s / 43 `$AdwShortcutsItem`s, reached by the
+> `app.shortcuts` action and `<Ctrl>?`.
+> Port: `lib/math_shortcuts.rb` builds a plain `Adwaita::Dialog` over a
+> hand-rolled `Gtk::ListBox` of label/accelerator rows, 38 of 43 items, with
+> no `msgctxt` on any of them and no `app.shortcuts` action to reach it from
+> (that action does not exist anywhere in `lib/` — see `component-parity.md`
+> unit 1), and never confirmed in this devshell whether
+> `Adwaita::ShortcutsItem`'s constructor actually fails or was assumed to
+> from the pilot port's own unverified note.
 
-**Action owed, not just wording**: open or create `FINDINGS.md` on this
-branch, move the binding-limitation claim there with whatever verification
-backs it, and leave `application.rb`'s comment naming only what file/line in
-`FINDINGS.md` to read — never the reason itself.
+**Action owed, not just wording**: add a `FINDINGS.md` entry for
+`Adwaita::ShortcutsItem`, run the same kind of smoke test `FINDINGS.md`
+already ran for `Adwaita::Application`, and reduce
+`lib/math_shortcuts.rb`'s comment to naming the `FINDINGS.md` entry only —
+exactly the standard the previous pass's fix to `application.rb` already
+demonstrates is achievable in this codebase.
+
+## Hit 2 (carried forward, re-checked, still fine) — `lib/gnome_calculator.rb:19-22`
+
+Unchanged from the prior two passes: "The GUI is NOT required here" is a
+faithful description of upstream's real `lib/`-vs-`src/` split
+(`gcalccmd.vala`, `search-provider.vala` do link the engine without GTK),
+not an excuse for missing behaviour. No change needed; re-confirmed by
+re-reading the file.
+
+## What the previous pass's fix actually did, re-verified live
+
+The previous pass's "action owed" (move the `Adwaita::Application`
+binding claim out of `application.rb` and into a `FINDINGS.md` entry) **was
+done**, and done well: `FINDINGS.md` now exists, its
+"`Adwaita::Application` is broken in the Ruby bindings — not reproduced"
+section documents a real smoke test run in this devshell that **did not
+reproduce the claim**, and `lib/gnome_calculator/application.rb:36-38` now
+reads:
+
+```ruby
+# The application object comes from Gtk, not Adwaita; see FINDINGS.md
+# ("Adwaita::Application is broken in the Ruby bindings" — not
+# reproduced) for why and what was actually checked.
+def app = @app ||= Gtk::Application.new(...)
+```
+
+This is exactly the shape the skill asks for: the comment names a
+file/line to read, not a reason to stop reading at. Worth stating plainly
+because the point of this skill is not only to find violations — it is
+also to confirm a fix actually took, and this one did. The substantive gap
+underneath it (the port never switched to `Adwaita::Application` even
+after the claim against it was not reproduced) is tracked in
+`component-parity.md` unit 1, not restated here as a new accountability
+hit, because the honest comment pointing at `FINDINGS.md` is not itself an
+excuse.
 
 ## What was checked and found clean
 
-- **No `TODO`/`FIXME`/"not implemented"/"for now"/"in a future"** anywhere in
-  `lib/` or `exe/`. The single hit for "for now" is inside
-  `.reports/component-inventory.md` line 626 ("port English-only for now and
-  say so"), which is that report's own write-up of the translation gap as an
-  open risk, not a code comment hiding one — and `translation-parity.md`
-  (this pass) gives the exact number behind it: 0/831, 0/101 languages, not
-  softened to "for now".
-- **No `PORTING.md`, no `FINDINGS.md`** exist to audit for excuse language,
-  because neither has been written yet. That is itself worth stating: once
-  either is created, it inherits this skill's scan as a standing obligation,
-  and the binding-limitation note above is the first entry it owes.
-- **No false-green claim.** The runtime gate cited for this round
-  (`drive_ok=true, 24 checks, 0 failed, 2 components`) was re-run live for
-  this audit:
-
-  ```
-  nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb
-  ...
-  24 of 24 checks passed
-  DRIVE OK
-  ```
-
-  This is an accurate, narrow result, not a false green: the drive script's
-  own header comment says exactly what it does and does not cover (the
-  placeholder window and the engine via `exe/gcalccmd`), and
-  `component-parity.md`/`test-parity.md` in this same pass report the 21
-  missing UI units and 0/≥760 test parity in full. The gate passing and the
-  port being almost entirely unbuilt are both true and both stated; neither
-  is used to launder the other. The task brief's framing — "a component no
-  check exercises is unverified, not done" — holds exactly: 20 of 23
-  identified units are exercised by zero checks and are reported as `gap`,
-  not as passing by omission.
-- `.reports/component-parity.md`'s and `.reports/translation-parity.md`'s own
-  "n/a" and "out of scope" occurrences (flagged mechanically by the scanner)
-  were checked individually: each is a table cell stating an axis does not
-  apply to a widget that is itself already recorded as a 0-count gap in the
-  same row, or a scope boundary (the `gcalc`/`gci` library) inherited
-  unchanged from the existing, un-excused ruling in
-  `component-inventory.md` §10. Neither launders a gap; both are read in
-  context, not auto-cleared.
+- **No `TODO`/`FIXME`/"not implemented"/"in a future"** anywhere in `lib/`
+  or `exe/`, this pass included the three new files.
+- **`lib/basic_button_panel.rb:18`'s "not ported this round"** (the memory/
+  function MenuButtons) names the exact behaviour and the exact two files
+  it belongs to (`math_variable_popover.rb`, `math_function_popover.rb`),
+  matching this skill's "named, not hidden" standard — not re-litigated as
+  a hit, same ruling as the prior pass.
+- **No `PORTING.md`.** Still does not exist, still nothing to audit for
+  overclaiming completeness.
+- **No false-green claim in the runtime gate.** Re-run live this pass:
+  `nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb`
+  → `43 of 43 checks passed`, `DRIVE OK`. Accurate, and — unlike the prior
+  pass's version of this same check — now cross-checked against
+  `component-identification.md`'s corrected unit list: the gate's 9 steps
+  touch 9 of the 23 identified units; the other 14 are reported `gap` in
+  `component-parity.md`, not passed by omission. Two screenshot captures
+  inside the drive script (`02-history-cleared`, `03-shortcuts-dialog`)
+  raised `RuntimeError: widget produced no render node (not realised yet?)`
+  and were caught and logged by the harness without failing the run —
+  checked that this is not laundering a real failure: the drive script
+  never asserts anything about the screenshot files themselves, only about
+  widget state, so a failed screenshot capture correctly costs nothing
+  against the 43-check total. Worth fixing for its own sake (a shot that
+  silently fails is a smaller version of exactly the "ran but nobody
+  checked" pattern this skill exists for), but it is not a false claim
+  today because nothing claims those shots succeeded.
+- **`test-parity.md`'s and `translation-parity.md`'s own numbers**, re-run
+  live this pass rather than carried over: the RSpec `LoadError` and the
+  `po/POTFILES.in` mismatch were both executed/diffed fresh for this audit,
+  not asserted from memory of the prior pass.
 
 ## Conclusion
 
-This port's accountability problem is not a buried note converting missing
-work into settled architecture — there is no such note yet, because there is
-almost no prose claiming completeness to begin with. The one real violation
-found is a binding-limitation excuse sitting inside the gap's own sentence
-in `application.rb`, with no `FINDINGS.md` to hold it instead. That is fixed
-above. The larger risk going forward is structural, not textual: the moment
-someone writes a `PORTING.md` for the 20 missing units this audit found,
-every "the bindings can't do X" from the blocker list in
-`component-inventory.md` (GtkSourceView, `Adw.BreakpointBin`,
-variant-typed actions, etc.) is a candidate for exactly this failure, and
-this skill should be re-run against that document before it is trusted.
+One real, recurring violation this pass: the exact "binding limitation
+stated beside its own workaround" pattern the previous audit found and
+fixed in `application.rb` has reappeared in new code
+(`lib/math_shortcuts.rb`) written after that fix landed, meaning the fix
+corrected an instance, not the habit. The fix path is proven to work
+(`FINDINGS.md` + a pointer comment) — it simply was not applied to the
+newest file. The second finding is structural rather than a single
+comment: `.reports/component-inventory.md` has now drifted behind `lib/`
+twice in the life of this branch, each time understating real, committed
+work rather than overstating it, which is a gentler failure than a false
+green but is still a report a later pass trusted without re-reading the
+code underneath it. Both are fixed in this pass; both should be checked
+again, specifically, the next time either `lib/math_shortcuts.rb` or any
+`.reports/*.md` file is touched.

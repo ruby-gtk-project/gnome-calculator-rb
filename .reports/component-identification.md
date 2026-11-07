@@ -1,79 +1,74 @@
 # Component identification — gnome-calculator-rb
 
-Method: `component-identification` skill, run against `origin/main` (Vala +
-blueprint) and the `ruby` branch's `lib/`, `exe/`.
+Third pass. `origin/main` (Vala + blueprint) vs the `ruby` branch at
+`9824569e` ("Expand the drive script: history, shortcuts dialog, key
+controller").
 
-This step was already performed in detail and committed as
-[`component-inventory.md`](component-inventory.md) in this same directory —
-630 lines, 23 numbered upstream units (`src/gnome-calculator.vala` through
-`po/`), each with its widget table (type × count, CSS classes, signals,
-notes), plus the 15-file engine-only table and a 10-item risk list. That
-document satisfies this skill's Step 5 deliverable and is **adopted here
-unchanged** rather than re-derived, with the counts re-verified below.
+Method: `component-identification` skill. The detailed per-unit inventory
+lives in [`component-inventory.md`](component-inventory.md) (23 numbered
+upstream units) and is adopted here, **with one correction this pass makes
+to it**: that file's own "State of the port" section was committed at
+`6645ebf4`, which is *before* `8cf1a973` (ported `history_entry.rb`,
+`history_view.rb`, `math_shortcuts.rb`, wired history into the window) and
+`9824569e` landed. Three of its unit tables (§3 shortcuts dialog, §6
+history view, §7 history entry) said "no" for files that already existed on
+disk. This is now fixed in `component-inventory.md` directly (search
+"*(second update)*"); the corrected counts below are current as of
+`9824569e`, re-verified by reading `lib/` directly, not by trusting any
+prior report.
 
 ## Re-verified counts (this pass)
 
 ```
-git ls-tree -r --name-only origin/main | grep -c '^src/.*\.vala$'      -> 14 UI source files
-git ls-tree -r --name-only origin/main | grep -c '^src/ui/.*\.blp$'    -> 14 blueprint files
-ls lib/*.rb | wc -l                                                     -> 20 (19 engine + application.rb)
-ls lib/gnome/calculator/rb/*.rb                                         -> version.rb only
+ls lib/*.rb | wc -l                     -> 23 (20 engine + application.rb* + math_window.rb + math_display.rb
+                                                + basic_button_panel.rb + math_shortcuts.rb + history_view.rb
+                                                + history_entry.rb; *lib/gnome_calculator/application.rb)
+grep -rc "add_action\|install_action" lib/ exe/ | grep -v ':0' -> no output: still zero anywhere
+grep -c "AdwShortcutsItem {" <(git show origin/main:src/ui/math-shortcuts.blp) -> 43 (this file's own
+                                                                                    Totals table previously
+                                                                                    said 44 — miscounted)
+grep -c "\['" lib/math_shortcuts.rb                                            -> 38
 ```
 
-Confirms the inventory's headline table: **14 upstream UI source files, 14
-blueprint files, 28 component units (template roots) on the upstream side;
-on the `ruby` side, 1 port file (`lib/gnome_calculator/application.rb`) and
-it is a placeholder — a `Gtk::Application`, one `Adwaita::ApplicationWindow`,
-an `Adwaita::ToolbarView`/`HeaderBar`, and an `Adwaita::StatusPage` reading
-"Run exe/gcalccmd to evaluate expressions with the ported engine."**
-
-Read directly (`lib/gnome_calculator/application.rb`, 65 lines): it installs
-**zero** `win.`/`app.` actions, **zero** accelerators, **zero** menu models,
-and holds no `MathEquation` buffer. There is nothing to compare components
-against beyond that one window, because nothing else exists.
+Confirms: the engine (20/20 files) and a first vertical UI slice are
+present. The UI slice now covers, each at least partially: the application
+shell, the main window, the display, the basic button panel, the history
+view and its rows, and the keyboard-shortcuts dialog. Nothing else upstream
+lists exists in `lib/` at all.
 
 ## Units identified, in the order a user meets them
 
-Reproduced from `component-inventory.md` for traceability — unit name, the
-upstream file(s), the port file, present/absent:
+Same 23-unit list as `component-inventory.md`, with the three corrections
+folded in (unit numbers match that file):
 
-| # | Unit | Upstream | Port file | Present |
-|---|---|---|---|---|
-| 1 | Application (actions, accelerators, About dialog, Close-All dialog) | `src/gnome-calculator.vala` | `lib/gnome_calculator/application.rb` | placeholder only |
-| 2 | Main window + `window_menu` + `primary_menu` | `src/math-window.vala` + `.blp` | `lib/math_window.rb` | no |
-| 3 | Keyboard shortcuts dialog (44 items / 5 sections) | `src/ui/math-shortcuts.blp` | `lib/shortcuts_dialog.rb` | no |
-| 4 | Equation display | `src/math-display.vala` + `.blp` | `lib/math_display.rb` | no |
-| 5 | Autocompletion providers (5) | `src/math-display.vala:560-877` | `lib/completion_providers.rb` | no |
-| 6 | History view | `src/math-history.vala` (`HistoryView`) + `.blp` | `lib/history_view.rb` | no |
-| 7 | History entry row | `src/math-history.vala` (`HistoryEntry`) + `.blp` | `lib/history_entry.rb` | no |
-| 8–17 | Basic/Advanced/Financial/Programming/Keyboard/Conversion button panels, bit panel, financial dialogs, preferences, currency favourites | `src/math-buttons.vala` + 6 `.blp` panels + dialogs | — | no |
-| 18 | Converter widget | `src/math-converter.vala` + `.blp` | `lib/math_converter.rb` | no |
-| 19 | Stylesheet (399 lines, 44 classes) | `src/ui/style.css` | `lib/style.css` | no (not loaded; no UI references it) |
-| 20 | Settings (19 keys) | `data/org.gnome.calculator.gschema.xml` | `lib/settings.rb` | **yes** |
-| 21 | Shell search provider | `search-provider/search-provider.vala` | — | no |
-| 22 | CLI | `src/gcalccmd.vala` | `exe/gcalccmd` | **yes** |
-| 23 | Translations (101 languages) | `po/` | — | no |
+| # | Unit | Port file | Present |
+|---|---|---|---|
+| 1 | Application (actions, accelerators, About dialog, Close-All dialog) | `lib/gnome_calculator/application.rb` | partial — real window built, zero actions/accelerators/dialogs |
+| 2 | Main window + 2 menu models | `lib/math_window.rb` | partial — basic mode only, zero `win.*` actions, zero menus |
+| 3 | Keyboard shortcuts dialog (43 items / 5 sections) | `lib/math_shortcuts.rb` | **partial, corrected this pass** — 38/43 items, not reached by an `app.shortcuts` action (none exists), no `msgctxt` |
+| 4 | Equation display | `lib/math_display.rb` | partial — plain `Gtk::TextView`, narrow key table |
+| 5 | Autocompletion providers (5) | — | no |
+| 6 | History view | `lib/history_view.rb` | **partial, corrected this pass** — in-memory only, no tape persistence |
+| 7 | History entry row | `lib/history_entry.rb` | **partial, corrected this pass** |
+| 8 | Button-panel host (`cal` action group, mode stack) | — | no |
+| 9–14 | Basic/Advanced/Financial/Programming/Conversion panels, bit panel, financial dialogs, converter | `lib/basic_button_panel.rb` only | basic: partial; the other 4 panels + converter: no |
+| 15–17 | Popover base, function popover, variable popover | — | no |
+| 18 | Preferences + favourite-currencies page | — | no |
+| 19 | Stylesheet | `lib/style.css` | present as a file, loaded by `Gtk::CssProvider` at application priority — the one unit where "present" and "attached" both hold, confirmed live by the drive script |
+| 20 | Settings (19 keys) | `lib/settings.rb` | yes |
+| 21 | Shell search provider | — | no |
+| 22 | CLI | `exe/gcalccmd` | yes |
+| 23 | Translations (101 languages) | — | no — see `translation-parity.md` for the engine-level gap too (currency/unit names carry no `_()` marker at all) |
 
-Supporting, non-UI engine files (`lib/*.vala` → `lib/*.rb`): 19 of 20 are
-present and working (`number.rb`, `equation_lexer.rb`, `equation_parser.rb`,
-`equation.rb`, `serializer.rb`, `unit.rb`, `currency.rb`,
-`currency_provider.rb`, 4 provider files, `financial.rb`,
-`function_manager.rb`, `math_function.rb`, `math_variables.rb`,
-`evaluation_budget.rb`). The one engine gap is `lib/math_equation.rb`
-(`lib/math-equation.vala`, 1809 lines — the `GtkSource.Buffer` subclass every
-display widget binds to), which blocks unit 4 and everything downstream of
-it.
-
-## Totals
+## Totals (corrected)
 
 | | Upstream | Port |
 |---|---:|---:|
-| UI component units | 20 (1–19, 21) | 2 (unit 1 partial, unit 20 Settings) |
-| Buttons across the five panels | ~148 | 0 |
-| Menu models | 4 | 0 |
-| Shortcut items | 44 | 0 |
-| CSS classes attached to a widget | 44 | 0 (file exists, never loaded by any built widget) |
+| Component units with any port counterpart | 23 | 8 (1,2,3,4,6,7,19,20,22) + 22 CLI, all but 19/20/22 partial |
+| Shortcut items | 43 | 38 |
+| `win.`/`app.`/`cal.` actions installed anywhere in `lib/` | ~30+ | **0**, unchanged from the previous pass |
+| Engine files | 20 | 20 — complete |
 
-See `component-inventory.md` for the full per-unit widget/CSS/signal tables
-and the 10-item blocker list (GtkSourceView dependency, `Adw.ApplicationWindow`
-binding status, variant-typed actions, the bit-panel's runtime CSS, etc.).
+See `component-parity.md` for the behavioural check this file's "partial"
+tags point to, and `accountability-ensurance.md` for the staleness finding
+against `component-inventory.md` itself.
