@@ -77,11 +77,14 @@ class MathEquation
     @base_label = ''
     @history_handlers = []
     @display_changed_handlers = []
+    @number_mode_changed_handlers = []
   end
 
   def on_history(&block) = @history_handlers << block
 
   def on_display_changed(&block) = @display_changed_handlers << block
+
+  def on_number_mode_changed(&block) = @number_mode_changed_handlers << block
 
   # --- settings the preferences dialog and base/word-size menus drive -----
 
@@ -183,6 +186,7 @@ class MathEquation
     else
       @can_super_minus = value == NumberMode::SUPERSCRIPT
       @number_mode = value
+      @number_mode_changed_handlers.each { |handler| handler.call(value) }
     end
   end
 
@@ -411,6 +415,202 @@ class MathEquation
     end
   end
 
+  def has_selection = @buffer.has_selection?
+
+  # Removes the run of whitespace immediately before the cursor.
+  #
+  # Ported from upstream's MathEquation.remove_trailing_spaces in
+  # lib/math-equation.vala.
+  def remove_trailing_spaces
+    end_iter = @buffer.get_iter_at(mark: @buffer.get_mark('insert'))
+    start_iter = @buffer.get_iter_at(mark: @buffer.get_mark('insert'))
+    while start_iter.backward_char
+      if !start_iter.char.to_s.match?(/\s/)
+        start_iter.forward_char
+        break
+      end
+    end
+    @buffer.delete(start_iter, end_iter)
+  end
+
+  # Inserts a single `opening`/`closing` bracket pair around the selection,
+  # or balances a lone bracket at the cursor otherwise: if the character
+  # before the cursor isn't the opening bracket, counts opening vs. closing
+  # brackets back to the start of the buffer and inserts whichever one
+  # keeps the count balanced.
+  #
+  # Ported from upstream's MathEquation.insert_brackets in
+  # lib/math-equation.vala.
+  def insert_brackets(opening, closing)
+    if has_selection
+      insert_between(opening, closing)
+    else
+      iter = @buffer.get_iter_at(mark: @buffer.get_mark('insert'))
+      is_closing = false
+      if iter.backward_char
+        unless iter.char == opening
+          opening_count = 0
+          closing_count = 0
+          continue = true
+          while continue
+            if iter.char == opening
+              opening_count += 1
+            end
+            if iter.char == closing
+              closing_count += 1
+            end
+            continue = iter.backward_char
+          end
+          is_closing = opening_count > closing_count
+        end
+      end
+      insert(is_closing ? closing : opening)
+    end
+  end
+
+  # Inserts `symbol` around the selection — before it, or after it when
+  # `after` is set — or plainly at the cursor with no selection.
+  #
+  # Ported from upstream's MathEquation.insert_symbol in
+  # lib/math-equation.vala.
+  def insert_symbol(symbol, after)
+    if !has_selection
+      insert(symbol)
+    elsif after
+      insert_between('(', ")#{symbol}", after: true)
+    else
+      insert_between("#{symbol}(", ')')
+    end
+  end
+
+  # Wraps the selection in `(...)²`, or inserts a bare `²` at the cursor,
+  # with a leading space when another superscript digit sits right before
+  # it so the two don't visually run together.
+  #
+  # Ported from upstream's MathEquation.insert_square in
+  # lib/math-equation.vala.
+  def insert_square
+    if has_selection
+      insert_between('(', ')²', after: true)
+    else
+      iter = @buffer.get_iter_at(mark: @buffer.get_mark('insert'))
+      space_required = iter.backward_char && '⁰¹²³⁴⁵⁶⁷⁸⁹'.include?(iter.char)
+      insert(space_required ? ' ²' : '²')
+    end
+  end
+
+  # Inserts the √ root symbol, wrapping the selection in brackets first
+  # when there is one, and switches to subscript entry for the degree.
+  #
+  # Ported from upstream's MathEquation.insert_nth_root in
+  # lib/math-equation.vala.
+  def insert_nth_root
+    if has_selection
+      insert_between('√(', ')')
+    else
+      before_mark = @buffer.create_mark(nil, @buffer.get_iter_at(mark: @buffer.get_mark('insert')), true)
+      insert('√')
+      @buffer.place_cursor(@buffer.get_iter_at(mark: before_mark))
+      @buffer.delete_mark(before_mark)
+    end
+    self.number_mode = NumberMode::SUBSCRIPT
+  end
+
+  # Inserts "log", wrapping a selection in brackets first, and switches to
+  # subscript entry for the base.
+  #
+  # Ported from upstream's MathEquation.insert_logarithm in
+  # lib/math-equation.vala.
+  def insert_logarithm
+    if has_selection
+      insert_between('(', ')')
+    end
+    insert('log')
+    self.number_mode = NumberMode::SUBSCRIPT
+  end
+
+  # Inserts an exponent: with no selection, either the given base switched
+  # into superscript entry, or a bare "^" when there is no base. With a
+  # selection that is a plain (optionally signed) integer, the selection is
+  # replaced by its superscript-digit rendering instead of wrapping it in
+  # "^(...)".
+  #
+  # Ported from upstream's MathEquation.insert_exponent in
+  # lib/math-equation.vala.
+  def insert_exponent(base_number)
+    if !has_selection
+      if base_number.empty?
+        insert('^')
+      else
+        insert(base_number)
+        self.number_mode = NumberMode::SUPERSCRIPT
+      end
+    else
+      sel_start, sel_end = @buffer.selection_bounds
+      text = @buffer.text(sel_start, sel_end, true)
+      if !text.match?(/\A[−-]?\d+\z/)
+        if base_number.empty?
+          insert_between('^(', ')')
+        else
+          insert_between("#{base_number}^(", ')')
+        end
+      else
+        exponent = +base_number
+        digits = text
+        if text.start_with?('−', '-')
+          exponent << '⁻'
+          digits = text[1..]
+        end
+        digits.each_char { |char| exponent << Serializer::SUPER_DIGITS[char.to_i] }
+        before_mark = @buffer.create_mark(nil, sel_start, true)
+        @buffer.delete_selection(true, true)
+        insert(exponent)
+        if base_number.empty?
+          @buffer.place_cursor(@buffer.get_iter_at(mark: before_mark))
+        end
+        @buffer.delete_mark(before_mark)
+      end
+    end
+  end
+
+  # Inserts the minus sign; in superscript entry, a dedicated superscript
+  # minus once per exponent, falling back to plain entry after that.
+  #
+  # Ported from upstream's MathEquation.insert_subtract in
+  # lib/math-equation.vala.
+  def insert_subtract
+    if number_mode == NumberMode::SUPERSCRIPT && @can_super_minus
+      insert('⁻')
+      @can_super_minus = false
+    else
+      insert('−')
+      self.number_mode = NumberMode::NORMAL
+    end
+  end
+
+  # Replaces the display with its prime factorization, smallest factor
+  # first, joined by "×". Upstream runs this on a worker thread; this port's
+  # solve path is already synchronous (see the class comment), so this is
+  # too.
+  #
+  # Ported from upstream's MathEquation.factorize in lib/math-equation.vala.
+  def factorize
+    if is_empty
+      nil
+    else
+      x = number
+      if x.nil? || !x.integer? || is_sign_radix
+        self.status = _('Need an integer to factorize')
+      else
+        text = x.factorize.each_with_index.map { |factor, index|
+          rendered = @serializer.to_string(factor)
+          index.zero? ? rendered : "×#{rendered}"
+        }.join
+        set(text)
+      end
+    end
+  end
+
   def toggle_bit(bit)
     x = number
     if x.nil? || !x.integer?
@@ -542,17 +742,23 @@ class MathEquation
     # Replaces the selection (or inserts at the cursor, with nothing
     # selected) with `start_text` + the old content + `end_text`, leaving the
     # cursor just before `end_text`.
-    def insert_between(start_text, end_text)
+    def insert_between(start_text, end_text, after: false)
       push_undo_stack
       if @buffer.has_selection?
         sel_start, sel_end = @buffer.selection_bounds
         selected = @buffer.text(sel_start, sel_end, true)
         @buffer.delete(sel_start, sel_end)
         @buffer.insert(sel_start, start_text + selected + end_text)
-        cursor = @buffer.get_iter_at(mark: @buffer.get_mark('insert')).offset - end_text.length
+        cursor = @buffer.get_iter_at(mark: @buffer.get_mark('insert')).offset
+        unless after
+          cursor -= end_text.length
+        end
       else
         insert_at_cursor(start_text + end_text)
-        cursor = cursor_offset - end_text.length
+        cursor = cursor_offset
+        unless after
+          cursor -= end_text.length
+        end
       end
       @buffer.place_cursor(@buffer.get_iter_at(offset: cursor))
     end

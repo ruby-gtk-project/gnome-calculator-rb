@@ -80,7 +80,7 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
 
   d.step("the basic button panel drives the real MathEquation") do
     equation = app.math_window.equation
-    buttons = app.math_window.instance_variable_get(:@buttons)
+    buttons = app.math_window.instance_variable_get(:@buttons).panel(ButtonMode::BASIC)
 
     equation.clear
     buttons.digit_button(6).signal_emit("clicked")
@@ -96,7 +96,7 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
 
   d.step("the memory button's real MathVariablePopover stores and deletes a variable") do
     equation = app.math_window.equation
-    buttons = app.math_window.instance_variable_get(:@buttons)
+    buttons = app.math_window.instance_variable_get(:@buttons).panel(ButtonMode::BASIC)
     popover = buttons.memory_button.popover
 
     d.check("the memory button's popover is the real MathVariablePopover") do
@@ -124,7 +124,7 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
 
   d.step("the function button's real MathFunctionPopover defines a function the engine then evaluates") do
     equation = app.math_window.equation
-    buttons = app.math_window.instance_variable_get(:@buttons)
+    buttons = app.math_window.instance_variable_get(:@buttons).panel(ButtonMode::BASIC)
     popover = buttons.function_button.popover
 
     d.check("the function button's popover is the real MathFunctionPopover") do
@@ -226,7 +226,7 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
 
   d.step("toggling superscript/subscript mode on the real buttons flips MathEquation#number_mode") do
     equation = app.math_window.equation
-    buttons = app.math_window.instance_variable_get(:@buttons)
+    buttons = app.math_window.instance_variable_get(:@buttons).panel(ButtonMode::BASIC)
 
     equation.clear
     buttons.superscript_button.active = true
@@ -242,6 +242,67 @@ GtkDriver.drive(GnomeCalculator::Application.new, shots: SHOTS) do |d, app|
     d.check("the subscript button sets NumberMode::SUBSCRIPT") { equation.number_mode == NumberMode::SUBSCRIPT }
     buttons.subscript_button.active = false
     d.check("untoggling it restores NumberMode::NORMAL again") { equation.number_mode == NumberMode::NORMAL }
+  end
+
+  d.step("the header bar's real win.mode action switches MathButtons to Advanced") do
+    math_window = app.math_window
+    math_buttons = math_window.instance_variable_get(:@buttons)
+
+    d.check("MathButtons starts in Basic mode") { math_buttons.mode == ButtonMode::BASIC }
+
+    math_window.send(:mode_action).activate(GLib::Variant.new("advanced"))
+    d.check("activating win.mode('advanced') switches the real MathButtons") do
+      math_buttons.mode == ButtonMode::ADVANCED
+    end
+    d.check("the stack's visible child is now the advanced panel's widget") do
+      math_buttons.root.visible_child.equal?(math_buttons.panel(ButtonMode::ADVANCED).build)
+    end
+
+    math_window.send(:mode_action).activate(GLib::Variant.new("basic"))
+    d.check("switching back to Basic restores it") { math_buttons.mode == ButtonMode::BASIC }
+  end
+
+  d.step("the advanced panel's real buttons drive MathEquation through the cal action group") do
+    math_buttons = app.math_window.instance_variable_get(:@buttons)
+    math_window = app.math_window
+    equation = app.math_window.equation
+    math_window.send(:mode_action).activate(GLib::Variant.new("advanced"))
+    advanced = math_buttons.panel(ButtonMode::ADVANCED)
+
+    equation.clear
+    equation.insert("90")
+    advanced.sine_button.signal_emit("clicked")
+    d.check("clicking the real sin button inserts through cal.insert-function") do
+      equation.display == "90sin "
+    end
+
+    equation.set("12")
+    advanced.factor_button.signal_emit("clicked")
+    d.check("clicking the real factorize button replaces the display with its factors") do
+      equation.display == "2×2×3"
+    end
+
+    equation.set("5")
+    advanced.x_squared_button.signal_emit("clicked")
+    d.check("clicking the real x² button inserts the square symbol via cal.square") do
+      equation.display == "5²"
+    end
+
+    equation.set("5")
+    advanced.abs_button.signal_emit("clicked")
+    d.check("clicking the real |x| button wraps the cursor via cal.insert-brackets") do
+      equation.display == "5|"
+    end
+
+    d.check("the inverse toggle flips the sin button to its real inverse label") do
+      advanced.inverse_modifier_button.active = true
+      sin_inverse = advanced.sine_button.label == "sin⁻¹"
+      advanced.inverse_modifier_button.active = false
+      sin_inverse && advanced.sine_button.label == "sin"
+    end
+
+    equation.clear
+    math_window.send(:mode_action).activate(GLib::Variant.new("basic"))
   end
 
   d.step("the real window-level key controller drives MathEquation the way a keypress would") do
