@@ -1,233 +1,119 @@
 # Accountability ensurance — gnome-calculator-rb
 
-Fourth pass, at `da40269a`. Ran
-`.claude/skills/accountability-ensurance/scripts/find-excuses.sh` over
-`lib/`, `exe/`, `.reports/` and by hand over the same plus `FINDINGS.md`
-and `CLAUDE.md`. `PORTING.md` still does not exist on this branch, across
-four passes now.
+Fifth pass, at `eba4d35e`. Ran
+`.claude/skills/accountability-ensurance/scripts/find-excuses.sh lib exe .reports`
+and by hand over the same plus `FINDINGS.md`, `AGENTS.md`, `CLAUDE.md`,
+`README.md`, `CHANGELOG.md`. `PORTING.md` still does not exist on this
+branch — unchanged across five passes now, so this is the fifth
+consecutive pass noting it, not a new observation.
 
-## Headline finding this pass: a prior parity report's own command transcript was false
-
-`.reports/translation-parity.md` (third pass, `9824569e`) stated: "Checked:
-`grep -rn 'bindtextdomain\|GetText.bindtextdomain\|textdomain' lib/ exe/` →
-no output." Re-run verbatim this pass:
+## find-excuses.sh: one hit, read and dismissed
 
 ```
-$ grep -rn "bindtextdomain\|GetText.bindtextdomain\|textdomain" lib/ exe/
-lib/translations.rb:20:  bindtextdomain(DOMAIN, path: LOCALE_DIR)
+gnome_calculator.rb:20:NOT required here:...
 ```
 
-That line has been in `lib/translations.rb` since commit `e0ed3935`, which
-landed *before* the third pass was written — so the claim was false at the
-moment it was committed, not something that went stale afterward. This
-runs in the opposite direction from a false green (it overstates a gap
-rather than hiding one), and the substantive conclusion the third pass
-drew from it — that the binding is not confirmed to produce translated
-output at runtime — still holds for an unrelated reason (no `.mo`
-catalogue exists; see `translation-parity.md`'s "Languages" section this
-pass). But a parity report asserting a specific command's output, where
-the actual output contradicts it, is exactly what this skill is for:
-**the next reader who trusts a prior report's transcript instead of
-re-running the command carries a wrong fact forward, regardless of which
-direction the error points.** Fixed in place this pass
-(`translation-parity.md`, "Correction to the third pass's own report").
-Three parity documents on this branch have now independently drifted from
-the code they describe across four passes (`component-inventory.md` twice,
-previously; `translation-parity.md` now) — always understating rather than
-inflating, but the discipline of re-running every cited command rather
-than reading it off a prior pass's prose is clearly not yet reliable
-practice here, and should be treated as a standing risk, not a closed one.
+`lib/gnome_calculator.rb:19-20` reads: `"The GUI is NOT required here:
+upstream splits lib/ from src/ so that gcalccmd and the search provider
+link the engine without pulling in GTK..."`. Read in context this is an
+architectural comment explaining a deliberate require-order split, not an
+excuse for missing behaviour — it names the search provider as a reason
+the split exists, not as a claim the search provider is built (it is not;
+`component-identification.md` lists it as unit 21, zero port counterpart).
+Dismissed as a false positive of the script's pattern match, same as in
+the fourth pass.
 
-## Checked and clean this pass: the two new popover files
+No `TODO`, `FIXME`, "not implemented", "for now", or "in a future" string
+appears anywhere in `lib/` or `exe/` — checked directly with
+`grep -rniE "TODO|FIXME|not implemented|for now|in a future" lib/ exe/`,
+zero hits, same as every prior pass.
 
-`lib/math_popover.rb`, `lib/math_function_popover.rb` and
-`lib/math_variable_popover.rb` (all new in `6888ae72`) were read in full
-against this skill's patterns. No `TODO`/`FIXME`/"not implemented"/"for
-now"/"in a future" anywhere in them, and — unlike `lib/math_shortcuts.rb`
-in the third pass — no binding-limitation claim stated beside a workaround
-without a `FINDINGS.md` pointer. `lib/basic_button_panel.rb`'s header
-comment no longer says "not ported this round" for the memory/function
-buttons (the third pass's "named, not hidden" item); that sentence is gone
-because the thing it named is now built, not because it was deleted while
-still true — checked by reading the current file, not inferred.
+## Headline finding this pass: four prior parity reports carried a false green on the error-message mapping
 
-## Headline finding: the port's own parity documents were stale, in the direction that hides recent work rather than inflates it
+Every `component-parity.md` and `translation-parity.md` pass through the
+fourth (at commits `9824569e` through `da40269a`/`feb97cb0`) counted the
+engine's error-reporting behaviour as parity-holding on the strength of
+drive-script steps `[14]`/`[15]` — "an incomplete expression fails to
+solve... with an actual ErrorCode, not an exception." That check is true
+and remains true. But it only asserts that *an* `ErrorCode` comes back,
+never that the **text** shown to the user for that code matches upstream.
+No prior pass opened `lib/math_equation.rb#error_message` next to
+upstream's `lib/math-equation.vala` and read the two mappings side by
+side. Doing that this pass (table in `component-parity.md`'s "new finding"
+section) shows 8 of 9 branches display different English than upstream,
+several silently dropping the `%s` token that names the actual bad
+variable/unit/function, and all 8 of those strings are therefore absent
+from every `.po` catalogue — a translation gap that traces to the same
+root cause (`translation-parity.md`'s "new finding this pass").
 
-`.reports/component-inventory.md` — the document `component-identification.md`
-and `component-parity.md` both explicitly build on and tell a reader to
-trust — was last substantively edited at commit `6645ebf4` ("Restore and
-update the component inventory"). Two commits landed **after** that and
-before this audit: `8cf1a973` ("Port history_entry, history_view and
-math_shortcuts; wire history into the window") and `9824569e` ("Expand the
-drive script"). Checked directly: `6645ebf4` predates both (`git log
---oneline` order, confirmed) — `component-inventory.md` still said "no"
-for `lib/history_view.rb`, `lib/history_entry.rb` and `lib/math_shortcuts.rb`
-after those three files existed, were non-trivial (107–143 lines each), and
-were wired into `lib/math_window.rb`. Its own Totals table still said
-"Shortcut items in the shortcuts dialog | 44 across 5 sections | **0**"
-after 38 of them existed.
+This is exactly the shape this skill exists to catch: a runtime check that
+is real and passes (an `ErrorCode` object comes back, not an exception) was
+treated across four passes as license to not read the behaviour it stands
+in for (what the user actually sees). The check was never false — the
+*inference* drawn from it, that error reporting "holds parity" or needs no
+further read, was false, and stood uncorrected for four passes. Fixed in
+place this pass in both `component-parity.md` and `translation-parity.md`;
+flagged here as the standing lesson, since the same shape of error (a
+narrow live check standing in for a broader parity claim) is exactly what
+let a prior pass's bindtextdomain transcript go wrong too (see below).
 
-This is not the false-green failure mode this skill exists to catch most
-directly — it understates the port rather than overstates it — but it is
-the same root cause: a report committed once and never re-run against a
-moving codebase, cited by later reports as settled fact. **Fixed in place**
-this pass (`component-inventory.md`, search "*(second update)*") rather
-than left for a fourth pass to find again, and the corrected figures
-(38/43 shortcut items, not 0/44; three units upgraded from "no" to
-"partial") are carried into `component-identification.md` and
-`component-parity.md`. The standing risk this creates going forward: every
-document in `.reports/` has now been shown, twice, to drift behind `lib/`
-within the same day's commits. Re-run this skill, specifically re-reading
-`lib/` directly rather than trusting the last report, before any of these
-documents is cited as current again.
+## Checked and clean this pass: the newly-ported host and panel
 
-## Hit 1 (recurring pattern) — `lib/math_shortcuts.rb:11-19`
+`lib/math_buttons.rb` and `lib/advanced_button_panel.rb` (both new in
+`8de8a498`) were read in full against this skill's patterns. No excuse
+language, no silent fallback. The one place upstream behaviour is
+genuinely narrowed — Financial/Programming/Conversion modes — is handled
+by `raise ArgumentError, "MathButtons has no panel for #{mode.inspect}
+yet"`, a loud failure a user or test would notice immediately, not a
+silent no-op or a comment claiming the mode "works for now." This is the
+right shape for a known, named gap and is credited as such in
+`component-identification.md`, not rounded up to "present."
 
-```ruby
-# Ported from upstream's src/ui/math-shortcuts.blp, which builds an
-# AdwShortcutsDialog out of AdwShortcutsItem rows. The Ruby bindings cannot
-# construct Adwaita::ShortcutsItem: every keyword-argument call upstream's
-# two constructor overloads accept (`title:`/`accelerator:` and
-# `title:`/`action_name:`) is rejected by the introspection loader with
-# "wrong arguments", even though the hash printed back matches a listed
-# signature exactly — a binding bug, not a usage mistake. This port shows
-# the same sections and shortcuts as a plain Adwaita::Dialog over a
-# scrollable list of label/accelerator rows instead.
+## Standing risk, restated: report staleness is structural, not a one-off
+
+Every prior pass of this report has found the *previous* pass's reports
+out of date against commits that landed between write and read — the
+third pass found `component-inventory.md` two commits stale; the fourth
+found a false `bindtextdomain` transcript in the third pass's
+`translation-parity.md`; this pass finds a four-pass-old blind spot in how
+error-message parity was being inferred. The pattern is not "one report
+had one bug" — it is that **every report in this directory describes a
+moving target and starts decaying the moment it is committed.** Two
+commits landed between the fourth pass's reports (`feb97cb0`) and this
+one's starting point (`8de8a498`, `eba4d35e`), and this pass's component
+reports needed real updates, not just a header-date bump, to stay honest
+about them. The discipline this skill asks for — re-run every cited
+command, re-read every file claimed "clean," never trust a prior pass's
+prose — caught something new again this pass. Treat the next pass's
+starting assumption the same way: whatever this pass says is current will
+itself be at least one commit stale by the time anyone reads it.
+
+## Checked and clean: this round's runtime gate claim
+
+The task brief's gate (`drive_ok=true, 62 checks passed, 0 failed, 13
+components`) was re-run live this pass, not taken on faith:
+
+```
+$ nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb
+...
+62 of 62 checks passed
+DRIVE OK
 ```
 
-This is the exact construction the previous pass's Hit 2 flagged in
-`application.rb` and had fixed by routing to `FINDINGS.md` — a binding
-limitation stated as the reason, in the same breath as the workaround built
-instead — now recurring in code written *after* that fix, in a file that
-did not exist yet when the fix landed. The scanner's regex does not catch
-it (checked: `find-excuses.sh lib/math_shortcuts.rb` returns no hits,
-confirmed by hand), the same gap in the scanner's coverage the previous
-report already noted. `FINDINGS.md` has two entries (`Adwaita::Application`,
-`GtkSourceView`) and neither is this one.
+Matches exactly. No false green here. But per `component-parity.md` and
+`component-identification.md`, "62/62, 13 components" is accurately
+reported by the harness and is still not evidence about the 8 units with
+zero port counterpart, nor about the half of the Advanced panel's own
+button grid (log/exp stack, nth-root, complex row, angle-unit menu,
+constant buttons) the drive script's own step `[9]` does not touch. A
+passing narrow gate is not being treated as a passing wide one anywhere in
+this pass's reports — stated explicitly in each.
 
-Whether the claim is true was not re-verified here either (that is
-`FINDINGS.md`'s job, same as last time) — a quick smoke test analogous to
-the one `FINDINGS.md` already ran for `Adwaita::Application` (construct an
-`Adwaita::ShortcutsItem` with each documented keyword signature in this
-devshell and see whether it actually raises) was not attempted, so the
-claim stands unverified either way.
+## Verdict
 
-Rewritten:
-
-> I did not build the keyboard-shortcuts dialog as a real
-> `Adw.ShortcutsDialog`/`Adw.ShortcutsItem` tree the way upstream's
-> `src/ui/math-shortcuts.blp` is, because I am an idiot who wrote a comment
-> explaining the binding failure instead of filing it and pointing there.
-> Upstream: `src/ui/math-shortcuts.blp`, a declarative `$AdwShortcutsDialog`
-> of 5 `$AdwShortcutsSection`s / 43 `$AdwShortcutsItem`s, reached by the
-> `app.shortcuts` action and `<Ctrl>?`.
-> Port: `lib/math_shortcuts.rb` builds a plain `Adwaita::Dialog` over a
-> hand-rolled `Gtk::ListBox` of label/accelerator rows, 38 of 43 items, with
-> no `msgctxt` on any of them and no `app.shortcuts` action to reach it from
-> (that action does not exist anywhere in `lib/` — see `component-parity.md`
-> unit 1), and never confirmed in this devshell whether
-> `Adwaita::ShortcutsItem`'s constructor actually fails or was assumed to
-> from the pilot port's own unverified note.
-
-**Action owed, not just wording**: add a `FINDINGS.md` entry for
-`Adwaita::ShortcutsItem`, run the same kind of smoke test `FINDINGS.md`
-already ran for `Adwaita::Application`, and reduce
-`lib/math_shortcuts.rb`'s comment to naming the `FINDINGS.md` entry only —
-exactly the standard the previous pass's fix to `application.rb` already
-demonstrates is achievable in this codebase.
-
-## Hit 2 (carried forward, re-checked, still fine) — `lib/gnome_calculator.rb:19-22`
-
-Unchanged from the prior two passes: "The GUI is NOT required here" is a
-faithful description of upstream's real `lib/`-vs-`src/` split
-(`gcalccmd.vala`, `search-provider.vala` do link the engine without GTK),
-not an excuse for missing behaviour. No change needed; re-confirmed by
-re-reading the file.
-
-## What the previous pass's fix actually did, re-verified live
-
-The previous pass's "action owed" (move the `Adwaita::Application`
-binding claim out of `application.rb` and into a `FINDINGS.md` entry) **was
-done**, and done well: `FINDINGS.md` now exists, its
-"`Adwaita::Application` is broken in the Ruby bindings — not reproduced"
-section documents a real smoke test run in this devshell that **did not
-reproduce the claim**, and `lib/gnome_calculator/application.rb:36-38` now
-reads:
-
-```ruby
-# The application object comes from Gtk, not Adwaita; see FINDINGS.md
-# ("Adwaita::Application is broken in the Ruby bindings" — not
-# reproduced) for why and what was actually checked.
-def app = @app ||= Gtk::Application.new(...)
-```
-
-This is exactly the shape the skill asks for: the comment names a
-file/line to read, not a reason to stop reading at. Worth stating plainly
-because the point of this skill is not only to find violations — it is
-also to confirm a fix actually took, and this one did. The substantive gap
-underneath it (the port never switched to `Adwaita::Application` even
-after the claim against it was not reproduced) is tracked in
-`component-parity.md` unit 1, not restated here as a new accountability
-hit, because the honest comment pointing at `FINDINGS.md` is not itself an
-excuse.
-
-## What was checked and found clean
-
-- **No `TODO`/`FIXME`/"not implemented"/"in a future"** anywhere in `lib/`
-  or `exe/`, this pass included the three new files.
-- **`lib/basic_button_panel.rb:18`'s "not ported this round"** (the memory/
-  function MenuButtons) names the exact behaviour and the exact two files
-  it belongs to (`math_variable_popover.rb`, `math_function_popover.rb`),
-  matching this skill's "named, not hidden" standard — not re-litigated as
-  a hit, same ruling as the prior pass.
-- **No `PORTING.md`.** Still does not exist, still nothing to audit for
-  overclaiming completeness.
-- **No false-green claim in the runtime gate.** Re-run live this pass:
-  `nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb`
-  → `53 of 53 checks passed`, `DRIVE OK`. Accurate, and cross-checked
-  against `component-identification.md`'s corrected unit list: the gate's
-  18 steps touch 11 of the 23 identified units; the other 12 are reported
-  `gap` in `component-parity.md`, not passed by omission. The second pass's
-  "widget produced no render node" screenshot race (logged there, not a
-  failure) was itself fixed in `da40269a`, between the third and fourth
-  pass — re-ran this pass and both screenshots now write cleanly, no
-  caught-and-logged errors at all. That fix is real, not just claimed: the
-  drive script's output this pass shows `shot .../02-history-cleared.png`
-  and `shot .../03-shortcuts-dialog.png` with no preceding error, where the
-  third pass's run showed the `RuntimeError` catch.
-- **`test-parity.md`'s own numbers**, re-run live this pass rather than
-  carried over: the RSpec `LoadError` is byte-for-byte identical to the
-  third pass's (same missing `kettle-test` gem, still not installed across
-  four passes).
-- **`translation-parity.md`'s `po/POTFILES.in` mismatch**, re-diffed fresh
-  this pass: still byte-identical to upstream's, still listing `.vala`/
-  `.blp` paths that do not exist on this branch. Unchanged, correctly
-  re-verified rather than assumed.
-
-## Still outstanding from the third pass
-
-The `FINDINGS.md` entry owed for `Adwaita::ShortcutsItem` (smoke-test
-whether its keyword constructor actually fails, the way `FINDINGS.md`
-already did for `Adwaita::Application`) was **not added** this pass either
-— checked `FINDINGS.md` directly, still only the two entries
-(`Adwaita::Application`, `GtkSourceView`). The comment in
-`lib/math_shortcuts.rb` itself is unchanged. This is a real, still-open
-item, carried forward rather than re-discovered as new.
-
-## Conclusion
-
-This pass's own finding is a documentation-integrity one: a prior parity
-report's command transcript was false (`translation-parity.md`'s
-`bindtextdomain` grep), independent of code quality in `lib/` itself,
-which this pass found clean of new excuse patterns (the three new popover
-files). The standing items from the third pass are not closed: the
-`Adwaita::ShortcutsItem` `FINDINGS.md` entry is still owed, and
-`.reports/*.md` has now drifted from the code it describes in some form
-across all four passes of this branch's life — three separate documents,
-three separate causes (two stale-inventory misses, one false transcript),
-always in the direction of understating progress rather than claiming
-false completeness, which is the less dangerous failure mode this skill
-checks for but is still a failure mode. Re-run every cited shell command
-rather than trusting its printed output in the next pass, specifically —
-that is the one practice that would have caught this pass's finding
-immediately instead of three passes later.
+No excuse-language violation found in `lib/`/`exe/` this pass. One
+multi-pass false inference (error-message parity) found and corrected.
+`PORTING.md` absence stands, now across five passes, and is reportable as
+its own small accountability item: a port this far along ought to have a
+tracking document, and not having one makes exactly the kind of drift this
+report keeps finding easier to miss for longer.

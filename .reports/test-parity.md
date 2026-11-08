@@ -1,64 +1,16 @@
 # Test parity — gnome-calculator-rb
 
-Fourth pass, at `da40269a`.
+Fifth pass, at `eba4d35e`. This report answers two separate questions that
+earlier rounds tended to blur together: (1) is every upstream test ported,
+and (2) does whatever test suite exists actually run. The answer to (2) is
+the headline, because it changes what (1) even means.
 
-| | |
-|---|---|
-| Upstream | `main` @ `1d311e0a` |
-| Port | `ruby` @ `da40269a` |
-| Upstream tests | **≥ 760** (unchanged census from the prior pass; see below) |
-| Ported as RSpec examples | **0** |
-| RSpec suite status | **broken** — `require "kettle/test/rspec"` raises `LoadError`, the gem is not installed; 0 examples found regardless — re-run live this pass, identical failure |
-| Port's own headless driver (`test/drive_gnome_calculator.rb`) | **53 checks**, 0 failed, 18 numbered steps, re-run live this pass — real, but derived from none of upstream's test files |
-
-Method: `test-parity` skill. Re-ran the census and, new this pass, actually
-executed the dev-shell's own declared spec command rather than trusting
-that it would run.
-
-## Step 1 — the upstream suite (unchanged)
-
-`tests/meson.build` registers 6 binaries. In scope of this port (engine +
-UI, excluding the separately-shipped `gcalc`/`gci` library per
-`component-inventory.md` §10):
-
-| File | Count |
-|---|---:|
-| `tests/test-equation.vala` | 582 `test(expr, expected, error_code)` calls |
-| `tests/test-number.vala` | 52 `test_*()` functions |
-| `tests/test-serializer.vala` | 6 `test_*()` functions |
-| `tests/test-currency-providers.vala` | ≥3 named + a table of per-conversion cases, not fully expanded |
-
-Plus Behave UI scenarios, gated on the UI existing at all:
-
-| File | Scenarios |
-|---|---:|
-| `tests/basic_mode.feature` | 9 |
-| `tests/advanced_mode.feature` | 1 |
-| `tests/financial_mode.feature` | 1 |
-| `tests/programming_mode.feature` | 1 |
-
-Total: **≥ 760** engine + UI cases, conservative.
-
-## Step 2 — the port suite, actually run this pass
-
-`find . -iname '*test*' -o -iname '*spec*'` (excluding `.git`) finds:
-
-- `test/drive_gnome_calculator.rb` — the custom headless driver, 43 checks.
-- `test/gtk_driver.rb` — its harness, no cases of its own.
-- `spec/README.md`, `spec/spec_helper.rb` — **no file matching `*_spec.rb`
-  anywhere in the tree.**
-
-The dev shell's own banner (printed by `nix develop`, read before running
-anything, per the environment's own instructions) names the spec command as:
+## The RSpec suite has never executed a single example
 
 ```
-ruby -e 'require "rspec/core"; exit RSpec::Core::Runner.run(["--format", "progress", "--require", "spec_helper", "spec"])'
-```
+$ nix develop --command xvfb-run -a ruby -e \
+  'require "rspec/core"; exit RSpec::Core::Runner.run(["--format", "progress", "--require", "spec_helper", "spec"])'
 
-Run live this pass, inside the same dev shell the banner printed from:
-
-```
-$ nix develop --command ruby -e '…'
 An error occurred while loading spec_helper. - Did you mean?
                     rspec ./spec/spec_helper.rb
 
@@ -71,89 +23,85 @@ LoadError:
 0 examples, 0 failures, 2 errors occurred outside of examples
 ```
 
-**The suite does not load, independent of having zero examples.** The
-`kettle-test` gem `spec/spec_helper.rb` requires is not in the bundle (not
-in `Gemfile.lock`/`nix/Gemfile.lock` as an installed gem, confirmed by the
-`LoadError`). This is strictly worse than "0 examples": even an empty
-`spec/` with a working harness would at least prove the harness itself
-runs. Here the harness has never successfully executed once, on this
-checkout, in this devshell — which is the dev shell's *own* banner command,
-so no one needs to go looking for it to hit this.
+`spec/` contains exactly two files: `spec_helper.rb` (kettle-test
+boilerplate that cannot load because the `kettle-test` gem is not in the
+dev shell's bundle) and `README.md` (prose describing helpers —
+`stub_env`, `hide_env`, `:freeze`/`:travel`, `include_context "with rake"`
+— that **no spec file uses, because no spec file exists**). This is not a
+suite with failing examples; it is a suite with zero examples that cannot
+even reach the point of looking for any. This finding is unchanged across
+at least the last two passes (the fourth pass's commit message says
+"the RSpec suite still fails to load (missing kettle-test gem)") — the
+drive-script work in `8de8a498`/`eba4d35e` did not touch `spec/` or the
+`Gemfile`'s `kettle-test` dependency.
 
-`test/drive_gnome_calculator.rb` re-run live this pass:
-**53 of 53 checks passed, `DRIVE OK`** (18 numbered steps touching the
-application, basic button panel, the memory button's real
-`MathVariablePopover` (store/delete through `MathVariables`), the function
-button's real `MathFunctionPopover` (define through `FunctionManager`,
-then evaluated by the engine), display error/clear, history view +
-entries, superscript/subscript toggle, the key controller, the shortcuts
-dialog, the evaluation engine directly, unit conversion, settings, and
-`gcalccmd` three ways — the last two added since the third pass's 9-step,
-43-check run). This is accurate for what it runs and is not an RSpec
-substitute: it is a bespoke script, invoked by `ruby
-test/drive_gnome_calculator.rb` under `xvfb-run`, not by `rspec`, not
-collected by `rake`, and not derived from any upstream `.vala`/`.feature`
-file — none of its 53 checks is named after or ported from an upstream test
-case.
+**Say this plainly, because it is the kind of gap that is easy to round
+away: there are zero RSpec examples in this repository, upstream or
+ported, and the harness that would run them does not load.** Any
+reference anywhere in this port's history to "N examples passing" refers
+to the drive script below, not to RSpec — and none of this project's
+`.reports/` files make that conflation, checked by grepping all five
+report files for "RSpec" and "examples" together; it is flagged here as a
+thing to keep watching, not a correction to a false claim found this pass.
 
-## Step 3 — the bijection
+## What does run: the headless drive script
 
-| Upstream test | Port test | State |
-|---|---|---|
-| 582 cases, `test-equation.vala` | — | **gap**, all 582 |
-| 52 cases, `test-number.vala` | — | **gap**, all 52 |
-| 6 cases, `test-serializer.vala` | — | **gap**, all 6 |
-| ≥3 + table, `test-currency-providers.vala` | — | **gap**, all |
-| 9 scenarios, `basic_mode.feature` | — | **gap** (UI exists for basic mode now, but the scenario itself is not ported) |
-| 1 scenario each, `advanced_mode`/`financial_mode`/`programming_mode` | — | **gap**, all 3 (UI does not exist for any of them) |
+`test/drive_gnome_calculator.rb` is not RSpec. It is a hand-rolled,
+sequential smoke-test harness (`test/gtk_driver.rb` supplies `ok`/`shot`
+helpers) that builds the real application object graph under Xvfb and
+asserts against it step by step. Re-run this pass:
 
-Zero upstream tests have a named Ruby counterpart, in either the RSpec
-suite (which does not run) or the drive script (which was written fresh,
-not transcribed).
+```
+$ nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb
+...
+62 of 62 checks passed
+DRIVE OK
+```
 
-## Behaviour still owed (representative)
+This is real coverage — every "verified live" line in
+`component-parity.md` traces to a step in this file — but it is coverage
+of **13 components** out of the 23 identified upstream units, and it is
+not RSpec, does not use `kettle-test`'s helpers, and would not be
+discovered by `rspec spec`. It is also the *only* thing that runs:
+`bundle exec rake` and `rspec spec` both fail before reaching a single
+assertion for reasons unrelated to app logic (missing gem, not a bug in
+`lib/`).
 
-- `number.rb` (1963 lines, arbitrary-precision complex arithmetic) has no
-  test of any kind — upstream pins it with 52 functions.
-- `equation_parser.rb`/`equation.rb` are exercised by exactly 3 ad hoc
-  expressions total across the drive script (`1 + 2 * 3`, `1 + ` as an
-  error case, `1 meter in cm`) against upstream's 582-row table.
-- `serializer.rb` (display formatting across automatic/fixed/scientific/
-  engineering, every number base) has no test.
-- `currency_provider.rb` and the 4 `lib/providers/*.rb` files have no test;
-  the drive script never calls them (it never needs network access, which
-  is itself untested — a provider that silently fails to parse a changed
-  API response has nothing to catch it).
-- `math_shortcuts.rb`'s 5 missing rows (see `component-parity.md`) have no
-  test that would have caught the gap either in the port's own suite or
-  upstream's, because neither side has a test over the shortcuts dialog's
-  content at all — this gap was found by a manual line-count diff in this
-  audit, not by any automated check.
+## Upstream's own test suite: not ported, not inventoried file-by-file
 
-Also unported this pass: the two new units the drive script does exercise
-(`math_popover.rb`, `math_function_popover.rb`, `math_variable_popover.rb`)
-have no upstream test file of their own to port from in the first place —
-upstream has no `tests/test-math-popover.vala` or equivalent, so there is
-no bijection gap to record for them beyond the general UI-scenario gap
-(`basic_mode.feature` etc.) already listed above. The function-popover
-validation messages and the variable-popover's reserved-name list are
-exercised by exactly one happy-path check each in the drive script; the
-four validation-message strings per popover (8 total) have zero test
-asserting their exact text on either side.
+Upstream carries a Vala test suite:
 
-## Conclusion
+```
+$ git ls-tree -r --name-only origin/main | grep '^tests/'
+tests/test-equation.vala
+tests/test-fixed-pt.vala
+tests/test-number.vala
+tests/test-serializer.vala
+tests/test.c
+tests/meson.build
+```
 
-**Test parity is 0/≥760, unchanged in kind across four passes, and the dev
-shell's own advertised spec command still fails to load at all** (missing
-`kettle-test` gem, re-confirmed live this pass with the identical
-`LoadError`). A reader who runs the banner command exactly as printed gets
-a `LoadError`, not "0 examples" — that distinction matters because "0
-examples, suite loads fine" is a project that is simply young, while
-"suite does not load" is a project where no one has run the thing the dev
-shell tells you to run, and across four passes now, no one has fixed it
-either. The runtime gate this round (`drive_ok=true`, 53 checks) is real
-and re-verified live, but it is a hand-written smoke test over 11 of the
-port's 23 identified units (`component-identification.md`), not a test
-suite with any claim to covering the other 12, and it inherits none of
-upstream's ≥760 cases' specific knowledge of edge cases, precedence rules,
-or formatting corners.
+None of these five test files have a ported counterpart under `spec/` —
+there is nothing under `spec/` to have a counterpart, per the section
+above. `test-equation.vala` and `test-number.vala` in particular exercise
+exactly the engine classes (`lib/equation.rb`, `lib/number.rb`) this port
+claims are "20/20 complete" in every prior `component-identification.md`
+pass; that claim is about files existing, not about upstream's own test
+assertions being reproduced against them. The drive script's engine
+section (steps `[14]`–`[16]`) checks precedence, a bad-expression error
+code, and one unit conversion — a handful of assertions, not upstream's
+test files translated line for line.
+
+## Verdict
+
+| Question | Answer |
+|---|---|
+| Does every upstream test exist in the port, ported? | No — 0 of upstream's 5 `tests/*.vala` files have any `spec/` counterpart |
+| Does the port's own test suite (RSpec) run at all? | No — 0 examples, fails at `spec_helper` load, unchanged across at least two passes |
+| Is there a running check of any kind? | Yes — the non-RSpec drive script, 62/62 this pass, covering 13 of 23 identified units |
+| Is the drive script a substitute for the missing RSpec suite? | No — different mechanism, narrower scope (13/23 units), and it was never positioned as a replacement by this project's own commits |
+
+**Gap, on both axes.** Fixing the `kettle-test` load failure is a
+prerequisite to porting any of upstream's five test files, and until that
+happens "RSpec suite" and "0 examples that have never run" are the same
+sentence.
