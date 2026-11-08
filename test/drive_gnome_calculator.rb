@@ -1,19 +1,22 @@
 # frozen_string_literal: true
 
 # Drives the port headlessly: builds the real application window, confirms
-# the style sheet loads and the placeholder content is what the application
-# actually puts there, then exercises the ported engine (the only
-# user-facing part of this app beyond the window) end to end, including
-# through the real exe/gcalccmd CLI entry point as a subprocess.
+# the style sheet loads and the real content the window puts there, then
+# drives the basic and advanced button panels, the memory/function popovers,
+# history, the shortcuts dialog and the window-level key controller through
+# their real widgets and real `cal.*`/`win.*` actions — not stand-ins — and
+# finally exercises the ported engine end to end, including through the real
+# exe/gcalccmd CLI entry point as a subprocess.
 #
 # Why this file exists: `ruby -c` and `require "gnome_calculator"` both pass
-# on code that has never opened a window, and this port's own
-# `.reports/component-inventory.md` says plainly that only the engine and a
-# placeholder application are written — no math window, no buttons, no
-# dialogs, no menus. A drive script cannot click controls that do not exist;
-# what it can and must do is prove that every component the port *does*
-# claim (the window that exists, and the full calculation engine behind
-# `gcalccmd`) actually runs, not just parses.
+# on code that has never opened a window. A drive script cannot click
+# controls that do not exist; what it can and must do is prove that every
+# component the port *does* claim (window, buttons, popovers, history,
+# shortcuts dialog, key controller, and the full calculation engine behind
+# `gcalccmd`) actually runs, not just parses. Components the port has not
+# yet built — the financial/programming/conversion modes, currency
+# conversion UI, undo/redo, the app-level menus — are tracked as gaps in
+# `.reports/component-parity.md`, not silently skipped here.
 #
 # Run it from the repository root:
 #
