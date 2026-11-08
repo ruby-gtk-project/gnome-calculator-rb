@@ -1,15 +1,46 @@
 # Translation parity — gnome-calculator-rb
 
+Fourth pass, at `da40269a`. This pass corrects a false claim in the third
+pass's own report (see "Correction" below) in addition to re-running the
+census against the popovers built since then.
+
 | | |
 |---|---|
 | Upstream | `main` @ `1d311e0a` |
-| Port | `ruby` @ `9824569e` |
-| Upstream messages (source, in scope) | **797** distinct `(msgctxt, msgid)` keys (recounted this pass over `lib/`, `src/`, `data/`, `search-provider/`) |
-| Port messages | **33** distinct keys |
-| Ported (present in both) | **17** |
-| Gaps (upstream key with no port match) | **780** |
+| Port | `ruby` @ `da40269a` |
+| Upstream messages (source, in scope) | **797** distinct `(msgctxt, msgid)` keys (unchanged census; see below) |
+| Port messages | **47** distinct keys (up from 33 — `math_function_popover.rb`/`math_variable_popover.rb`'s validation strings and `math_popover.rb`'s shared chrome add markers) |
+| Ported (present in both) | **~20** (not recounted exactly against the full 797-row upstream set this pass; the new popover validation strings match upstream's `src/math-function-popover.vala`/`math-variable-popover.vala` text byte-for-byte, same no-`msgctxt` caveat as the shortcuts dialog below) |
+| Gaps (upstream key with no port match) | **≥ 777** |
 | Port languages | **0** |
 | Parity | **false** |
+
+## Correction to the third pass's own report
+
+The third pass's "Languages" section claimed: "Checked: `grep -rn
+'bindtextdomain\|GetText.bindtextdomain\|textdomain' lib/ exe/` → no
+output." **That is false, and was already false when it was written** —
+`lib/translations.rb:20` has called `bindtextdomain(DOMAIN, path:
+LOCALE_DIR)` since commit `e0ed3935`, which landed before the third pass
+(`9824569e`) was written. Re-run verbatim this pass:
+
+```
+$ grep -rn "bindtextdomain\|GetText.bindtextdomain\|textdomain" lib/ exe/
+lib/translations.rb:20:  bindtextdomain(DOMAIN, path: LOCALE_DIR)
+```
+
+This is exactly the kind of claim `accountability-ensurance.md` exists to
+catch — a report asserting a command's output without the output actually
+being what was asserted — except here the error runs in the direction of
+*overstating* the gap rather than hiding one, since the binding call does
+exist. It is flagged in `accountability-ensurance.md` as well, because an
+inaccurate command transcript is a documentation-integrity problem
+independent of which direction it errs in: the next reader who trusts it
+and doesn't re-run the grep carries the wrong fact forward either way.
+The substantive point the third pass used it to support — that the
+`bindtextdomain` call is not confirmed to actually bind against real,
+loadable `.mo` catalogues at runtime — stands; only the specific "no
+output" transcript was wrong.
 
 Method: `translation-parity` skill,
 `.claude/skills/translation-parity/scripts/msgid-census.sh` run against a
@@ -105,27 +136,44 @@ fixed and the catalogues are wired in.
 
 | | Upstream | Port |
 |---|---:|---:|
-| `.po` files | 101 | 0 wired in — `po/*.po` exist as files on disk (carried over unchanged) but nothing in `lib/`/`exe/` requires `gettext` against them or sets a text domain |
-| `.mo` built/installed | yes | no |
+| `.po` files | 101 | 101, byte-identical to upstream (confirmed: `diff <(git show origin/main:po/POTFILES.in) po/POTFILES.in` and a full `git diff --stat origin/main -- po/` both empty) — **not wired in**: carried over as files only |
+| `.mo` built/installed | yes | no — no build step compiles any `.po` to `.mo`, and `bindtextdomain` points at `po/` (raw `.po` sources), not an installed `.mo` locale tree |
 
-Checked: `grep -rn "bindtextdomain\|GetText.bindtextdomain\|textdomain" lib/
-exe/` → no output. `lib/translations.rb`'s `Gettext` module is confirmed to
-define `_`/`n_` but not confirmed to bind them to `po/`'s actual catalogues
-at runtime — read directly, it is a thin wrapper and the binding step was
-out of scope to re-verify fully this pass; flagged, not claimed clean.
+`lib/translations.rb`'s `Gettext` module does call
+`bindtextdomain(DOMAIN, path: LOCALE_DIR)` (see the correction above), but
+this still was not confirmed this pass to produce a translated string for
+any non-English locale end to end — no `.mo` exists for `bindtextdomain` to
+find regardless of the call being present, so the net effect for every one
+of the 101 languages is the same as if the call were absent: English only.
+Flagged, not claimed clean.
+
+## New this pass: the two popovers' validation strings
+
+`lib/math_popover.rb`, `lib/math_function_popover.rb` and
+`lib/math_variable_popover.rb` all `include Gettext` and wrap their
+placeholder text and the 8 validation messages (4 per popover) in `_()`,
+matching upstream's text byte-for-byte where compared
+(`src/math-function-popover.vala`/`src/math-variable-popover.vala`). Same
+caveat as every other string in this port: no `msgctxt`, and these two
+files were not in upstream's `po/POTFILES.in` under their Ruby names (they
+can't be — that file still lists `.vala`/`.blp` paths, see below), so
+nothing currently extracts these new markers into any catalogue.
 
 ## Conclusion
 
-Translation parity is **17/797 at best, 0/101 languages**, up from 0/831 in
-the prior pass only because a UI slice now exists to carry the matching
-17 strings — not because any systematic translation work has happened.
-Three independent problems compound rather than one gap shrinking: (1) the
-UI that does exist covers at most 38 of 43 shortcut-dialog strings and a
-double-digit handful of button/error strings, with no `msgctxt`, so even a
-perfect `po/` wire-up would under-translate; (2) the engine files the
-port's own documents call "complete" mark zero of their currency/unit/
-financial display names for translation, which is a silent regression
-against a component this port is not tracking as a translation gap at all;
-(3) `po/POTFILES.in` cannot be run from this branch's own source tree, so
-there is currently no mechanical way to regenerate a `.pot` and discover
-*any* of the above without a manual audit like this one.
+Translation parity is **roughly 20/797 at best, 0/101 languages**, up
+slightly from the third pass's 17/797 because the two new popovers add
+validation strings that happen to match upstream's text — not because any
+systematic translation work has happened across four passes now. Four
+independent problems compound rather than one gap shrinking: (1) the UI
+that does exist covers at most 38 of 43 shortcut-dialog strings, 8
+popover-validation strings, and a double-digit handful of button/error
+strings, with no `msgctxt` anywhere, so even a perfect `po/` wire-up would
+under-translate; (2) the engine files the port's own documents call
+"complete" mark zero of their currency/unit/financial display names for
+translation; (3) `po/POTFILES.in` cannot be run from this branch's own
+source tree, so there is no mechanical way to regenerate a `.pot`; (4) even
+where `bindtextdomain` is correctly called (corrected finding, this pass),
+no `.mo` catalogue exists for it to find, so the call changes nothing
+observable yet. None of these four has been fixed across four audit
+passes — only found, and in the third pass's case, half-misreported.

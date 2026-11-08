@@ -701,3 +701,30 @@ every row and the binding-gem check still hold as written; nothing to
 correct. (An earlier draft of this re-survey briefly overwrote this file with
 a thinner summary without reading the existing one first — restored from
 git history; no content was lost.)
+
+## Note (2026-11-08, fourth-pass update) — units 15–17 and 22 changed since the table above was written
+
+Commit `6888ae72` landed after every row above was written and is **not**
+folded into them (this file is being flagged, not silently fixed, per
+`accountability-ensurance.md`'s standing finding that `.reports/*.md`
+keeps drifting behind `lib/` — re-reading the actual files rather than
+trusting this note is still the right move for the next pass):
+
+- §15–17 (`lib/math_popover.rb`, `lib/math_function_popover.rb`,
+  `lib/math_variable_popover.rb`) — all three now **present**: 204/215/203
+  lines respectively, wired into `lib/basic_button_panel.rb`'s memory and
+  function `MenuButton`s, verified live by
+  `test/drive_gnome_calculator.rb` (store/delete a variable through
+  `MathVariables`; define and evaluate a function through
+  `FunctionManager`). The category-browsing and multi-argument-function
+  paths in both popovers are unverified, not absent — see
+  `component-parity.md` units 16–17 for the per-facet breakdown.
+- §22 (CLI) — the `Gcalccmd` class moved out of `exe/gcalccmd` into
+  `lib/gcalccmd.rb` (108 lines), leaving the executable a 6-line
+  `require`+run, matching this file's own stated house-style rule
+  ("one upstream source file maps to one `lib/<thing>.rb`") for the first
+  time. Behaviour unchanged, re-verified live.
+- Totals table above (§"Totals", the `Component units` and
+  `Button widgets` rows) is **not** recomputed in place here; see
+  `component-identification.md`'s fourth-pass totals for the corrected
+  figures instead of treating the numbers above as current.

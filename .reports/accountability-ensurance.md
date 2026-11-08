@@ -1,9 +1,55 @@
 # Accountability ensurance — gnome-calculator-rb
 
-Third pass, at `9824569e`. Ran
+Fourth pass, at `da40269a`. Ran
 `.claude/skills/accountability-ensurance/scripts/find-excuses.sh` over
 `lib/`, `exe/`, `.reports/` and by hand over the same plus `FINDINGS.md`
-and `CLAUDE.md`. `PORTING.md` still does not exist on this branch.
+and `CLAUDE.md`. `PORTING.md` still does not exist on this branch, across
+four passes now.
+
+## Headline finding this pass: a prior parity report's own command transcript was false
+
+`.reports/translation-parity.md` (third pass, `9824569e`) stated: "Checked:
+`grep -rn 'bindtextdomain\|GetText.bindtextdomain\|textdomain' lib/ exe/` →
+no output." Re-run verbatim this pass:
+
+```
+$ grep -rn "bindtextdomain\|GetText.bindtextdomain\|textdomain" lib/ exe/
+lib/translations.rb:20:  bindtextdomain(DOMAIN, path: LOCALE_DIR)
+```
+
+That line has been in `lib/translations.rb` since commit `e0ed3935`, which
+landed *before* the third pass was written — so the claim was false at the
+moment it was committed, not something that went stale afterward. This
+runs in the opposite direction from a false green (it overstates a gap
+rather than hiding one), and the substantive conclusion the third pass
+drew from it — that the binding is not confirmed to produce translated
+output at runtime — still holds for an unrelated reason (no `.mo`
+catalogue exists; see `translation-parity.md`'s "Languages" section this
+pass). But a parity report asserting a specific command's output, where
+the actual output contradicts it, is exactly what this skill is for:
+**the next reader who trusts a prior report's transcript instead of
+re-running the command carries a wrong fact forward, regardless of which
+direction the error points.** Fixed in place this pass
+(`translation-parity.md`, "Correction to the third pass's own report").
+Three parity documents on this branch have now independently drifted from
+the code they describe across four passes (`component-inventory.md` twice,
+previously; `translation-parity.md` now) — always understating rather than
+inflating, but the discipline of re-running every cited command rather
+than reading it off a prior pass's prose is clearly not yet reliable
+practice here, and should be treated as a standing risk, not a closed one.
+
+## Checked and clean this pass: the two new popover files
+
+`lib/math_popover.rb`, `lib/math_function_popover.rb` and
+`lib/math_variable_popover.rb` (all new in `6888ae72`) were read in full
+against this skill's patterns. No `TODO`/`FIXME`/"not implemented"/"for
+now"/"in a future" anywhere in them, and — unlike `lib/math_shortcuts.rb`
+in the third pass — no binding-limitation claim stated beside a workaround
+without a `FINDINGS.md` pointer. `lib/basic_button_panel.rb`'s header
+comment no longer says "not ported this round" for the memory/function
+buttons (the third pass's "named, not hidden" item); that sentence is gone
+because the thing it named is now built, not because it was deleted while
+still true — checked by reading the current file, not inferred.
 
 ## Headline finding: the port's own parity documents were stale, in the direction that hides recent work rather than inflates it
 
@@ -138,39 +184,50 @@ excuse.
   overclaiming completeness.
 - **No false-green claim in the runtime gate.** Re-run live this pass:
   `nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb`
-  → `43 of 43 checks passed`, `DRIVE OK`. Accurate, and — unlike the prior
-  pass's version of this same check — now cross-checked against
-  `component-identification.md`'s corrected unit list: the gate's 9 steps
-  touch 9 of the 23 identified units; the other 14 are reported `gap` in
-  `component-parity.md`, not passed by omission. Two screenshot captures
-  inside the drive script (`02-history-cleared`, `03-shortcuts-dialog`)
-  raised `RuntimeError: widget produced no render node (not realised yet?)`
-  and were caught and logged by the harness without failing the run —
-  checked that this is not laundering a real failure: the drive script
-  never asserts anything about the screenshot files themselves, only about
-  widget state, so a failed screenshot capture correctly costs nothing
-  against the 43-check total. Worth fixing for its own sake (a shot that
-  silently fails is a smaller version of exactly the "ran but nobody
-  checked" pattern this skill exists for), but it is not a false claim
-  today because nothing claims those shots succeeded.
-- **`test-parity.md`'s and `translation-parity.md`'s own numbers**, re-run
-  live this pass rather than carried over: the RSpec `LoadError` and the
-  `po/POTFILES.in` mismatch were both executed/diffed fresh for this audit,
-  not asserted from memory of the prior pass.
+  → `53 of 53 checks passed`, `DRIVE OK`. Accurate, and cross-checked
+  against `component-identification.md`'s corrected unit list: the gate's
+  18 steps touch 11 of the 23 identified units; the other 12 are reported
+  `gap` in `component-parity.md`, not passed by omission. The second pass's
+  "widget produced no render node" screenshot race (logged there, not a
+  failure) was itself fixed in `da40269a`, between the third and fourth
+  pass — re-ran this pass and both screenshots now write cleanly, no
+  caught-and-logged errors at all. That fix is real, not just claimed: the
+  drive script's output this pass shows `shot .../02-history-cleared.png`
+  and `shot .../03-shortcuts-dialog.png` with no preceding error, where the
+  third pass's run showed the `RuntimeError` catch.
+- **`test-parity.md`'s own numbers**, re-run live this pass rather than
+  carried over: the RSpec `LoadError` is byte-for-byte identical to the
+  third pass's (same missing `kettle-test` gem, still not installed across
+  four passes).
+- **`translation-parity.md`'s `po/POTFILES.in` mismatch**, re-diffed fresh
+  this pass: still byte-identical to upstream's, still listing `.vala`/
+  `.blp` paths that do not exist on this branch. Unchanged, correctly
+  re-verified rather than assumed.
+
+## Still outstanding from the third pass
+
+The `FINDINGS.md` entry owed for `Adwaita::ShortcutsItem` (smoke-test
+whether its keyword constructor actually fails, the way `FINDINGS.md`
+already did for `Adwaita::Application`) was **not added** this pass either
+— checked `FINDINGS.md` directly, still only the two entries
+(`Adwaita::Application`, `GtkSourceView`). The comment in
+`lib/math_shortcuts.rb` itself is unchanged. This is a real, still-open
+item, carried forward rather than re-discovered as new.
 
 ## Conclusion
 
-One real, recurring violation this pass: the exact "binding limitation
-stated beside its own workaround" pattern the previous audit found and
-fixed in `application.rb` has reappeared in new code
-(`lib/math_shortcuts.rb`) written after that fix landed, meaning the fix
-corrected an instance, not the habit. The fix path is proven to work
-(`FINDINGS.md` + a pointer comment) — it simply was not applied to the
-newest file. The second finding is structural rather than a single
-comment: `.reports/component-inventory.md` has now drifted behind `lib/`
-twice in the life of this branch, each time understating real, committed
-work rather than overstating it, which is a gentler failure than a false
-green but is still a report a later pass trusted without re-reading the
-code underneath it. Both are fixed in this pass; both should be checked
-again, specifically, the next time either `lib/math_shortcuts.rb` or any
-`.reports/*.md` file is touched.
+This pass's own finding is a documentation-integrity one: a prior parity
+report's command transcript was false (`translation-parity.md`'s
+`bindtextdomain` grep), independent of code quality in `lib/` itself,
+which this pass found clean of new excuse patterns (the three new popover
+files). The standing items from the third pass are not closed: the
+`Adwaita::ShortcutsItem` `FINDINGS.md` entry is still owed, and
+`.reports/*.md` has now drifted from the code it describes in some form
+across all four passes of this branch's life — three separate documents,
+three separate causes (two stale-inventory misses, one false transcript),
+always in the direction of understating progress rather than claiming
+false completeness, which is the less dangerous failure mode this skill
+checks for but is still a failure mode. Re-run every cited shell command
+rather than trusting its printed output in the next pass, specifically —
+that is the one practice that would have caught this pass's finding
+immediately instead of three passes later.

@@ -1,13 +1,15 @@
 # Test parity — gnome-calculator-rb
 
+Fourth pass, at `da40269a`.
+
 | | |
 |---|---|
 | Upstream | `main` @ `1d311e0a` |
-| Port | `ruby` @ `9824569e` |
+| Port | `ruby` @ `da40269a` |
 | Upstream tests | **≥ 760** (unchanged census from the prior pass; see below) |
 | Ported as RSpec examples | **0** |
-| RSpec suite status | **broken** — `require "kettle/test/rspec"` raises `LoadError`, the gem is not installed; 0 examples found regardless |
-| Port's own headless driver (`test/drive_gnome_calculator.rb`) | 43 checks, 0 failed, re-run live this pass — real, but derived from none of upstream's test files |
+| RSpec suite status | **broken** — `require "kettle/test/rspec"` raises `LoadError`, the gem is not installed; 0 examples found regardless — re-run live this pass, identical failure |
+| Port's own headless driver (`test/drive_gnome_calculator.rb`) | **53 checks**, 0 failed, 18 numbered steps, re-run live this pass — real, but derived from none of upstream's test files |
 
 Method: `test-parity` skill. Re-ran the census and, new this pass, actually
 executed the dev-shell's own declared spec command rather than trusting
@@ -79,15 +81,19 @@ checkout, in this devshell — which is the dev shell's *own* banner command,
 so no one needs to go looking for it to hit this.
 
 `test/drive_gnome_calculator.rb` re-run live this pass:
-**43 of 43 checks passed, `DRIVE OK`** (9 numbered steps touching the
-application, basic button panel, display error/clear, history view +
+**53 of 53 checks passed, `DRIVE OK`** (18 numbered steps touching the
+application, basic button panel, the memory button's real
+`MathVariablePopover` (store/delete through `MathVariables`), the function
+button's real `MathFunctionPopover` (define through `FunctionManager`,
+then evaluated by the engine), display error/clear, history view +
 entries, superscript/subscript toggle, the key controller, the shortcuts
 dialog, the evaluation engine directly, unit conversion, settings, and
-`gcalccmd` three ways). This is accurate for what it runs and is not an
-RSpec substitute: it is a bespoke script, invoked by `ruby
+`gcalccmd` three ways — the last two added since the third pass's 9-step,
+43-check run). This is accurate for what it runs and is not an RSpec
+substitute: it is a bespoke script, invoked by `ruby
 test/drive_gnome_calculator.rb` under `xvfb-run`, not by `rspec`, not
 collected by `rake`, and not derived from any upstream `.vala`/`.feature`
-file — none of its 43 checks is named after or ported from an upstream test
+file — none of its 53 checks is named after or ported from an upstream test
 case.
 
 ## Step 3 — the bijection
@@ -124,18 +130,30 @@ not transcribed).
   content at all — this gap was found by a manual line-count diff in this
   audit, not by any automated check.
 
+Also unported this pass: the two new units the drive script does exercise
+(`math_popover.rb`, `math_function_popover.rb`, `math_variable_popover.rb`)
+have no upstream test file of their own to port from in the first place —
+upstream has no `tests/test-math-popover.vala` or equivalent, so there is
+no bijection gap to record for them beyond the general UI-scenario gap
+(`basic_mode.feature` etc.) already listed above. The function-popover
+validation messages and the variable-popover's reserved-name list are
+exercised by exactly one happy-path check each in the drive script; the
+four validation-message strings per popover (8 total) have zero test
+asserting their exact text on either side.
+
 ## Conclusion
 
-**Test parity is 0/≥760, unchanged in kind from the prior pass, but now
-confirmed worse in one respect: the dev shell's own advertised spec command
-does not merely find zero examples, it fails to load at all** (missing
-`kettle-test` gem). A reader who runs the banner command exactly as printed
-gets a `LoadError`, not "0 examples" — that distinction matters because "0
+**Test parity is 0/≥760, unchanged in kind across four passes, and the dev
+shell's own advertised spec command still fails to load at all** (missing
+`kettle-test` gem, re-confirmed live this pass with the identical
+`LoadError`). A reader who runs the banner command exactly as printed gets
+a `LoadError`, not "0 examples" — that distinction matters because "0
 examples, suite loads fine" is a project that is simply young, while
 "suite does not load" is a project where no one has run the thing the dev
-shell tells you to run. The runtime gate this round (`drive_ok=true`, 43
-checks) is real and re-verified live, but it is a hand-written smoke test
-over 9 of the port's 23 identified units (`component-identification.md`),
-not a test suite with any claim to covering the other 14, and it inherits
-none of upstream's ≥760 cases' specific knowledge of edge cases, precedence
-rules, or formatting corners.
+shell tells you to run, and across four passes now, no one has fixed it
+either. The runtime gate this round (`drive_ok=true`, 53 checks) is real
+and re-verified live, but it is a hand-written smoke test over 11 of the
+port's 23 identified units (`component-identification.md`), not a test
+suite with any claim to covering the other 12, and it inherits none of
+upstream's ≥760 cases' specific knowledge of edge cases, precedence rules,
+or formatting corners.

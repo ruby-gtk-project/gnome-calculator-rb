@@ -1,19 +1,25 @@
 # Component parity — gnome-calculator-rb
 
+Fourth pass, at `da40269a`. Carries forward every unit's verdict from the
+third pass unchanged except units 15–17 (popovers, newly built in
+`6888ae72`) and unit 22 (CLI, extracted to `lib/gcalccmd.rb` in the same
+commit), both re-derived fresh below.
+
 | | |
 |---|---|
 | Upstream | `main` @ `1d311e0a` |
-| Port | `ruby` @ `9824569e` |
+| Port | `ruby` @ `da40269a` |
 | Units with full parity | 0 / 23 |
-| Units with partial, behaviourally-verified parity | 6 / 23 |
-| Units with zero parity | 17 / 23 |
-| Runtime gate this round | `drive_ok=true`, 43 checks, 0 failed, 9 steps — **covers only units 1, 2, 4, 6, 7, 19, 20, 22, plus the engine directly; 14 of the 23 identified units are exercised by zero checks and are reported `gap`, not passing by omission** |
+| Units with partial, behaviourally-verified parity | 9 / 23 |
+| Units with zero parity | 14 / 23 |
+| Runtime gate this round | `drive_ok=true`, **53 checks, 0 failed**, 18 numbered steps — covers units 1, 2, 4, 6, 7, 15, 16, 17, 19, 20, 22, plus the engine directly: **11 units out of 23**. The other **12 units are exercised by zero checks and are reported `gap`, not passing by omission** |
 
 Method: `component-parity` skill, four axes (count, style, behaviour, text)
 per unit, using the corrected unit list in `component-identification.md`.
 Every "present" claim below was re-run live this pass:
 `nix develop --command xvfb-run -a ruby test/drive_gnome_calculator.rb`
-→ `43 of 43 checks passed`, `DRIVE OK`.
+→ `53 of 53 checks passed`, `DRIVE OK` (re-run directly for this report, not
+read off the commit message).
 
 ## Unit 1 — Application: `src/gnome-calculator.vala` → `lib/gnome_calculator/application.rb`
 
@@ -109,17 +115,51 @@ verified; "looks and truncates like upstream" is not.
 Verdict: **gap** on the unverified facets, **partial parity** on the
 verified ones.
 
-## Units 5, 8–18, 21, 23 — unbuilt
+## Unit 16 — Function popover: `src/math-function-popover.vala` → `lib/math_function_popover.rb`
+
+New this pass, verified live via `test/drive_gnome_calculator.rb` step 3.
+
+| Facet | Upstream | Port | Verdict |
+|---|---|---|---|
+| Opened from | the basic panel's `calc_function_button` (`f(x)`) | same button, verified live | parity |
+| Name validation (4 messages: defined var/const, built-in, starts-with-digit, illegal chars) | 4 | re-checked: `lib/math_function_popover.rb` carries all 4 message strings, matched against `src/math-function-popover.vala` text | parity on text, not cross-checked against `msgctxt`-scoped `po/` lookups (see `translation-parity.md`) |
+| Add-button sensitivity gated on validator | yes | yes, verified live (`add_button.sensitive?` after typing a legal name) | parity |
+| `FunctionManager` wiring (define → evaluate) | yes | verified live: popover leaves a definition template, the typed definition is accepted, the engine evaluates the function to the right answer (42) | parity — the one row in this report that chains through three real objects (popover → `FunctionManager` → engine) in one check |
+| Category stack, submenus, custom-function list (`bind_model`), separator visibility | present | built (`lib/math_popover.rb`'s shared chrome + this file's category list) | **unverified** — no drive-script check opens a built-in category or exercises the custom-function list/separator visibility |
+| `Gtk.SpinButton add_arguments_button` (range 1–10) | present | present (read directly in `lib/math_function_popover.rb`) | **unverified** — not exercised live |
+
+Verdict: **partial parity** — the one chain the drive script exercises
+(open → validate → define → evaluate) is real and verified; the category
+browsing and multi-argument-function paths are unverified, not failing.
+
+## Unit 17 — Variable popover: `src/math-variable-popover.vala` → `lib/math_variable_popover.rb`
+
+New this pass, verified live via `test/drive_gnome_calculator.rb` step 2.
+
+| Facet | Upstream | Port | Verdict |
+|---|---|---|---|
+| Opened from | the basic panel's `calc_memory_button` (`x`) | same button, verified live | parity |
+| Name validation (4 messages, reserved names `_`/`rand`) | 4 messages + 2 reserved names | all carried over in `lib/math_popover.rb`'s shared constants, re-read this pass | parity on text |
+| Store/delete through `MathVariables` | yes | verified live: storing through the popover reaches the real `MathVariables`; deleting is reflected back in the popover | parity |
+| Reserved-constant rejection | yes | verified live: storing under a reserved name is rejected with a real (non-empty) error | parity |
+| `rand` / `_` (last answer) rows, constants list, category submenus | present | built (shared base class) | **unverified** — no drive-script check opens the constants list or exercises `rand`/`_` specifically |
+
+Verdict: **partial parity**, same shape as unit 16 — the store/delete/
+reject chain is real and verified; the constants browsing path is
+unverified.
+
+## Units 5, 8–14, 18, 21, 23 — still unbuilt
 
 Autocompletion providers, the button-panel host and its `cal` action group,
 4 of 5 button panels (advanced/financial/programming/conversion) plus the
-bit panel, the converter, both popovers and their base class, preferences +
+bit panel and financial dialogs, the converter, preferences +
 favourite-currencies, the shell search provider, and all translations: zero
 counterpart in `lib/`, unchanged from the prior pass. See
-`component-inventory.md` §§5, 8–18, 21, 23 for the full widget/CSS tables.
+`component-inventory.md` §§5, 8–14, 18, 21, 23 for the full widget/CSS
+tables.
 
-Verdict: **gap**, 15 of 23 units (the 15 remaining after units 1–4, 6, 7
-above, plus 19/20/22 which hold full or structural parity).
+Verdict: **gap**, 12 of 23 units (the 12 remaining after units 1–4, 6, 7,
+15–17 above, plus 19/20/22 which hold full or structural parity).
 
 ## Unit 19 — Stylesheet: `src/ui/style.css` → `lib/style.css`
 
@@ -145,28 +185,34 @@ dependents, not unit 20 itself.
 Verdict: **parity** for storage; **gap**, scoped to "no consumer exists yet,"
 for the bindings.
 
-## Unit 22 — CLI: `src/gcalccmd.vala` → `exe/gcalccmd`
+## Unit 22 — CLI: `src/gcalccmd.vala` → `lib/gcalccmd.rb` + `exe/gcalccmd`
 
-Unchanged: single-expression argv mode, REPL-on-stdin, error-to-stderr all
-verified live this pass. Man page not carried over (small, stated gap).
+Behaviour unchanged from the prior pass (single-expression argv mode,
+REPL-on-stdin, error-to-stderr all verified live this pass via the same
+three drive-script checks, now renumbered steps 16–18) but the shape
+changed: the class body moved out of the executable into `lib/gcalccmd.rb`
+(108 lines) to match house style's one-upstream-file-to-one-`lib`-file
+rule, leaving `exe/gcalccmd` a 6-line `require` + run. Man page not carried
+over (small, stated gap, unchanged).
 
-Verdict: **parity** for the functional CLI.
+Verdict: **parity** for the functional CLI, now also structural parity
+with house style.
 
 ## Totals
 
 | | Count |
 |---|---:|
-| Units with full parity | 2 (`exe/gcalccmd` modulo the man page; `lib/style.css`'s loading mechanism) |
-| Units with partial, behaviourally-verified parity | 6 (application window shell; main window's key subset; shortcuts dialog's reachable rows; display; history view's insert/click rows; history entry's click rows) |
-| Units with zero parity | 15 |
+| Units with full parity | 2 (`exe/gcalccmd`/`lib/gcalccmd.rb` modulo the man page; `lib/style.css`'s loading mechanism) |
+| Units with partial, behaviourally-verified parity | 9 (application window shell; main window's key subset; shortcuts dialog's reachable rows; display; history view's insert/click rows; history entry's click rows; function popover's define/evaluate chain; variable popover's store/delete chain; settings storage) |
+| Units with zero parity | 12 |
 
 ## Rules check
 
 - Every "present"/"parity" claim above was re-run live for this report
-  (`43 of 43 checks passed, DRIVE OK`), not read off a prior report or a
+  (`53 of 53 checks passed, DRIVE OK`), not read off a prior report or a
   commit message.
 - No app-wide total is used as the pass condition; every row is a named
-  unit, and the 14 units the drive script does not touch are listed as
+  unit, and the 12 units the drive script does not touch are listed as
   `gap`/unverified rather than omitted.
 - The stylesheet's dormant classes and the settings-storage/bindings split
   are stated as partial, not rounded up to full parity, per the skill's
