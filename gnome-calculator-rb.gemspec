@@ -96,6 +96,14 @@ Gem::Specification.new do |spec|
   spec.executables = ["gnome-calculator", "gcalccmd"]
   spec.require_paths = ["lib"]
 
+  spec.add_dependency("adwaita")
+  spec.add_dependency("bigdecimal", "~> 4.1")
+  spec.add_dependency("gettext", "~> 3.4")
+  spec.add_dependency("glib2")
+  spec.add_dependency("gtk4")
+  spec.add_dependency("rexml", "~> 3.4")
+  spec.add_dependency("soup3")
+
   # NOTE: It is preferable to list development dependencies in the gemspec due to increased
   #       visibility and discoverability.
   #       However, development dependencies in gemspec will install on
@@ -108,23 +116,6 @@ Gem::Specification.new do |spec|
   #
   #       Development dependencies that require strictly newer Ruby versions should be in a "gemfile",
   #       and preferably a modular one (see gemfiles/modular/*.gemfile).
-
-  # Runtime dependencies
-  # bigdecimal stopped being a default gem in Ruby 3.4, and Number — the
-  # port of upstream's lib/number.vala — is built on it.
-  spec.add_dependency("bigdecimal", "~> 4.1")
-  # rexml stopped being a default gem in Ruby 3.0; the ECB and Bank of Canada
-  # exchange-rate files are XML.
-  spec.add_dependency("rexml", "~> 3.4")
-  # The GTK4/Libadwaita toolkit itself.
-  spec.add_dependency("gtk4")
-  spec.add_dependency("adwaita")
-  spec.add_dependency("glib2")
-  # Downloads the ECB and Bank of Canada exchange-rate files over HTTP.
-  spec.add_dependency("soup3")
-  # Loads the po/ translations upstream ships, under the byte-identical
-  # msgids every ported UI string uses.
-  spec.add_dependency("gettext", "~> 3.4")
 
   # Dev, Test, & Release Tasks
   spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.26")             # ruby >= 3.4

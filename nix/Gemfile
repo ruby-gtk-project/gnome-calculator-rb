@@ -9,19 +9,9 @@
 source "https://rubygems.org"
 
 gem "adwaita"
-gem "gtk4"
-gem "glib2"
-
-# bigdecimal stopped being a default gem in Ruby 3.4; Number needs it.
 gem "bigdecimal"
-
-# rexml stopped being a default gem in Ruby 3.0; the ECB and Bank of Canada
-# rate files are XML.
-gem "rexml"
-
-# Downloads the ECB and Bank of Canada exchange-rate files over HTTP, via
-# libsoup 3 (see flake.nix's gtkStack for the typelib).
-gem "soup3"
-
-# Loads the po/ translations upstream ships.
 gem "gettext"
+gem "glib2"
+gem "gtk4"
+gem "rexml"
+gem "soup3"
